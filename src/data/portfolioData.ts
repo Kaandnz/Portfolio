@@ -111,6 +111,7 @@ export const projectsData: ProjectItem[] = [
       metrics: [
         { label: { tr: "Sorgu Çalışma Hızı", en: "Query Latency" }, value: "1.4ms" },
         { label: { tr: "Müfredat Kapsamı", en: "Curriculum" }, value: "30+ Vaka" },
+        { label: { tr: "Müfredat Kapsamı", en: "Curriculum" }, value: "30+ Senaryo" },
         { label: { tr: "Mimari", en: "Architecture" }, value: "Pure WASM" },
       ],
     },
