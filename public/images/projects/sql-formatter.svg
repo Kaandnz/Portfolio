@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <radialGradient id="sqlFormatterBg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#064e3b" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#08080a" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111815" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#090f0c" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#080a09" />
+  <rect width="100%" height="100%" fill="url(#sqlFormatterBg)" />
+
+  <!-- Background Grid Dots -->
+  <g fill="rgba(16, 185, 129, 0.12)">
+    <circle cx="200" cy="150" r="1.5" /><circle cx="400" cy="150" r="1.5" /><circle cx="600" cy="150" r="1.5" /><circle cx="800" cy="150" r="1.5" /><circle cx="1000" cy="150" r="1.5" />
+    <circle cx="200" cy="350" r="1.5" /><circle cx="400" cy="350" r="1.5" /><circle cx="600" cy="350" r="1.5" /><circle cx="800" cy="350" r="1.5" /><circle cx="1000" cy="350" r="1.5" />
+    <circle cx="200" cy="550" r="1.5" /><circle cx="400" cy="550" r="1.5" /><circle cx="600" cy="550" r="1.5" /><circle cx="800" cy="550" r="1.5" /><circle cx="1000" cy="550" r="1.5" />
+  </g>
+
+  <!-- Application Window -->
+  <rect x="180" y="90" width="840" height="550" rx="20" fill="url(#cardGrad)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.5" />
+
+  <!-- Window Header -->
+  <rect x="180" y="90" width="840" height="48" rx="20" fill="rgba(255,255,255,0.03)" />
+  <circle cx="215" cy="114" r="5" fill="#ff5f56" />
+  <circle cx="232" cy="114" r="5" fill="#ffbd2e" />
+  <circle cx="249" cy="114" r="5" fill="#27c93f" />
+  <text x="600" y="119" fill="#94a3b8" font-family="monospace" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">SQL_LIST_FORMATTER // BATCH_TRANSFORMER_V2.0</text>
+  <rect x="910" y="103" width="90" height="22" rx="11" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" />
+  <text x="955" y="118" fill="#10b981" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">INSTANT_IO</text>
+
+  <!-- Left Side: Raw Input Area -->
+  <rect x="210" y="160" width="370" height="440" rx="14" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.06)" />
+  <rect x="210" y="160" width="370" height="36" rx="14" fill="rgba(255,255,255,0.03)" />
+  <text x="230" y="183" fill="#10b981" font-family="monospace" font-size="11" font-weight="600">INPUT: RAW VALUES (EXCEL / CLIPBOARD)</text>
+
+  <g transform="translate(230, 220)" font-family="monospace" font-size="12" fill="#94a3b8">
+    <text y="0">TR-84910284</text>
+    <text y="24">TR-99481023</text>
+    <text y="48">TR-10294819</text>
+    <text y="72">TR-48201948</text>
+    <text y="96">TR-77291048</text>
+    <text y="120">TR-33918204</text>
+    <text y="144">TR-55829104</text>
+    <text y="168">TR-66192840</text>
+    <text y="192" fill="#64748b">... (500+ items pasted)</text>
+  </g>
+
+  <!-- Transformation Action Arrow & Dial -->
+  <g transform="translate(600, 350)">
+    <circle cx="0" cy="0" r="28" fill="#10b981" />
+    <path d="M -8 -4 L 4 -4 L 0 -8 L 8 0 L 0 8 L 4 4 L -8 4 Z" fill="#ffffff" />
+  </g>
+
+  <!-- Right Side: Formatted SQL Output -->
+  <rect x="620" y="160" width="380" height="440" rx="14" fill="rgba(0,0,0,0.6)" stroke="rgba(16,185,129,0.3)" />
+  <rect x="620" y="160" width="380" height="36" rx="14" fill="rgba(16,185,129,0.1)" />
+  <text x="640" y="183" fill="#10b981" font-family="monospace" font-size="11" font-weight="700">OUTPUT: SQL IN-CLAUSE CLAUSE</text>
+
+  <g transform="translate(640, 225)" font-family="monospace" font-size="12">
+    <text y="0" fill="#38bdf8">WHERE</text>
+    <text x="50" y="0" fill="#f8fafc">order_code <tspan fill="#38bdf8">IN</tspan> (</text>
+    <text y="30" fill="#a7f3d0">&apos;TR-84910284&apos;,</text>
+    <text y="54" fill="#a7f3d0">&apos;TR-99481023&apos;,</text>
+    <text y="78" fill="#a7f3d0">&apos;TR-10294819&apos;,</text>
+    <text y="102" fill="#a7f3d0">&apos;TR-48201948&apos;,</text>
+    <text y="126" fill="#a7f3d0">&apos;TR-77291048&apos;,</text>
+    <text y="150" fill="#a7f3d0">&apos;TR-33918204&apos;,</text>
+    <text y="174" fill="#a7f3d0">&apos;TR-55829104&apos;,</text>
+    <text y="198" fill="#a7f3d0">&apos;TR-66192840&apos;</text>
+    <text y="228" fill="#f8fafc">);</text>
+  </g>
+
+  <!-- Bottom Options Bar inside card -->
+  <g transform="translate(640, 480)">
+    <rect width="340" height="90" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+    <text x="16" y="28" fill="#10b981" font-family="monospace" font-size="10" font-weight="700">ACTIVE FORMAT SETTINGS</text>
+    
+    <g transform="translate(16, 42)" font-family="-apple-system, sans-serif" font-size="11" fill="#f8fafc">
+      <rect width="90" height="26" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" />
+      <text x="12" y="17">Single Quote</text>
+
+      <rect x="100" width="100" height="26" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" />
+      <text x="110" y="17">Trim Spaces</text>
+
+      <rect x="210" width="100" height="26" rx="6" fill="rgba(16,185,129,0.2)" stroke="#10b981" />
+      <text x="220" y="17">Batch (1000)</text>
+    </g>
+  </g>
+</svg>
+

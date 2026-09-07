@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <radialGradient id="sqlGameBg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#0369a1" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#08080a" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="editorCard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141923" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0b0f16" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#080a0f" />
+  <rect width="100%" height="100%" fill="url(#sqlGameBg)" />
+
+  <!-- Cyber Grid Background -->
+  <g stroke="#38bdf8" stroke-width="1" opacity="0.08">
+    <line x1="100" y1="0" x2="100" y2="750" />
+    <line x1="300" y1="0" x2="300" y2="750" />
+    <line x1="500" y1="0" x2="500" y2="750" />
+    <line x1="700" y1="0" x2="700" y2="750" />
+    <line x1="900" y1="0" x2="900" y2="750" />
+    <line x1="1100" y1="0" x2="1100" y2="750" />
+    <line x1="0" y1="150" x2="1200" y2="150" />
+    <line x1="0" y1="350" x2="1200" y2="350" />
+    <line x1="0" y1="550" x2="1200" y2="550" />
+  </g>
+
+  <!-- Main Detective Investigation Window -->
+  <rect x="180" y="90" width="840" height="550" rx="20" fill="url(#editorCard)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5" />
+
+  <!-- Window Chrome Header -->
+  <rect x="180" y="90" width="840" height="48" rx="20" fill="rgba(255,255,255,0.03)" />
+  <circle cx="215" cy="114" r="5" fill="#ff5f56" />
+  <circle cx="232" cy="114" r="5" fill="#ffbd2e" />
+  <circle cx="249" cy="114" r="5" fill="#27c93f" />
+  <text x="600" y="119" fill="#94a3b8" font-family="monospace" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">SQL_QUEST // CASE_FILE_#402 : FORENSIC_QUERY_RUNNER</text>
+  <rect x="910" y="103" width="90" height="22" rx="11" fill="rgba(56,189,248,0.15)" stroke="rgba(56,189,248,0.3)" />
+  <text x="955" y="118" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">WASM ENGINE</text>
+
+  <!-- Left Sidebar: Detective Case Files -->
+  <rect x="200" y="155" width="220" height="465" rx="12" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.06)" />
+  <text x="218" y="185" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">ACTIVE DOSSIERS</text>
+  
+  <g transform="translate(215, 205)">
+    <rect width="190" height="38" rx="8" fill="rgba(56,189,248,0.12)" stroke="rgba(56,189,248,0.3)" />
+    <circle cx="16" cy="19" r="4" fill="#38bdf8" />
+    <text x="30" y="23" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Case #1: Istanbul Wire</text>
+  </g>
+  <g transform="translate(215, 252)">
+    <rect width="190" height="38" rx="8" fill="rgba(255,255,255,0.02)" />
+    <circle cx="16" cy="19" r="4" fill="#64748b" />
+    <text x="30" y="23" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">Case #2: Shell Company</text>
+  </g>
+  <g transform="translate(215, 299)">
+    <rect width="190" height="38" rx="8" fill="rgba(255,255,255,0.02)" />
+    <circle cx="16" cy="19" r="4" fill="#64748b" />
+    <text x="30" y="23" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">Case #3: Window Ledger</text>
+  </g>
+
+  <!-- Skill Tree Preview in Sidebar -->
+  <text x="218" y="375" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">SKILL MASTERY</text>
+  <g transform="translate(215, 395)">
+    <text x="0" y="12" fill="#94a3b8" font-family="monospace" font-size="10">SELECT &amp; FILTERS</text>
+    <rect x="0" y="20" width="190" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+    <rect x="0" y="20" width="170" height="6" rx="3" fill="#38bdf8" />
+
+    <text x="0" y="48" fill="#94a3b8" font-family="monospace" font-size="10">JOIN &amp; SUBQUERIES</text>
+    <rect x="0" y="56" width="190" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+    <rect x="0" y="56" width="140" height="6" rx="3" fill="#818cf8" />
+
+    <text x="0" y="84" fill="#94a3b8" font-family="monospace" font-size="10">WINDOW &amp; RECURSIVE</text>
+    <rect x="0" y="92" width="190" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+    <rect x="0" y="92" width="110" height="6" rx="3" fill="#34d399" />
+  </g>
+
+  <!-- Right Code Editor & Results Panel -->
+  <rect x="440" y="155" width="560" height="240" rx="12" fill="rgba(10,12,18,0.7)" stroke="rgba(255,255,255,0.08)" />
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <!-- Code Editor Mockup -->
+  </div>
+  <g transform="translate(460, 180)" font-family="monospace" font-size="13">
+    <text y="20" fill="#64748b">-- Case 402: Identify fraudulent transactions above $10,000</text>
+    <text y="50" fill="#38bdf8">SELECT</text>
+    <text x="65" y="50" fill="#f8fafc">s.suspect_id, s.full_name, t.amount, t.timestamp</text>
+    <text y="75" fill="#38bdf8">FROM</text>
+    <text x="45" y="75" fill="#f8fafc">suspects s</text>
+    <text y="100" fill="#818cf8">INNER JOIN</text>
+    <text x="95" y="100" fill="#f8fafc">transactions t <tspan fill="#38bdf8">ON</tspan> s.account_no = t.destination</text>
+    <text y="125" fill="#38bdf8">WHERE</text>
+    <text x="55" y="125" fill="#f8fafc">t.amount &gt; <tspan fill="#fbbf24">10000</tspan> <tspan fill="#38bdf8">AND</tspan> s.city = <tspan fill="#34d399">&apos;Istanbul&apos;</tspan></text>
+    <text y="150" fill="#38bdf8">ORDER BY</text>
+    <text x="80" y="150" fill="#f8fafc">t.amount <tspan fill="#38bdf8">DESC</tspan>;</text>
+  </g>
+
+  <!-- Query Execution Badge -->
+  <g transform="translate(850, 345)">
+    <rect width="130" height="34" rx="8" fill="#0284c7" />
+    <text x="65" y="21" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Execute ▶</text>
+  </g>
+
+  <!-- Query Results Table -->
+  <rect x="440" y="410" width="560" height="210" rx="12" fill="rgba(10,12,18,0.85)" stroke="rgba(255,255,255,0.08)" />
+  <rect x="440" y="410" width="560" height="34" rx="12" fill="rgba(255,255,255,0.04)" />
+  <text x="460" y="432" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="600">QUERY RESULT: 3 ROWS RETURNED (1.4ms)</text>
+
+  <!-- Table Header -->
+  <g transform="translate(460, 465)" font-family="monospace" font-size="11" fill="#94a3b8">
+    <text x="0" y="0">ID</text>
+    <text x="60" y="0">SUSPECT_NAME</text>
+    <text x="240" y="0">AMOUNT ($)</text>
+    <text x="380" y="0">STATUS</text>
+  </g>
+  <line x1="460" y1="475" x2="980" y2="475" stroke="rgba(255,255,255,0.08)" />
+
+  <!-- Table Rows -->
+  <g transform="translate(460, 498)" font-family="monospace" font-size="12" fill="#f8fafc">
+    <text x="0" y="0">#4012</text>
+    <text x="60" y="0">Cemil Yılmaz</text>
+    <text x="240" y="0" fill="#fbbf24">$84,500.00</text>
+    <text x="380" y="0" fill="#ef4444">FLAGGED</text>
+  </g>
+  <g transform="translate(460, 526)" font-family="monospace" font-size="12" fill="#f8fafc">
+    <text x="0" y="0">#4019</text>
+    <text x="60" y="0">Murat Demir</text>
+    <text x="240" y="0" fill="#fbbf24">$32,120.00</text>
+    <text x="380" y="0" fill="#ef4444">FLAGGED</text>
+  </g>
+  <g transform="translate(460, 554)" font-family="monospace" font-size="12" fill="#f8fafc">
+    <text x="0" y="0">#4055</text>
+    <text x="60" y="0">Selin Kaya</text>
+    <text x="240" y="0" fill="#fbbf24">$14,900.00</text>
+    <text x="380" y="0" fill="#ef4444">FLAGGED</text>
+  </g>
+</svg>
+
