@@ -143,7 +143,7 @@ export const translations = {
       subtitle: "A curated selection from client-side WASM database forensics engines to enterprise B2B sales automation platforms.",
       visitLive: "Visit Live Site",
       source: "Source Code",
-      caseStudy: "Project Details",
+      caseStudy: "Read Case Study",
       externalDestinations: "External Destinations:",
       launchSite: "Launch Live Product",
       githubRepo: "GitHub Repository",

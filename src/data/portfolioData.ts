@@ -52,6 +52,8 @@ export const personalInfo = {
   bio: {
     tr: ".NET Core ve C# kullanarak ölçeklenebilir backend sistemleri ve kurumsal çözümler tasarlayan Full Stack Geliştirici. Saha operasyonlarını ve dijital satışları kolaylaştıran kurumsal B2B ve SFA sistemleri (nopCommerce), yüksek performanslı SQL & NoSQL veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
     en: "Full Stack Developer with a strong focus on designing and implementing scalable backend systems using .NET Core and C#. Specialized in building enterprise-level B2B and SFA (Sales Force Automation) solutions leveraging nopCommerce to streamline field operations and digital sales. Proven track record in optimizing database performance, test automation (Selenium), and CI/CD pipelines (Jenkins). Focused on clean architecture, microservices, and end-to-end product delivery.",
+    tr: "Java Spring Boot, .NET Core, C# ve modern web teknolojileriyle (Angular, React) ölçeklenebilir kurumsal çözümler, B2B platformları, e-ticaret sistemleri ve rota optimizasyonu altyapıları tasarlayan Full Stack Geliştirici. SAP ve Panorama kurumsal entegrasyonları, nopCommerce e-ticaret mimarileri, PostgreSQL & SQL Server veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
+    en: "Full Stack Developer architecting scalable enterprise solutions, B2B platforms, e-commerce systems, and route optimization infrastructure using Java Spring Boot, .NET Core, C#, and modern web technologies (Angular, React). Proven track record in enterprise SAP and Panorama integrations, nopCommerce platforms, PostgreSQL & SQL Server performance tuning, automated testing (Selenium), and CI/CD pipelines (Jenkins). Focused on clean architecture, microservices, and robust product delivery.",
   },
 };
 
@@ -176,12 +178,74 @@ export const projectsData: ProjectItem[] = [
     },
   },
   {
+    id: "duzey-route-opt",
+    title: "Enterprise Fleet & Route Optimization Platform",
+    year: "2025",
+    category: {
+      tr: "Kurumsal Lojistik / Full Stack",
+      en: "Enterprise Logistics / Full Stack",
+    },
+    role: {
+      tr: "Software Developer @ Düzey",
+      en: "Software Developer @ Düzey",
+    },
+    tagline: {
+      tr: "Angular & Java Spring Boot ile Rota Optimizasyonu ve Harita Planlama",
+      en: "Map-Based Route Optimization & Fleet Dispatch with Spring Boot & Angular",
+    },
+    description: {
+      tr: "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulaması. SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimini ve raporlanmasını sağlar.",
+      en: "Enterprise fleet logistics and route optimization web application engineered with Angular, Java Spring Boot, and PostgreSQL. Features interactive map-based dispatch, vehicle and driver management, and automated distribution tracking via SAP and Panorama integrations.",
+    },
+    technologies: ["Java Spring Boot", "Angular", "PostgreSQL", "SAP Integration", "Panorama", "RESTful APIs", "Docker"],
+    liveUrl: "https://duzey.com.tr",
+    githubUrl: "https://github.com/Kaandnz",
+    accentColor: "#06b6d4",
+    image: "/images/projects/chronos.svg",
+    caseStudy: {
+      overview: {
+        tr: "Türkiye genelindeki dağıtım filolarının rota planlamasını, harita üzerinden araç ve sürücü koordinasyonunu ve sevkiyat verimliliğini gerçek zamanlı yöneten kurumsal web platformu.",
+        en: "High-throughput dispatch platform managing nationwide distribution routes, interactive map planning, driver-vehicle assignments, and operational delivery metrics in real time.",
+      },
+      challenge: {
+        tr: "Yüzlerce dağıtım aracının değişken teslimat noktalarını, harita üzerinde anlık mesafe ve operasyonel kısıtlarla optimize ederek SAP ve Panorama ile gecikmesiz senkronize etmek.",
+        en: "Optimizing dynamic delivery waypoints, vehicle capacity constraints, and driver schedules on live map interfaces while maintaining continuous synchronization with SAP and Panorama backends.",
+      },
+      solution: {
+        tr: "Java Spring Boot ve PostgreSQL ile yüksek performanslı rota optimizasyon servisleri geliştirildi; Angular ile harita tabanlı interaktif yönetim panosu kurgulandı ve çift yönlü SAP/Panorama entegrasyonları kuruldu.",
+        en: "Engineered scalable route calculation backend services using Java Spring Boot and PostgreSQL, paired with a responsive Angular map UI and reliable bidirectional SAP/Panorama data connectors.",
+      },
+      keyFeatures: {
+        tr: [
+          "Harita üzerinden interaktif rota planlama, dinamik durak sıralaması ve rota optimizasyonu",
+          "Kapsamlı araç filosu, sürücü yönetimi ve sevkiyat durum takibi",
+          "SAP ve Panorama sistemleriyle gerçek zamanlı çift yönlü veri entegrasyonu",
+          "Dağıtım süreçlerinin uçtan uca yönetimi, rota sapmaları ve teslimat süreleri için operasyonel raporlama",
+        ],
+        en: [
+          "Interactive map-based route planning, dynamic waypoint sorting, and algorithmic route optimization",
+          "Comprehensive fleet asset management, driver assignment tracking, and live shipment dispatch status",
+          "Real-time bidirectional enterprise data synchronization with SAP and Panorama systems",
+          "Operational telemetry and analytics reporting for distribution turnaround and route variance",
+        ],
+      },
+      metrics: [
+        { label: { tr: "Optimizasyon", en: "Route Engine" }, value: "Dinamik Rota" },
+        { label: { tr: "Entegrasyon", en: "ERP Connect" }, value: "SAP & Panorama" },
+        { label: { tr: "Veritabanı", en: "Database" }, value: "PostgreSQL" },
+      ],
+    },
+  },
+  {
     id: "duzey-sfa-b2b",
     title: "Enterprise SFA & B2B Mobile Infrastructure",
+    title: "Enterprise B2B & E-Commerce Infrastructure",
     year: "2025",
     category: {
       tr: "Kurumsal Çözüm / Backend",
       en: "Enterprise Solution / Backend",
+      tr: "Kurumsal B2B & E-Ticaret / Backend",
+      en: "Enterprise B2B & E-Commerce / Backend",
     },
     role: {
       tr: "Software Developer @ Düzey",
@@ -190,12 +254,17 @@ export const projectsData: ProjectItem[] = [
     tagline: {
       tr: "nopCommerce & .NET Core ile Saha Satış ve B2B Altyapısı",
       en: "Scalable SFA & B2B Mobile Infrastructure with nopCommerce & .NET",
+      tr: "C# & ASP.NET Core nopCommerce ile B2B, E-Ticaret ve Ödeme Sistemleri",
+      en: "Scalable B2B, E-Commerce & Payment Systems with C# & nopCommerce",
     },
     description: {
       tr: "Düzey bünyesinde saha operasyonlarını ve dijital satış verimliliğini yöneten, merkezi SAP/ERP sistemleri ile mikroservis entegrasyonu sağlayan kurumsal SFA ve B2B backend mimarisi.",
       en: "Enterprise backend architecture powering SFA and B2B mobile applications at Düzey, integrating nopCommerce with central SAP/ERP pipelines to streamline nationwide sales operations.",
+      tr: "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformu ve ödeme sistemleri entegrasyonlu Düzey e-ticaret altyapısı.",
+      en: "Enterprise B2B and e-commerce platforms engineered on nopCommerce with C# and ASP.NET Core. Powers end-to-end order processing, customer pricing, tiered discount rules, secure payment gateway integrations, and SAP/Panorama enterprise synchronization.",
     },
     technologies: [".NET Core", "C#", "nopCommerce", "MS SQL Server", "SAP / ERP Integration", "RESTful APIs"],
+    technologies: [".NET Core", "C#", "ASP.NET Core", "nopCommerce", "MS SQL Server", "Payment Systems", "SAP", "Panorama", "RESTful APIs"],
     liveUrl: "https://duzey.com.tr",
     githubUrl: "https://github.com/Kaandnz",
     accentColor: "#f59e0b",
@@ -204,14 +273,20 @@ export const projectsData: ProjectItem[] = [
       overview: {
         tr: "Türkiye genelindeki saha ekiplerinin sipariş, onay ve stok süreçlerini gerçek zamanlı yöneten yüksek hacimli kurumsal mobil arka uç altyapısı.",
         en: "High-volume enterprise backend supporting nationwide field sales representatives with real-time catalog access, automated order approvals, and ERP sync.",
+        tr: "Türkiye genelindeki kurumsal bayilerin ve müşterilerin sipariş, dinamik fiyatlandırma, kampanya indirimleri ve güvenli online ödeme süreçlerini kesintisiz yürüten yüksek hacimli B2B ve e-ticaret ekosistemi.",
+        en: "Nationwide enterprise B2B and e-commerce ecosystem facilitating streamlined digital ordering, tiered customer pricing, promotional discounts, and payment processing.",
       },
       challenge: {
         tr: "Yüksek işlem hacmine sahip veritabanında onay mekanizmalarını ve ERP veri senkronizasyonunu gecikmesiz yönetmek.",
         en: "Achieving real-time bidirectional synchronization between field mobile apps, nopCommerce, and central SAP systems under heavy transactional loads.",
+        tr: "Farklı müşteri segmentlerine özel dinamik fiyat/iskonto matrislerini, karmaşık ödeme sistemlerini ve SAP/Panorama stok-sipariş senkronizasyonunu yüksek eşzamanlılık altında hatasız işletmek.",
+        en: "Handling complex customer-specific pricing matrixes, multi-provider payment integrations, and high-concurrency order processing in lockstep with SAP and Panorama.",
       },
       solution: {
         tr: "Onay Yönetim Sistemi için merkezi RESTful API'ler kurgulandı; eski iş kuralları refactor edilerek veri çekme süreleri büyük ölçüde düşürüldü.",
         en: "Engineered a centralized Approval Management REST API suite and refactored core database queries, significantly decreasing response times.",
+        tr: "nopCommerce çekirdeği kurumsal ihtiyaçlara göre özelleştirildi; güvenli ödeme altyapıları, Panorama ve SAP veri hatları bağlandı; Onay Yönetim Sistemi API'leri ile operasyonel süreçler otomatikleştirildi.",
+        en: "Engineered bespoke nopCommerce enterprise plugins, integrated multi-tier payment gateways, built robust Panorama and SAP connectors, and deployed centralized Approval Management APIs.",
       },
       keyFeatures: {
         tr: [
@@ -219,18 +294,29 @@ export const projectsData: ProjectItem[] = [
           "Saha kaynaklı talepleri otomatikleştiren merkezi Onay Yönetim Sistemi",
           "Kurumsal SAP/ERP sistemleriyle kesintisiz çift yönlü veri entegrasyonu",
           "Backoffice dashboard için anlık iş akışı ve audit izlenebilirliği",
+          "C# ve ASP.NET Core nopCommerce üzerinde sipariş, müşteri, dinamik fiyat ve indirim yönetimi",
+          "Düzey e-ticaret projesinde güvenli ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel modüller",
+          "SAP ve Panorama kurumsal sistemleriyle kesintisiz çift yönlü sipariş ve stok senkronizasyonu",
+          "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'leri",
         ],
         en: [
           "nopCommerce core refactoring and bespoke enterprise extension modules",
           "Centralized Approval Management System automating field-originated workflows",
           "Seamless microservice integration with enterprise SAP/ERP data pipelines",
           "Live telemetry and audit trail visibility for backoffice administrative teams",
+          "Comprehensive order, customer tier, dynamic pricing, and discount rule management on nopCommerce",
+          "Secure payment gateway integration, Panorama synchronization, and tailored enterprise e-commerce modules",
+          "Seamless bidirectional order and inventory synchronization with SAP and Panorama",
+          "Centralized Approval Management REST API suite automating field workflow approvals",
         ],
       },
       metrics: [
         { label: { tr: "Mimari", en: "Architecture" }, value: "Microservices" },
         { label: { tr: "Veri Çekme Hızı", en: "Query Speed" }, value: "%40+ Hız" },
         { label: { tr: "Kullanıcı", en: "Field Reach" }, value: "Kurumsal" },
+        { label: { tr: "Mimari", en: "Architecture" }, value: "nopCommerce .NET" },
+        { label: { tr: "Entegrasyon", en: "Enterprise Sync" }, value: "SAP & Panorama" },
+        { label: { tr: "Ödeme Altyapısı", en: "Payment Gateways" }, value: "3D Secure / POS" },
       ],
     },
   },
@@ -314,20 +400,43 @@ export const experienceData: ExperienceItem[] = [
     description: {
       tr: "nopCommerce ve .NET Core kullanarak saha operasyonlarını ve dijital satış verimliliğini doğrudan destekleyen SFA ve B2B mobil uygulamalarının backend altyapısını mimari olarak tasarladı ve sürdürdü.",
       en: "Architected and maintained the backend infrastructure of SFA and B2B mobile applications using nopCommerce and .NET Core, directly supporting field operations and digital sales efficiency.",
+      tr: "Düzey bünyesinde rota optimizasyonu web uygulamaları, kurumsal B2B platformları ve e-ticaret sistemlerinin yazılım geliştirme süreçlerini yürüttü; Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama entegrasyonlarını başarıyla hayata geçirdi.",
+      en: "Architects and develops enterprise software at Düzey across route optimization web applications, enterprise B2B platforms, and e-commerce solutions; delivers mission-critical SAP and Panorama integrations using Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
     },
     achievements: {
       tr: [
         "Onay Yönetim Sistemi için merkezi RESTful API'ler kurgulandı; saha kaynaklı talepler otomatikleştirildi ve Backoffice paneline gerçek zamanlı iş akışı izlenebilirliği kazandırıldı.",
         ".NET tabanlı mikroservisleri kurumsal SAP/ERP sistemleriyle entegre ederek mobil istemciler ile merkezi veritabanları arasında kesintisiz veri senkronizasyonu sağlandı.",
         "Sistem performansını artırmak için nopCommerce çekirdek modülleri optimize edildi ve eski iş mantığı refactor edilerek yüksek hacimli işlemlerde veri çekme süreleri ciddi oranda düşürüldü.",
+        "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulamasının geliştirilmesi; SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimi ve raporlanması.",
+        "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformunun geliştirilmesinde aktif rol.",
+        "C# ve ASP.NET Core ile nopCommerce altyapısı üzerinde geliştirilen Düzey e-ticaret projesinde yazılım geliştirme süreçlerine katkı; ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel e-ticaret modüllerinin geliştirilmesi.",
+        "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'lerinin kurgulanması; eski iş mantıklarının ve nopCommerce çekirdek modüllerinin refactor edilerek yüksek hacimli işlemlerde sorgu sürelerinin optimize edilmesi.",
       ],
       en: [
         "Engineered the backend logic for the Approval Management System, creating centralized RESTful APIs to automate field requests and enable real-time workflow traceability.",
         "Integrated .NET-based microservices with enterprise SAP/ERP systems, ensuring seamless data synchronization between mobile clients and central databases.",
         "Optimized nopCommerce core modules and refactored legacy business logic to boost system performance, significantly reducing data retrieval times for high-volume transactions.",
+        "Engineered a route optimization and fleet dispatch web app using Angular, Java Spring Boot, and PostgreSQL; automated distribution tracking and operational reporting via SAP and Panorama integrations.",
+        "Contributed to building an enterprise B2B platform using C# and ASP.NET Core on nopCommerce, encompassing order, customer, dynamic pricing, and discount rule management with SAP & Panorama integrations.",
+        "Contributed to software development for Düzey's enterprise e-commerce platform built with C# and ASP.NET Core on nopCommerce, delivering payment systems, Panorama integration, and custom e-commerce modules.",
+        "Architected centralized Approval Management RESTful APIs automating field workflows; refactored core modules and optimized database queries to significantly accelerate response times in high-volume transactions.",
       ],
     },
     technologies: [".NET Core", "C#", "nopCommerce", "MS SQL Server", "SAP / ERP", "Microservices", "RESTful APIs"],
+    technologies: [
+      ".NET Core",
+      "C#",
+      "ASP.NET Core",
+      "Java Spring Boot",
+      "Angular",
+      "PostgreSQL",
+      "nopCommerce",
+      "MS SQL Server",
+      "SAP",
+      "Panorama",
+      "RESTful APIs",
+    ],
   },
   {
     id: "dr-turkuvaz",
@@ -417,10 +526,12 @@ export const skillsGrouped = {
   backend: {
     title: { tr: "Arka Uç & Frameworkler", en: "Backend & Frameworks" },
     skills: [".NET Core", "C#", "ASP.NET MVC", "Entity Framework Core", "RESTful APIs", "Microservices"],
+    skills: [".NET Core", "C#", "ASP.NET Core", "Java Spring Boot", "Entity Framework Core", "RESTful APIs", "Microservices"],
   },
   database: {
     title: { tr: "Veritabanı & Arama Motorları", en: "Databases & Storage" },
     skills: ["MS SQL Server", "MongoDB", "Elasticsearch", "Database Optimization", "Query Tuning"],
+    skills: ["PostgreSQL", "MS SQL Server", "MongoDB", "Elasticsearch", "Database Optimization", "Query Tuning"],
   },
   devops: {
     title: { tr: "DevOps, CI/CD & İzleme", en: "DevOps & Monitoring" },

@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 const marqueeItems1 = [
   ".NET CORE",
   "C#",
+  "JAVA SPRING BOOT",
+  "ANGULAR",
+  "POSTGRESQL",
   "MS SQL SERVER",
   "MONGODB",
   "ELASTICSEARCH",
@@ -18,6 +21,9 @@ const marqueeItems1 = [
 ];
 
 const marqueeItems2 = [
+  "NOPCOMMERCE",
+  "SAP / ERP",
+  "PANORAMA",
   "JENKINS CI/CD",
   "DOCKER",
   "ELK STACK",

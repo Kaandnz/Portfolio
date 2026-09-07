@@ -47,10 +47,14 @@ export default function About() {
         language === "tr"
           ? "Kurumsal B2B, SFA ve Dağıtık Sistemler."
           : "Enterprise B2B, SFA, and Distributed Systems.",
+          ? "Kurumsal Dağıtım, B2B ve E-Ticaret Sistemleri."
+          : "Enterprise Distribution, B2B & E-Commerce Systems.",
       content:
         language === "tr"
           ? "Düzey bünyesinde saha ekiplerinin sipariş ve onay süreçlerini yöneten kurumsal SFA (Satış Gücü Otomasyonu) ve B2B altyapısını geliştirdim. nopCommerce çekirdek modüllerini refactor ederek yüksek hacimli işlemlerde veri çekme sürelerini optimize ettim."
           : "Architected and optimized high-volume SFA (Sales Force Automation) and B2B platforms at Düzey using nopCommerce and .NET Core, integrating enterprise SAP/ERP pipelines for real-time mobile order approvals.",
+          ? "Düzey bünyesinde rota optimizasyonu ve dağıtım yönetimi web uygulamaları, kurumsal B2B platformları ve e-ticaret altyapılarının yazılım geliştirme süreçlerine katkı sağladım. Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama kurumsal entegrasyonlarını hayata geçirdim."
+          : "Contributed to software engineering across route optimization web applications, enterprise B2B platforms, and e-commerce solutions at Düzey. Built mission-critical SAP and Panorama integrations utilizing Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
       bullets:
         language === "tr"
           ? [
@@ -58,12 +62,20 @@ export default function About() {
               "SAP/ERP sistemleri ile çift yönlü mikroservis senkronizasyonu",
               "Backoffice operasyonel panelleri ve gerçek zamanlı izlenebilirlik",
               "Yüksek işlem hacminde sorgu ve bellek optimizasyonu",
+              "Angular, Spring Boot & PostgreSQL ile rota optimizasyonu, araç/sürücü yönetimi ve harita planlama",
+              "C# & ASP.NET Core nopCommerce ile sipariş, müşteri, fiyat ve indirim yönetimli kurumsal B2B platformu",
+              "Düzey e-ticaret projesinde güvenli ödeme sistemleri, Panorama entegrasyonu ve özel e-ticaret modülleri",
+              "SAP ve Panorama kurumsal sistemleriyle kesintisiz çift yönlü veri senkronizasyonu ve operasyonel raporlama",
             ]
           : [
               "Centralized Approval Management System RESTful API architecture",
               "Bi-directional microservice sync with enterprise SAP/ERP",
               "Backoffice operational telemetry and real-time audit tracing",
               "High-volume database indexing and memory tuning",
+              "Map-based route optimization, fleet dispatch, and driver management with Angular, Spring Boot & PostgreSQL",
+              "Enterprise B2B platform on C# & ASP.NET Core (nopCommerce) covering order, pricing, and discount rules",
+              "Düzey e-commerce platform featuring payment gateway integrations, Panorama sync, and custom modules",
+              "Seamless bidirectional data synchronization and operational reporting with SAP and Panorama backends",
             ],
     },
     {
