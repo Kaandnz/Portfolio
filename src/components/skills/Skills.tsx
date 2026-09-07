@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, CheckCircle2, Server, Database, Activity, ShieldCheck, Wrench } from "lucide-react";
+import { Cpu, CheckCircle2, Server, Database, Activity, ShieldCheck, Wrench, Layers, Globe } from "lucide-react";
 import { skillsGrouped } from "@/data/portfolioData";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
@@ -14,6 +15,8 @@ export default function Skills() {
 
   const categories = [
     { key: "backend", icon: Server, data: skillsGrouped.backend },
+    { key: "enterprise", icon: Layers, data: skillsGrouped.enterprise },
+    { key: "frontend", icon: Globe, data: skillsGrouped.frontend },
     { key: "database", icon: Database, data: skillsGrouped.database },
     { key: "devops", icon: Activity, data: skillsGrouped.devops },
     { key: "testing", icon: ShieldCheck, data: skillsGrouped.testing },
@@ -80,6 +83,7 @@ export default function Skills() {
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
           >
             {currentCategory.data.skills.map((skill) => (
+            {currentCategory.data.skills.map((skill: string) => (
               <div
                 key={skill}
                 className="p-6 rounded-2xl apple-glass-subtle hover:apple-glass border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 flex items-center justify-between gap-3 group"

@@ -22,6 +22,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       setLanguage(saved);
     } else if (typeof navigator !== "undefined" && navigator.language.startsWith("tr")) {
       setLanguage("tr");
+      queueMicrotask(() => {
+        setLanguage(saved);
+      });
     }
   }, []);
 

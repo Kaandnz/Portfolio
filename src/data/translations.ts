@@ -90,7 +90,7 @@ export const translations = {
     footer: {
       role: "Full Stack Developer",
       rights: "Tüm hakları saklıdır.",
-      builtWith: "Apple Akıcı Arayüz Prensipleri • Next.js & Tailwind ile tasarlandı",
+      builtWith: "Next.js 16, TypeScript & Tailwind CSS ile geliştirildi",
       backToTop: "Yukarı çık",
     },
   },
@@ -185,7 +185,7 @@ export const translations = {
     footer: {
       role: "Full Stack Developer",
       rights: "All rights reserved.",
-      builtWith: "Apple Fluid Interface Guidelines • Built with Next.js & Tailwind",
+      builtWith: "Built with Next.js 16, TypeScript & Tailwind CSS",
       backToTop: "Back to top",
     },
   },

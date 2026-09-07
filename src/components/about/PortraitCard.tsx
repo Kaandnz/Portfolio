@@ -149,12 +149,15 @@ export default function PortraitCard() {
         <div className="flex flex-wrap items-center gap-1.5 pt-1">
           <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
             Enterprise B2B
+            {isTr ? "Rota Optimizasyonu" : "Route Optimization"}
           </span>
           <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
             ETL Pipelines
+            {isTr ? "B2B & E-Ticaret" : "B2B & E-Commerce"}
           </span>
           <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
             High Scalability
+            SAP & Panorama
           </span>
         </div>
       </div>

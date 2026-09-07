@@ -1,0 +1,374 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <!-- Background Radial Gradients -->
+    <radialGradient id="elementaBg" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.25" />
+      <stop offset="45%" stop-color="#0d9488" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#05070a" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="atomGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#06b6d4" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="windowBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#080c14" stop-opacity="0.92" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Obsidian Background -->
+  <rect width="100%" height="100%" fill="#05070a" />
+  <rect width="100%" height="100%" fill="url(#elementaBg)" />
+
+  <!-- Quantum Scientific Grid Lines -->
+  <g stroke="#06b6d4" stroke-width="1" opacity="0.06">
+    <line x1="80" y1="0" x2="80" y2="750" />
+    <line x1="220" y1="0" x2="220" y2="750" />
+    <line x1="360" y1="0" x2="360" y2="750" />
+    <line x1="500" y1="0" x2="500" y2="750" />
+    <line x1="640" y1="0" x2="640" y2="750" />
+    <line x1="780" y1="0" x2="780" y2="750" />
+    <line x1="920" y1="0" x2="920" y2="750" />
+    <line x1="1060" y1="0" x2="1060" y2="750" />
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="230" x2="1200" y2="230" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="490" x2="1200" y2="490" />
+    <line x1="0" y1="620" x2="1200" y2="620" />
+  </g>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="280" cy="180" r="140" fill="#06b6d4" opacity="0.12" filter="url(#glow)" />
+  <circle cx="940" cy="420" r="180" fill="#10b981" opacity="0.08" filter="url(#glow)" />
+
+  <!-- Central macOS Frosted Glass Window Frame -->
+  <rect x="120" y="70" width="960" height="610" rx="20" fill="url(#windowBg)" stroke="rgba(6, 182, 212, 0.35)" stroke-width="1.5" />
+
+  <!-- macOS Window Header Bar -->
+  <rect x="120" y="70" width="960" height="48" rx="20" fill="rgba(255, 255, 255, 0.03)" />
+  <circle cx="155" cy="94" r="5.5" fill="#ff5f56" />
+  <circle cx="173" cy="94" r="5.5" fill="#ffbd2e" />
+  <circle cx="191" cy="94" r="5.5" fill="#27c93f" />
+
+  <!-- Window Title -->
+  <g transform="translate(600, 99)">
+    <text fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1.5">
+      ELEMENTA // PRECISION PERIODIC LABORATORY
+    </text>
+  </g>
+
+  <!-- Right Status Badges -->
+  <g transform="translate(935, 83)">
+    <rect width="125" height="22" rx="11" fill="rgba(6,182,212,0.15)" stroke="rgba(6,182,212,0.35)" />
+    <circle cx="14" cy="11" r="3" fill="#10b981" />
+    <text x="24" y="15" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="700" letter-spacing="0.5">118 IUPAC LIVE</text>
+  </g>
+
+  <!-- Top Telemetry & Temperature Bar -->
+  <g transform="translate(150, 135)">
+    <!-- Temperature Slider Console -->
+    <rect width="900" height="54" rx="12" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.06)" />
+    
+    <!-- Thermometer Icon / Label -->
+    <text x="20" y="32" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">TEMPERATURE:</text>
+    <text x="125" y="33" fill="#f8fafc" font-family="monospace" font-size="13" font-weight="800">293.15 K</text>
+    <text x="195" y="32" fill="#64748b" font-family="monospace" font-size="11">(20.0 °C / 68.0 °F)</text>
+    <rect x="330" y="21" width="120" height="18" rx="9" fill="rgba(6,182,212,0.12)" stroke="rgba(6,182,212,0.25)" />
+    <text x="390" y="33" fill="#06b6d4" font-family="-apple-system, sans-serif" font-size="9" font-weight="600" text-anchor="middle">ROOM TEMPERATURE</text>
+
+    <!-- Phase Percentage Gauges -->
+    <g transform="translate(560, 16)">
+      <!-- Solid -->
+      <rect x="0" y="3" width="76" height="22" rx="6" fill="rgba(56,189,248,0.12)" stroke="rgba(56,189,248,0.3)" />
+      <text x="10" y="18" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="700">SOLID 94</text>
+      <!-- Liquid -->
+      <rect x="84" y="3" width="76" height="22" rx="6" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.35)" />
+      <text x="94" y="18" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">LIQUID 2</text>
+      <!-- Gas -->
+      <rect x="168" y="3" width="76" height="22" rx="6" fill="rgba(168,85,247,0.12)" stroke="rgba(168,85,247,0.3)" />
+      <text x="180" y="18" fill="#c084fc" font-family="monospace" font-size="10" font-weight="700">GAS 11</text>
+      <!-- Synthetic -->
+      <rect x="252" y="3" width="76" height="22" rx="6" fill="rgba(148,163,184,0.1)" stroke="rgba(148,163,184,0.25)" />
+      <text x="262" y="18" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="700">EXP 11</text>
+    </g>
+  </g>
+
+  <!-- LEFT SECTION: Periodic Table Matrix Grid Preview -->
+  <g transform="translate(150, 205)">
+    <!-- Subheader Filter Pills -->
+    <g transform="translate(0, 0)">
+      <rect width="70" height="22" rx="6" fill="#06b6d4" opacity="0.2" stroke="#06b6d4" stroke-width="1" />
+      <text x="35" y="15" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">All (118)</text>
+
+      <rect x="76" y="0" width="85" height="22" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+      <text x="118" y="15" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" text-anchor="middle">Non-metals</text>
+
+      <rect x="167" y="0" width="95" height="22" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+      <text x="214" y="15" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" text-anchor="middle">Noble Gases</text>
+
+      <rect x="268" y="0" width="90" height="22" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+      <text x="313" y="15" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" text-anchor="middle">Transition</text>
+
+      <rect x="364" y="0" width="85" height="22" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+      <text x="406" y="15" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" text-anchor="middle">Lanthanides</text>
+
+      <rect x="455" y="0" width="105" height="22" rx="6" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.3)" />
+      <text x="507" y="15" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="600" text-anchor="middle">⌘K Search</text>
+    </g>
+
+    <!-- Mini High-Tech Periodic Matrix Layout -->
+    <g transform="translate(0, 36)">
+      <!-- Row 1 -->
+      <!-- 1 H -->
+      <g transform="translate(0, 0)">
+        <rect width="52" height="58" rx="8" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.2" />
+        <text x="6" y="13" fill="#38bdf8" font-family="monospace" font-size="9">1</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">H</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Hydrogen</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">1.008</text>
+      </g>
+
+      <!-- 2 He -->
+      <g transform="translate(508, 0)">
+        <rect width="52" height="58" rx="8" fill="rgba(168,85,247,0.12)" stroke="#a855f7" stroke-width="1" />
+        <text x="6" y="13" fill="#c084fc" font-family="monospace" font-size="9">2</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">He</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Helium</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">4.0026</text>
+      </g>
+
+      <!-- Row 2 -->
+      <!-- 3 Li -->
+      <g transform="translate(0, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1" />
+        <text x="6" y="13" fill="#f87171" font-family="monospace" font-size="9">3</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Li</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Lithium</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">6.94</text>
+      </g>
+      <!-- 4 Be -->
+      <g transform="translate(56, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1" />
+        <text x="6" y="13" fill="#fb923c" font-family="monospace" font-size="9">4</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Be</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Beryllium</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">9.0122</text>
+      </g>
+      <!-- 5 B -->
+      <g transform="translate(284, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(20,184,166,0.1)" stroke="#14b8a6" stroke-width="1" />
+        <text x="6" y="13" fill="#2dd4bf" font-family="monospace" font-size="9">5</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">B</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Boron</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">10.81</text>
+      </g>
+      <!-- 6 C -->
+      <g transform="translate(340, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" />
+        <text x="6" y="13" fill="#38bdf8" font-family="monospace" font-size="9">6</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">C</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Carbon</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">12.011</text>
+      </g>
+      <!-- 7 N -->
+      <g transform="translate(396, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" />
+        <text x="6" y="13" fill="#38bdf8" font-family="monospace" font-size="9">7</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">N</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Nitrogen</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">14.007</text>
+      </g>
+      <!-- 8 O -->
+      <g transform="translate(452, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" />
+        <text x="6" y="13" fill="#38bdf8" font-family="monospace" font-size="9">8</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">O</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Oxygen</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">15.999</text>
+      </g>
+      <!-- 9 F -->
+      <g transform="translate(508, 64)">
+        <rect width="52" height="58" rx="8" fill="rgba(234,179,8,0.1)" stroke="#eab308" stroke-width="1" />
+        <text x="6" y="13" fill="#facc15" font-family="monospace" font-size="9">9</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">F</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Fluorine</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">18.998</text>
+      </g>
+
+      <!-- Row 3 & 4 Highlights -->
+      <!-- 26 Fe -->
+      <g transform="translate(172, 128)">
+        <rect width="52" height="58" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1" />
+        <text x="6" y="13" fill="#fbbf24" font-family="monospace" font-size="9">26</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Fe</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Iron</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">55.845</text>
+      </g>
+      <!-- 29 Cu -->
+      <g transform="translate(228, 128)">
+        <rect width="52" height="58" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1" />
+        <text x="6" y="13" fill="#fbbf24" font-family="monospace" font-size="9">29</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Cu</text>
+        <text x="26" y="45" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="7" text-anchor="middle">Copper</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">63.546</text>
+      </g>
+      <!-- 80 Hg (Liquid Metal Highlight) -->
+      <g transform="translate(284, 128)">
+        <rect width="52" height="58" rx="8" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1.5" />
+        <circle cx="44" cy="11" r="2.5" fill="#10b981" />
+        <text x="6" y="13" fill="#34d399" font-family="monospace" font-size="9">80</text>
+        <text x="26" y="33" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Hg</text>
+        <text x="26" y="45" fill="#34d399" font-family="-apple-system, sans-serif" font-size="7" font-weight="600" text-anchor="middle">Mercury</text>
+        <text x="26" y="53" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="middle">200.59</text>
+      </g>
+      <!-- 79 Au (ACTIVE SELECTION / HERO INSPECTED ELEMENT) -->
+      <g transform="translate(340, 128)">
+        <rect width="52" height="58" rx="8" fill="rgba(251,191,36,0.28)" stroke="#fbbf24" stroke-width="2" filter="url(#glow)" />
+        <rect width="52" height="58" rx="8" fill="rgba(251,191,36,0.25)" stroke="#fbbf24" stroke-width="1.8" />
+        <circle cx="44" cy="11" r="3" fill="#fbbf24" />
+        <text x="6" y="13" fill="#fef08a" font-family="monospace" font-size="9" font-weight="700">79</text>
+        <text x="26" y="33" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="17" font-weight="800" text-anchor="middle">Au</text>
+        <text x="26" y="45" fill="#fef08a" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" text-anchor="middle">Gold</text>
+        <text x="26" y="53" fill="#fef08a" font-family="monospace" font-size="6.5" text-anchor="middle">196.97</text>
+      </g>
+
+      <!-- Row 4 Matrix Grid Outline / Dots representation -->
+      <g transform="translate(0, 196)" opacity="0.4">
+        <!-- 18 Period Dots -->
+        <g fill="#06b6d4">
+          <circle cx="26" cy="15" r="4" /><circle cx="82" cy="15" r="4" /><circle cx="138" cy="15" r="4" />
+          <circle cx="194" cy="15" r="4" /><circle cx="250" cy="15" r="4" /><circle cx="306" cy="15" r="4" />
+          <circle cx="362" cy="15" r="4" /><circle cx="418" cy="15" r="4" /><circle cx="474" cy="15" r="4" />
+          <circle cx="530" cy="15" r="4" />
+        </g>
+        <g fill="#10b981" transform="translate(0, 20)">
+          <circle cx="26" cy="15" r="4" /><circle cx="82" cy="15" r="4" /><circle cx="138" cy="15" r="4" />
+          <circle cx="194" cy="15" r="4" /><circle cx="250" cy="15" r="4" /><circle cx="306" cy="15" r="4" />
+          <circle cx="362" cy="15" r="4" /><circle cx="418" cy="15" r="4" /><circle cx="474" cy="15" r="4" />
+          <circle cx="530" cy="15" r="4" />
+        </g>
+        <g fill="#a855f7" transform="translate(0, 40)">
+          <circle cx="26" cy="15" r="4" /><circle cx="82" cy="15" r="4" /><circle cx="138" cy="15" r="4" />
+          <circle cx="194" cy="15" r="4" /><circle cx="250" cy="15" r="4" /><circle cx="306" cy="15" r="4" />
+          <circle cx="362" cy="15" r="4" /><circle cx="418" cy="15" r="4" /><circle cx="474" cy="15" r="4" />
+          <circle cx="530" cy="15" r="4" />
+        </g>
+      </g>
+
+      <!-- Bottom Heatmap Continuous Bar -->
+      <g transform="translate(0, 280)">
+        <rect width="560" height="38" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.06)" />
+        <text x="14" y="24" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="600">HEATMAP: ELECTRONEGATIVITY</text>
+        <rect x="220" y="14" width="220" height="10" rx="5" fill="url(#cyanGrad)" />
+        <circle cx="350" cy="19" r="6" fill="#fbbf24" stroke="#ffffff" stroke-width="1.5" />
+        <text x="455" y="23" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="700">2.54 Pauling</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- RIGHT SECTION: Deep Scientific Inspection Panel & 3D Bohr Atom Model -->
+  <g transform="translate(735, 205)">
+    <!-- Inspected Element Glass Card -->
+    <rect width="315" height="435" rx="16" fill="url(#cardGrad)" stroke="rgba(251,191,36,0.3)" stroke-width="1.5" />
+
+    <!-- Card Header -->
+    <g transform="translate(20, 25)">
+      <rect width="40" height="40" rx="8" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" />
+      <text x="20" y="27" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Au</text>
+      
+      <text x="52" y="19" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">Gold (Altın)</text>
+      <text x="52" y="34" fill="#94a3b8" font-family="monospace" font-size="10">#79 • TRANSITION METAL</text>
+      <rect x="205" y="6" width="68" height="20" rx="10" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" />
+      <text x="239" y="19" fill="#34d399" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">SOLID</text>
+    </g>
+
+    <!-- Interactive Bohr Atom Model Simulation -->
+    <g transform="translate(157, 145)">
+      <!-- Nucleus Core Glow -->
+      <circle cx="0" cy="0" r="30" fill="url(#atomGlow)" />
+      <circle cx="0" cy="0" r="14" fill="#fbbf24" opacity="0.9" />
+      <text x="0" y="4" fill="#0f172a" font-family="monospace" font-size="9" font-weight="800" text-anchor="middle">79p 118n</text>
+
+      <!-- Electron Orbit Shells (Concentric Ellipses) -->
+      <!-- Shell 1 -->
+      <ellipse cx="0" cy="0" rx="50" ry="24" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.6" transform="rotate(0)" />
+      <circle cx="50" cy="0" r="3" fill="#38bdf8" />
+      <circle cx="-50" cy="0" r="3" fill="#38bdf8" />
+
+      <!-- Shell 2 -->
+      <ellipse cx="0" cy="0" rx="72" ry="32" fill="none" stroke="#06b6d4" stroke-width="1.2" opacity="0.5" transform="rotate(60)" />
+      <circle cx="36" cy="62" r="3" fill="#22d3ee" />
+      <circle cx="-36" cy="-62" r="3" fill="#22d3ee" />
+
+      <!-- Shell 3 -->
+      <ellipse cx="0" cy="0" rx="94" ry="40" fill="none" stroke="#10b981" stroke-width="1.2" opacity="0.4" transform="rotate(120)" />
+      <circle cx="-47" cy="81" r="3" fill="#34d399" />
+      <circle cx="47" cy="-81" r="3" fill="#34d399" />
+    </g>
+
+    <!-- Quantum & Physical Metrics Matrix -->
+    <g transform="translate(20, 240)">
+      <!-- Divider -->
+      <line x1="0" y1="0" x2="275" y2="0" stroke="rgba(255,255,255,0.08)" />
+
+      <!-- Specs Rows -->
+      <!-- Row 1: Electron Config -->
+      <g transform="translate(0, 18)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">ELECTRON CONFIG</text>
+        <text x="275" y="10" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">[Xe] 4f¹⁴ 5d¹⁰ 6s¹</text>
+      </g>
+      <!-- Row 2: Atomic Mass -->
+      <g transform="translate(0, 42)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">ATOMIC MASS</text>
+        <text x="275" y="10" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">196.96657 u</text>
+      </g>
+      <!-- Row 3: Electronegativity -->
+      <g transform="translate(0, 66)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">ELECTRONEGATIVITY</text>
+        <text x="275" y="10" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">2.54 Pauling</text>
+      </g>
+      <!-- Row 4: Melting Point -->
+      <g transform="translate(0, 90)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">MELTING POINT</text>
+        <text x="275" y="10" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">1337.33 K (1064.18 °C)</text>
+      </g>
+      <!-- Row 5: Density -->
+      <g transform="translate(0, 114)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">DENSITY</text>
+        <text x="275" y="10" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">19.30 g/cm³</text>
+      </g>
+      <!-- Row 6: Oxidation States -->
+      <g transform="translate(0, 138)">
+        <text x="0" y="10" fill="#64748b" font-family="monospace" font-size="9.5">OXIDATION STATES</text>
+        <text x="275" y="10" fill="#34d399" font-family="monospace" font-size="10" font-weight="700" text-anchor="end">+1, +3, -1</text>
+      </g>
+
+      <!-- Action Button / Deep Analysis Link -->
+      <g transform="translate(0, 158)">
+        <rect width="275" height="28" rx="8" fill="rgba(6,182,212,0.15)" stroke="rgba(6,182,212,0.4)" />
+        <text x="137" y="18" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">
+          View Quantum Orbitals &amp; Isotopes →
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+

@@ -17,6 +17,7 @@ const marqueeItems1 = [
   "NEXT.JS 16",
   "REACT 19",
   "APPLE FLUID MOTION",
+  "ROTA OPTİMİZASYONU",
   "TYPESCRIPT",
 ];
 
@@ -29,6 +30,7 @@ const marqueeItems2 = [
   "ELK STACK",
   "SELENIUM WEBDRIVER",
   "NOPCOMMERCE",
+  "ÖDEME SİSTEMLERİ",
   "HANGFIRE ETL",
   "SOLID ARCHITECTURE",
   "IIS SERVER",

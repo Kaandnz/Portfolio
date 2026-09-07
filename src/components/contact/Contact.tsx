@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Copy, Check, Send, Sparkles } from "lucide-react";
+import { Copy, Check, Send, Sparkles } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/Icons";
 import MagneticButton from "../ui/MagneticButton";
 import confetti from "canvas-confetti";

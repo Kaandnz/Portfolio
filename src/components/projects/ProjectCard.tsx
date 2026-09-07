@@ -85,7 +85,7 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
         {/* Meta Bar */}
         <div className="flex items-center gap-3 text-xs font-mono text-white/40 tracking-wider">
           <span className="text-white/80">0{index + 1}</span>
-          <span>//</span>
+          <span>{"//"}</span>
           <span>{project.year}</span>
           <span>•</span>
           <span className="text-sky-400">{project.role[language]}</span>

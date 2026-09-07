@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Globe } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/Icons";
 import MagneticButton from "../ui/MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";

@@ -32,6 +32,41 @@ export interface LiveExperiment {
 
 export const projects: Project[] = [
   {
+    id: "elementa",
+    title: "Elementa: Periodic Laboratory",
+    tagline: "Precision Periodic Laboratory with Quantum Orbitals & Thermodynamic Phase Simulation",
+    description:
+      "A futuristic precision periodic laboratory presenting all 118 IUPAC chemical elements with quantum electron configurations, 0 K – 6000 K thermodynamic phase simulations, periodic trend heatmaps, and side-by-side element comparison matrices.",
+    year: "2025",
+    category: "Interactive Web / Scientific Laboratory",
+    role: "Full Stack Creator & Architect",
+    technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Firebase", "Web Audio API"],
+    liveUrl: "https://periodictableviewer.web.app",
+    githubUrl: "https://github.com/Kaandnz/PeriodicTable",
+    accentColor: "#06b6d4",
+    image: "/images/projects/elementa.svg",
+    caseStudy: {
+      overview:
+        "Reimagining static chemistry references into an interactive, high-precision periodic laboratory that allows researchers, students, and engineers to explore quantum electron shells, thermodynamic phase shifts, and empirical periodic trends in real time.",
+      challenge:
+        "Rendering complex atomic structures, real-time thermodynamic phase transitions across a 0 K – 6000 K continuous range at 60 FPS, and calculating Hund's rule quantum orbital spin vectors entirely on the client side with sub-millisecond responsiveness.",
+      solution:
+        "Engineered a reactive state architecture with Next.js 15 and React 19. Designed optimized TypeScript evaluation engines for thermodynamic phase modeling and quantum orbital population, paired with smooth CSS transform pipelines and global edge delivery via Firebase Hosting.",
+      keyFeatures: [
+        "Complete 118 IUPAC elements with 10 chemical categories and s/p/d/f quantum block separation",
+        "Real-time thermodynamic phase simulation (0 K – 6000 K) with dynamic phase percentage telemetry",
+        "Empirical periodic trends heatmap for electronegativity, ionization energy, and atomic radius",
+        "Side-by-side differential quantum and thermodynamic comparison matrix for up to 4 elements",
+      ],
+      metrics: [
+        { label: "IUPAC Elements", value: "118" },
+        { label: "Phase Range", value: "0K - 6000K" },
+        { label: "Render Latency", value: "< 16ms" },
+        { label: "Architecture", value: "Next 15 Edge" },
+      ],
+    },
+  },
+  {
     id: "aetheria-os",
     title: "Aetheria OS",
     tagline: "Spatial Audio & Generative Visual Operating Environment",

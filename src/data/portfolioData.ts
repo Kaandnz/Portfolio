@@ -57,6 +57,66 @@ export const personalInfo = {
 
 export const projectsData: ProjectItem[] = [
   {
+    id: "elementa",
+    title: "Elementa: Periodic Laboratory",
+    year: "2025",
+    category: {
+      tr: "İnteraktif Web / Bilimsel Laboratuvar",
+      en: "Interactive Web / Scientific Lab",
+    },
+    role: {
+      tr: "Yaratıcı Geliştirici & Mimari",
+      en: "Full Stack Creator & Architect",
+    },
+    tagline: {
+      tr: "118 Element İçin Kuantum Orbitalleri, Termodinamik Faz Simülasyonu ve Isı Haritası",
+      en: "Precision Periodic Laboratory with Quantum Orbitals, Thermodynamic Phase Simulation & Heatmaps",
+    },
+    description: {
+      tr: "118 IUPAC kimyasal elementinin tamamını kuantum elektron dizilimleri, 0 K – 6000 K termodinamik faz simülasyonları, periyodik eğilim ısı haritaları ve çoklu element karşılaştırma matrisi ile sunan fütüristik bilimsel laboratuvar platformu.",
+      en: "A futuristic precision periodic laboratory presenting all 118 IUPAC chemical elements with quantum electron configurations, 0 K – 6000 K thermodynamic phase simulations, periodic trend heatmaps, and side-by-side element comparison matrices.",
+    },
+    technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Firebase", "Web Audio API"],
+    liveUrl: "https://periodictableviewer.web.app",
+    githubUrl: "https://github.com/Kaandnz/PeriodicTable",
+    accentColor: "#06b6d4",
+    image: "/images/projects/elementa.svg",
+    caseStudy: {
+      overview: {
+        tr: "Geleneksel statik periyodik tabloları modern reaktif web mimarisiyle yeniden tanımlayarak; araştırmacılar, kimyagerler ve öğrenciler için 118 elementin mikroskobik kuantum özelliklerinden makroskopik termodinamik faz dönüşümlerine kadar tüm bilimsel verileri anlık simülasyonlarla sunan etkileşimli bir dijital laboratuvar inşa etmek.",
+        en: "Reimagining static chemistry references into an interactive, high-precision periodic laboratory that allows researchers, students, and engineers to explore quantum electron shells, thermodynamic phase shifts, and empirical periodic trends in real time.",
+      },
+      challenge: {
+        tr: "118 elemente ait 18+ fiziksel/kimyasal parametreyi, 0 K'den 6000 K'ye kadar sürekli sıcaklık değişiminde katı/sıvı/gaz faz dönüşümlerini ve Hund kuralına uygun kuantum orbital spin dağılımlarını istemci tarafında sıfır gecikmeyle 60 FPS akıcılıkta hesaplayıp görselleştirmek.",
+        en: "Rendering complex atomic structures, real-time thermodynamic phase transitions across a 0 K – 6000 K continuous range at 60 FPS, and calculating Hund's rule quantum orbital spin vectors entirely on the client side with sub-millisecond responsiveness.",
+      },
+      solution: {
+        tr: "Next.js 15 ve React 19 ile derlenen reaktif durum mimarisi kurgulandı. Kuantum elektron dizilimi ve termodinamik faz motoru saf TypeScript algoritmalarıyla optimize edildi; ısı haritası filtrelemeleri ve karşılaştırma matrisleri sıfır UI kilitlenmesiyle küresel edge CDN üzerinden (Firebase Hosting) sunuldu.",
+        en: "Engineered a reactive state architecture with Next.js 15 and React 19. Designed optimized TypeScript evaluation engines for thermodynamic phase modeling and quantum orbital population, paired with smooth CSS transform pipelines and global edge delivery via Firebase Hosting.",
+      },
+      keyFeatures: {
+        tr: [
+          "118 IUPAC elementi, 10 kimyasal kategori ve s/p/d/f kuantum blok ayrımı",
+          "0 K – 6000 K gerçek zamanlı termodinamik faz dönüşüm simülasyonu ve telemetri sayaçları",
+          "Pauling elektronegatifliği, iyonlaşma enerjisi ve atomik yarıçap için periyodik trend ısı haritası",
+          "4 elemente kadar diferansiyel kuantum ve fiziksel özellik karşılaştırma matrisi",
+        ],
+        en: [
+          "Complete 118 IUPAC elements with 10 chemical categories and s/p/d/f quantum block separation",
+          "Real-time thermodynamic phase simulation (0 K – 6000 K) with dynamic phase percentage telemetry",
+          "Empirical periodic trends heatmap for electronegativity, ionization energy, and atomic radius",
+          "Side-by-side differential quantum and thermodynamic comparison matrix for up to 4 elements",
+        ],
+      },
+      metrics: [
+        { label: { tr: "Element Sayısı", en: "IUPAC Elements" }, value: "118" },
+        { label: { tr: "Faz Simülasyonu", en: "Phase Range" }, value: "0K - 6000K" },
+        { label: { tr: "Arayüz Tepki Hızı", en: "Render Latency" }, value: "< 16ms" },
+        { label: { tr: "Mimari", en: "Architecture" }, value: "Next 15 Edge" },
+      ],
+    },
+  },
+  {
     id: "sql-game",
     title: "SQL Quest: Data Detective",
     year: "2025",
@@ -274,20 +334,12 @@ export const projectsData: ProjectItem[] = [
       },
       keyFeatures: {
         tr: [
-          "nopCommerce çekirdek mimari optimizasyonu ve özel modül geliştirimi",
-          "Saha kaynaklı talepleri otomatikleştiren merkezi Onay Yönetim Sistemi",
-          "Kurumsal SAP/ERP sistemleriyle kesintisiz çift yönlü veri entegrasyonu",
-          "Backoffice dashboard için anlık iş akışı ve audit izlenebilirliği",
           "C# ve ASP.NET Core nopCommerce üzerinde sipariş, müşteri, dinamik fiyat ve indirim yönetimi",
           "Düzey e-ticaret projesinde güvenli ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel modüller",
           "SAP ve Panorama kurumsal sistemleriyle kesintisiz çift yönlü sipariş ve stok senkronizasyonu",
           "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'leri",
         ],
         en: [
-          "nopCommerce core refactoring and bespoke enterprise extension modules",
-          "Centralized Approval Management System automating field-originated workflows",
-          "Seamless microservice integration with enterprise SAP/ERP data pipelines",
-          "Live telemetry and audit trail visibility for backoffice administrative teams",
           "Comprehensive order, customer tier, dynamic pricing, and discount rule management on nopCommerce",
           "Secure payment gateway integration, Panorama synchronization, and tailored enterprise e-commerce modules",
           "Seamless bidirectional order and inventory synchronization with SAP and Panorama",
@@ -295,9 +347,6 @@ export const projectsData: ProjectItem[] = [
         ],
       },
       metrics: [
-        { label: { tr: "Mimari", en: "Architecture" }, value: "Microservices" },
-        { label: { tr: "Veri Çekme Hızı", en: "Query Speed" }, value: "%40+ Hız" },
-        { label: { tr: "Kullanıcı", en: "Field Reach" }, value: "Kurumsal" },
         { label: { tr: "Mimari", en: "Architecture" }, value: "nopCommerce .NET" },
         { label: { tr: "Entegrasyon", en: "Enterprise Sync" }, value: "SAP & Panorama" },
         { label: { tr: "Ödeme Altyapısı", en: "Payment Gateways" }, value: "3D Secure / POS" },
@@ -387,18 +436,12 @@ export const experienceData: ExperienceItem[] = [
     },
     achievements: {
       tr: [
-        "Onay Yönetim Sistemi için merkezi RESTful API'ler kurgulandı; saha kaynaklı talepler otomatikleştirildi ve Backoffice paneline gerçek zamanlı iş akışı izlenebilirliği kazandırıldı.",
-        ".NET tabanlı mikroservisleri kurumsal SAP/ERP sistemleriyle entegre ederek mobil istemciler ile merkezi veritabanları arasında kesintisiz veri senkronizasyonu sağlandı.",
-        "Sistem performansını artırmak için nopCommerce çekirdek modülleri optimize edildi ve eski iş mantığı refactor edilerek yüksek hacimli işlemlerde veri çekme süreleri ciddi oranda düşürüldü.",
         "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulamasının geliştirilmesi; SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimi ve raporlanması.",
         "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformunun geliştirilmesinde aktif rol.",
         "C# ve ASP.NET Core ile nopCommerce altyapısı üzerinde geliştirilen Düzey e-ticaret projesinde yazılım geliştirme süreçlerine katkı; ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel e-ticaret modüllerinin geliştirilmesi.",
         "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'lerinin kurgulanması; eski iş mantıklarının ve nopCommerce çekirdek modüllerinin refactor edilerek yüksek hacimli işlemlerde sorgu sürelerinin optimize edilmesi.",
       ],
       en: [
-        "Engineered the backend logic for the Approval Management System, creating centralized RESTful APIs to automate field requests and enable real-time workflow traceability.",
-        "Integrated .NET-based microservices with enterprise SAP/ERP systems, ensuring seamless data synchronization between mobile clients and central databases.",
-        "Optimized nopCommerce core modules and refactored legacy business logic to boost system performance, significantly reducing data retrieval times for high-volume transactions.",
         "Engineered a route optimization and fleet dispatch web app using Angular, Java Spring Boot, and PostgreSQL; automated distribution tracking and operational reporting via SAP and Panorama integrations.",
         "Contributed to building an enterprise B2B platform using C# and ASP.NET Core on nopCommerce, encompassing order, customer, dynamic pricing, and discount rule management with SAP & Panorama integrations.",
         "Contributed to software development for Düzey's enterprise e-commerce platform built with C# and ASP.NET Core on nopCommerce, delivering payment systems, Panorama integration, and custom e-commerce modules.",
@@ -507,6 +550,14 @@ export const skillsGrouped = {
   backend: {
     title: { tr: "Arka Uç & Frameworkler", en: "Backend & Frameworks" },
     skills: [".NET Core", "C#", "ASP.NET Core", "Java Spring Boot", "Entity Framework Core", "RESTful APIs", "Microservices"],
+  },
+  enterprise: {
+    title: { tr: "Kurumsal & Entegrasyon", en: "Enterprise & Integrations" },
+    skills: ["SAP Entegrasyonu", "Panorama Entegrasyonu", "nopCommerce", "Rota Optimizasyonu", "B2B & E-Ticaret", "Ödeme Sistemleri / POS"],
+  },
+  frontend: {
+    title: { tr: "Ön Yüz & Web", en: "Frontend & Web" },
+    skills: ["Angular", "React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5 / CSS3"],
   },
   database: {
     title: { tr: "Veritabanı & Arama Motorları", en: "Databases & Storage" },
