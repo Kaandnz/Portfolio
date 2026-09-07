@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, CheckCircle2, Server, Database, Activity, ShieldCheck, Wrench } from "lucide-react";
 import { Cpu, CheckCircle2, Server, Database, Activity, ShieldCheck, Wrench, Layers, Globe } from "lucide-react";
 import { skillsGrouped } from "@/data/portfolioData";
 import { useLanguage } from "@/context/LanguageContext";
@@ -82,7 +81,6 @@ export default function Skills() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
           >
-            {currentCategory.data.skills.map((skill) => (
             {currentCategory.data.skills.map((skill: string) => (
               <div
                 key={skill}

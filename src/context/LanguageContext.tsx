@@ -19,11 +19,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Check saved language or browser preference
     const saved = localStorage.getItem("preferred_lang") as Language | null;
     if (saved === "tr" || saved === "en") {
-      setLanguage(saved);
-    } else if (typeof navigator !== "undefined" && navigator.language.startsWith("tr")) {
-      setLanguage("tr");
       queueMicrotask(() => {
         setLanguage(saved);
+      });
+    } else if (typeof navigator !== "undefined" && !navigator.language.startsWith("tr")) {
+      queueMicrotask(() => {
+        setLanguage("en");
       });
     }
   }, []);
