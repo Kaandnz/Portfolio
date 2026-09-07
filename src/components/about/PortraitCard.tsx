@@ -44,7 +44,6 @@ export default function PortraitCard() {
       iconColor: "text-sky-400",
       bgColor: "bg-sky-500/10 border-sky-500/20",
       title: isTr ? "Backend & Core" : "Backend & Core",
-      value: ".NET Core, C#, ASP.NET, REST APIs",
       value: ".NET Core, Java Spring Boot, C#, REST APIs",
     },
     {
@@ -52,7 +51,6 @@ export default function PortraitCard() {
       iconColor: "text-emerald-400",
       bgColor: "bg-emerald-500/10 border-emerald-500/20",
       title: isTr ? "Veritabanı & Storage" : "Databases & Storage",
-      value: "MS SQL Server, MongoDB, Elasticsearch",
       value: "PostgreSQL, MS SQL, MongoDB, Elastic",
     },
     {
@@ -60,7 +58,6 @@ export default function PortraitCard() {
       iconColor: "text-purple-400",
       bgColor: "bg-purple-500/10 border-purple-500/20",
       title: isTr ? "Mimari & Çözümler" : "Architecture & Solutions",
-      value: "Microservices, nopCommerce, B2B / SFA",
       value: isTr ? "B2B, Rota Optimizasyonu, SAP, Panorama" : "B2B, Route Optimization, SAP, Panorama",
     },
     {

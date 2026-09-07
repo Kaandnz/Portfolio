@@ -50,8 +50,6 @@ export const personalInfo = {
   github: "https://github.com/Kaandnz",
   linkedin: "https://linkedin.com/in/kagan-deniz",
   bio: {
-    tr: ".NET Core ve C# kullanarak ölçeklenebilir backend sistemleri ve kurumsal çözümler tasarlayan Full Stack Geliştirici. Saha operasyonlarını ve dijital satışları kolaylaştıran kurumsal B2B ve SFA sistemleri (nopCommerce), yüksek performanslı SQL & NoSQL veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
-    en: "Full Stack Developer with a strong focus on designing and implementing scalable backend systems using .NET Core and C#. Specialized in building enterprise-level B2B and SFA (Sales Force Automation) solutions leveraging nopCommerce to streamline field operations and digital sales. Proven track record in optimizing database performance, test automation (Selenium), and CI/CD pipelines (Jenkins). Focused on clean architecture, microservices, and end-to-end product delivery.",
     tr: "Java Spring Boot, .NET Core, C# ve modern web teknolojileriyle (Angular, React) ölçeklenebilir kurumsal çözümler, B2B platformları, e-ticaret sistemleri ve rota optimizasyonu altyapıları tasarlayan Full Stack Geliştirici. SAP ve Panorama kurumsal entegrasyonları, nopCommerce e-ticaret mimarileri, PostgreSQL & SQL Server veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
     en: "Full Stack Developer architecting scalable enterprise solutions, B2B platforms, e-commerce systems, and route optimization infrastructure using Java Spring Boot, .NET Core, C#, and modern web technologies (Angular, React). Proven track record in enterprise SAP and Panorama integrations, nopCommerce platforms, PostgreSQL & SQL Server performance tuning, automated testing (Selenium), and CI/CD pipelines (Jenkins). Focused on clean architecture, microservices, and robust product delivery.",
   },
@@ -238,12 +236,9 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "duzey-sfa-b2b",
-    title: "Enterprise SFA & B2B Mobile Infrastructure",
     title: "Enterprise B2B & E-Commerce Infrastructure",
     year: "2025",
     category: {
-      tr: "Kurumsal Çözüm / Backend",
-      en: "Enterprise Solution / Backend",
       tr: "Kurumsal B2B & E-Ticaret / Backend",
       en: "Enterprise B2B & E-Commerce / Backend",
     },
@@ -252,18 +247,13 @@ export const projectsData: ProjectItem[] = [
       en: "Software Developer @ Düzey",
     },
     tagline: {
-      tr: "nopCommerce & .NET Core ile Saha Satış ve B2B Altyapısı",
-      en: "Scalable SFA & B2B Mobile Infrastructure with nopCommerce & .NET",
       tr: "C# & ASP.NET Core nopCommerce ile B2B, E-Ticaret ve Ödeme Sistemleri",
       en: "Scalable B2B, E-Commerce & Payment Systems with C# & nopCommerce",
     },
     description: {
-      tr: "Düzey bünyesinde saha operasyonlarını ve dijital satış verimliliğini yöneten, merkezi SAP/ERP sistemleri ile mikroservis entegrasyonu sağlayan kurumsal SFA ve B2B backend mimarisi.",
-      en: "Enterprise backend architecture powering SFA and B2B mobile applications at Düzey, integrating nopCommerce with central SAP/ERP pipelines to streamline nationwide sales operations.",
       tr: "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformu ve ödeme sistemleri entegrasyonlu Düzey e-ticaret altyapısı.",
       en: "Enterprise B2B and e-commerce platforms engineered on nopCommerce with C# and ASP.NET Core. Powers end-to-end order processing, customer pricing, tiered discount rules, secure payment gateway integrations, and SAP/Panorama enterprise synchronization.",
     },
-    technologies: [".NET Core", "C#", "nopCommerce", "MS SQL Server", "SAP / ERP Integration", "RESTful APIs"],
     technologies: [".NET Core", "C#", "ASP.NET Core", "nopCommerce", "MS SQL Server", "Payment Systems", "SAP", "Panorama", "RESTful APIs"],
     liveUrl: "https://duzey.com.tr",
     githubUrl: "https://github.com/Kaandnz",
@@ -271,20 +261,14 @@ export const projectsData: ProjectItem[] = [
     image: "/images/projects/aetheria.svg",
     caseStudy: {
       overview: {
-        tr: "Türkiye genelindeki saha ekiplerinin sipariş, onay ve stok süreçlerini gerçek zamanlı yöneten yüksek hacimli kurumsal mobil arka uç altyapısı.",
-        en: "High-volume enterprise backend supporting nationwide field sales representatives with real-time catalog access, automated order approvals, and ERP sync.",
         tr: "Türkiye genelindeki kurumsal bayilerin ve müşterilerin sipariş, dinamik fiyatlandırma, kampanya indirimleri ve güvenli online ödeme süreçlerini kesintisiz yürüten yüksek hacimli B2B ve e-ticaret ekosistemi.",
         en: "Nationwide enterprise B2B and e-commerce ecosystem facilitating streamlined digital ordering, tiered customer pricing, promotional discounts, and payment processing.",
       },
       challenge: {
-        tr: "Yüksek işlem hacmine sahip veritabanında onay mekanizmalarını ve ERP veri senkronizasyonunu gecikmesiz yönetmek.",
-        en: "Achieving real-time bidirectional synchronization between field mobile apps, nopCommerce, and central SAP systems under heavy transactional loads.",
         tr: "Farklı müşteri segmentlerine özel dinamik fiyat/iskonto matrislerini, karmaşık ödeme sistemlerini ve SAP/Panorama stok-sipariş senkronizasyonunu yüksek eşzamanlılık altında hatasız işletmek.",
         en: "Handling complex customer-specific pricing matrixes, multi-provider payment integrations, and high-concurrency order processing in lockstep with SAP and Panorama.",
       },
       solution: {
-        tr: "Onay Yönetim Sistemi için merkezi RESTful API'ler kurgulandı; eski iş kuralları refactor edilerek veri çekme süreleri büyük ölçüde düşürüldü.",
-        en: "Engineered a centralized Approval Management REST API suite and refactored core database queries, significantly decreasing response times.",
         tr: "nopCommerce çekirdeği kurumsal ihtiyaçlara göre özelleştirildi; güvenli ödeme altyapıları, Panorama ve SAP veri hatları bağlandı; Onay Yönetim Sistemi API'leri ile operasyonel süreçler otomatikleştirildi.",
         en: "Engineered bespoke nopCommerce enterprise plugins, integrated multi-tier payment gateways, built robust Panorama and SAP connectors, and deployed centralized Approval Management APIs.",
       },
@@ -398,8 +382,6 @@ export const experienceData: ExperienceItem[] = [
       en: "Istanbul, Turkey",
     },
     description: {
-      tr: "nopCommerce ve .NET Core kullanarak saha operasyonlarını ve dijital satış verimliliğini doğrudan destekleyen SFA ve B2B mobil uygulamalarının backend altyapısını mimari olarak tasarladı ve sürdürdü.",
-      en: "Architected and maintained the backend infrastructure of SFA and B2B mobile applications using nopCommerce and .NET Core, directly supporting field operations and digital sales efficiency.",
       tr: "Düzey bünyesinde rota optimizasyonu web uygulamaları, kurumsal B2B platformları ve e-ticaret sistemlerinin yazılım geliştirme süreçlerini yürüttü; Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama entegrasyonlarını başarıyla hayata geçirdi.",
       en: "Architects and develops enterprise software at Düzey across route optimization web applications, enterprise B2B platforms, and e-commerce solutions; delivers mission-critical SAP and Panorama integrations using Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
     },
@@ -423,7 +405,6 @@ export const experienceData: ExperienceItem[] = [
         "Architected centralized Approval Management RESTful APIs automating field workflows; refactored core modules and optimized database queries to significantly accelerate response times in high-volume transactions.",
       ],
     },
-    technologies: [".NET Core", "C#", "nopCommerce", "MS SQL Server", "SAP / ERP", "Microservices", "RESTful APIs"],
     technologies: [
       ".NET Core",
       "C#",
@@ -525,12 +506,10 @@ export const educationData: EducationItem = {
 export const skillsGrouped = {
   backend: {
     title: { tr: "Arka Uç & Frameworkler", en: "Backend & Frameworks" },
-    skills: [".NET Core", "C#", "ASP.NET MVC", "Entity Framework Core", "RESTful APIs", "Microservices"],
     skills: [".NET Core", "C#", "ASP.NET Core", "Java Spring Boot", "Entity Framework Core", "RESTful APIs", "Microservices"],
   },
   database: {
     title: { tr: "Veritabanı & Arama Motorları", en: "Databases & Storage" },
-    skills: ["MS SQL Server", "MongoDB", "Elasticsearch", "Database Optimization", "Query Tuning"],
     skills: ["PostgreSQL", "MS SQL Server", "MongoDB", "Elasticsearch", "Database Optimization", "Query Tuning"],
   },
   devops: {
