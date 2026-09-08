@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, CheckCircle2, BarChart3, Layers, Terminal } from "lucide-react";
 import { GithubIcon } from "../ui/Icons";
@@ -14,69 +15,103 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+const emptySubscribe = () => () => {};
+
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const { language } = useLanguage();
   const t = translations[language];
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!project) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
 
-    if (project) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      if (typeof window !== "undefined" && window.__lenis) {
-        window.__lenis.stop();
-      }
-      window.addEventListener("keydown", handleKeyDown);
+    // Save exact scroll position before locking
+    const scrollY = window.scrollY;
+
+    // Rigid body lock: prevents any background movement on desktop & mobile
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    // Pause Lenis smooth scrolling if running
+    if (typeof window !== "undefined" && window.__lenis) {
+      window.__lenis.stop();
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Reset modal scroll position to top whenever opened
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
     }
 
     return () => {
+      // Release body lock
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
+
+      // Restore scroll position
+      window.scrollTo(0, scrollY);
+
+      // Resume Lenis and re-sync
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
+        window.__lenis.scrollTo(scrollY, { immediate: true });
       }
+
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [project, onClose]);
 
-  return (
+  if (!isMounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {project && (
         <div
+          ref={scrollContainerRef}
           data-lenis-prevent
-          className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-6 lg:p-10"
+          onWheel={(e) => {
+            e.stopPropagation();
+          }}
+          onTouchMove={(e) => {
+            e.stopPropagation();
+          }}
+          className="fixed inset-0 z-[9999] overflow-y-auto overscroll-contain bg-black/80 backdrop-blur-md"
         >
-          {/* Frosted Scrim Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+          {/* Centering wrapper that catches clicks outside the card */}
+          <div
+            className="min-h-full flex items-end sm:items-center justify-center p-0 sm:p-6 lg:p-10"
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md"
-          />
-
-          {/* Apple-Style Spring Sheet Modal */}
-          <motion.div
-            data-lenis-prevent
-            initial={{ y: "100%", opacity: 0.5, scale: 0.98 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: "100%", opacity: 0, scale: 0.98 }}
-            transition={{
-              type: "spring",
-              damping: 30,
-              stiffness: 300,
-              mass: 0.8,
-            }}
-            className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-t-3xl md:rounded-3xl apple-glass shadow-2xl border border-white/[0.12] p-6 md:p-10 pointer-events-auto"
           >
-            {/* Sheet Handle for Mobile */}
-            <div className="md:hidden flex justify-center pb-4">
-              <div className="w-12 h-1.5 rounded-full bg-white/20" />
-            </div>
+            {/* Modal Sheet Card */}
+            <motion.div
+              initial={{ y: 50, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 35, opacity: 0, scale: 0.98 }}
+              transition={{
+                type: "spring",
+                damping: 28,
+                stiffness: 320,
+                mass: 0.8,
+              }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative z-10 w-full max-w-4xl my-auto rounded-t-3xl sm:rounded-3xl apple-glass shadow-2xl border border-white/[0.12] p-6 sm:p-8 md:p-10 pointer-events-auto"
+            >
+              {/* Sheet Handle for Mobile */}
+              <div className="sm:hidden flex justify-center pb-4">
+                <div className="w-12 h-1.5 rounded-full bg-white/20" />
+              </div>
 
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4 pb-6 border-b border-white/[0.08]">
@@ -248,11 +283,26 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   ))}
                 </div>
               </div>
+
+              {/* Bottom Close / Return Button */}
+              <div className="pt-6 border-t border-white/[0.08] flex justify-end">
+                <button
+                  onClick={onClose}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white text-xs font-medium border border-white/[0.1] transition-colors"
+                  data-cursor="pointer"
+                  aria-label={language === "tr" ? "Detayları Kapat" : "Close"}
+                >
+                  <X size={14} />
+                  <span>{language === "tr" ? "Kapat" : "Close"}</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>
-      )}
-    </AnimatePresence>
-  );
+      </div>
+    )}
+  </AnimatePresence>,
+  document.body
+);
 }
 
