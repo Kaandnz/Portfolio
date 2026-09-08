@@ -157,6 +157,20 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
               <span>{t.projects.source}</span>
             </div>
           </MagneticButton>
+          {project.githubUrl && (
+            <MagneticButton
+              as="a"
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="external"
+            >
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white/80 hover:text-white text-xs font-medium transition-all active:scale-[0.97]">
+                <GithubIcon size={14} />
+                <span>{t.projects.source}</span>
+              </div>
+            </MagneticButton>
+          )}
 
           {/* Deep Dive Case Study Trigger */}
           <button

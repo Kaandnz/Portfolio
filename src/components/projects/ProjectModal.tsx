@@ -102,36 +102,40 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* External Links Bar */}
-            <div className="flex flex-wrap items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] mb-8">
-              <span className="text-xs text-white/50 font-mono uppercase tracking-wider">
-                {t.projects.externalDestinations}
-              </span>
-              <div className="flex items-center gap-3">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-sky-400 transition-colors shadow-md active:scale-[0.98]"
-                    data-cursor="external"
-                  >
-                    <span>{t.projects.launchSite}</span>
-                    <ExternalLink size={14} />
-                  </a>
-                )}
+            {(project.liveUrl || project.githubUrl) && (
+              <div className="flex flex-wrap items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] mb-8">
+                <span className="text-xs text-white/50 font-mono uppercase tracking-wider">
+                  {t.projects.externalDestinations}
+                </span>
+                <div className="flex items-center gap-3">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-sky-400 transition-colors shadow-md active:scale-[0.98]"
+                      data-cursor="external"
+                    >
+                      <span>{t.projects.launchSite}</span>
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
 
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white text-xs font-medium border border-white/[0.1] transition-colors active:scale-[0.98]"
-                  data-cursor="external"
-                >
-                  <GithubIcon size={14} />
-                  <span>{t.projects.githubRepo}</span>
-                </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white text-xs font-medium border border-white/[0.1] transition-colors active:scale-[0.98]"
+                      data-cursor="external"
+                    >
+                      <GithubIcon size={14} />
+                      <span>{t.projects.githubRepo}</span>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Case Study Deep Dive */}
             <div className="space-y-8 text-sm md:text-base text-white/80 leading-relaxed">

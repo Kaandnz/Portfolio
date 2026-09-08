@@ -7,8 +7,8 @@ export interface Project {
   category: string;
   role: string;
   technologies: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
   accentColor: string;
   image: string;
   caseStudy: {
@@ -31,6 +31,40 @@ export interface LiveExperiment {
 }
 
 export const projects: Project[] = [
+  {
+    id: "dailyrota",
+    title: "DailyRota: Personal Life & Routine Hub",
+    tagline: "Voice & NLP-Powered Mobile-First Personal Life, Finance & Routine Management Platform",
+    description:
+      "A mobile-first personal operating hub unifying personal finance, budgeting, scheduling, pantry inventory, and habit tracking—translating natural Turkish voice and text commands into atomic database entries with offline-first Firestore architecture.",
+    year: "2026",
+    category: "Mobile Web / Personal Hub & Finance",
+    role: "Full Stack Creator & Architect",
+    technologies: ["React 19", "TypeScript", "Firebase Auth", "Cloud Firestore", "Tailwind CSS", "Web Speech API", "PWA", "Base UI"],
+    liveUrl: "https://dailyrota.web.app",
+    githubUrl: "https://github.com/Kaandnz/DailyRota",
+    accentColor: "#10b981",
+    image: "/images/projects/dailyrota.svg",
+    caseStudy: {
+      overview:
+        "An all-in-one personal operating ecosystem replacing fragmented todo, finance, grocery, and calendar apps with an intuitive hub that translates conversational Turkish voice and text commands directly into structured atomic database records.",
+      challenge:
+        "Parsing unstructured natural language and browser speech inputs into strictly-typed transactional entities client-side with zero paid API overhead, while ensuring seamless offline-first synchronization and conflict-free guest-to-authenticated Firebase account migration.",
+      solution:
+        "Architected a zero-latency client-side Turkish NLP rule parser coupled with the Web Speech API. Deployed strict UID-isolated Cloud Firestore security rules with offline persistence, validated by a comprehensive suite of 114 automated unit and emulator tests.",
+      keyFeatures: [
+        "Deterministic Turkish NLP and voice command engine converting speech into structured entries",
+        "Full financial management suite: Category budgets, subscriptions, debts/receivables, and savings goals",
+        "Home and personal logistics: Grocery checklists, pantry inventory, warranties, and vehicle maintenance",
+        "Seamless guest-to-cloud Firebase Auth with offline persistence and zero-loss Firestore synchronization",
+      ],
+      metrics: [
+        { label: "Automated Tests", value: "114/114" },
+        { label: "NLP Latency", value: "< 5ms" },
+        { label: "Architecture", value: "PWA + Firebase" },
+      ],
+    },
+  },
   {
     id: "elementa",
     title: "Elementa: Periodic Laboratory",

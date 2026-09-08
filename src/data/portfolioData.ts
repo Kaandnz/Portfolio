@@ -8,7 +8,7 @@ export interface ProjectItem {
   description: { tr: string; en: string };
   technologies: string[];
   liveUrl?: string;
-  githubUrl: string;
+  githubUrl?: string;
   accentColor: string;
   image: string;
   caseStudy: {
@@ -236,61 +236,61 @@ export const projectsData: ProjectItem[] = [
     },
   },
   {
-    id: "duzey-route-opt",
-    title: "Enterprise Fleet & Route Optimization Platform",
-    year: "2025",
+    id: "dailyrota",
+    title: "DailyRota: Kişisel Yaşam & Rota Yönetim Merkezi",
+    year: "2026",
     category: {
-      tr: "Kurumsal Lojistik / Full Stack",
-      en: "Enterprise Logistics / Full Stack",
+      tr: "Mobil Web / Kişisel Yaşam & Finans",
+      en: "Mobile Web / Personal Hub & Finance",
     },
     role: {
-      tr: "Software Developer @ Düzey",
-      en: "Software Developer @ Düzey",
+      tr: "Full Stack Geliştirici & Mimar",
+      en: "Full Stack Creator & Architect",
     },
     tagline: {
-      tr: "Angular & Java Spring Boot ile Rota Optimizasyonu ve Harita Planlama",
-      en: "Map-Based Route Optimization & Fleet Dispatch with Spring Boot & Angular",
+      tr: "Türkçe Doğal Dil ve Ses Komutlu, Mobil Öncelikli Kişisel Yaşam & Finans Yönetim Platformu",
+      en: "Voice & NLP-Powered Mobile-First Personal Life, Finance & Routine Management Hub",
     },
     description: {
-      tr: "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulaması. SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimini ve raporlanmasını sağlar.",
-      en: "Enterprise fleet logistics and route optimization web application engineered with Angular, Java Spring Boot, and PostgreSQL. Features interactive map-based dispatch, vehicle and driver management, and automated distribution tracking via SAP and Panorama integrations.",
+      tr: "Finans, bütçe, günlük planlar, alışveriş listeleri, ev stokları ve alışkanlıkları tek ekranda toplayan; Türkçe sesli ve yazılı serbest komutları anında atomik kayıtlara dönüştüren mobil öncelikli yaşam yönetim merkezi.",
+      en: "A mobile-first personal operating hub unifying personal finance, budgeting, scheduling, pantry inventory, and habit tracking—translating natural Turkish voice and text commands into atomic database entries.",
     },
-    technologies: ["Java Spring Boot", "Angular", "PostgreSQL", "SAP Integration", "Panorama", "RESTful APIs", "Docker"],
-    liveUrl: "https://duzey.com.tr",
-    githubUrl: "https://github.com/Kaandnz",
-    accentColor: "#06b6d4",
-    image: "/images/projects/chronos.svg",
+    technologies: ["React 19", "TypeScript", "Firebase Auth", "Cloud Firestore", "Tailwind CSS", "Web Speech API", "PWA", "Base UI"],
+    liveUrl: "https://dailyrota.web.app",
+    githubUrl: "https://github.com/Kaandnz/DailyRota",
+    accentColor: "#10b981",
+    image: "/images/projects/dailyrota.svg",
     caseStudy: {
       overview: {
-        tr: "Türkiye genelindeki dağıtım filolarının rota planlamasını, harita üzerinden araç ve sürücü koordinasyonunu ve sevkiyat verimliliğini gerçek zamanlı yöneten kurumsal web platformu.",
-        en: "High-throughput dispatch platform managing nationwide distribution routes, interactive map planning, driver-vehicle assignments, and operational delivery metrics in real time.",
+        tr: "Kullanıcıların günlük yaşamda farklı uygulamalara dağılan bütçe, görev, alışveriş ve takvim verilerini tek merkezde birleştiren; Türkçe sesli ve yazılı komutlarla ('450 TL market harcadım', 'Yarın 15:00 diş randevusu') anında işlem yapan hepsi-bir-arada kişisel yaşam yönetim merkezi.",
+        en: "An all-in-one personal operating ecosystem replacing fragmented todo, finance, grocery, and calendar apps with an intuitive hub that translates conversational Turkish voice and text commands directly into structured atomic database records.",
       },
       challenge: {
-        tr: "Yüzlerce dağıtım aracının değişken teslimat noktalarını, harita üzerinde anlık mesafe ve operasyonel kısıtlarla optimize ederek SAP ve Panorama ile gecikmesiz senkronize etmek.",
-        en: "Optimizing dynamic delivery waypoints, vehicle capacity constraints, and driver schedules on live map interfaces while maintaining continuous synchronization with SAP and Panorama backends.",
+        tr: "Serbest metin ve konuşma verilerini harici ücretli yapay zeka servislerine bağımlı olmadan istemci tarafında deterministik kural motoruyla anlık ayrıştırmak; misafir oturumundan e-posta hesabına geçişte veri kaybı yaşamadan çevrimdışı Firestore eşitlemesini sağlamak.",
+        en: "Parsing unstructured natural language and browser speech inputs into strictly-typed transactional entities client-side with zero paid API overhead, while ensuring seamless offline-first synchronization and conflict-free guest-to-authenticated Firebase account migration.",
       },
       solution: {
-        tr: "Java Spring Boot ve PostgreSQL ile yüksek performanslı rota optimizasyon servisleri geliştirildi; Angular ile harita tabanlı interaktif yönetim panosu kurgulandı ve çift yönlü SAP/Panorama entegrasyonları kuruldu.",
-        en: "Engineered scalable route calculation backend services using Java Spring Boot and PostgreSQL, paired with a responsive Angular map UI and reliable bidirectional SAP/Panorama data connectors.",
+        tr: "Web Speech API ile istemci tarafında çalışan Türkçe doğal dil işleme (NLP) kuralları entegre edildi. Güvenlik kuralları kullanıcı UID bazlı izole edilmiş Firebase Auth & Cloud Firestore mimarisi kurgulandı; 114 birim testi ile uçtan uca veri bütünlüğü doğrulandı.",
+        en: "Architected a zero-latency client-side Turkish NLP rule parser coupled with the Web Speech API. Deployed strict UID-isolated Cloud Firestore security rules with offline persistence, validated by a comprehensive suite of 114 automated unit and emulator tests.",
       },
       keyFeatures: {
         tr: [
-          "Harita üzerinden interaktif rota planlama, dinamik durak sıralaması ve rota optimizasyonu",
-          "Kapsamlı araç filosu, sürücü yönetimi ve sevkiyat durum takibi",
-          "SAP ve Panorama sistemleriyle gerçek zamanlı çift yönlü veri entegrasyonu",
-          "Dağıtım süreçlerinin uçtan uca yönetimi, rota sapmaları ve teslimat süreleri için operasyonel raporlama",
+          "Türkçe ses ve metin komutlarını anında gelir/gider, randevu veya göreve dönüştüren NLP motoru",
+          "Kapsamlı finans yönetimi: Kategori bütçeleri, taksit/abonelik takibi, borç/alacak ve birikim hedefleri",
+          "Ev ve yaşam envanteri: Alışveriş listesi, kiler stokları, garanti süreleri ve araç kilometre/bakım takibi",
+          "Firebase Auth ile misafir oturumunu tek tıkla e-postaya bağlama ve çevrimdışı Firestore senkronizasyonu",
         ],
         en: [
-          "Interactive map-based route planning, dynamic waypoint sorting, and algorithmic route optimization",
-          "Comprehensive fleet asset management, driver assignment tracking, and live shipment dispatch status",
-          "Real-time bidirectional enterprise data synchronization with SAP and Panorama systems",
-          "Operational telemetry and analytics reporting for distribution turnaround and route variance",
+          "Deterministic Turkish NLP and voice command engine converting speech into structured entries",
+          "Full financial management suite: Category budgets, subscriptions, debts/receivables, and savings goals",
+          "Home and personal logistics: Grocery checklists, pantry inventory, warranties, and vehicle maintenance",
+          "Seamless guest-to-cloud Firebase Auth with offline persistence and zero-loss Firestore synchronization",
         ],
       },
       metrics: [
-        { label: { tr: "Optimizasyon", en: "Route Engine" }, value: "Dinamik Rota" },
-        { label: { tr: "Entegrasyon", en: "ERP Connect" }, value: "SAP & Panorama" },
-        { label: { tr: "Veritabanı", en: "Database" }, value: "PostgreSQL" },
+        { label: { tr: "Otomasyon Testi", en: "Automated Tests" }, value: "114/114" },
+        { label: { tr: "Komut İşleme Hızı", en: "NLP Latency" }, value: "< 5ms" },
+        { label: { tr: "Mimari", en: "Architecture" }, value: "PWA + Firebase" },
       ],
     },
   },
@@ -315,8 +315,7 @@ export const projectsData: ProjectItem[] = [
       en: "Enterprise B2B and e-commerce platforms engineered on nopCommerce with C# and ASP.NET Core. Powers end-to-end order processing, customer pricing, tiered discount rules, secure payment gateway integrations, and SAP/Panorama enterprise synchronization.",
     },
     technologies: [".NET Core", "C#", "ASP.NET Core", "nopCommerce", "MS SQL Server", "Payment Systems", "SAP", "Panorama", "RESTful APIs"],
-    liveUrl: "https://duzey.com.tr",
-    githubUrl: "https://github.com/Kaandnz",
+    liveUrl: "https://www.duzeymarket.com/",
     accentColor: "#f59e0b",
     image: "/images/projects/aetheria.svg",
     caseStudy: {
