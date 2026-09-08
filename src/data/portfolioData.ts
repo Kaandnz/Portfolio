@@ -48,7 +48,6 @@ export const personalInfo = {
   email: "konmdeniz@gmail.com",
   phone: "+90 532 389 5097",
   github: "https://github.com/Kaandnz",
-  linkedin: "https://linkedin.com/in/kagan-deniz",
   linkedin: "https://www.linkedin.com/in/ka%C4%9Fandeniz/",
   bio: {
     tr: "Java Spring Boot, .NET Core, C# ve modern web teknolojileriyle (Angular, React) ölçeklenebilir kurumsal çözümler, B2B platformları, e-ticaret sistemleri ve rota optimizasyonu altyapıları tasarlayan Full Stack Geliştirici. SAP ve Panorama kurumsal entegrasyonları, nopCommerce e-ticaret mimarileri, PostgreSQL & SQL Server veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
