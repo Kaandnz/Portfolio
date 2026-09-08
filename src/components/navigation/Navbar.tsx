@@ -134,7 +134,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
-              aria-label="Toggle Menu"
+              aria-label={language === "tr" ? "Menüyü Aç/Kapat" : "Toggle Menu"}
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>

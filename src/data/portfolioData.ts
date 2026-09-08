@@ -1,22 +1,25 @@
+export type LocalizedString = { tr: string; en: string };
+export type LocalizedSkill = string | LocalizedString;
+
 export interface ProjectItem {
   id: string;
   title: string;
   year: string;
-  category: { tr: string; en: string };
-  role: { tr: string; en: string };
-  tagline: { tr: string; en: string };
-  description: { tr: string; en: string };
+  category: LocalizedString;
+  role: LocalizedString;
+  tagline: LocalizedString;
+  description: LocalizedString;
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
   accentColor: string;
   image: string;
   caseStudy: {
-    overview: { tr: string; en: string };
-    challenge: { tr: string; en: string };
-    solution: { tr: string; en: string };
+    overview: LocalizedString;
+    challenge: LocalizedString;
+    solution: LocalizedString;
     keyFeatures: { tr: string[]; en: string[] };
-    metrics: { label: { tr: string; en: string }; value: string }[];
+    metrics: { label: LocalizedString; value: string | LocalizedString }[];
   };
 }
 
@@ -65,7 +68,7 @@ export const projectsData: ProjectItem[] = [
       en: "Enterprise B2B & E-Commerce / Backend",
     },
     role: {
-      tr: "Software Developer @ Düzey",
+      tr: "Yazılım Geliştirici @ Düzey",
       en: "Software Developer @ Düzey",
     },
     tagline: {
@@ -123,7 +126,7 @@ export const projectsData: ProjectItem[] = [
       en: "Enterprise Logistics / Full Stack",
     },
     role: {
-      tr: "Software Developer @ Düzey",
+      tr: "Yazılım Geliştirici @ Düzey",
       en: "Software Developer @ Düzey",
     },
     tagline: {
@@ -166,7 +169,7 @@ export const projectsData: ProjectItem[] = [
         ],
       },
       metrics: [
-        { label: { tr: "Optimizasyon", en: "Route Engine" }, value: "Dinamik Rota" },
+        { label: { tr: "Optimizasyon", en: "Route Engine" }, value: { tr: "Dinamik Rota", en: "Dynamic Routing" } },
         { label: { tr: "Entegrasyon", en: "ERP Connect" }, value: "SAP & Panorama" },
         { label: { tr: "Veritabanı", en: "Database" }, value: "PostgreSQL" },
       ],
@@ -240,7 +243,7 @@ export const projectsData: ProjectItem[] = [
       en: "Interactive Web / EdTech Game",
     },
     role: {
-      tr: "Yaratıcı Geliştirici & Mimari",
+      tr: "Yaratıcı Geliştirici & Mimar",
       en: "Full Stack Creator & Architect",
     },
     tagline: {
@@ -285,7 +288,7 @@ export const projectsData: ProjectItem[] = [
       },
       metrics: [
         { label: { tr: "Sorgu Çalışma Hızı", en: "Query Latency" }, value: "1.4ms" },
-        { label: { tr: "Adli Vaka Dosyaları", en: "Forensic Cases" }, value: "30+ Vaka" },
+        { label: { tr: "Adli Vaka Dosyaları", en: "Forensic Cases" }, value: { tr: "30+ Vaka", en: "30+ Cases" } },
         { label: { tr: "Mimari", en: "Architecture" }, value: "Pure WASM" },
       ],
     },
@@ -299,7 +302,7 @@ export const projectsData: ProjectItem[] = [
       en: "Interactive Web / Scientific Lab",
     },
     role: {
-      tr: "Yaratıcı Geliştirici & Mimari",
+      tr: "Yaratıcı Geliştirici & Mimar",
       en: "Full Stack Creator & Architect",
     },
     tagline: {
@@ -403,8 +406,8 @@ export const projectsData: ProjectItem[] = [
       },
       metrics: [
         { label: { tr: "İşleme Süresi", en: "Format Time" }, value: "< 5ms" },
-        { label: { tr: "Kapasite", en: "Row Capacity" }, value: "50K+ Satır" },
-        { label: { tr: "Zaman Tasarrufu", en: "Time Saved" }, value: "10x Hız" },
+        { label: { tr: "Kapasite", en: "Row Capacity" }, value: { tr: "50K+ Satır", en: "50K+ Rows" } },
+        { label: { tr: "Zaman Tasarrufu", en: "Time Saved" }, value: { tr: "10x Hız", en: "10x Speedup" } },
       ],
     },
   },
@@ -414,7 +417,7 @@ export const experienceData: ExperienceItem[] = [
   {
     id: "duzey",
     role: {
-      tr: "Software Developer",
+      tr: "Yazılım Geliştirici",
       en: "Software Developer",
     },
     company: "Düzey",
@@ -461,7 +464,7 @@ export const experienceData: ExperienceItem[] = [
   {
     id: "dr-turkuvaz",
     role: {
-      tr: "Software Development Intern",
+      tr: "Yazılım Geliştirme Stajyeri",
       en: "Software Development Intern",
     },
     company: "D&R (Turkuvaz Medya)",
@@ -496,7 +499,7 @@ export const experienceData: ExperienceItem[] = [
   {
     id: "mugla-it",
     role: {
-      tr: "IT Intern",
+      tr: "Bilgi İşlem / BT Stajyeri",
       en: "IT Intern",
     },
     company: "Muğla Sıtkı Koçman Üniversitesi",
@@ -542,14 +545,32 @@ export const educationData: EducationItem = {
   },
 };
 
-export const skillsGrouped = {
+export const skillsGrouped: Record<
+  string,
+  { title: LocalizedString; skills: LocalizedSkill[] }
+> = {
   backend: {
     title: { tr: "Arka Uç & Frameworkler", en: "Backend & Frameworks" },
-    skills: [".NET Core", "C#", "ASP.NET Core", "Java Spring Boot", "Entity Framework Core", "RESTful APIs", "Microservices"],
+    skills: [
+      ".NET Core",
+      "C#",
+      "ASP.NET Core",
+      "Java Spring Boot",
+      "Entity Framework Core",
+      "RESTful APIs",
+      { tr: "Mikroservisler", en: "Microservices" },
+    ],
   },
   enterprise: {
     title: { tr: "Kurumsal & Entegrasyon", en: "Enterprise & Integrations" },
-    skills: ["SAP Entegrasyonu", "Panorama Entegrasyonu", "nopCommerce", "Rota Optimizasyonu", "B2B & E-Ticaret", "Ödeme Sistemleri / POS"],
+    skills: [
+      { tr: "SAP Entegrasyonu", en: "SAP Integration" },
+      { tr: "Panorama Entegrasyonu", en: "Panorama Integration" },
+      "nopCommerce",
+      { tr: "Rota Optimizasyonu", en: "Route Optimization" },
+      { tr: "B2B & E-Ticaret", en: "B2B & E-Commerce" },
+      { tr: "Ödeme Sistemleri / POS", en: "Payment Systems / POS" },
+    ],
   },
   frontend: {
     title: { tr: "Ön Yüz & Web", en: "Frontend & Web" },
@@ -557,7 +578,14 @@ export const skillsGrouped = {
   },
   database: {
     title: { tr: "Veritabanı & Arama Motorları", en: "Databases & Storage" },
-    skills: ["PostgreSQL", "MS SQL Server", "MongoDB", "Elasticsearch", "Database Optimization", "Query Tuning"],
+    skills: [
+      "PostgreSQL",
+      "MS SQL Server",
+      "MongoDB",
+      "Elasticsearch",
+      { tr: "Veritabanı Optimizasyonu", en: "Database Optimization" },
+      { tr: "Sorgu Optimizasyonu (Tuning)", en: "SQL Query Tuning" },
+    ],
   },
   devops: {
     title: { tr: "DevOps, CI/CD & İzleme", en: "DevOps & Monitoring" },
@@ -565,11 +593,17 @@ export const skillsGrouped = {
   },
   testing: {
     title: { tr: "Test Otomasyonu & Mimarisi", en: "Testing & Architecture" },
-    skills: ["Selenium WebDriver", "NUnit", "Web Scraping", "SOLID Principles", "OOP & Design Patterns"],
+    skills: [
+      "Selenium WebDriver",
+      "NUnit",
+      { tr: "Web Kazıma (Scraping)", en: "Web Scraping" },
+      { tr: "SOLID Prensipleri", en: "SOLID Principles" },
+      { tr: "OOP & Tasarım Kalıpları", en: "OOP & Design Patterns" },
+    ],
   },
   tools: {
     title: { tr: "Araçlar & Metodolojiler", en: "Tools & Methodologies" },
-    skills: ["Agile / Scrum", "Visual Studio", "SSMS", "JIRA", "Postman", "Cursor", "Copilot"],
+    skills: ["Agile / Scrum", "Visual Studio", "SSMS", "JIRA", "Postman", "Cursor", "GitHub Copilot"],
   },
 };
 

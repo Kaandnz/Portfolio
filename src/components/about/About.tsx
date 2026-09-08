@@ -196,7 +196,7 @@ export default function About() {
             <div className="p-8 md:p-10 rounded-3xl apple-glass border border-white/[0.08] min-h-[380px] flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentTab.id}
+                  key={currentTab.id + language}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}

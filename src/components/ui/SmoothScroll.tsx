@@ -5,6 +5,12 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Register ScrollTrigger
@@ -29,6 +35,8 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       touchMultiplier: 1.5,
     });
 
+    window.__lenis = lenis;
+
     // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -40,6 +48,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      delete window.__lenis;
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
     };

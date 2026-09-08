@@ -12,7 +12,7 @@ export const translations = {
       tag: "Ölçeklenebilir Sistemler • .NET Core & Modern Web",
       name: "Kağan Deniz",
       role: "Full Stack Geliştirici",
-      headline1: "Full Stack Developer",
+      headline1: "Full Stack Geliştirici",
       headline2: "Ölçeklenebilir Sistemler & Çözümler.",
       subtitle:
         ".NET Core, C# ve modern web teknolojileri ile kurumsal B2B/SFA altyapıları, yüksek performanslı veritabanı optimizasyonları ve uçtan uca dijital ürünler inşa ediyorum.",
@@ -88,7 +88,7 @@ export const translations = {
       phoneDirect: "Telefon / WhatsApp:",
     },
     footer: {
-      role: "Full Stack Developer",
+      role: "Full Stack Geliştirici",
       rights: "Tüm hakları saklıdır.",
       builtWith: "Next.js 16, TypeScript & Tailwind CSS ile geliştirildi",
       backToTop: "Yukarı çık",

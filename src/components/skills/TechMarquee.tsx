@@ -1,46 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const marqueeItems1 = [
-  ".NET CORE",
-  "C#",
-  "JAVA SPRING BOOT",
-  "ANGULAR",
-  "POSTGRESQL",
-  "MS SQL SERVER",
-  "MONGODB",
-  "ELASTICSEARCH",
-  "MICROSERVICES",
-  "ENTITY FRAMEWORK CORE",
-  "RESTFUL APIS",
-  "NEXT.JS 16",
-  "REACT 19",
-  "APPLE FLUID MOTION",
-  "ROTA OPTİMİZASYONU",
-  "TYPESCRIPT",
-];
-
-const marqueeItems2 = [
-  "NOPCOMMERCE",
-  "SAP / ERP",
-  "PANORAMA",
-  "JENKINS CI/CD",
-  "DOCKER",
-  "ELK STACK",
-  "SELENIUM WEBDRIVER",
-  "NOPCOMMERCE",
-  "ÖDEME SİSTEMLERİ",
-  "HANGFIRE ETL",
-  "SOLID ARCHITECTURE",
-  "IIS SERVER",
-  "TAILWIND CSS v4",
-  "SQL QUERY TUNING",
-  "DATABASE INDEXING",
-  "AGILE / SCRUM",
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TechMarquee() {
+  const { language } = useLanguage();
+  const isTr = language === "tr";
+
+  const marqueeItems1 = [
+    ".NET CORE",
+    "C#",
+    "JAVA SPRING BOOT",
+    "ANGULAR",
+    "POSTGRESQL",
+    "MS SQL SERVER",
+    "MONGODB",
+    "ELASTICSEARCH",
+    "MICROSERVICES",
+    "ENTITY FRAMEWORK CORE",
+    "RESTFUL APIS",
+    "NEXT.JS 16",
+    "REACT 19",
+    "APPLE FLUID MOTION",
+    isTr ? "ROTA OPTİMİZASYONU" : "ROUTE OPTIMIZATION",
+    "TYPESCRIPT",
+  ];
+
+  const marqueeItems2 = [
+    "NOPCOMMERCE",
+    "SAP / ERP",
+    "PANORAMA",
+    "JENKINS CI/CD",
+    "DOCKER",
+    "ELK STACK",
+    "SELENIUM WEBDRIVER",
+    isTr ? "SİSTEM MİMARİSİ" : "SYSTEM ARCHITECTURE",
+    isTr ? "ÖDEME SİSTEMLERİ" : "PAYMENT GATEWAYS",
+    "HANGFIRE ETL",
+    "SOLID ARCHITECTURE",
+    "IIS SERVER",
+    "TAILWIND CSS v4",
+    "SQL QUERY TUNING",
+    "DATABASE INDEXING",
+    "AGILE / SCRUM",
+  ];
   return (
     <div className="w-full overflow-hidden py-8 space-y-3 select-none opacity-80">
       {/* Ribbon 1 - Moving Left */}

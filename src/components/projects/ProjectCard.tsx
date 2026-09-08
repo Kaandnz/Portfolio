@@ -122,7 +122,7 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
           ))}
           {project.technologies.length > 5 && (
             <span className="px-2.5 py-1 rounded-full bg-white/[0.02] text-xs font-mono text-white/40">
-              +{project.technologies.length - 5} more
+              +{project.technologies.length - 5} {language === "tr" ? "daha" : "more"}
             </span>
           )}
         </div>

@@ -21,10 +21,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (saved === "tr" || saved === "en") {
       queueMicrotask(() => {
         setLanguage(saved);
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = saved;
+        }
       });
     } else if (typeof navigator !== "undefined" && !navigator.language.startsWith("tr")) {
       queueMicrotask(() => {
         setLanguage("en");
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = "en";
+        }
       });
     }
   }, []);
@@ -32,6 +38,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem("preferred_lang", lang);
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang;
+    }
   };
 
   const toggleLanguage = () => {

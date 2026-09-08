@@ -94,7 +94,7 @@ export default function Contact() {
               {/* Social Channels */}
               <div className="flex items-center gap-4 pt-2">
                 <span className="text-xs uppercase tracking-wider text-white/40 font-mono">
-                  Profiles:
+                  {language === "tr" ? "Profiller:" : "Profiles:"}
                 </span>
                 <a
                   href={personalInfo.github}
@@ -159,7 +159,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Jane Doe"
+                      placeholder={language === "tr" ? "Adınız Soyadınız" : "Jane Doe"}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20"
                     />
                   </div>
@@ -173,7 +173,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="jane@company.com"
+                      placeholder={language === "tr" ? "ornek@sirket.com" : "jane@company.com"}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20"
                     />
                   </div>
@@ -187,7 +187,7 @@ export default function Contact() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="..."
+                      placeholder={language === "tr" ? "Projeniz, teklifiniz veya mesajınız..." : "Tell me about your project or opportunity..."}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20 resize-none"
                     />
                   </div>

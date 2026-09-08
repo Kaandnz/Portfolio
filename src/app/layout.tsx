@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kağan Deniz — Full Stack Developer & System Architect",
     description: "Designing scalable backend architectures, enterprise B2B/SFA solutions, and modern web applications.",
-    url: "https://kagandeniz.dev",
+    url: "https://kagandeniz.com",
     siteName: "Kağan Deniz Portfolio",
     locale: "tr_TR",
     type: "website",

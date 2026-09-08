@@ -22,12 +22,22 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
+
     if (project) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.stop();
+      }
       window.addEventListener("keydown", handleKeyDown);
     }
+
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [project, onClose]);
@@ -35,7 +45,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   return (
     <AnimatePresence>
       {project && (
-        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-6 lg:p-10">
+        <div
+          data-lenis-prevent
+          className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-6 lg:p-10"
+        >
           {/* Frosted Scrim Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -48,6 +61,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Apple-Style Spring Sheet Modal */}
           <motion.div
+            data-lenis-prevent
             initial={{ y: "100%", opacity: 0.5, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: "100%", opacity: 0, scale: 0.98 }}
@@ -57,7 +71,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               stiffness: 300,
               mass: 0.8,
             }}
-            className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-t-3xl md:rounded-3xl apple-glass shadow-2xl border border-white/[0.12] p-6 md:p-10"
+            className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-t-3xl md:rounded-3xl apple-glass shadow-2xl border border-white/[0.12] p-6 md:p-10 pointer-events-auto"
           >
             {/* Sheet Handle for Mobile */}
             <div className="md:hidden flex justify-center pb-4">
@@ -83,7 +97,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <button
                 onClick={onClose}
                 className="p-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white/70 hover:text-white transition-colors"
-                aria-label="Close Case Study"
+                aria-label={language === "tr" ? "Detayları Kapat" : "Close Case Study"}
                 data-cursor="pointer"
               >
                 <X size={20} />
@@ -193,14 +207,22 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <BarChart3 size={14} className="text-sky-400" />
                   <span>{t.projects.verifiedMetrics}</span>
                 </h4>
-                <div className="grid grid-cols-3 gap-4">
+                <div
+                  className={`grid gap-4 ${
+                    project.caseStudy.metrics.length === 4
+                      ? "grid-cols-2 sm:grid-cols-4"
+                      : project.caseStudy.metrics.length === 2
+                      ? "grid-cols-2"
+                      : "grid-cols-3"
+                  }`}
+                >
                   {project.caseStudy.metrics.map((metric, i) => (
                     <div
                       key={i}
                       className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-center"
                     >
                       <div className="text-xl sm:text-2xl font-bold text-white">
-                        {metric.value}
+                        {typeof metric.value === "string" ? metric.value : metric.value[language]}
                       </div>
                       <div className="text-[11px] text-white/40 mt-1 uppercase font-mono">
                         {metric.label[language]}

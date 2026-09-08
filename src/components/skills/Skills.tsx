@@ -81,25 +81,29 @@ export default function Skills() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
           >
-            {currentCategory.data.skills.map((skill: string) => (
-              <div
-                key={skill}
-                className="p-6 rounded-2xl apple-glass-subtle hover:apple-glass border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 flex items-center justify-between gap-3 group"
-                data-cursor="pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
-                    <CheckCircle2 size={16} />
+            {currentCategory.data.skills.map((skill) => {
+              const skillName = typeof skill === "string" ? skill : skill[language];
+              const skillKey = typeof skill === "string" ? skill : skill.en;
+              return (
+                <div
+                  key={skillKey}
+                  className="p-6 rounded-2xl apple-glass-subtle hover:apple-glass border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 flex items-center justify-between gap-3 group"
+                  data-cursor="pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <span className="text-base font-semibold text-white group-hover:text-sky-300 transition-colors">
+                      {skillName}
+                    </span>
                   </div>
-                  <span className="text-base font-semibold text-white group-hover:text-sky-300 transition-colors">
-                    {skill}
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 uppercase">
+                    {language === "tr" ? "Aktif" : "Production"}
                   </span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 uppercase">
-                  {language === "tr" ? "Aktif" : "Production"}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </motion.div>
         </AnimatePresence>
       </div>
