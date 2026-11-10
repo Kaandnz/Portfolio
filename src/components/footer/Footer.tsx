@@ -34,7 +34,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative py-12 px-6 md:px-12 lg:px-20 border-t border-white/[0.08] bg-[#070709] text-xs text-white/50">
+    <footer className="relative pt-12 px-6 md:px-12 lg:px-20 border-t border-white/[0.08] bg-[#070709] text-xs text-white/50 overflow-hidden">
+      {/* Hairline accent on the top edge */}
+      <div aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 max-w-3xl bg-gradient-to-r from-transparent via-sky-400/50 to-transparent" />
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Brand & Local Time */}
@@ -99,6 +101,14 @@ export default function Footer() {
             {t.footer.builtWith}
           </div>
         </div>
+      </div>
+
+      {/* Oversized wordmark dissolving into the page edge */}
+      <div
+        aria-hidden
+        className="max-w-7xl mx-auto mt-6 -mb-[0.16em] select-none pointer-events-none text-center font-bold tracking-[-0.05em] leading-none whitespace-nowrap text-[13.5vw] xl:text-[12.5rem] wordmark-fade"
+      >
+        {personalInfo.name}
       </div>
     </footer>
   );

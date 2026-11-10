@@ -1,8 +1,23 @@
 import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import { LanguageProvider } from "@/context/LanguageContext";
+
+// latin-ext carries the Turkish glyphs (ğ, ş, ı, İ)
+const geistSans = Geist({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Kağan Deniz — Full Stack Developer & System Architect",
@@ -46,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" className="dark scroll-smooth">
+    <html lang="tr" className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`}>
       <body className="bg-[#08080a] text-[#f5f5f7] min-h-screen selection:bg-sky-500/30 selection:text-white relative">
         {/* Subtle Film Grain Noise Texture Layer */}
         <div className="fixed inset-0 pointer-events-none z-50 bg-noise opacity-[0.035]" />
@@ -57,6 +72,7 @@ export default function RootLayout({
         <LanguageProvider>
           <SmoothScroll>
             <CustomCursor />
+            <ScrollProgress />
             {children}
           </SmoothScroll>
         </LanguageProvider>

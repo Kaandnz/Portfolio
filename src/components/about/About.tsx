@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Server, Layers, CheckCircle2, GraduationCap } from "lucide-react";
 import PortraitCard from "./PortraitCard";
+import SectionHeader from "../ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
 import { personalInfo, educationData } from "@/data/portfolioData";
@@ -100,44 +101,24 @@ export default function About() {
     <section id="about" className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16 md:mb-20">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-sky-400 font-mono mb-3">
-            <Sparkles size={14} />
-            <span>{t.about.badge}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white display-title">
-            {t.about.heading1} <br />
-            <span className="text-white/40">{t.about.heading2}</span>
-          </h2>
-          <p className="max-w-2xl text-base md:text-lg text-white/60 font-normal leading-relaxed mt-4">
-            {t.about.description}
-          </p>
-        </div>
+        <SectionHeader
+          icon={Sparkles}
+          badge={t.about.badge}
+          heading1={t.about.heading1}
+          heading2={t.about.heading2}
+          subtitle={t.about.description}
+          layout="stacked"
+          className="mb-16 md:mb-20"
+        />
 
         {/* Editorial Two-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Portrait & Stats Card */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          {/* Left Column: Portrait & Education */}
+          <div className="lg:col-span-5 flex flex-col gap-6 w-full max-w-md mx-auto lg:max-w-none">
             <PortraitCard />
 
-            {/* Quick Metrics */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="p-4 rounded-2xl apple-glass-subtle border border-white/[0.06] text-center">
-                <div className="text-xl md:text-2xl font-bold text-white font-mono">{t.about.statYears}</div>
-                <div className="text-[11px] text-white/50 uppercase tracking-wider mt-1">{t.about.statYearsLabel}</div>
-              </div>
-              <div className="p-4 rounded-2xl apple-glass-subtle border border-white/[0.06] text-center">
-                <div className="text-xl md:text-2xl font-bold text-white font-mono">{t.about.statStack}</div>
-                <div className="text-[11px] text-white/50 uppercase tracking-wider mt-1">{t.about.statStackLabel}</div>
-              </div>
-              <div className="p-4 rounded-2xl apple-glass-subtle border border-white/[0.06] text-center">
-                <div className="text-xl md:text-2xl font-bold text-emerald-400 font-mono">{t.about.statQuality}</div>
-                <div className="text-[11px] text-white/50 uppercase tracking-wider mt-1">{t.about.statQualityLabel}</div>
-              </div>
-            </div>
-
             {/* Education Badge */}
-            <div className="p-5 rounded-2xl apple-glass-subtle border border-white/[0.06] flex items-start gap-4">
+            <div className="p-5 rounded-2xl apple-glass-subtle specular-border border border-white/[0.06] flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
                 <GraduationCap size={20} />
               </div>
@@ -193,7 +174,8 @@ export default function About() {
             </div>
 
             {/* Tab Dynamic Content */}
-            <div className="p-8 md:p-10 rounded-3xl apple-glass border border-white/[0.08] min-h-[380px] flex flex-col justify-between">
+            <div className="relative p-8 md:p-10 rounded-3xl apple-glass specular-border border border-white/[0.08] min-h-[380px] flex flex-col justify-between overflow-hidden">
+              <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-sky-500/10 blur-[90px]" />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentTab.id + language}
@@ -201,7 +183,7 @@ export default function About() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-6"
+                  className="relative space-y-6"
                 >
                   <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-snug">
                     {currentTab.title}
@@ -221,6 +203,31 @@ export default function About() {
                   </div>
                 </motion.div>
               </AnimatePresence>
+            </div>
+
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: t.about.statYears, label: t.about.statYearsLabel, tone: "text-white" },
+                { value: t.about.statStack, label: t.about.statStackLabel, tone: "text-white" },
+                { value: t.about.statQuality, label: t.about.statQualityLabel, tone: "text-emerald-400" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="p-4 md:p-5 rounded-2xl apple-glass-subtle specular-border border border-white/[0.06] text-center"
+                >
+                  <div className={`text-lg sm:text-xl md:text-2xl font-bold font-mono tracking-tight ${stat.tone}`}>
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider mt-1.5">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

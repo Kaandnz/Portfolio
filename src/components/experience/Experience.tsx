@@ -5,6 +5,7 @@ import { Briefcase, CheckCircle2, GraduationCap } from "lucide-react";
 import { experienceData, educationData } from "@/data/portfolioData";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function Experience() {
   const { language } = useLanguage();
@@ -14,24 +15,22 @@ export default function Experience() {
     <section id="experience" className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
-          <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-sky-400 font-mono mb-3">
-              <Briefcase size={14} />
-              <span>{t.experience.badge}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white display-title">
-              {t.experience.heading1} <br />
-              <span className="text-white/40">{t.experience.heading2}</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm md:text-base text-white/50 leading-relaxed">
-            {t.experience.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          icon={Briefcase}
+          badge={t.experience.badge}
+          heading1={t.experience.heading1}
+          heading2={t.experience.heading2}
+          subtitle={t.experience.subtitle}
+          className="mb-16 md:mb-20"
+        />
 
         {/* Minimal Timeline */}
-        <div className="relative border-l border-white/[0.1] ml-4 md:ml-8 pl-8 md:pl-16 space-y-16">
+        <div className="relative ml-4 md:ml-8 pl-8 md:pl-16 space-y-16">
+          {/* Rail: brightest at the latest role, dissolving past the education node */}
+          <div
+            aria-hidden
+            className="absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-sky-400/70 via-white/12 to-transparent"
+          />
           {experienceData.map((exp, index) => (
             <motion.div
               key={exp.id}
@@ -42,15 +41,15 @@ export default function Experience() {
               className="relative group"
             >
               {/* Glowing Timeline Marker */}
-              <div className="absolute -left-[41px] md:-left-[73px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-sky-400 group-hover:bg-sky-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(56,189,248,0.5)]" />
+              <div className="absolute -left-[40px] md:-left-[72px] top-1.5 w-4 h-4 rounded-full bg-[#08080a] border-2 border-sky-400 group-hover:bg-sky-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(56,189,248,0.5)]" />
 
               {/* Header Info */}
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight group-hover:text-sky-300 transition-colors">
                     {exp.role[language]}
                   </h3>
-                  <span className="text-sm font-medium text-white/60">
+                  <span className="text-sm font-medium text-sky-400/90">
                     @ {exp.company}
                   </span>
                 </div>
@@ -100,9 +99,9 @@ export default function Experience() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="relative group pt-4"
           >
-            <div className="absolute -left-[41px] md:-left-[73px] top-5 w-4 h-4 rounded-full bg-black border-2 border-purple-400 group-hover:bg-purple-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(168,85,247,0.5)]" />
+            <div className="absolute -left-[40px] md:-left-[72px] top-5 w-4 h-4 rounded-full bg-[#08080a] border-2 border-purple-400 group-hover:bg-purple-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(168,85,247,0.5)]" />
 
-            <div className="p-6 rounded-2xl apple-glass-subtle border border-white/[0.06] max-w-3xl">
+            <div className="p-6 rounded-2xl apple-glass-subtle specular-border border border-white/[0.06] max-w-3xl">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">

@@ -60,9 +60,9 @@ export default function Contact() {
                 <span>{t.contact.badge}</span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.035em] text-white leading-[0.98]">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.035em] text-white leading-[1.02] text-balance">
                 {t.contact.heading1} <br />
-                <span className="text-white/40">{t.contact.heading2}</span>
+                <span className="text-gradient-accent">{t.contact.heading2}</span>
               </h2>
 
               <p className="max-w-xl text-base md:text-lg text-white/60 leading-relaxed pt-2">
@@ -122,7 +122,7 @@ export default function Contact() {
 
           {/* Right Column: Apple-Glass Interactive Contact Form */}
           <div className="lg:col-span-5">
-            <div className="p-8 md:p-10 rounded-3xl apple-glass border border-white/[0.08] relative">
+            <div className="p-8 md:p-10 rounded-3xl apple-glass specular-border border border-white/[0.08] relative">
               {formSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

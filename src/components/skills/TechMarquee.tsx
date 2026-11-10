@@ -45,7 +45,7 @@ export default function TechMarquee() {
     "AGILE / SCRUM",
   ];
   return (
-    <div className="w-full overflow-hidden py-8 space-y-3 select-none opacity-80">
+    <div className="w-full overflow-hidden py-8 space-y-3 select-none opacity-80 mask-fade-x">
       {/* Ribbon 1 - Moving Left */}
       <div className="flex whitespace-nowrap overflow-hidden">
         <motion.div

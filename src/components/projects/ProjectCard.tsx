@@ -30,13 +30,21 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
     >
       {/* Project Visual / Image Showcase */}
       <div
-        className={`lg:col-span-7 ${
+        className={`relative lg:col-span-7 group/visual ${
           isEven ? "lg:order-1" : "lg:order-2"
         }`}
       >
+        {/* Accent halo bleeding out from behind the frame */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-6 md:-inset-10 rounded-[3rem] opacity-[0.14] group-hover/visual:opacity-30 blur-3xl transition-opacity duration-700"
+          style={{
+            background: `radial-gradient(ellipse at 50% 55%, ${project.accentColor} 0%, transparent 70%)`,
+          }}
+        />
         <div
           onClick={() => onOpenModal(project)}
-          className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden apple-glass-subtle border border-white/[0.1] group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+          className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden apple-glass-subtle specular-border border border-white/[0.1] group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5"
           data-cursor="project"
           data-cursor-label={`${t.projects.caseStudy} ↗`}
         >
@@ -83,24 +91,31 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
         }`}
       >
         {/* Meta Bar */}
-        <div className="flex items-center gap-3 text-xs font-mono text-white/40 tracking-wider">
-          <span className="text-white/80">0{index + 1}</span>
-          <span>{"//"}</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-white/40 tracking-wider">
+          <span
+            className="px-2 py-0.5 rounded-md border text-white/90"
+            style={{
+              borderColor: `${project.accentColor}55`,
+              backgroundColor: `${project.accentColor}14`,
+            }}
+          >
+            {(index + 1).toString().padStart(2, "0")}
+          </span>
           <span>{project.year}</span>
           <span>•</span>
           <span className="text-sky-400">{project.role[language]}</span>
         </div>
 
         {/* Project Title */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <h3
             onClick={() => onOpenModal(project)}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] hover:text-sky-300 transition-colors cursor-pointer"
+            className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold text-white tracking-[-0.03em] leading-[1.08] text-balance hover:text-sky-300 transition-colors cursor-pointer"
             data-cursor="pointer"
           >
             {project.title}
           </h3>
-          <p className="text-sm md:text-base font-medium text-white/70">
+          <p className="text-sm md:text-base font-medium text-white/70 text-pretty">
             {project.tagline[language]}
           </p>
         </div>

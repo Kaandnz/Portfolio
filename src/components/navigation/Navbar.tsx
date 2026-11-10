@@ -8,16 +8,20 @@ import MagneticButton from "../ui/MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
 import { personalInfo } from "@/data/portfolioData";
-//
+
+const SECTION_IDS = ["about", "projects", "skills", "experience", "contact"];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
 
+  // Same order as the sections on the page, so the active pill travels left to right
   const navLinks = [
-    { name: t.nav.work, href: "#projects" },
     { name: t.nav.about, href: "#about" },
+    { name: t.nav.work, href: "#projects" },
     { name: t.nav.skills, href: "#skills" },
     { name: t.nav.experience, href: "#experience" },
     { name: t.nav.contact, href: "#contact" },
@@ -29,6 +33,27 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Highlight the section currently crossing the middle of the viewport
+  useEffect(() => {
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          } else {
+            setActiveSection((current) => (current === entry.target.id ? null : current));
+          }
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -60,16 +85,29 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-1 text-xs font-medium text-white/70">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-3 py-1.5 rounded-full hover:text-white hover:bg-white/[0.06] transition-all"
-                data-cursor="pointer"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.href === `#${activeSection}`;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative px-3 py-1.5 rounded-full transition-colors ${
+                    isActive ? "text-white" : "hover:text-white hover:bg-white/[0.06]"
+                  }`}
+                  data-cursor="pointer"
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="navActivePill"
+                      className="absolute inset-0 rounded-full bg-white/[0.1] border border-white/[0.14]"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.name}</span>
+                </a>
+              );
+            })}
           </div>
 
           {/* Right Section: Language Switcher & Availability & Socials */}
@@ -169,7 +207,7 @@ export default function Navbar() {
 
               {navLinks.map((link) => (
                 <a
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-between py-2 text-lg font-medium text-white/90 hover:text-white transition-colors"

@@ -40,6 +40,15 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] flex flex-col justify-between px-6 md:px-12 lg:px-20 pt-28 md:pt-36 pb-12 overflow-hidden select-none">
+      {/* Aurora colour fields + engineering grid */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="aurora-blob aurora-a" />
+        <div className="aurora-blob aurora-b" />
+        <div className="aurora-blob aurora-c" />
+        <div className="absolute inset-0 bg-grid" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[#08080a]" />
+      </div>
+
       {/* Interactive Background Particle & Gradient Canvas */}
       <AmbientCanvas />
 
@@ -83,34 +92,36 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] w-fit text-xs text-white/70"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass-subtle specular-border w-fit text-xs text-white/70"
           >
             <Sparkles size={13} className="text-sky-400" />
             <span>{t.hero.tag}</span>
           </motion.div>
 
-          {/* Staggered Giant Headline */}
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-[-0.035em] leading-[0.98]"
-            >
-              {t.hero.headline1}
-            </motion.h1>
-          </div>
+          {/* Staggered Giant Headline (pb/-mb keeps cedillas and descenders out of the reveal clip) */}
+          <h1 className="font-bold tracking-[-0.04em] leading-[1.02]">
+            <span className="block overflow-hidden pb-[0.16em] -mb-[0.16em]">
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white"
+              >
+                {t.hero.headline1}
+              </motion.span>
+            </span>
 
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold text-white/40 tracking-[-0.035em] leading-[0.98]"
-            >
-              {t.hero.headline2}
-            </motion.h1>
-          </div>
+            <span className="block overflow-hidden pb-[0.16em] -mb-[0.16em] mt-3 md:mt-4">
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                className="block w-fit max-w-full text-4xl sm:text-5xl md:text-6xl xl:text-[4.25rem] text-balance text-gradient-accent pb-[0.12em] -mb-[0.12em]"
+              >
+                {t.hero.headline2}
+              </motion.span>
+            </span>
+          </h1>
 
           {/* Subtitle & Philosophy from CV */}
           <motion.p
@@ -171,10 +182,18 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex items-center gap-6 font-mono"
+          className="flex flex-wrap items-center gap-2 font-mono text-[11px]"
         >
-          <span>.NET Core • C# • SQL Server • Microservices</span>
-          <span className="hidden sm:inline">Jenkins CI/CD • ELK Stack</span>
+          {[".NET Core", "C#", "SQL Server", "Microservices", "Jenkins CI/CD", "ELK Stack"].map((tech, i) => (
+            <span
+              key={tech}
+              className={`px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] text-white/50 ${
+                i > 2 ? "hidden md:inline-block" : ""
+              }`}
+            >
+              {tech}
+            </span>
+          ))}
         </motion.div>
 
         <motion.a
@@ -182,7 +201,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex items-center gap-2 text-white/50 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-white/50 hover:text-white transition-colors shrink-0 whitespace-nowrap"
           data-cursor="pointer"
         >
           <span className="text-[11px] uppercase tracking-wider font-mono">{t.hero.scrollHint}</span>
