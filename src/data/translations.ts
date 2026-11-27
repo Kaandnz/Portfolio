@@ -63,7 +63,7 @@ export const translations = {
       badge: "03 // Yetenek & Teknoloji Havuzu",
       heading1: "Kullanılan Teknolojiler &",
       heading2: "Kurumsal Araçlar.",
-      subtitle: ".NET ekosisteminden veritabanı optimizasyonuna, CI/CD pipeline'larından test otomasyonuna uzanan yetkinlikler.",
+      subtitle: ".NET ekosisteminden veritabanı optimizasyonuna, WebRTC ve yapay zekâ entegrasyonlarından native Android ve macOS uygulamalarına uzanan yetkinlikler.",
     },
     experience: {
       badge: "04 // Kariyer Yolculuğu",
@@ -158,7 +158,7 @@ export const translations = {
       badge: "03 // Technical Laboratory",
       heading1: "Technical Stack &",
       heading2: "Enterprise Tooling.",
-      subtitle: "From .NET microservices and SQL performance tuning to Jenkins CI/CD pipelines and automated Selenium testing.",
+      subtitle: "From .NET microservices and SQL performance tuning to WebRTC, AI integrations and native Android and macOS apps.",
     },
     experience: {
       badge: "04 // Career Milestones",
