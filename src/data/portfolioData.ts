@@ -208,8 +208,8 @@ export const projectsData: ProjectItem[] = [
     ],
     liveUrl: "https://dailyrota.web.app",
     githubUrl: "https://github.com/Kaandnz/DailyRota",
-    accentColor: "#10b981",
-    image: "/images/projects/dailyrota.svg",
+    accentColor: "#f97316",
+    image: "/images/projects/dailyrota.webp",
     caseStudy: {
       overview: {
         tr: "Kullanıcıların farklı uygulamalara dağılan bütçe, görev, alışveriş ve takvim verilerini tek merkezde birleştiren; 'Marketten süt ve deterjan aldım 350 TL tuttu' veya bileşik finansal durum gibi serbest komutları işlem önizlemesi ve atomik onay ile anında sisteme işleyen, tam veri bağımsızlığı sunan hepsi-bir-arada kişisel yaşam yönetim merkezi.",
@@ -245,6 +245,76 @@ export const projectsData: ProjectItem[] = [
     },
   },
   {
+    id: "squadvoice",
+    title: "SquadVoice: P2P Voice & Game Streaming Hub",
+    year: "2026",
+    category: {
+      tr: "Gerçek Zamanlı İletişim / Çoklu Platform",
+      en: "Real-Time Communication / Cross-Platform",
+    },
+    role: {
+      tr: "Full Stack Geliştirici & Mimar",
+      en: "Full Stack Creator & Architect",
+    },
+    tagline: {
+      tr: "Arkadaş grupları için sunucusuz, P2P WebRTC tabanlı sesli sohbet, 1080p60 oyun yayını ve yazılı sohbet",
+      en: "Serverless P2P WebRTC voice chat, 1080p60 game streaming and text chat for friend groups",
+    },
+    description: {
+      tr: "Oda başına 10 kişilik, Discord benzeri ama tamamen kendine ait iletişim uygulaması. Ses ve görüntü bir sunucudan geçmeden P2P WebRTC ile akar; yapay zekâ destekli gürültü engelleme, 1080p60 ekran yayını, soundboard ve DM'ler tek bir React kod tabanıyla Web, Windows, macOS, Android ve iOS'ta çalışır.",
+      en: "A self-owned, Discord-style communication app for squads of up to 10. Audio and video flow peer-to-peer over WebRTC with no media server; AI noise suppression, 1080p60 screen sharing, a soundboard and DMs ship from a single React codebase to Web, Windows, macOS, Android and iOS.",
+    },
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "WebRTC (P2P Mesh)",
+      "Firebase Auth & RTDB",
+      "Tauri 2",
+      "Capacitor 8",
+      "Rust (Axum + SQLite)",
+      "AudioWorklet (WASM)",
+      "Cloudflare TURN",
+      "Playwright",
+    ],
+    githubUrl: "https://github.com/Kaandnz/SquadVoice",
+    accentColor: "#6366f1",
+    image: "/images/projects/squadvoice.webp",
+    caseStudy: {
+      overview: {
+        tr: "Küçük arkadaş gruplarının oyun oynarken veya takılırken kullanacağı; davetle girilen, sıfır maliyetli ve tamamen kendi kontrolündeki sesli/görüntülü iletişim platformu. Firebase yalnızca oturum açma, sohbet ve WebRTC sinyalleşmesi için kullanılır; medya hiçbir sunucuya uğramaz.",
+        en: "A zero-cost, invite-only voice and video platform for small friend groups to use while gaming or hanging out. Firebase only handles auth, chat and WebRTC signaling, so media never touches a server.",
+      },
+      challenge: {
+        tr: "Mobil veri ve CGNAT altında bile kopmayan, düşük gecikmeli ve yüksek kaliteli bir P2P ses ağı kurmak; oyun penceresi öndeyken çalışan global Bas-Konuş, Android'de arka planda kesintisiz ses ve WebView'in desteklemediği ekran paylaşımını tek bir kod tabanından çözmek.",
+        en: "Building a low-latency, high-fidelity P2P audio mesh that survives mobile data and CGNAT, while delivering in-game global push-to-talk, uninterrupted background audio on Android, and screen sharing where the WebView has no getDisplayMedia, all from one codebase.",
+      },
+      solution: {
+        tr: "Perfect negotiation, otomatik ICE restart ve geri çekilmeli yeniden teklif ile kendini onaran bir WebRTC mesh kuruldu; SDP Opus için (FEC, DTX, stereo) ayarlandı. RNNoise, GTCRN ve DeepFilterNet 3 gürültü engelleme WASM olarak AudioWorklet içinde çalışıyor. Masaüstünde Tauri global kısayolları, Android'de yerel Java Foreground ve MediaProjection servisleri, mobil veride Cloudflare TURN yedeği devrede.",
+        en: "A self-healing WebRTC mesh with perfect negotiation, automatic ICE restarts and back-off re-offers, plus Opus-tuned SDP (FEC, DTX, stereo). RNNoise, GTCRN and DeepFilterNet 3 noise suppression run as WASM inside AudioWorklets. Tauri global shortcuts on desktop, native Java Foreground and MediaProjection services on Android, and a Cloudflare TURN fallback for mobile data.",
+      },
+      keyFeatures: {
+        tr: [
+          "P2P WebRTC mesh: oda başına 10 kişi, kişi başı ping / paket kaybı / jitter grafiği ve P2P–TURN bağlantı göstergesi",
+          "5 modlu gürültü azaltma (RNNoise, GTCRN, DeepFilterNet 3), otomatik gürültü kapısı ve %0–%200 kişisel ses seviyesi",
+          "720p30 – 1080p60 ekran ve oyun yayını, sistem sesi paylaşımı, 1×–4× yakınlaştırma ve soundboard",
+          "Markdown sohbet, DM, tepkiler ve okundu bilgisi; Web, Windows, macOS, Android ve iOS (PWA) desteği",
+        ],
+        en: [
+          "P2P WebRTC mesh for 10 per room, with per-peer ping / loss / jitter graphs and a P2P vs. TURN indicator",
+          "5-mode noise suppression (RNNoise, GTCRN, DeepFilterNet 3), adaptive noise gate and 0–200% per-user volume",
+          "720p30 – 1080p60 screen and game streaming with system audio, 1×–4× zoom and a shared soundboard",
+          "Markdown chat, DMs, reactions and read receipts across Web, Windows, macOS, Android and iOS (PWA)",
+        ],
+      },
+      metrics: [
+        { label: { tr: "Medya Mimarisi", en: "Media Topology" }, value: "P2P WebRTC" },
+        { label: { tr: "Yayın Kalitesi", en: "Stream Quality" }, value: "1080p60" },
+        { label: { tr: "Platform", en: "Platforms" }, value: { tr: "5 Platform", en: "5 Platforms" } },
+        { label: { tr: "Altyapı Maliyeti", en: "Infra Cost" }, value: { tr: "0 ₺", en: "$0" } },
+      ],
+    },
+  },
+  {
     id: "sql-game",
     title: "SQL Quest: Data Detective",
     year: "2025",
@@ -267,8 +337,8 @@ export const projectsData: ProjectItem[] = [
     technologies: ["React", "TypeScript", "SQL (WASM)", "Tailwind CSS", "Firebase", "Web Audio API"],
     liveUrl: "https://learn-sql-game.web.app/",
     githubUrl: "https://github.com/Kaandnz/SQL-Game",
-    accentColor: "#38bdf8",
-    image: "/images/projects/sql-game.svg",
+    accentColor: "#f59e0b",
+    image: "/images/projects/sql-game.webp",
     caseStudy: {
       overview: {
         tr: "Geleneksel sıkıcı SQL dökümanlarını bir kenara bırakıp, yazılımcıların ve veri analistlerinin adli soruşturma senaryolarıyla eğlenerek SQL ustası olmalarını sağlayan bir oyun motoru.",
@@ -327,7 +397,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://periodictableviewer.web.app",
     githubUrl: "https://github.com/Kaandnz/PeriodicTable",
     accentColor: "#06b6d4",
-    image: "/images/projects/elementa.svg",
+    image: "/images/projects/elementa.webp",
     caseStudy: {
       overview: {
         tr: "Geleneksel statik periyodik tabloları modern reaktif web mimarisiyle yeniden tanımlayarak; araştırmacılar, kimyagerler ve öğrenciler için 118 elementin mikroskobik kuantum özelliklerinden makroskopik termodinamik faz dönüşümlerine kadar tüm bilimsel verileri anlık simülasyonlarla sunan etkileşimli bir dijital laboratuvar inşa etmek.",
@@ -360,6 +430,202 @@ export const projectsData: ProjectItem[] = [
         { label: { tr: "Faz Simülasyonu", en: "Phase Range" }, value: "0K - 6000K" },
         { label: { tr: "Arayüz Tepki Hızı", en: "Render Latency" }, value: "< 16ms" },
         { label: { tr: "Mimari", en: "Architecture" }, value: "Next 15 Edge" },
+      ],
+    },
+  },
+  {
+    id: "dnz-market",
+    title: "DNZ Market: Barcode Pricing & Stock PWA",
+    year: "2026",
+    category: {
+      tr: "Mobil PWA / Perakende",
+      en: "Mobile PWA / Retail",
+    },
+    role: {
+      tr: "Full Stack Geliştirici & Mimar",
+      en: "Full Stack Creator & Architect",
+    },
+    tagline: {
+      tr: "Telefon kamerasıyla barkod okutup anında fiyat gösteren, fiyat değiştiren ve satış yapan, çevrimdışı çalışan bakkal uygulaması",
+      en: "An offline-first grocery PWA that scans barcodes with the phone camera to check, change and sell at the right price",
+    },
+    description: {
+      tr: "Mahalle bakkalı için geliştirilen barkodlu fiyat takip uygulaması (PWA). Telefonla barkod okutulur, fiyat anında görünür; aynı ekrandan fiyat değiştirme, mal kabul, satış sepeti, stok sayımı, toplu zam ve raf etiketi basımı yapılır. Kayıtlı olmayan ürünlerin adı otomatik bulunur, internet kesildiğinde de çalışır.",
+      en: "A barcode-driven pricing PWA built for a neighbourhood grocery. Scan with the phone camera and the price appears instantly; the same screen handles price changes, goods receiving, a sale cart, stock counts, bulk price increases and printable shelf labels. Unknown products are named automatically, and everything keeps working offline.",
+    },
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "PWA",
+      "Firebase Auth & Firestore",
+      "Barcode Detection API",
+      "ZXing (WASM)",
+      "Tailwind CSS",
+      "Vitest",
+      "GitHub Actions",
+    ],
+    liveUrl: "https://dnzbarcode.web.app",
+    githubUrl: "https://github.com/Kaandnz/DNZ-Market",
+    accentColor: "#10b981",
+    image: "/images/projects/dnz-market.webp",
+    caseStudy: {
+      overview: {
+        tr: "Kâğıt fiyat listeleri ve ezberle yürüyen bir bakkalın fiyat, stok ve satış işlerini ek donanım gerektirmeden, yalnızca telefon kamerasıyla yönetilebilir hale getiren çok kullanıcılı market uygulaması.",
+        en: "A multi-user store app that moves a grocery's paper price lists and memory-based pricing onto the phone camera, with no extra hardware required.",
+      },
+      challenge: {
+        tr: "Android ve iPhone'un farklı barkod okuma yetenekleriyle tutarlı ve hızlı okuma sağlamak; dükkânda internet kesildiğinde bile fiyat görüp satış yapabilmek; çalışanların fiyat değiştirmesini yetkiyle sınırlamak ve parayı kuruş hassasiyetinde, yuvarlama hatası olmadan işlemek.",
+        en: "Delivering fast, consistent scanning across Android's native detector and iPhone's lack of one, keeping price checks and sales working when the shop's internet drops, limiting price edits by role, and handling money to the kuruş without rounding errors.",
+      },
+      solution: {
+        tr: "Android'de tarayıcının yerel BarcodeDetector'ını, iPhone'da ZXing WebAssembly'yi kullanan hibrit bir tarayıcı yazıldı (USB/Bluetooth barkod tabancası da çalışır). Firestore çevrimdışı önbelleği internet gelince eşitleniyor, yetkiler Firestore güvenlik kurallarıyla sunucu tarafında zorlanıyor ve tüm fiyatlar kuruş cinsinden tam sayı tutuluyor. Her push'ta tip kontrolü, birim testleri ve güvenlik kuralı testleri geçmeden yayın yapılmıyor.",
+        en: "A hybrid scanner uses the browser's native BarcodeDetector on Android and ZXing WebAssembly on iPhone (USB/Bluetooth scanner guns work too). Firestore offline persistence syncs when the connection returns, permissions are enforced server-side by Firestore security rules, and every price is stored as integer kuruş. Each push must pass type checks, unit tests and security-rule tests before it deploys.",
+      },
+      keyFeatures: {
+        tr: [
+          "4 modlu tarama ekranı: Fiyat Gör, Değiştir, Mal Kabul ve sepetli Satış",
+          "Kayıtsız ürünün adını otomatik bulma, internette fiyat arama ve sesle ürün arama",
+          "Stok sayımı, yüzde veya tutar bazlı toplu zam, fiyat geçmişi ve Excel/CSV yedekleme",
+          "Barkodlu raf etiketi basımı, çok kullanıcılı market yönetimi ve rol bazlı yetkiler",
+        ],
+        en: [
+          "Four-mode scan screen: Price Check, Change Price, Goods Receiving and a cart-based Sale mode",
+          "Automatic naming of unknown products, web price lookup and voice product search",
+          "Stock counts, percentage or fixed-amount bulk price increases, price history and Excel/CSV backup",
+          "Printable barcode shelf labels, multi-user store management and role-based permissions",
+        ],
+      },
+      metrics: [
+        { label: { tr: "Barkod Motoru", en: "Scanner" }, value: { tr: "Yerel + ZXing WASM", en: "Native + ZXing WASM" } },
+        { label: { tr: "Bağlantı", en: "Connectivity" }, value: { tr: "Çevrimdışı Öncelikli", en: "Offline-First" } },
+        { label: { tr: "Para Hassasiyeti", en: "Money Precision" }, value: { tr: "Kuruş (Tam Sayı)", en: "Integer Kuruş" } },
+      ],
+    },
+  },
+  {
+    id: "koi-theme",
+    title: "Koi Theme: Live Pond Wallpaper for macOS",
+    year: "2026",
+    category: {
+      tr: "macOS Uygulaması / WebGL",
+      en: "macOS App / WebGL",
+    },
+    role: {
+      tr: "Yaratıcı Geliştirici & Mimar",
+      en: "Full Stack Creator & Architect",
+    },
+    tagline: {
+      tr: "Mac masaüstünü süzülen koi balıkları, ışık huzmeleri, yağmur ve mevsimlerle yaşayan bir gölete çeviren canlı duvar kâğıdı",
+      en: "A live wallpaper that turns your Mac desktop into a living pond of gliding koi, light beams, rain and seasons",
+    },
+    description: {
+      tr: "Swift ve WKWebView üzerinde tek geçişli WebGL ile çizilen, tamamen çevrimdışı çalışan canlı koi göleti. 10 tema, 8 hazır görünüm, 5 performans modu, çoklu ekran desteği, beslendikleri yeri ve saati hatırlayan balıklar ve 12 dil; hesap, reklam, ağ isteği veya telemetri yok.",
+      en: "A fully offline live koi pond rendered in a single WebGL pass on top of Swift and WKWebView. 10 themes, 8 ready-made looks, 5 performance modes, multi-display support, fish that remember where and when you feed them, and 12 languages, with no accounts, ads, network requests or telemetry.",
+    },
+    technologies: ["Swift", "AppKit", "SwiftUI", "WKWebView", "WebGL", "JavaScript", "Node.js Tests"],
+    githubUrl: "https://github.com/Kaandnz/Koi-Theme-Mac",
+    accentColor: "#14b8a6",
+    image: "/images/projects/koi-theme.webp",
+    caseStudy: {
+      overview: {
+        tr: "Masaüstü duvar kâğıdını süzülen koi balıkları, nilüferler, yusufçuklar, bir kurbağa, yağmur ve gün boyu değişen ışıkla yaşayan bir gölete çeviren; kodu, çizimleri ve ikonu sıfırdan yazılmış bir macOS uygulaması.",
+        en: "A macOS app that turns the desktop wallpaper into a calm, living pond (gliding koi, lily pads, dragonflies, a frog, rain and light that shifts through the day) with all code, artwork and icon written from scratch.",
+      },
+      challenge: {
+        tr: "Masaüstünde sürekli çalışan bir animasyonu pili ve GPU'yu yormadan sürdürmek; her balığı doğal hareket ettirmek; çoklu ekran, Spaces ve kapanan pencerelerde doğru davranmak ve tıklamaları masaüstü dosyalarından çalmamak.",
+        en: "Running an always-on desktop animation without draining battery or GPU, giving every fish natural motion, behaving correctly across multiple displays, Spaces and covered screens, and never stealing clicks from desktop files.",
+      },
+      solution: {
+        tr: "Davranış, durumu birebir dışa/içe aktarılabilen deterministik bir simülasyon çekirdeğine (pond-core.js) ayrıldı. Çizim tek geçişli WebGL'e taşındı: koi'ler omurga boyunca CPU'da piksel piksel tek bir atlasa rasterize ediliyor, geri kalan her şey ortak sprite atlasından toplu çiziliyor. Swift tarafındaki görünürlük kapısı kapalı ekranları duraklatıp boştakileri yavaşlatarak tek ekranda GPU payını ≈%6'ya indiriyor.",
+        en: "Behaviour lives in a deterministic simulation core (pond-core.js) whose state can be exported and restored exactly. Drawing is a single WebGL pass: koi are rasterised pixel by pixel along their spines into one atlas, and everything else is batched from a shared sprite atlas. A Swift visibility gate pauses covered displays and slows idle ones, keeping GPU share around 6% on a single display.",
+      },
+      keyFeatures: {
+        tr: [
+          "12 eklemli omurgayla süzülme–atılma ritminde yüzen koi'ler, büyük balıklardan kaçan küçük balık sürüsü ve günler içinde büyüyen yavrular",
+          "10 tema (gün saatine göre değişen ve parlayan temalar), 8 hazır görünüm, yağmur, sakura, sonbahar yaprakları ve kar",
+          "Tıklayınca balık çağırma, ⌥ + tık ile yem atma ve ekran başına yer/saat bazlı beslenme hafızası",
+          "Ekran başına ayrı gölet, ekran koruyucu, foto/GIF yakalama, menü çubuğu kontrolleri ve 12 dil (sağdan sola dahil)",
+        ],
+        en: [
+          "Koi swimming on a 12-joint spine with a glide-and-burst rhythm, a shoal that flees the big fish, and babies that grow up over days",
+          "10 themes (time-of-day and glowing themes), 8 ready-made looks, rain, sakura, autumn leaves and snow",
+          "Click to call the fish, ⌥ + click to feed, and a per-display memory of where and when you feed them",
+          "A separate pond per display, screen saver, photo/GIF capture, menu bar controls and 12 languages (incl. right-to-left)",
+        ],
+      },
+      metrics: [
+        { label: { tr: "GPU Payı (1 Ekran)", en: "GPU Share (1 Display)" }, value: { tr: "≈ %6", en: "≈ 6%" } },
+        { label: { tr: "Render", en: "Rendering" }, value: { tr: "Tek Geçiş WebGL", en: "Single-Pass WebGL" } },
+        { label: { tr: "Tema & Dil", en: "Themes & Languages" }, value: "10 · 12" },
+        { label: { tr: "Gizlilik", en: "Privacy" }, value: { tr: "%100 Çevrimdışı", en: "100% Offline" } },
+      ],
+    },
+  },
+  {
+    id: "nodoomscroll",
+    title: "NoDoomScroll: Anti-Doomscroll Guard for Android",
+    year: "2026",
+    category: {
+      tr: "Android Uygulaması / Dijital Sağlık",
+      en: "Android App / Digital Wellbeing",
+    },
+    role: {
+      tr: "Mobil Geliştirici & Mimar",
+      en: "Mobile Creator & Architect",
+    },
+    tagline: {
+      tr: "YouTube Shorts, Instagram Reels, TikTok, Facebook Reels ve X Shorts akışlarını algılayıp sonsuz kaydırma döngüsünü kesen native Android uygulaması",
+      en: "A native Android app that detects YouTube Shorts, Instagram Reels, TikTok, Facebook Reels and X Shorts feeds and breaks the infinite-scroll loop",
+    },
+    description: {
+      tr: "Sosyal medyayı tamamen yasaklamak yerine, yalnızca kısa video akışına girildiği anda geri ya da ana ekrana yönlendirerek sürtünme yaratan, Kotlin ve Jetpack Compose ile yazılmış hafif bir anti-doomscroll uygulaması. Normal videolar, ana akışlar ve DM'ler açık kalır; ağ izni yoktur, veri toplamaz.",
+      en: "A lightweight anti-doomscroll app written in Kotlin and Jetpack Compose. Instead of banning social media outright, it adds friction only when a short-video feed opens, sending you back or home, while regular videos, home feeds and DMs stay untouched. No network permission, no data collection.",
+    },
+    technologies: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "Accessibility Service API",
+      "Coroutines",
+      "JUnit",
+      "GitHub Actions",
+      "Firebase App Distribution",
+    ],
+    githubUrl: "https://github.com/Kaandnz/NoDoomScroll",
+    accentColor: "#0ea5e9",
+    image: "/images/projects/nodoomscroll.webp",
+    caseStudy: {
+      overview: {
+        tr: "Kısa video platformlarının farkında olmadan saatler tüketen sonsuz kaydırma akışlarına karşı, uygulamaların kendisini engellemeden yalnızca bağımlılık yaratan akışı hedefleyen bir dijital sağlık aracı.",
+        en: "A digital-wellbeing tool that targets only the addictive short-video feed inside social apps, rather than blocking the apps themselves.",
+      },
+      challenge: {
+        tr: "Her platformun Shorts/Reels oynatıcısını, uygulamalar güncellendikçe değişen erişilebilirlik ağacından güvenilir biçimde ayırt etmek; özellikle Facebook'ta ana akıştaki Reels raflarını ve normal gönderileri yanlışlıkla engellememek ve arka arkaya tetiklenen geri atma döngülerini önlemek.",
+        en: "Reliably telling each platform's Shorts/Reels player apart in an accessibility tree that shifts with every app update (especially on Facebook, without hitting home-feed Reels shelves or normal posts) and preventing repeated back-navigation loops.",
+      },
+      solution: {
+        tr: "Android'den tamamen bağımsız, saf Kotlin bir kural ve analiz motoru (DoomScrollRuleEngine, FacebookAccessibilityAnalyzer) yazıldı; view ID, Activity sınıfı, seçili sekme, dikey aksiyon çubuğu geometrisi ve tam ekran oynatıcı etiketlerinden gelen sinyaller birleştiriliyor. Platform bazlı 1200 ms'lik CooldownGate döngüleri engelliyor, kaydırma freni ek izin gerektirmeyen bir erişilebilirlik overlay'iyle mola ekranı gösteriyor. Motor JVM birim testleriyle doğrulanıyor.",
+        en: "A pure-Kotlin rule and analysis engine (DoomScrollRuleEngine, FacebookAccessibilityAnalyzer) with no Android dependencies fuses signals from view IDs, Activity classes, selected tabs, vertical action-bar geometry and full-screen player labels. A per-platform 1200 ms CooldownGate stops loops, and the scroll brake shows a break screen through an accessibility overlay that needs no extra permission. The engine is covered by JVM unit tests.",
+      },
+      keyFeatures: {
+        tr: [
+          "5 platformda kısa video engelleme: YouTube Shorts, Instagram Reels, TikTok, Facebook Reels ve X Shorts",
+          "Sıkı / Dengeli / Esnek eşikli Sonsuz Kaydırma Freni ve 5 saniyelik nefes molası ekranı",
+          "Cihaz içinde tutulan, gece yarısı otomatik sıfırlanan günlük koruma özeti",
+          "Gizlilik odaklı tasarım: yalnızca hedef paketleri dinler, ağ izni ve veri toplama yok; Logcat kalibrasyon modu",
+        ],
+        en: [
+          "Short-video blocking across 5 platforms: YouTube Shorts, Instagram Reels, TikTok, Facebook Reels and X Shorts",
+          "Infinite-scroll brake with Strict / Balanced / Relaxed thresholds and a 5-second breathing break",
+          "On-device daily protection summary that resets automatically at midnight",
+          "Privacy-first: listens only to target packages, no network permission or data collection; Logcat calibration mode",
+        ],
+      },
+      metrics: [
+        { label: { tr: "Kapsanan Platform", en: "Platforms Covered" }, value: "5" },
+        { label: { tr: "Döngü Koruması", en: "Loop Guard" }, value: "1200 ms Cooldown" },
+        { label: { tr: "Ağ İzni", en: "Network Access" }, value: { tr: "Yok", en: "None" } },
       ],
     },
   },

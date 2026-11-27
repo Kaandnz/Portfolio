@@ -100,12 +100,12 @@ export default function PortraitCard() {
           </div>
           <div>
             <div className="text-sm font-bold text-white tracking-tight">{personalInfo.name}</div>
-            <div className="text-[11px] text-white/50 font-mono">
+            <div className="text-xs font-medium text-white/50 tracking-[-0.005em]">
               {personalInfo.title[language]}
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-mono">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span>{isTr ? "Aktif & Hazır" : "Available"}</span>
         </div>
@@ -113,9 +113,11 @@ export default function PortraitCard() {
 
       {/* Center Visual: Executive Engineering Overview (No code snippet) */}
       <div className="my-auto z-10 space-y-3" style={{ transform: "translateZ(40px)" }}>
-        <div className="flex items-center justify-between text-[11px] font-mono text-white/40 pb-1 border-b border-white/[0.06]">
-          <span>{isTr ? "// MÜHENDİSLİK ÖZETİ" : "// ENGINEERING OVERVIEW"}</span>
-          <span className="flex items-center gap-1 text-sky-400">
+        <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+          <span className="text-[13px] font-semibold tracking-[-0.01em] text-white/70">
+            {isTr ? "Mühendislik Özeti" : "Engineering Overview"}
+          </span>
+          <span className="flex items-center gap-1 text-xs font-medium text-sky-400">
             <Sparkles size={12} />
             <span>Full Stack</span>
           </span>
@@ -133,10 +135,10 @@ export default function PortraitCard() {
                   <Icon size={16} className={item.iconColor} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] font-mono text-white/50 uppercase tracking-wider">
+                  <div className="text-[11px] font-medium text-white/45 leading-tight">
                     {item.title}
                   </div>
-                  <div className="text-xs font-semibold text-white/90 truncate">
+                  <div className="mt-0.5 text-[13px] font-semibold tracking-[-0.01em] text-white/90 truncate">
                     {item.value}
                   </div>
                 </div>
@@ -147,16 +149,16 @@ export default function PortraitCard() {
 
         {/* Quick Tag Pills */}
         <div className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
+          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] font-medium text-white/60">
             {isTr ? "Rota Optimizasyonu" : "Route Optimization"}
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
+          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] font-medium text-white/60">
             {isTr ? "B2B & E-Ticaret" : "B2B & E-Commerce"}
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
+          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] font-medium text-white/60">
             SAP & Panorama
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-white/60">
+          <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] font-medium text-white/60">
             ETL Pipelines
           </span>
         </div>
@@ -171,14 +173,14 @@ export default function PortraitCard() {
               {educationData.school[language]}
             </span>
           </div>
-          <span className="px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-[10px] font-mono text-white/70">
+          <span className="shrink-0 px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-[10px] font-medium tabular-nums text-white/70">
             GPA: {educationData.gpa}
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-[11px] text-white/40 font-mono">
+        <div className="flex items-center justify-between gap-3 text-[11px] text-white/45">
           <span>{educationData.degree[language]}</span>
-          <span className="text-emerald-400 flex items-center gap-1">
+          <span className="shrink-0 font-medium text-emerald-400 flex items-center gap-1">
             <CheckCircle2 size={12} /> {isTr ? "Doğrulandı" : "Verified"}
           </span>
         </div>
