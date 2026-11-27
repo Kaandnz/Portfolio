@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, Server, Database, Activity, ShieldCheck, Wrench, Layers, Globe } from "lucide-react";
+import { Cpu, Server, Database, Activity, ShieldCheck, Wrench, Layers, Globe, Smartphone, Radio, BrainCircuit } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import { skillsGrouped } from "@/data/portfolioData";
 import { useLanguage } from "@/context/LanguageContext";
@@ -17,7 +17,10 @@ export default function Skills() {
     { key: "backend", icon: Server, data: skillsGrouped.backend },
     { key: "enterprise", icon: Layers, data: skillsGrouped.enterprise },
     { key: "frontend", icon: Globe, data: skillsGrouped.frontend },
+    { key: "mobile", icon: Smartphone, data: skillsGrouped.mobile },
+    { key: "realtime", icon: Radio, data: skillsGrouped.realtime },
     { key: "database", icon: Database, data: skillsGrouped.database },
+    { key: "cloud", icon: BrainCircuit, data: skillsGrouped.cloud },
     { key: "devops", icon: Activity, data: skillsGrouped.devops },
     { key: "testing", icon: ShieldCheck, data: skillsGrouped.testing },
     { key: "tools", icon: Wrench, data: skillsGrouped.tools },

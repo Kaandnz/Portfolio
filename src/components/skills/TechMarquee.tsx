@@ -24,6 +24,11 @@ export default function TechMarquee() {
     "APPLE FLUID MOTION",
     isTr ? "ROTA OPTİMİZASYONU" : "ROUTE OPTIMIZATION",
     "TYPESCRIPT",
+    "WEBRTC",
+    "KOTLIN",
+    "JETPACK COMPOSE",
+    "SWIFTUI",
+    "RUST",
   ];
 
   const marqueeItems2 = [
@@ -43,6 +48,12 @@ export default function TechMarquee() {
     "SQL QUERY TUNING",
     "DATABASE INDEXING",
     "AGILE / SCRUM",
+    "TAURI",
+    "FIREBASE",
+    "WEBGL",
+    "WEBASSEMBLY",
+    "GEMINI AI",
+    "CLOUDFLARE WORKERS",
   ];
   return (
     <div className="w-full overflow-hidden py-8 space-y-3 select-none opacity-80 mask-fade-x">

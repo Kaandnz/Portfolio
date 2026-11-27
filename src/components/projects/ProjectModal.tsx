@@ -61,10 +61,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       document.documentElement.style.overflow = "";
 
       // Restore scroll position
-      window.scrollTo(0, scrollY);
+      // "instant" overrides <html class="scroll-smooth">; a plain scrollTo
+      // would animate from the top of the page back down to scrollY.
+      window.scrollTo({ top: scrollY, behavior: "instant" });
 
-      // Resume Lenis and re-sync
+      // Resume Lenis and re-sync. Lenis measured the page while the body was
+      // fixed (one viewport tall), so re-measure first or scrollTo clamps to 0.
       if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.resize();
         window.__lenis.start();
         window.__lenis.scrollTo(scrollY, { immediate: true });
       }
