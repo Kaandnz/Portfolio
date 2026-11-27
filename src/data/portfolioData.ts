@@ -11,6 +11,8 @@ export interface ProjectItem {
   description: LocalizedString;
   technologies: string[];
   liveUrl?: string;
+  /** Overrides the default live-link label, e.g. when the link is a company site rather than the app itself. */
+  liveLabel?: LocalizedString;
   githubUrl?: string;
   accentColor: string;
   image: string;
@@ -53,8 +55,8 @@ export const personalInfo = {
   github: "https://github.com/Kaandnz",
   linkedin: "https://www.linkedin.com/in/ka%C4%9Fandeniz/",
   bio: {
-    tr: "Java Spring Boot, .NET Core, C# ve modern web teknolojileriyle (Angular, React) ölçeklenebilir kurumsal çözümler, B2B platformları, e-ticaret sistemleri ve rota optimizasyonu altyapıları tasarlayan Full Stack Geliştirici. SAP ve Panorama kurumsal entegrasyonları, nopCommerce e-ticaret mimarileri, PostgreSQL & SQL Server veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında kanıtlanmış tecrübe. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
-    en: "Full Stack Developer architecting scalable enterprise solutions, B2B platforms, e-commerce systems, and route optimization infrastructure using Java Spring Boot, .NET Core, C#, and modern web technologies (Angular, React). Proven track record in enterprise SAP and Panorama integrations, nopCommerce platforms, PostgreSQL & SQL Server performance tuning, automated testing (Selenium), and CI/CD pipelines (Jenkins). Focused on clean architecture, microservices, and robust product delivery.",
+    tr: "Java Spring Boot, .NET Core, C# ve modern web teknolojileriyle (Angular, React) kurumsal çözümler, B2B platformları, e-ticaret sistemleri ve rota optimizasyonu uygulamaları geliştiren Full Stack Geliştirici. SAP ve Panorama kurumsal entegrasyonları, nopCommerce e-ticaret mimarileri, PostgreSQL & SQL Server veritabanı optimizasyonları, test otomasyonu (Selenium) ve CI/CD süreçleri (Jenkins) konularında deneyim. Temiz kod, mikroservis mimarileri ve uçtan uca ürün teslimatına odaklanan mühendislik yaklaşımı.",
+    en: "Full Stack Developer building enterprise solutions, B2B platforms, e-commerce systems, and route optimization applications with Java Spring Boot, .NET Core, C#, and modern web technologies (Angular, React). Experience with enterprise SAP and Panorama integrations, nopCommerce e-commerce, PostgreSQL & SQL Server database optimization, test automation (Selenium), and CI/CD (Jenkins). Focused on clean code, microservice architectures, and end-to-end product delivery.",
   },
 };
 
@@ -73,11 +75,11 @@ export const projectsData: ProjectItem[] = [
     },
     tagline: {
       tr: "C# & ASP.NET Core nopCommerce ile B2B, E-Ticaret ve Ödeme Sistemleri",
-      en: "Scalable B2B, E-Commerce & Payment Systems with C# & nopCommerce",
+      en: "B2B, E-Commerce & Payment Systems with C# & nopCommerce",
     },
     description: {
       tr: "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformu ve ödeme sistemleri entegrasyonlu Düzey e-ticaret altyapısı.",
-      en: "Enterprise B2B and e-commerce platforms engineered on nopCommerce with C# and ASP.NET Core. Powers end-to-end order processing, customer pricing, tiered discount rules, secure payment gateway integrations, and SAP/Panorama enterprise synchronization.",
+      en: "Enterprise B2B and e-commerce platforms built on nopCommerce with C# and ASP.NET Core. Covers order processing, customer pricing, tiered discount rules, payment system integrations, and SAP/Panorama synchronization.",
     },
     technologies: [".NET Core", "C#", "ASP.NET Core", "nopCommerce", "MS SQL Server", "Payment Systems", "SAP", "Panorama", "RESTful APIs"],
     liveUrl: "https://www.duzeymarket.com/",
@@ -85,35 +87,35 @@ export const projectsData: ProjectItem[] = [
     image: "/images/projects/duzey-market.webp",
     caseStudy: {
       overview: {
-        tr: "Türkiye genelindeki kurumsal bayilerin ve müşterilerin sipariş, dinamik fiyatlandırma, kampanya indirimleri ve güvenli online ödeme süreçlerini kesintisiz yürüten yüksek hacimli B2B ve e-ticaret ekosistemi.",
-        en: "Nationwide enterprise B2B and e-commerce ecosystem facilitating streamlined digital ordering, tiered customer pricing, promotional discounts, and payment processing.",
+        tr: "Düzey'in bayi ve müşterileri için sipariş, dinamik fiyatlandırma, kampanya indirimleri ve online ödeme süreçlerini yürüten B2B ve e-ticaret platformu.",
+        en: "B2B and e-commerce platform for Düzey's dealers and customers, covering ordering, dynamic pricing, promotional discounts, and online payments.",
       },
       challenge: {
-        tr: "Farklı müşteri segmentlerine özel dinamik fiyat/iskonto matrislerini, karmaşık ödeme sistemlerini ve SAP/Panorama stok-sipariş senkronizasyonunu yüksek eşzamanlılık altında hatasız işletmek.",
-        en: "Handling complex customer-specific pricing matrixes, multi-provider payment integrations, and high-concurrency order processing in lockstep with SAP and Panorama.",
+        tr: "Farklı müşteri segmentlerine özel dinamik fiyat/iskonto matrislerini, karmaşık ödeme sistemlerini ve SAP/Panorama stok-sipariş senkronizasyonunu birlikte doğru çalıştırmak.",
+        en: "Keeping customer-specific pricing and discount matrices, complex payment systems, and SAP/Panorama stock and order synchronization working correctly together.",
       },
       solution: {
         tr: "nopCommerce çekirdeği kurumsal ihtiyaçlara göre özelleştirildi; güvenli ödeme altyapıları, Panorama ve SAP veri hatları bağlandı; Onay Yönetim Sistemi API'leri ile operasyonel süreçler otomatikleştirildi.",
-        en: "Engineered bespoke nopCommerce enterprise plugins, integrated multi-tier payment gateways, built robust Panorama and SAP connectors, and deployed centralized Approval Management APIs.",
+        en: "Customized the nopCommerce core for business needs, connected secure payment systems and Panorama and SAP data lines, and automated operational processes with Approval Management APIs.",
       },
       keyFeatures: {
         tr: [
           "C# ve ASP.NET Core nopCommerce üzerinde sipariş, müşteri, dinamik fiyat ve indirim yönetimi",
           "Düzey e-ticaret projesinde güvenli ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel modüller",
-          "SAP ve Panorama kurumsal sistemleriyle kesintisiz çift yönlü sipariş ve stok senkronizasyonu",
-          "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'leri",
+          "SAP ve Panorama kurumsal sistemleriyle çift yönlü sipariş ve stok senkronizasyonu",
+          "Saha operasyonları için merkezi Onay Yönetim Sistemi RESTful API'leri",
         ],
         en: [
-          "Comprehensive order, customer tier, dynamic pricing, and discount rule management on nopCommerce",
-          "Secure payment gateway integration, Panorama synchronization, and tailored enterprise e-commerce modules",
-          "Seamless bidirectional order and inventory synchronization with SAP and Panorama",
+          "Order, customer tier, dynamic pricing, and discount rule management on nopCommerce",
+          "Payment system integration, Panorama synchronization, and custom e-commerce modules",
+          "Bidirectional order and inventory synchronization with SAP and Panorama",
           "Centralized Approval Management REST API suite automating field workflow approvals",
         ],
       },
       metrics: [
         { label: { tr: "Mimari", en: "Architecture" }, value: "nopCommerce .NET" },
         { label: { tr: "Entegrasyon", en: "Enterprise Sync" }, value: "SAP & Panorama" },
-        { label: { tr: "Ödeme Altyapısı", en: "Payment Gateways" }, value: "3D Secure / POS" },
+        { label: { tr: "Ödeme Altyapısı", en: "Payments" }, value: { tr: "Online Ödeme / POS", en: "Online Payments / POS" } },
       ],
     },
   },
@@ -135,37 +137,38 @@ export const projectsData: ProjectItem[] = [
     },
     description: {
       tr: "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulaması. SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimini ve raporlanmasını sağlar.",
-      en: "Enterprise fleet logistics and route optimization web application engineered with Angular, Java Spring Boot, and PostgreSQL. Features interactive map-based dispatch, vehicle and driver management, and automated distribution tracking via SAP and Panorama integrations.",
+      en: "Enterprise fleet logistics and route optimization web application built with Angular, Java Spring Boot, and PostgreSQL. Offers route optimization, map-based planning, and vehicle and driver management, with distribution management and reporting through SAP and Panorama integrations.",
     },
     technologies: ["Java Spring Boot", "Angular", "PostgreSQL", "SAP Integration", "Panorama", "RESTful APIs", "Docker"],
     liveUrl: "https://duzey.com.tr",
+    liveLabel: { tr: "Düzey (şirket sitesi)", en: "Düzey (company site)" },
     accentColor: "#06b6d4",
     image: "/images/projects/route-opt.webp",
     caseStudy: {
       overview: {
-        tr: "Türkiye genelindeki dağıtım filolarının rota planlamasını, harita üzerinden araç ve sürücü koordinasyonunu ve sevkiyat verimliliğini gerçek zamanlı yöneten kurumsal web platformu.",
-        en: "High-throughput dispatch platform managing nationwide distribution routes, interactive map planning, driver-vehicle assignments, and operational delivery metrics in real time.",
+        tr: "Dağıtım araçları için harita üzerinden rota planlama, araç ve sürücü yönetimi ve sevkiyat raporlaması sunan kurumsal web platformu.",
+        en: "Enterprise web platform for distribution vehicles: map-based route planning, vehicle and driver management, and delivery reporting.",
       },
       challenge: {
-        tr: "Yüzlerce dağıtım aracının değişken teslimat noktalarını, harita üzerinde anlık mesafe ve operasyonel kısıtlarla optimize ederek SAP ve Panorama ile gecikmesiz senkronize etmek.",
-        en: "Optimizing dynamic delivery waypoints, vehicle capacity constraints, and driver schedules on live map interfaces while maintaining continuous synchronization with SAP and Panorama backends.",
+        tr: "Değişken teslimat noktalarını mesafe ve operasyonel kısıtlara göre harita üzerinde sıralamak ve sonucu SAP ve Panorama ile senkron tutmak.",
+        en: "Ordering changing delivery stops on a map against distance and operational constraints, and keeping the result in sync with SAP and Panorama.",
       },
       solution: {
-        tr: "Java Spring Boot ve PostgreSQL ile yüksek performanslı rota optimizasyon servisleri geliştirildi; Angular ile harita tabanlı interaktif yönetim panosu kurgulandı ve çift yönlü SAP/Panorama entegrasyonları kuruldu.",
-        en: "Engineered scalable route calculation backend services using Java Spring Boot and PostgreSQL, paired with a responsive Angular map UI and reliable bidirectional SAP/Panorama data connectors.",
+        tr: "Java Spring Boot ve PostgreSQL ile rota optimizasyon servisleri geliştirildi; Angular ile harita tabanlı interaktif yönetim panosu kurgulandı ve çift yönlü SAP/Panorama entegrasyonları kuruldu.",
+        en: "Built route calculation backend services with Java Spring Boot and PostgreSQL, an Angular map-based management dashboard, and bidirectional SAP/Panorama data connectors.",
       },
       keyFeatures: {
         tr: [
           "Harita üzerinden interaktif rota planlama, dinamik durak sıralaması ve rota optimizasyonu",
           "Kapsamlı araç filosu, sürücü yönetimi ve sevkiyat durum takibi",
-          "SAP ve Panorama sistemleriyle gerçek zamanlı çift yönlü veri entegrasyonu",
+          "SAP ve Panorama sistemleriyle çift yönlü veri entegrasyonu",
           "Dağıtım süreçlerinin uçtan uca yönetimi, rota sapmaları ve teslimat süreleri için operasyonel raporlama",
         ],
         en: [
-          "Interactive map-based route planning, dynamic waypoint sorting, and algorithmic route optimization",
-          "Comprehensive fleet asset management, driver assignment tracking, and live shipment dispatch status",
-          "Real-time bidirectional enterprise data synchronization with SAP and Panorama systems",
-          "Operational telemetry and analytics reporting for distribution turnaround and route variance",
+          "Interactive map-based route planning, dynamic stop ordering, and route optimization",
+          "Fleet management, driver assignment, and shipment status tracking",
+          "Bidirectional data integration with SAP and Panorama systems",
+          "End-to-end distribution management with operational reporting on route deviations and delivery times",
         ],
       },
       metrics: [
@@ -184,8 +187,8 @@ export const projectsData: ProjectItem[] = [
       en: "Mobile Web / Personal Life & Finance Hub",
     },
     role: {
-      tr: "Full Stack Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "Türkçe Sesli & Yazılı Asistanlı, Çoklu Yapay Zeka Fallback Zincirli ve Bulut Kasalı Yaşam Yönetim Merkezi",
@@ -193,7 +196,7 @@ export const projectsData: ProjectItem[] = [
     },
     description: {
       tr: "Finans, bütçe, günlük görevler, alışveriş, ev stokları, hedefler ve araç bakımını tek ekranda toplayan; Türkçe sesli ve yazılı serbest komutları işlem önizlemesi ve atomik onay ile hayata geçiren hibrit yapay zeka (Gemini, Groq, Ollama) destekli kişisel yönetim merkezi.",
-      en: "An all-in-one personal operating hub unifying personal finance, tasks, groceries, pantry inventory, habits, and vehicle telemetry—powered by conversational Turkish voice/text commands, transactional action previews, offline rules, and resilient multi-model AI fallback.",
+      en: "An all-in-one personal hub for finance, tasks, groceries, pantry inventory, habits, and vehicle maintenance, driven by conversational Turkish voice/text commands, transactional action previews, offline rules, and resilient multi-model AI fallback.",
     },
     technologies: [
       "React 19",
@@ -213,15 +216,15 @@ export const projectsData: ProjectItem[] = [
     caseStudy: {
       overview: {
         tr: "Kullanıcıların farklı uygulamalara dağılan bütçe, görev, alışveriş ve takvim verilerini tek merkezde birleştiren; 'Marketten süt ve deterjan aldım 350 TL tuttu' veya bileşik finansal durum gibi serbest komutları işlem önizlemesi ve atomik onay ile anında sisteme işleyen, tam veri bağımsızlığı sunan hepsi-bir-arada kişisel yaşam yönetim merkezi.",
-        en: "A unified personal operating ecosystem replacing fragmented finance, task, grocery, and calendar apps. It converts complex conversational voice and text commands into atomic, pre-validated actions with complete data sovereignty and seamless calendar export.",
+        en: "A single personal hub that replaces separate finance, task, grocery, and calendar apps. It turns free-form voice and text commands into previewed, atomically confirmed actions, and your data stays yours with full JSON backup and calendar export.",
       },
       challenge: {
         tr: "Kullanıcıyı tek bir yapay zeka sağlayıcısına veya sürekli internete bağımlı kılmadan Türkçe serbest niyetleri sıfır maliyetle yerel kurallarla çözmek; karmaşık sorgularda ise Gemini 3.5 Flash, Groq ve yerel Ollama/Whisper modelleri arasında 429 kota hatasına karşı kesintisiz fallback ve Google Cloud Secret Manager ile istemci tarafında sızdırılamaz API anahtarı güvenliği sağlamak.",
-        en: "Eliminating vendor lock-in and network dependencies while parsing complex conversational Turkish queries. Required zero-latency offline rule evaluation alongside a fault-tolerant multi-model fallback chain (Gemini, Groq, DeepSeek, Ollama) and secure API key isolation via Google Cloud Secret Manager.",
+        en: "Resolving free-form Turkish intents with zero-cost local rules, without tying the user to a single AI provider or a constant connection; for complex queries, falling back between Gemini 3.5 Flash, Groq and local Ollama/Whisper models when a 429 quota error hits, and keeping API keys off the client with Google Cloud Secret Manager.",
       },
       solution: {
-        tr: "İstemci tarafında sıfır gecikmeli Rota Komut Motoru (çevrimdışı NLP) geliştirildi; bulutta Firebase Secret Manager ve Cloud Functions destekli çoklu model fallback zinciri (Gemini 3.5 Flash, Groq, OpenRouter) kuruldu. İşlemler için önizleme/atomik onay mekanizması, 100 adımlık anında geri alma (undo) altyapısı ve Firebase App Check güvenliği entegre edildi.",
-        en: "Engineered an offline-first Turkish NLP rule engine complemented by a cloud-secured multi-model fallback gateway using Firebase Secret Manager and Cloud Functions. Implemented transactional action previews with 100-step undo capability and Firebase App Check, fully validated by 114 automated tests.",
+        tr: "İstemci tarafında Rota Komut Motoru (çevrimdışı NLP) geliştirildi; bulutta Firebase Secret Manager ve Cloud Functions destekli çoklu model fallback zinciri (Gemini 3.5 Flash, Groq, OpenRouter) kuruldu. İşlemler için önizleme/atomik onay mekanizması, 100 adımlık anında geri alma (undo) altyapısı ve Firebase App Check güvenliği entegre edildi.",
+        en: "Built the client-side Rota Command Engine (offline NLP) plus a cloud multi-model fallback chain (Gemini 3.5 Flash, Groq, OpenRouter) on Firebase Secret Manager and Cloud Functions. Added action previews with atomic confirmation, 100-step undo and Firebase App Check, covered by 114 automated tests.",
       },
       keyFeatures: {
         tr: [
@@ -233,8 +236,8 @@ export const projectsData: ProjectItem[] = [
         en: [
           "Rota Engine & Hybrid AI: Zero-cost offline Turkish NLP, Gemini 3.5 Flash, and multi-model fallback (Groq, DeepSeek, Ollama) with smart retry",
           "Action Preview & Atomic Undo: Pre-flight validation for complex multi-intent commands, atomic execution, and 100-level instant rollback",
-          "Unified Life Dashboard: Real-time budget telemetry, upcoming bills, pantry inventory, habit tracking, and vehicle maintenance in one view",
-          "Data Sovereignty & Cloud Vault: API protection via Google Cloud Secret Manager, Firebase App Check, full JSON backup/restore, and ICS calendar sync",
+          "Unified Life Dashboard: budget status, upcoming bills, pantry inventory, habit tracking, and vehicle maintenance in one view",
+          "Your Data Stays Yours & Cloud Vault: API protection via Google Cloud Secret Manager, Firebase App Check, full JSON backup/restore, and ICS calendar sync",
         ],
       },
       metrics: [
@@ -253,8 +256,8 @@ export const projectsData: ProjectItem[] = [
       en: "Real-Time Communication / Cross-Platform",
     },
     role: {
-      tr: "Full Stack Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "Arkadaş grupları için sunucusuz, P2P WebRTC tabanlı sesli sohbet, 1080p60 oyun yayını ve yazılı sohbet",
@@ -324,8 +327,8 @@ export const projectsData: ProjectItem[] = [
       en: "Interactive Web / EdTech Game",
     },
     role: {
-      tr: "Yaratıcı Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "İnteraktif Adli Bilişim & Oyunlaştırılmış SQL Eğitim Platformu",
@@ -342,35 +345,35 @@ export const projectsData: ProjectItem[] = [
     image: "/images/projects/sql-game.webp",
     caseStudy: {
       overview: {
-        tr: "Geleneksel sıkıcı SQL dökümanlarını bir kenara bırakıp, yazılımcıların ve veri analistlerinin adli soruşturma senaryolarıyla eğlenerek SQL ustası olmalarını sağlayan bir oyun motoru.",
-        en: "Replaces dry SQL documentation with a compelling forensic storyline where developers and analysts master complex queries through real-world cyber crime and financial auditing scenarios.",
+        tr: "SQL'i adli vaka senaryoları üzerinden pratik ederek öğreten, yazılımcılar ve veri analistleri için bir tarayıcı oyunu.",
+        en: "A browser game for developers and analysts that teaches SQL through practice on forensic case files, built around realistic fictional cyber crime and financial auditing scenarios.",
       },
       challenge: {
-        tr: "Herhangi bir backend sunucusuna bağımlı olmadan, tüm SQL sorgu çalıştırma motorunu güvenli ve 60 FPS akıcılıkta tarayıcı içinde (WASM) sıfır gecikmeyle koşturmak.",
-        en: "Executing complex relational SQL schemas client-side with zero server latency, maintaining instant sub-2ms query evaluation while isolating user input securely.",
+        tr: "Herhangi bir backend sunucusuna bağımlı olmadan SQL sorgu motorunu tarayıcı içinde (WASM) güvenli biçimde çalıştırmak ve arayüzü akıcı tutmak.",
+        en: "Running the whole SQL query engine safely inside the browser (WASM), with no backend server, while keeping the interface smooth.",
       },
       solution: {
-        tr: "WebAssembly tabanlı SQL derleyicisi entegre edildi. Web Worker ile sorgu çalıştırma ana iş parçacığından ayrıldı; böylece UI hiçbir zaman kilitlenmeden anlık doğrulama sağlandı.",
-        en: "Integrated a WebAssembly SQLite engine offloaded to a Web Worker, ensuring zero UI thread blocking during high-volume query parsing and live table visualizations.",
+        tr: "WebAssembly tabanlı SQLite motoru entegre edildi. Web Worker ile sorgu çalıştırma ana iş parçacığından ayrıldı; böylece UI kilitlenmeden anlık doğrulama sağlandı.",
+        en: "Integrated a WebAssembly SQLite engine and moved query execution off the main thread into a Web Worker, so answers are checked instantly without freezing the UI.",
       },
       keyFeatures: {
         tr: [
           "WASM tabanlı sıfır sunucu maliyetli yerel sorgu çalıştırma",
           "Adli vaka dosyaları: Kara para aklama, sahte siparişler, vergi kaçırma",
           "Kapsamlı beceri ağacı (Skill Tree) ve seviye ilerleme sistemi",
-          "Özel retro-fütüristik terminal UI ve interaktif ses efektleri",
+          "Özel retro terminal arayüzü ve interaktif ses efektleri",
         ],
         en: [
-          "Client-side WASM query engine with sub-2ms execution latency",
-          "Real-world forensic dossiers: Money laundering, fraudulent logs, corporate leaks",
-          "Dynamic skill tree mapping from basic syntax to recursive queries",
-          "Retro-futuristic tactical terminal UI with reactive audio feedback",
+          "Local WASM query execution with no server cost",
+          "Forensic case files: money laundering, fake orders, tax evasion",
+          "Skill tree and level progression system",
+          "Custom retro terminal UI with interactive sound effects",
         ],
       },
       metrics: [
-        { label: { tr: "Sorgu Çalışma Hızı", en: "Query Latency" }, value: "1.4ms" },
+        { label: { tr: "Sorgu Motoru", en: "Query Engine" }, value: { tr: "SQLite (WASM) · Web Worker", en: "SQLite (WASM) · Web Worker" } },
         { label: { tr: "Adli Vaka Dosyaları", en: "Forensic Cases" }, value: { tr: "30+ Vaka", en: "30+ Cases" } },
-        { label: { tr: "Mimari", en: "Architecture" }, value: "Pure WASM" },
+        { label: { tr: "Mimari", en: "Architecture" }, value: { tr: "Tarayıcıda, Sunucusuz", en: "In-Browser, No Backend" } },
       ],
     },
   },
@@ -383,16 +386,16 @@ export const projectsData: ProjectItem[] = [
       en: "Interactive Web / Scientific Lab",
     },
     role: {
-      tr: "Yaratıcı Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "118 Element İçin Kuantum Orbitalleri, Termodinamik Faz Simülasyonu ve Isı Haritası",
-      en: "Precision Periodic Laboratory with Quantum Orbitals, Thermodynamic Phase Simulation & Heatmaps",
+      en: "Quantum Orbitals, Thermodynamic Phase Simulation & Heatmaps for All 118 Elements",
     },
     description: {
-      tr: "118 IUPAC kimyasal elementinin tamamını kuantum elektron dizilimleri, 0 K – 6000 K termodinamik faz simülasyonları, periyodik eğilim ısı haritaları ve çoklu element karşılaştırma matrisi ile sunan fütüristik bilimsel laboratuvar platformu.",
-      en: "A futuristic precision periodic laboratory presenting all 118 IUPAC chemical elements with quantum electron configurations, 0 K – 6000 K thermodynamic phase simulations, periodic trend heatmaps, and side-by-side element comparison matrices.",
+      tr: "118 IUPAC kimyasal elementinin tamamını kuantum elektron dizilimleri, 0 K – 6000 K termodinamik faz simülasyonları, periyodik eğilim ısı haritaları ve çoklu element karşılaştırma matrisi ile sunan etkileşimli periyodik tablo.",
+      en: "An interactive periodic table presenting all 118 IUPAC chemical elements with quantum electron configurations, 0 K – 6000 K thermodynamic phase simulations, periodic trend heatmaps, and side-by-side element comparison matrices.",
     },
     technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Firebase", "Web Audio API"],
     liveUrl: "https://periodictableviewer.web.app",
@@ -402,15 +405,15 @@ export const projectsData: ProjectItem[] = [
     caseStudy: {
       overview: {
         tr: "Geleneksel statik periyodik tabloları modern reaktif web mimarisiyle yeniden tanımlayarak; araştırmacılar, kimyagerler ve öğrenciler için 118 elementin mikroskobik kuantum özelliklerinden makroskopik termodinamik faz dönüşümlerine kadar tüm bilimsel verileri anlık simülasyonlarla sunan etkileşimli bir dijital laboratuvar inşa etmek.",
-        en: "Reimagining static chemistry references into an interactive, high-precision periodic laboratory that allows researchers, students, and engineers to explore quantum electron shells, thermodynamic phase shifts, and empirical periodic trends in real time.",
+        en: "Turns a static periodic table into an interactive digital lab where students and researchers can explore every element's data, from quantum electron shells to thermodynamic phase changes, through live simulations.",
       },
       challenge: {
-        tr: "118 elemente ait 18+ fiziksel/kimyasal parametreyi, 0 K'den 6000 K'ye kadar sürekli sıcaklık değişiminde katı/sıvı/gaz faz dönüşümlerini ve Hund kuralına uygun kuantum orbital spin dağılımlarını istemci tarafında sıfır gecikmeyle 60 FPS akıcılıkta hesaplayıp görselleştirmek.",
-        en: "Rendering complex atomic structures, real-time thermodynamic phase transitions across a 0 K – 6000 K continuous range at 60 FPS, and calculating Hund's rule quantum orbital spin vectors entirely on the client side with sub-millisecond responsiveness.",
+        tr: "118 elemente ait 18+ fiziksel/kimyasal parametreyi, 0 K'den 6000 K'ye kadar sürekli sıcaklık değişiminde katı/sıvı/gaz faz dönüşümlerini ve Hund kuralına uygun kuantum orbital spin dağılımlarını istemci tarafında akıcı biçimde hesaplayıp görselleştirmek.",
+        en: "Calculating and visualizing 18+ physical and chemical parameters for 118 elements, solid/liquid/gas phase changes across a continuous 0 K – 6000 K range, and Hund's-rule orbital spin distributions smoothly on the client side.",
       },
       solution: {
-        tr: "Next.js 15 ve React 19 ile derlenen reaktif durum mimarisi kurgulandı. Kuantum elektron dizilimi ve termodinamik faz motoru saf TypeScript algoritmalarıyla optimize edildi; ısı haritası filtrelemeleri ve karşılaştırma matrisleri sıfır UI kilitlenmesiyle küresel edge CDN üzerinden (Firebase Hosting) sunuldu.",
-        en: "Engineered a reactive state architecture with Next.js 15 and React 19. Designed optimized TypeScript evaluation engines for thermodynamic phase modeling and quantum orbital population, paired with smooth CSS transform pipelines and global edge delivery via Firebase Hosting.",
+        tr: "Next.js 15 ve React 19 ile reaktif durum mimarisi kurgulandı. Kuantum elektron dizilimi ve termodinamik faz motoru saf TypeScript algoritmalarıyla yazıldı; ısı haritası filtreleri ve karşılaştırma matrisleri ile birlikte statik site olarak Firebase Hosting üzerinden sunuldu.",
+        en: "Built a reactive state architecture with Next.js 15 and React 19. The electron configuration and thermodynamic phase engines are plain TypeScript, and the app, with its heatmap filters and comparison matrices, is served as a static site from Firebase Hosting.",
       },
       keyFeatures: {
         tr: [
@@ -429,8 +432,8 @@ export const projectsData: ProjectItem[] = [
       metrics: [
         { label: { tr: "Element Sayısı", en: "IUPAC Elements" }, value: "118" },
         { label: { tr: "Faz Simülasyonu", en: "Phase Range" }, value: "0K - 6000K" },
-        { label: { tr: "Arayüz Tepki Hızı", en: "Render Latency" }, value: "< 16ms" },
-        { label: { tr: "Mimari", en: "Architecture" }, value: "Next 15 Edge" },
+        { label: { tr: "Karşılaştırma", en: "Comparison" }, value: { tr: "4 Elemente Kadar", en: "Up to 4 Elements" } },
+        { label: { tr: "Mimari", en: "Architecture" }, value: { tr: "Statik · Firebase Hosting", en: "Static · Firebase Hosting" } },
       ],
     },
   },
@@ -443,8 +446,8 @@ export const projectsData: ProjectItem[] = [
       en: "Mobile PWA / Retail",
     },
     role: {
-      tr: "Full Stack Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "Telefon kamerasıyla barkod okutup anında fiyat gösteren, fiyat değiştiren ve satış yapan, çevrimdışı çalışan bakkal uygulaması",
@@ -513,8 +516,8 @@ export const projectsData: ProjectItem[] = [
       en: "macOS App / WebGL",
     },
     role: {
-      tr: "Yaratıcı Geliştirici & Mimar",
-      en: "Full Stack Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "Mac masaüstünü süzülen koi balıkları, ışık huzmeleri, yağmur ve mevsimlerle yaşayan bir gölete çeviren canlı duvar kâğıdı",
@@ -572,8 +575,8 @@ export const projectsData: ProjectItem[] = [
       en: "Android App / Digital Wellbeing",
     },
     role: {
-      tr: "Mobil Geliştirici & Mimar",
-      en: "Mobile Creator & Architect",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
       tr: "YouTube Shorts, Instagram Reels, TikTok, Facebook Reels ve X Shorts akışlarını algılayıp sonsuz kaydırma döngüsünü kesen native Android uygulaması",
@@ -639,16 +642,16 @@ export const projectsData: ProjectItem[] = [
       en: "Developer Tool / Database",
     },
     role: {
-      tr: "Tasarımcı & Geliştirici",
-      en: "Author & Core Engineer",
+      tr: "Kişisel proje",
+      en: "Personal project",
     },
     tagline: {
-      tr: "Yüksek Hızlı SQL Toplu Liste & IN-Cümlesi Dönüştürücü Araç",
-      en: "High-Speed SQL Batch & IN-Clause Query Transformation Tool",
+      tr: "SQL Toplu Liste & IN-Cümlesi Dönüştürücü Araç",
+      en: "SQL Batch & IN-Clause Query Transformation Tool",
     },
     description: {
-      tr: "Ham pano verilerini, Excel sütunlarını ve log listelerini anında temiz, tek tırnaklı ve toplu SQL IN (...) bloklarına dönüştürerek geliştiricilere ve veritabanı yöneticilerine saatler kazandıran pratik geliştirici aracı.",
-      en: "High-performance developer utility converting raw clipboard data, Excel columns, and unformatted log lines into sanitized, quoted SQL IN (...) query clauses with custom delimiters and batch splitting.",
+      tr: "Ham pano verilerini, Excel sütunlarını ve log listelerini anında temiz, tek tırnaklı ve toplu SQL IN (...) bloklarına dönüştüren pratik bir macOS masaüstü aracı.",
+      en: "macOS desktop utility converting raw clipboard data, Excel columns, and unformatted log lines into sanitized, quoted SQL IN (...) query clauses with custom delimiters and batch splitting.",
     },
     technologies: ["Python", "CustomTkinter", "Tkinter", "PyInstaller", "macOS (Apple Silicon)", "SQL", "unittest"],
     githubUrl: "https://github.com/Kaandnz/Sql-List-Formatter",
@@ -660,12 +663,12 @@ export const projectsData: ProjectItem[] = [
         en: "A focused developer productivity tool designed to eliminate the repetitive friction of transforming raw spreadsheet IDs into formatted SQL IN-clauses.",
       },
       challenge: {
-        tr: "Büyük veri listelerinde (10.000+ satır) tarayıcıda bellek tüketimini minimize etmek ve tırnak temizliği ile boşlukları anında işlemek.",
+        tr: "Büyük veri listelerinde (10.000+ satır) bellek tüketimini düşük tutmak ve tırnak temizliği ile boşlukları anında işlemek.",
         en: "Sanitizing, deduping, and splitting large datasets (10,000+ rows) without memory spikes while supporting customizable batching parameters.",
       },
       solution: {
-        tr: "Optimize edilmiş regex akışı ve parçalı kuyruk mimarisi ile anlık biçimlendirme ve tek tıkla panoya kopyalama özelliği geliştirildi.",
-        en: "Implemented an optimized streaming regex token parser and fast clipboard pipeline that operates with zero latency.",
+        tr: "Python ve CustomTkinter ile yazılmış macOS masaüstü aracı; listeyi temizler, tekrarları atar, tırnak içine alır, 1000'lik parçalara böler ve sonucu tek tıkla panoya kopyalar.",
+        en: "A Python and CustomTkinter macOS desktop app that cleans the list, removes duplicates, adds quotes, splits it into 1000-item batches and copies the result to the clipboard in one click.",
       },
       keyFeatures: {
         tr: [
@@ -682,9 +685,9 @@ export const projectsData: ProjectItem[] = [
         ],
       },
       metrics: [
-        { label: { tr: "İşleme Süresi", en: "Format Time" }, value: "< 5ms" },
-        { label: { tr: "Kapasite", en: "Row Capacity" }, value: { tr: "50K+ Satır", en: "50K+ Rows" } },
-        { label: { tr: "Zaman Tasarrufu", en: "Time Saved" }, value: { tr: "10x Hız", en: "10x Speedup" } },
+        { label: { tr: "Teknoloji", en: "Stack" }, value: "Python · CustomTkinter" },
+        { label: { tr: "Toplu Bölme", en: "Batching" }, value: { tr: "1000'lik IN Limiti", en: "1000-Item IN Limit" } },
+        { label: { tr: "Platform", en: "Platform" }, value: "macOS (Apple Silicon)" },
       ],
     },
   },
@@ -707,21 +710,21 @@ export const experienceData: ExperienceItem[] = [
       en: "Istanbul, Turkey",
     },
     description: {
-      tr: "Düzey bünyesinde rota optimizasyonu web uygulamaları, kurumsal B2B platformları ve e-ticaret sistemlerinin yazılım geliştirme süreçlerini yürüttü; Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama entegrasyonlarını başarıyla hayata geçirdi.",
-      en: "Architects and develops enterprise software at Düzey across route optimization web applications, enterprise B2B platforms, and e-commerce solutions; delivers mission-critical SAP and Panorama integrations using Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
+      tr: "Düzey'de rota optimizasyonu web uygulamaları, kurumsal B2B platformları ve e-ticaret sistemleri üzerinde yazılım geliştiriyor; Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama entegrasyonları geliştiriyor.",
+      en: "Develops software at Düzey across route optimization web applications, enterprise B2B platforms, and e-commerce systems; builds SAP and Panorama integrations with Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
     },
     achievements: {
       tr: [
         "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulamasının geliştirilmesi; SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimi ve raporlanması.",
         "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformunun geliştirilmesinde aktif rol.",
         "C# ve ASP.NET Core ile nopCommerce altyapısı üzerinde geliştirilen Düzey e-ticaret projesinde yazılım geliştirme süreçlerine katkı; ödeme sistemleri, Panorama entegrasyonu ve iş ihtiyaçlarına özel e-ticaret modüllerinin geliştirilmesi.",
-        "Saha operasyonlarını hızlandıran merkezi Onay Yönetim Sistemi RESTful API'lerinin kurgulanması; eski iş mantıklarının ve nopCommerce çekirdek modüllerinin refactor edilerek yüksek hacimli işlemlerde sorgu sürelerinin optimize edilmesi.",
+        "Saha operasyonları için merkezi Onay Yönetim Sistemi RESTful API'lerinin geliştirilmesi; eski iş mantıklarının ve nopCommerce çekirdek modüllerinin refactor edilmesi ve yavaş sorguların optimize edilmesi.",
       ],
       en: [
-        "Engineered a route optimization and fleet dispatch web app using Angular, Java Spring Boot, and PostgreSQL; automated distribution tracking and operational reporting via SAP and Panorama integrations.",
-        "Contributed to building an enterprise B2B platform using C# and ASP.NET Core on nopCommerce, encompassing order, customer, dynamic pricing, and discount rule management with SAP & Panorama integrations.",
-        "Contributed to software development for Düzey's enterprise e-commerce platform built with C# and ASP.NET Core on nopCommerce, delivering payment systems, Panorama integration, and custom e-commerce modules.",
-        "Architected centralized Approval Management RESTful APIs automating field workflows; refactored core modules and optimized database queries to significantly accelerate response times in high-volume transactions.",
+        "Developed a route optimization web app with map-based planning and vehicle and driver management using Angular, Java Spring Boot, and PostgreSQL; distribution management and reporting through SAP and Panorama integrations.",
+        "Active role in building an enterprise B2B platform with C# and ASP.NET Core on nopCommerce, covering order, customer, pricing, and discount management with SAP and Panorama integrations.",
+        "Contributed to Düzey's e-commerce platform built with C# and ASP.NET Core on nopCommerce, developing payment systems, Panorama integration, and custom e-commerce modules.",
+        "Developed centralized Approval Management RESTful APIs for field operations; refactored legacy business logic and nopCommerce core modules and optimized slow queries.",
       ],
     },
     technologies: [
@@ -754,21 +757,21 @@ export const experienceData: ExperienceItem[] = [
       en: "Istanbul, Turkey",
     },
     description: {
-      tr: "Hangfire ile büyük veri setlerinin senkronizasyonunu otomatikleştiren yüksek performanslı veri pipeline'ları kurguladı, Jenkins ile CI/CD süreçlerini yapılandırdı ve ELK Stack izleme panoları oluşturdu.",
-      en: "Orchestrated high-performance data pipelines using Hangfire, automated synchronization to MongoDB, established Jenkins CI/CD to IIS, and configured ELK Stack telemetry dashboards.",
+      tr: "Hangfire ile SQL Server'dan MongoDB'ye zamanlanmış veri senkronizasyonu kurdu, Jenkins ile CI/CD süreçlerini yapılandırdı ve ELK Stack ile log panoları oluşturdu.",
+      en: "Set up scheduled SQL Server to MongoDB data synchronization with Hangfire, configured Jenkins CI/CD to IIS, and built ELK Stack log dashboards.",
     },
     achievements: {
       tr: [
-        "Entity Framework Core üzerinden SQL Server'dan MongoDB'ye büyük veri setlerinin senkronizasyonunu otomatikleştiren Hangfire veri pipeline'ları kuruldu.",
-        "GitHub'dan IIS Sunucusuna dağıtım komut dosyalarını otomatikleştiren Jenkins CI/CD iş akışları oluşturularak sürüm güvenilirliği artırıldı.",
-        "Sistem loglarını indekslemek için ELK Stack (Elasticsearch, Logstash, Kibana) yapılandırıldı; proaktif hata tespiti için gerçek zamanlı panolar oluşturuldu.",
-        "Selenium ile otomatik web test senaryoları ve pazar analizi için veri kazıma (web scraping) algoritmaları geliştirildi.",
+        "Entity Framework Core üzerinden SQL Server'dan MongoDB'ye veri senkronizasyonunu otomatikleştiren zamanlanmış Hangfire job'ları kuruldu.",
+        "GitHub'dan IIS sunucusuna dağıtımı otomatikleştiren Jenkins CI/CD iş akışları oluşturuldu.",
+        "Sistem loglarını indekslemek için ELK Stack (Elasticsearch, Logstash, Kibana) yapılandırıldı ve hata takibi için Kibana panoları oluşturuldu.",
+        "Selenium ile otomatik web test senaryoları ve veri kazıma (web scraping) script'leri yazıldı.",
       ],
       en: [
-        "Automated the synchronization of large datasets from SQL Server to MongoDB via Entity Framework Core using Hangfire.",
-        "Established robust CI/CD workflows using Jenkins, automating deployment scripts to IIS Server from GitHub.",
-        "Built and configured ELK Stack (Elasticsearch, Logstash, Kibana) to index system logs and created real-time dashboards for proactive error detection.",
-        "Designed and executed automated web testing scenarios using Selenium and developed web scraping algorithms for market intelligence.",
+        "Automated SQL Server to MongoDB data synchronization via Entity Framework Core with scheduled Hangfire jobs.",
+        "Set up Jenkins CI/CD workflows that automate deployment from GitHub to IIS Server.",
+        "Configured ELK Stack (Elasticsearch, Logstash, Kibana) to index system logs and built Kibana dashboards for error tracking.",
+        "Wrote automated web test scenarios and web scraping scripts with Selenium.",
       ],
     },
     technologies: ["Hangfire", ".NET Core", "MongoDB", "MS SQL Server", "Jenkins", "ELK Stack", "Selenium"],
@@ -789,17 +792,17 @@ export const experienceData: ExperienceItem[] = [
       en: "Muğla, Turkey",
     },
     description: {
-      tr: "Üniversite bünyesindeki BT altyapısının bakımına destek sağladı; ağ bütünlüğünü ve sunucu çalışma süresini güvence altına aldı.",
-      en: "Assisted in the maintenance of IT infrastructure, ensuring network integrity, server uptime, and providing technical troubleshooting for hardware/software optimizations.",
+      tr: "Üniversite BT ekibine ağ, sunucu ve laboratuvar bilgisayarlarının bakımında destek oldu; donanım ve yazılım arızalarını giderdi.",
+      en: "Supported the university IT team in maintaining network, server and lab computers; fixed hardware and software issues.",
     },
     achievements: {
       tr: [
-        "Ağ anahtarları, sunucu kabinleri ve kampüs içi veri bağlantılarının kesintisiz çalışması sağlandı.",
-        "Donanım ve yazılım optimizasyonları ile laboratuvar sistemlerinin performansı artırıldı.",
+        "Ağ anahtarları, sunucu kabinleri ve kampüs içi veri bağlantılarının bakımına destek verildi.",
+        "Laboratuvar bilgisayarlarında donanım ve yazılım bakımı yapıldı.",
       ],
       en: [
-        "Monitored network integrity, server uptime, and resolved campus-wide IT hardware/software bottlenecks.",
-        "Conducted system diagnostics and workstations performance tuning.",
+        "Helped maintain network switches, server cabinets and campus data links.",
+        "Carried out hardware and software maintenance on lab computers.",
       ],
     },
     technologies: ["Network Infrastructure", "Server Maintenance", "Troubleshooting", "Hardware Diagnostics"],
@@ -818,7 +821,7 @@ export const educationData: EducationItem = {
   gpa: "3.13 / 4.0",
   details: {
     tr: "Yazılım mühendisliği, veritabanı sistemleri, ağ mimarisi ve algoritma analizi üzerine kapsamlı mühendislik eğitimi.",
-    en: "Comprehensive engineering curriculum focusing on software architecture, distributed databases, network security, and algorithm optimization.",
+    en: "Engineering curriculum covering software engineering, database systems, network architecture, and algorithm analysis.",
   },
 };
 
@@ -838,7 +841,6 @@ export const skillsGrouped: Record<
       { tr: "Mikroservisler", en: "Microservices" },
       "Rust (Axum, Tokio)",
       "Firebase Cloud Functions",
-      "Drizzle ORM",
     ],
   },
   enterprise: {
@@ -863,8 +865,6 @@ export const skillsGrouped: Record<
       "Tailwind CSS",
       "HTML5 / CSS3",
       "Vite",
-      "Zustand",
-      "shadcn/ui",
       "Framer Motion",
       { tr: "PWA (Çevrimdışı Web Uygulaması)", en: "PWA (Offline-First Web Apps)" },
     ],
@@ -887,7 +887,6 @@ export const skillsGrouped: Record<
     title: { tr: "Gerçek Zamanlı & Web API'leri", en: "Real-Time & Web Platform" },
     skills: [
       "WebRTC (P2P Mesh)",
-      "WebSockets",
       "WebAssembly (WASM)",
       "Web Audio API / AudioWorklet",
       "Web Speech API",
@@ -905,7 +904,6 @@ export const skillsGrouped: Record<
       "SQLite",
       "Cloud Firestore",
       "Firebase Realtime Database",
-      "PGlite (PostgreSQL WASM)",
       { tr: "Veritabanı Optimizasyonu", en: "Database Optimization" },
       { tr: "Sorgu Optimizasyonu (Tuning)", en: "SQL Query Tuning" },
     ],
@@ -915,7 +913,6 @@ export const skillsGrouped: Record<
     skills: [
       "Firebase (Auth, Hosting, App Check)",
       "Google Cloud Secret Manager",
-      "Cloudflare Workers",
       "Cloudflare TURN",
       "Gemini API",
       { tr: "Çoklu LLM Fallback (Groq, DeepSeek, OpenRouter)", en: "Multi-LLM Fallback (Groq, DeepSeek, OpenRouter)" },

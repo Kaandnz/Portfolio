@@ -21,22 +21,22 @@ export default function About() {
       icon: Sparkles,
       title:
         language === "tr"
-          ? "Temiz kod, sağlam mimari ve uçtan uca teslimat."
-          : "Clean code, resilient architecture, and end-to-end delivery.",
+          ? "Kurumsal sistemler ve kendi ürünlerim."
+          : "Enterprise systems and products of my own.",
       content: personalInfo.bio[language],
       bullets:
         language === "tr"
           ? [
-              ".NET Core ve C# ile ölçeklenebilir kurumsal mikroservisler",
+              ".NET Core ve C# ile kurumsal mikroservisler",
               "Entity Framework Core & Dapper ile veritabanı optimizasyonu",
-              "Selenium WebDriver ile uçtan uca test otomasyonu",
-              "Jenkins ve Docker ile sıfır kesintili CI/CD pipeline'ları",
+              "Selenium WebDriver ve NUnit ile uçtan uca test otomasyonu",
+              "Jenkins ve Docker ile CI/CD pipeline'ları",
             ]
           : [
-              "Scalable enterprise microservices powered by .NET Core & C#",
-              "Database query optimization via EF Core and Dapper",
-              "End-to-end automated testing with Selenium WebDriver & NUnit",
-              "Zero-downtime CI/CD deployment pipelines using Jenkins & Docker",
+              "Enterprise microservices with .NET Core & C#",
+              "Database query optimization with EF Core and Dapper",
+              "End-to-end test automation with Selenium WebDriver & NUnit",
+              "CI/CD pipelines with Jenkins & Docker",
             ],
     },
     {
@@ -50,20 +50,20 @@ export default function About() {
       content:
         language === "tr"
           ? "Düzey bünyesinde rota optimizasyonu ve dağıtım yönetimi web uygulamaları, kurumsal B2B platformları ve e-ticaret altyapılarının yazılım geliştirme süreçlerine katkı sağladım. Angular, Java Spring Boot, PostgreSQL, C# ve ASP.NET Core ile SAP ve Panorama kurumsal entegrasyonlarını hayata geçirdim."
-          : "Contributed to software engineering across route optimization web applications, enterprise B2B platforms, and e-commerce solutions at Düzey. Built mission-critical SAP and Panorama integrations utilizing Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
+          : "Contributed to software engineering across route optimization web applications, enterprise B2B platforms, and e-commerce solutions at Düzey. Built SAP and Panorama integrations utilizing Angular, Java Spring Boot, PostgreSQL, C#, and ASP.NET Core.",
       bullets:
         language === "tr"
           ? [
               "Angular, Spring Boot & PostgreSQL ile rota optimizasyonu, araç/sürücü yönetimi ve harita planlama",
               "C# & ASP.NET Core nopCommerce ile sipariş, müşteri, fiyat ve indirim yönetimli kurumsal B2B platformu",
               "Düzey e-ticaret projesinde güvenli ödeme sistemleri, Panorama entegrasyonu ve özel e-ticaret modülleri",
-              "SAP ve Panorama kurumsal sistemleriyle kesintisiz çift yönlü veri senkronizasyonu ve operasyonel raporlama",
+              "SAP ve Panorama kurumsal sistemleriyle çift yönlü veri senkronizasyonu ve operasyonel raporlama",
             ]
           : [
               "Map-based route optimization, fleet dispatch, and driver management with Angular, Spring Boot & PostgreSQL",
               "Enterprise B2B platform on C# & ASP.NET Core (nopCommerce) covering order, pricing, and discount rules",
-              "Düzey e-commerce platform featuring payment gateway integrations, Panorama sync, and custom modules",
-              "Seamless bidirectional data synchronization and operational reporting with SAP and Panorama backends",
+              "Düzey e-commerce platform with payment system integrations, Panorama sync, and custom modules",
+              "Bidirectional data synchronization and operational reporting with SAP and Panorama backends",
             ],
     },
     {
@@ -76,21 +76,21 @@ export default function About() {
           : "Data pipelines, CI/CD automation, and testing.",
       content:
         language === "tr"
-          ? "D&R (Turkuvaz Medya) bünyesinde SQL Server'dan MongoDB'ye Hangfire ile veri pipeline'ları kurguladım. Jenkins ile IIS sunucularına otomatik deployment süreçlerini ve ELK Stack log analitiği altyapısını hayata geçirdim."
-          : "Engineered Hangfire data migration pipelines from SQL Server to MongoDB at D&R (Turkuvaz Medya), automated zero-downtime deployment pipelines with Jenkins, and configured ELK Stack telemetry.",
+          ? "D&R (Turkuvaz Medya) bünyesinde SQL Server'dan MongoDB'ye Hangfire ile veri pipeline'ları kurdum. Jenkins ile IIS sunucularına otomatik deployment sürecini ve ELK Stack log analitiğini kurdum."
+          : "At D&R (Turkuvaz Medya) I set up Hangfire data pipelines from SQL Server to MongoDB, automated deployments to IIS servers with Jenkins, and set up ELK Stack log analytics.",
       bullets:
         language === "tr"
           ? [
               "Hangfire ile zamanlanmış background job'lar ve ETL pipeline'ları",
               "Jenkins ile GitHub'dan IIS Sunucusuna otomatik CI/CD deployment",
-              "Elasticsearch, Logstash ve Kibana ile 7/24 proaktif log izleme ve dashboard'lar",
-              "Selenium WebDriver ile automated test ve web scraping altyapısı",
+              "Elasticsearch, Logstash ve Kibana ile log izleme ve dashboard'lar",
+              "Selenium WebDriver ile otomatik test ve web scraping",
             ]
           : [
-              "Scheduled background job workflows and ETL pipelines with Hangfire",
-              "Automated Jenkins CI/CD deployment pipelines to IIS Server",
-              "24/7 proactive system telemetry using ELK Stack dashboards",
-              "Automated market intelligence and testing with Selenium WebDriver",
+              "Scheduled background jobs and ETL pipelines with Hangfire",
+              "Automated Jenkins CI/CD deployments to IIS Server",
+              "Log monitoring and dashboards with Elasticsearch, Logstash and Kibana",
+              "Automated testing and web scraping with Selenium WebDriver",
             ],
     },
   ];

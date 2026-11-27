@@ -59,7 +59,7 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
           {/* Project Render Image */}
           <Image
             src={project.image}
-            alt={project.title}
+            alt={language === "tr" ? `${project.title} ekran görüntüsü` : `${project.title} screenshot`}
             fill
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, 55vw"
@@ -153,7 +153,7 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
               data-cursor="external"
             >
               <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-sky-400 transition-all duration-300 shadow-[0_8px_20px_rgba(255,255,255,0.12)] active:scale-[0.97]">
-                <span>{t.projects.visitLive}</span>
+                <span>{project.liveLabel ? project.liveLabel[language] : t.projects.visitLive}</span>
                 <ExternalLink size={13} />
               </div>
             </MagneticButton>

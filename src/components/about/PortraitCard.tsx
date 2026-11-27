@@ -107,7 +107,7 @@ export default function PortraitCard() {
         </div>
         <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span>{isTr ? "Aktif & Hazır" : "Available"}</span>
+          <span>{isTr ? "Yeni fırsatlara açık" : "Open to opportunities"}</span>
         </div>
       </div>
 
@@ -115,7 +115,7 @@ export default function PortraitCard() {
       <div className="my-auto z-10 space-y-3" style={{ transform: "translateZ(40px)" }}>
         <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
           <span className="text-[13px] font-semibold tracking-[-0.01em] text-white/70">
-            {isTr ? "Mühendislik Özeti" : "Engineering Overview"}
+            {isTr ? "Özet" : "At a Glance"}
           </span>
           <span className="flex items-center gap-1 text-xs font-medium text-sky-400">
             <Sparkles size={12} />
@@ -181,7 +181,7 @@ export default function PortraitCard() {
         <div className="flex items-center justify-between gap-3 text-[11px] text-white/45">
           <span>{educationData.degree[language]}</span>
           <span className="shrink-0 font-medium text-emerald-400 flex items-center gap-1">
-            <CheckCircle2 size={12} /> {isTr ? "Doğrulandı" : "Verified"}
+            <CheckCircle2 size={12} /> {isTr ? "Mezun · 2025" : "Graduated · 2025"}
           </span>
         </div>
       </div>

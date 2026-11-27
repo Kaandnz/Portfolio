@@ -147,7 +147,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden my-6 border border-white/[0.08] bg-black/50">
               <Image
                 src={project.image}
-                alt={project.title}
+                alt={language === "tr" ? `${project.title} ekran görüntüsü` : `${project.title} screenshot`}
                 fill
                 className="object-cover"
                 priority
@@ -169,7 +169,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-sky-400 transition-colors shadow-md active:scale-[0.98]"
                       data-cursor="external"
                     >
-                      <span>{t.projects.launchSite}</span>
+                      <span>{project.liveLabel ? project.liveLabel[language] : t.projects.launchSite}</span>
                       <ExternalLink size={14} />
                     </a>
                   )}

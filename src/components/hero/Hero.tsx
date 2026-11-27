@@ -184,7 +184,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="flex flex-wrap items-center gap-2 font-mono text-[11px]"
         >
-          {[".NET Core", "C#", "SQL Server", "Microservices", "Jenkins CI/CD", "ELK Stack"].map((tech, i) => (
+          {[".NET Core", "C#", "Java Spring Boot", "Angular", "PostgreSQL", "SQL Server"].map((tech, i) => (
             <span
               key={tech}
               className={`px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] text-white/50 ${

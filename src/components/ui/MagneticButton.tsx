@@ -15,6 +15,7 @@ interface MagneticButtonProps {
   rel?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  ariaLabel?: string;
   "data-cursor"?: string;
 }
 
@@ -29,6 +30,7 @@ export default function MagneticButton({
   rel,
   type = "button",
   disabled = false,
+  ariaLabel,
   "data-cursor": dataCursor = "pointer",
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -72,7 +74,8 @@ export default function MagneticButton({
         target={target}
         rel={rel}
         onClick={onClick}
-        className="inline-block"
+        aria-label={ariaLabel}
+        className="inline-block rounded-full"
       >
         {Content}
       </a>
@@ -85,7 +88,8 @@ export default function MagneticButton({
         onClick={onClick}
         type={type}
         disabled={disabled}
-        className="inline-block outline-none focus:outline-none disabled:opacity-50"
+        aria-label={ariaLabel}
+        className="inline-block rounded-full disabled:opacity-50"
       >
         {Content}
       </button>

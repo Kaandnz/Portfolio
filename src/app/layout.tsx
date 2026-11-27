@@ -20,14 +20,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kağan Deniz — Full Stack Developer & System Architect",
+  title: "Kağan Deniz — Full Stack Developer",
   description:
-    "Personal portfolio of Kağan Deniz. Full Stack Developer specializing in .NET Core, C#, enterprise B2B/SFA systems, high-performance database optimization, and modern web architectures.",
+    "Portfolio of Kağan Deniz, Full Stack Developer in Istanbul. Builds B2B, e-commerce and route optimization systems at Düzey with .NET Core / C# and Java Spring Boot, plus personal products across WebRTC, AI, Android and macOS.",
   keywords: [
     "Kağan Deniz",
     "Full Stack Developer",
     ".NET Core",
     "C#",
+    "Java Spring Boot",
+    "Angular",
+    "React",
+    "PostgreSQL",
     "MS SQL Server",
     "MongoDB",
     "Elasticsearch",
@@ -41,8 +45,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Kağan Deniz" }],
   creator: "Kağan Deniz",
   openGraph: {
-    title: "Kağan Deniz — Full Stack Developer & System Architect",
-    description: "Designing scalable backend architectures, enterprise B2B/SFA solutions, and modern web applications.",
+    title: "Kağan Deniz — Full Stack Developer",
+    description:
+      "B2B, e-commerce and route optimization systems at Düzey, plus personal products across WebRTC, AI, Android and macOS.",
     url: "https://kagandeniz.com",
     siteName: "Kağan Deniz Portfolio",
     locale: "tr_TR",
