@@ -1,55 +1,29 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
+import { getDictionary, languagePaths, type Dictionary, type Language } from "@/lib/i18n";
 
-export type Language = "tr" | "en";
+export type { Language } from "@/lib/i18n";
 
 interface LanguageContextType {
+  /** Fixed per route: "/" is Turkish, "/en/" is English. */
   language: Language;
-  setLanguage: (lang: Language) => void;
-  toggleLanguage: () => void;
+  /** The other language. */
+  otherLanguage: Language;
+  /** Path of the same page in the other language. */
+  otherHref: string;
+  /** UI copy for the current language (translations.ts). */
+  t: Dictionary;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("tr");
-
-  useEffect(() => {
-    // Check saved language or browser preference
-    const saved = localStorage.getItem("preferred_lang") as Language | null;
-    if (saved === "tr" || saved === "en") {
-      queueMicrotask(() => {
-        setLanguage(saved);
-        if (typeof document !== "undefined") {
-          document.documentElement.lang = saved;
-        }
-      });
-    } else if (typeof navigator !== "undefined" && !navigator.language.startsWith("tr")) {
-      queueMicrotask(() => {
-        setLanguage("en");
-        if (typeof document !== "undefined") {
-          document.documentElement.lang = "en";
-        }
-      });
-    }
-  }, []);
-
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem("preferred_lang", lang);
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = lang;
-    }
-  };
-
-  const toggleLanguage = () => {
-    const next = language === "tr" ? "en" : "tr";
-    handleSetLanguage(next);
-  };
-
+export function LanguageProvider({ language, children }: { language: Language; children: ReactNode }) {
+  const otherLanguage: Language = language === "tr" ? "en" : "tr";
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, toggleLanguage }}>
+    <LanguageContext.Provider
+      value={{ language, otherLanguage, otherHref: languagePaths[otherLanguage], t: getDictionary(language) }}
+    >
       {children}
     </LanguageContext.Provider>
   );
@@ -62,4 +36,3 @@ export function useLanguage() {
   }
   return context;
 }
-

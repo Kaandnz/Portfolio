@@ -3,7 +3,8 @@ export type LocalizedSkill = string | LocalizedString;
 
 export interface ProjectItem {
   id: string;
-  title: string;
+  /** Product names stay as-is; descriptive titles (the Düzey systems) are localized. */
+  title: string | LocalizedString;
   year: string;
   category: LocalizedString;
   role: LocalizedString;
@@ -28,7 +29,8 @@ export interface ProjectItem {
 export interface ExperienceItem {
   id: string;
   role: { tr: string; en: string };
-  company: string;
+  /** Proper names (Düzey, D&R) stay a string; a translatable name is a pair. */
+  company: string | LocalizedString;
   period: { tr: string; en: string };
   location: { tr: string; en: string };
   description: { tr: string; en: string };
@@ -63,7 +65,10 @@ export const personalInfo = {
 export const projectsData: ProjectItem[] = [
   {
     id: "duzey-sfa-b2b",
-    title: "Enterprise B2B & E-Commerce Infrastructure",
+    title: {
+      tr: "Kurumsal B2B & E-Ticaret Altyapısı",
+      en: "Enterprise B2B & E-Commerce Infrastructure",
+    },
     year: "2025",
     category: {
       tr: "Kurumsal B2B & E-Ticaret / Backend",
@@ -74,8 +79,8 @@ export const projectsData: ProjectItem[] = [
       en: "Software Developer @ Düzey",
     },
     tagline: {
-      tr: "C# & ASP.NET Core nopCommerce ile B2B, E-Ticaret ve Ödeme Sistemleri",
-      en: "B2B, E-Commerce & Payment Systems with C# & nopCommerce",
+      tr: "nopCommerce üzerinde sipariş, müşteri, fiyat ve indirim yönetimi; ödeme sistemleri ve SAP / Panorama entegrasyonları.",
+      en: "Order, customer, pricing and discount management on nopCommerce, with payment systems and SAP / Panorama integrations.",
     },
     description: {
       tr: "C# ve ASP.NET Core kullanılarak nopCommerce altyapısı üzerine geliştirilen; sipariş, müşteri, fiyat ve indirim yönetimi ile SAP ve Panorama entegrasyonlarını kapsayan kurumsal B2B platformu ve ödeme sistemleri entegrasyonlu Düzey e-ticaret altyapısı.",
@@ -121,7 +126,10 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "duzey-route-opt",
-    title: "Enterprise Fleet & Route Optimization Platform",
+    title: {
+      tr: "Kurumsal Filo & Rota Optimizasyonu Platformu",
+      en: "Enterprise Fleet & Route Optimization Platform",
+    },
     year: "2025",
     category: {
       tr: "Kurumsal Lojistik / Full Stack",
@@ -132,8 +140,8 @@ export const projectsData: ProjectItem[] = [
       en: "Software Developer @ Düzey",
     },
     tagline: {
-      tr: "Angular & Java Spring Boot ile Rota Optimizasyonu ve Harita Planlama",
-      en: "Map-Based Route Optimization & Fleet Dispatch with Spring Boot & Angular",
+      tr: "Harita üzerinden rota planlama, araç ve sürücü yönetimi; SAP ve Panorama entegrasyonlarıyla dağıtım yönetimi ve raporlama.",
+      en: "Map-based route planning and vehicle and driver management, with distribution management and reporting through SAP and Panorama integrations.",
     },
     description: {
       tr: "Angular, Java Spring Boot ve PostgreSQL ile geliştirilen; rota optimizasyonu, harita üzerinden planlama, araç ve sürücü yönetimi sunan web uygulaması. SAP ve Panorama entegrasyonlarıyla dağıtım süreçlerinin yönetimini ve raporlanmasını sağlar.",
@@ -180,7 +188,10 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "dailyrota",
-    title: "Rota · DailyTracker: Kişisel Yaşam & Finans Yönetim Merkezi",
+    title: {
+      tr: "Rota · DailyTracker: Kişisel Yaşam & Finans Yönetim Merkezi",
+      en: "Rota · DailyTracker: Personal Life & Finance Hub",
+    },
     year: "2026",
     category: {
       tr: "Mobil Web / Kişisel Yaşam & Finans",
@@ -782,7 +793,10 @@ export const experienceData: ExperienceItem[] = [
       tr: "Bilgi İşlem / BT Stajyeri",
       en: "IT Intern",
     },
-    company: "Muğla Sıtkı Koçman Üniversitesi",
+    company: {
+      tr: "Muğla Sıtkı Koçman Üniversitesi",
+      en: "Muğla Sıtkı Koçman University",
+    },
     period: {
       tr: "Temmuz 2023 — Ağustos 2023",
       en: "July 2023 — Aug 2023",

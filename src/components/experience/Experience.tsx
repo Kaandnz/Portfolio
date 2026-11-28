@@ -1,133 +1,127 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, CheckCircle2, GraduationCap } from "lucide-react";
-import { experienceData, educationData } from "@/data/portfolioData";
+import type { ReactNode } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
-import SectionHeader from "../ui/SectionHeader";
+import { pick } from "@/lib/i18n";
+import { educationData, experienceData } from "@/data/portfolioData";
+import { cn } from "@/lib/utils";
+
+/*
+ * Pink copy of the set: experience and education as ruled form rows
+ * (period | entry | stack). The former About copy is the lede; its stats are
+ * plain form fields in one ruled row.
+ */
+
+function FormRow({
+  first,
+  aside,
+  children,
+  side,
+}: {
+  first?: boolean;
+  aside: ReactNode;
+  children: ReactNode;
+  side: ReactNode;
+}) {
+  return (
+    <li
+      className={cn(
+        "grid md:grid-cols-[minmax(176px,14rem)_minmax(0,1fr)] xl:grid-cols-[14.5rem_minmax(0,1fr)_minmax(15rem,19rem)]",
+        !first && "border-t-[1.5px] border-ink",
+      )}
+    >
+      <div className="border-b border-hairline px-4 pt-3 pb-2.5 md:row-span-2 md:border-r-[1.5px] md:border-b-0 md:border-ink md:py-4 xl:row-span-1">
+        {aside}
+      </div>
+      <div className="min-w-0 px-4 pt-3 pb-3 md:pt-4 xl:pb-5">{children}</div>
+      <div className="min-w-0 px-4 pb-5 md:col-start-2 xl:col-start-3 xl:row-start-1 xl:border-l-[1.5px] xl:border-ink xl:py-4">
+        {side}
+      </div>
+    </li>
+  );
+}
 
 export default function Experience() {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { language, t } = useLanguage();
+
+  const fields = [
+    { label: t.about.statYearsLabel, value: t.about.statYears },
+    { label: t.about.statStackLabel, value: t.about.statStack },
+    { label: t.about.statQualityLabel, value: t.about.statQuality },
+  ];
 
   return (
-    <section id="experience" className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 border-t border-white/[0.06]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <SectionHeader
-          icon={Briefcase}
-          badge={t.experience.badge}
-          heading1={t.experience.heading1}
-          heading2={t.experience.heading2}
-          subtitle={t.experience.subtitle}
-          className="mb-16 md:mb-20"
-        />
+    <section id="experience" className="ply ply-pink" aria-labelledby="experience-title">
+      <h2
+        id="experience-title"
+        className="text-[clamp(28px,3.2vw,40px)] leading-[1.02] font-extrabold tracking-[-0.02em] text-balance [font-stretch:112%]"
+      >
+        {t.experience.heading1} {t.experience.heading2}
+      </h2>
+      <p className="mt-3 max-w-[65ch] text-[16.5px] leading-[1.55]">{t.about.description}</p>
 
-        {/* Minimal Timeline */}
-        <div className="relative ml-4 md:ml-8 pl-8 md:pl-16 space-y-16">
-          {/* Rail: brightest at the latest role, dissolving past the education node */}
+      <dl className="mt-6 grid border-[1.5px] border-ink sm:grid-cols-3">
+        {fields.map((field, i) => (
           <div
-            aria-hidden
-            className="absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-sky-400/70 via-white/12 to-transparent"
-          />
-          {experienceData.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative group"
-            >
-              {/* Glowing Timeline Marker */}
-              <div className="absolute -left-[40px] md:-left-[72px] top-1.5 w-4 h-4 rounded-full bg-[#08080a] border-2 border-sky-400 group-hover:bg-sky-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(56,189,248,0.5)]" />
-
-              {/* Header Info */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight group-hover:text-sky-300 transition-colors">
-                    {exp.role[language]}
-                  </h3>
-                  <span className="text-sm font-medium text-sky-400/90">
-                    @ {exp.company}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 font-mono text-xs text-white/50">
-                  <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
-                    {exp.period[language]}
-                  </span>
-                  <span>{exp.location[language]}</span>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm md:text-base text-white/70 max-w-3xl leading-relaxed mb-4">
-                {exp.description[language]}
-              </p>
-
-              {/* Core Achievements */}
-              <div className="space-y-2 mb-5">
-                {exp.achievements[language].map((achievement, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-white/60">
-                    <CheckCircle2 size={15} className="text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{achievement}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Technology Badges */}
-              <div className="flex flex-wrap gap-2">
-                {exp.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-[11px] font-mono text-white/60"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Education Timeline Node */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="relative group pt-4"
+            key={field.label}
+            className={cn(
+              "flex items-baseline justify-between gap-4 px-4 py-3 sm:block",
+              i > 0 && "border-t-[1.5px] border-ink sm:border-t-0 sm:border-l-[1.5px]",
+            )}
           >
-            <div className="absolute -left-[40px] md:-left-[72px] top-5 w-4 h-4 rounded-full bg-[#08080a] border-2 border-purple-400 group-hover:bg-purple-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_12px_rgba(168,85,247,0.5)]" />
+            <dt className="form-label">{field.label}</dt>
+            <dd className="typed shrink-0 sm:mt-1.5">{field.value}</dd>
+          </div>
+        ))}
+      </dl>
 
-            <div className="p-6 rounded-2xl apple-glass-subtle specular-border border border-white/[0.06] max-w-3xl">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-                    <GraduationCap size={16} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white">
-                      {educationData.degree[language]}
-                    </h3>
-                    <p className="text-xs text-white/60">
-                      {educationData.school[language]}
-                    </p>
-                  </div>
-                </div>
+      <ol className="mt-5 border-[1.5px] border-ink">
+        {experienceData.map((job, i) => (
+          <FormRow
+            key={job.id}
+            first={i === 0}
+            aside={
+              <>
+                <p className="typed">{job.period[language]}</p>
+                <p className="mt-1 text-[14px] leading-snug text-ink-soft">{job.location[language]}</p>
+              </>
+            }
+            side={
+              <>
+                <p className="form-label">{t.form.stack}</p>
+                <p className="typed mt-1.5 break-words">{job.technologies.join("\u00a0· ")}</p>
+              </>
+            }
+          >
+            <h3 className="text-[20px] leading-tight font-bold tracking-[-0.01em]">{job.role[language]}</h3>
+            <p className="mt-0.5 text-[16px] font-medium text-ink-soft">{pick(job.company, language)}</p>
+            <p className="mt-3 max-w-[70ch] text-[15.5px] leading-[1.55]">{job.description[language]}</p>
+            <ul className="mt-3 grid max-w-[70ch] list-[square] gap-1.5 pl-5 text-[15px] leading-[1.5] marker:text-ink">
+              {job.achievements[language].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </FormRow>
+        ))}
 
-                <div className="font-mono text-xs text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
-                  GPA: {educationData.gpa}
-                </div>
-              </div>
-              <p className="text-xs md:text-sm text-white/60 mt-3 leading-relaxed">
-                {educationData.details[language]}
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+        <FormRow
+          aside={<p className="form-label">{t.form.education}</p>}
+          side={
+            <p className="flex items-baseline gap-3">
+              <span className="form-label">{t.about.gpaLabel}</span>
+              <span className="typed">{educationData.gpa}</span>
+            </p>
+          }
+        >
+          <h3 className="text-[20px] leading-tight font-bold tracking-[-0.01em]">{educationData.degree[language]}</h3>
+          <p className="mt-0.5 text-[16px] font-medium text-ink-soft">{educationData.school[language]}</p>
+          <p className="mt-3 max-w-[70ch] text-[15.5px] leading-[1.55]">{educationData.details[language]}</p>
+        </FormRow>
+      </ol>
+      {/* Copy designation printed in the sheet's corner, like a carbon set's ply mark. */}
+      <span aria-hidden="true" className="ply-mark form-label">
+        {t.form.copy} 3
+      </span>
     </section>
   );
 }

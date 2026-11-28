@@ -1,285 +1,280 @@
 ---
 name: Kağan Deniz Portfolio
-description: A bilingual one-page portfolio set as a dark engineering console of glass panels, mono readouts and a single sky-blue signal.
+description: A bilingual one-page portfolio set as a carbonless delivery-note form: coloured paper copies on a grey-green desk, printed in form-green ink and filled in with violet carbon.
 colors:
-  console-black: "#08080a"
-  console-floor: "#070709"
-  panel-graphite: "#121216"
-  readout-white: "#f5f5f7"
-  dimmed-readout: "#86868b"
-  hairline: "rgba(255, 255, 255, 0.08)"
-  hairline-lit: "rgba(255, 255, 255, 0.18)"
-  signal-sky: "#38bdf8"
-  signal-sky-pale: "#7dd3fc"
-  signal-sky-deep: "#0ea5e9"
-  indigo-trail: "#818cf8"
-  live-emerald: "#34d399"
-  alert-rose: "#fb7185"
-  archive-violet: "#c084fc"
+  carbon: "#2a2878"
+  carbon-tint: "#e3e2ff"
+  ink: "#16624f"
+  ink-soft: "#335a4f"
+  hairline: "rgb(22 98 79 / 0.42)"
+  desk: "#c9cdc6"
+  ply-white: "#fbfbf8"
+  ply-canary: "#f4e58a"
+  ply-pink: "#f2c3cf"
+  type: "#151515"
 typography:
   display:
-    fontFamily: "Geist, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif"
-    fontSize: "5.5rem"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "-0.04em"
-  headline:
-    fontFamily: "Geist, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif"
-    fontSize: "3.75rem"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.028em"
-  title:
-    fontFamily: "Geist, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif"
-    fontSize: "2.6rem"
-    fontWeight: 700
-    lineHeight: 1.08
-    letterSpacing: "-0.03em"
-  body:
-    fontFamily: "Geist, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.625
-  label:
-    fontFamily: "'Geist Mono', ui-monospace, 'SF Mono', Menlo, Monaco, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "clamp(42px, 4.8vw, 70px)"
+    fontWeight: 800
     lineHeight: 1
-    letterSpacing: "0.1em"
-  readout:
-    fontFamily: "'Geist Mono', ui-monospace, 'SF Mono', Menlo, Monaco, monospace"
-    fontSize: "0.6875rem"
+    letterSpacing: "-0.025em"
+    fontVariation: "'wdth' 112"
+  headline:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "clamp(28px, 3.2vw, 40px)"
+    fontWeight: 800
+    lineHeight: 1.02
+    letterSpacing: "-0.02em"
+    fontVariation: "'wdth' 112"
+  title:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "21px"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
+  body:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "15.5px"
     fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.55
+  form-title:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 800
+    lineHeight: 1.35
+    letterSpacing: "0.16em"
+    fontVariation: "'wdth' 125"
+  label:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "12px"
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: "0.06em"
+    fontVariation: "'wdth' 75"
+  action:
+    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 700
+    lineHeight: 1.35
+    letterSpacing: "0.05em"
+    fontVariation: "'wdth' 75"
+  typed:
+    fontFamily: "Courier Prime, Courier New, monospace"
+    fontSize: "14.5px"
+    fontWeight: 400
+    lineHeight: 1.35
+    fontFeature: "'tnum' 1"
 rounded:
-  sm: "6px"
-  md: "12px"
-  lg: "16px"
-  xl: "24px"
-  full: "9999px"
+  none: "0px"
 spacing:
-  gutter-mobile: "24px"
-  gutter-tablet: "48px"
-  gutter-desktop: "80px"
-  section-mobile: "96px"
-  section-desktop: "144px"
-  container: "1280px"
+  gutter-mobile: "12px"
+  cell: "16px"
+  gutter: "24px"
+  ply-x: "28px"
+  ply-gap: "46px"
+  container: "1340px"
 components:
-  button-primary:
-    backgroundColor: "{colors.readout-white}"
-    textColor: "{colors.console-black}"
-    typography: "{typography.body}"
-    rounded: "{rounded.full}"
-    padding: "14px 28px"
-  button-primary-hover:
-    backgroundColor: "{colors.signal-sky}"
-    textColor: "{colors.console-black}"
-  button-glass:
-    backgroundColor: "rgba(255, 255, 255, 0.05)"
-    textColor: "{colors.readout-white}"
-    rounded: "{rounded.full}"
-    padding: "14px 24px"
-  button-glass-hover:
-    backgroundColor: "rgba(255, 255, 255, 0.10)"
-  button-text:
-    textColor: "{colors.dimmed-readout}"
-    rounded: "{rounded.full}"
-    padding: "14px 20px"
-  button-submit:
-    backgroundColor: "{colors.signal-sky-deep}"
-    textColor: "{colors.console-black}"
-    rounded: "{rounded.md}"
-    padding: "16px 24px"
-  button-submit-hover:
-    backgroundColor: "{colors.signal-sky}"
-  chip-tech:
-    backgroundColor: "rgba(255, 255, 255, 0.03)"
-    textColor: "{colors.dimmed-readout}"
-    typography: "{typography.readout}"
-    rounded: "{rounded.full}"
-    padding: "4px 12px"
-  input-field:
-    backgroundColor: "rgba(255, 255, 255, 0.03)"
-    textColor: "{colors.readout-white}"
-    rounded: "{rounded.md}"
+  ply-white:
+    backgroundColor: "{colors.ply-white}"
+    textColor: "{colors.type}"
+    rounded: "{rounded.none}"
+    padding: "22px 28px 30px"
+  ply-canary:
+    backgroundColor: "{colors.ply-canary}"
+    textColor: "{colors.type}"
+    rounded: "{rounded.none}"
+    padding: "22px 28px 30px"
+  ply-pink:
+    backgroundColor: "{colors.ply-pink}"
+    textColor: "{colors.type}"
+    rounded: "{rounded.none}"
+    padding: "22px 28px 30px"
+  channel-primary:
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.ply-white}"
+    rounded: "{rounded.none}"
     padding: "12px 16px"
-  card-glass:
-    backgroundColor: "rgba(18, 18, 22, 0.65)"
-    rounded: "{rounded.xl}"
-    padding: "40px"
-  nav-pill:
-    backgroundColor: "rgba(25, 25, 30, 0.7)"
-    textColor: "{colors.readout-white}"
-    rounded: "{rounded.full}"
-    padding: "10px 24px"
+    height: "56px"
+  channel-row:
+    backgroundColor: "{colors.ply-white}"
+    textColor: "{colors.type}"
+    rounded: "{rounded.none}"
+    padding: "10px 16px"
+    height: "48px"
+  channel-row-hover:
+    backgroundColor: "rgb(42 40 120 / 0.07)"
+  case-study-opener:
+    textColor: "{colors.carbon}"
+    typography: "{typography.action}"
+    rounded: "{rounded.none}"
+    padding: "0 8px"
+    height: "44px"
+  case-study-opener-hover:
+    backgroundColor: "rgb(42 40 120 / 0.08)"
+  case-study-opener-active:
+    backgroundColor: "rgb(42 40 120 / 0.15)"
+  external-link:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "0 8px"
+    height: "44px"
+  form-field:
+    textColor: "{colors.carbon}"
+    typography: "{typography.typed}"
+    rounded: "{rounded.none}"
+    padding: "12px 16px"
+  section-index-link:
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    padding: "0 10px"
+    height: "36px"
+  case-study-sheet:
+    backgroundColor: "{colors.ply-white}"
+    textColor: "{colors.type}"
+    rounded: "{rounded.none}"
+    width: "880px"
 ---
 
 # Design System: Kağan Deniz Portfolio
 
 ## Overview
 
-**Creative North Star: "The Night Console"**
+**Creative North Star: "The Delivery Note"**
 
-The site is an engineer's control room after dark. A near-black field (Console Black) holds frosted glass instrument panels, a faint 64px engineering grid, and slow aurora light behind the hero. Information is read like telemetry: section badges are numbered mono readouts (`02 // Selected Works`), the hero carries a live Istanbul clock in TRT, and availability is a pulsing emerald status light. One signal color, Signal Sky, marks what is live, interactive or focused.
+The page is a carbonless form set (a Turkish *sevk irsaliyesi*) lying on a grey-green office desk. Each kind of work is printed on its own copy: the white top copy holds the identity header and the Düzey line items, the canary copy holds own products, the pink copy holds experience and education, and further white sheets hold skills and contact. The lower copies show their coloured edges under the top sheet; a dashed perforation runs along its foot. Everything the form *says* is printed in form-green ink as condensed caps and 1.5px rules; everything that was *filled in* (dates, stacks, handles, metrics) is a violet carbon impression in a typewriter face.
 
-Density is generous at the section level (96–144px of vertical air between sections) and tight inside panels, where small mono labels, chips and dividers sit close together like a dashboard. Typography carries the weight: very large, tightly tracked Geist headlines against quiet body copy dimmed to 50–70% white. Glass and specular rim highlights give surfaces an Apple-grade finish; the grid and mono labels keep it an engineering instrument rather than a lifestyle page.
+Density is that of a working document: ruled cells, tight label rows, real screenshots in ruled frames, no decorative white space and no illustration. The light is office daylight: light mode only, flat paper, soft paper shadows, no glow. Motion is near-static; the one authored moment is a case study lifting out of the set as its own sheet.
 
-Motion is a calm power-on sequence: lines of type slide up out of clipped masks, panels fade and rise, and buttons lean magnetically toward the pointer. Nothing bounces or loops for attention except ambient background light and status pulses.
+The confirmed anti-reference is the dark developer-portfolio hero (glow, gradient, mono kickers, job title as the H1, work three screens down), which this system replaced. The name is the H1 and the delivered items are the page.
 
 **Key Characteristics:**
-- Dark-only: one near-black theme, `color-scheme: dark`, no light mode.
-- One signal color (Signal Sky) against white-alpha neutrals; other hues are status signals with fixed meanings.
-- Frosted glass panels with a 1px light-catching top rim over a faint engineering grid.
-- Geist Sans for everything spoken, Geist Mono for everything read as data (labels, years, chips, clock).
-- Two-line section headlines: the first line in full white, the second dimmed to 40%.
-- Pills everywhere for actions and chips; large 24px corners for panels and project frames.
-- Expo-out reveal motion (`cubic-bezier(0.16, 1, 0.3, 1)`), fully neutralised under reduced motion.
+- Coloured paper plies on a desk; the colour of a sheet names what it carries.
+- Two inks: form-green prints the form, violet carbon fills it in and marks what can be done.
+- Square corners and 1.5px ink rules on every cell; hairlines only inside a field.
+- Archivo (variable width) for everything printed or written; Courier Prime only for filled-in data.
+- One authored motion: the case-study lift. Every other state is one committed mark.
 
 ## Colors
 
-A monochrome console of near-black and white-alpha readouts, lit by one sky-blue signal and a small set of status lights.
+A pastel paper set under two working inks: muted form-green and dense carbon violet on white, canary and pink stock.
 
 ### Primary
-- **Signal Sky** (`signal-sky`): the only interface accent. Section badge readouts and their trailing hairline, icon tints, focus rings (2px outline, 3px offset), hover state of the primary button, active skill-tile glow, project role line, the selection highlight (at 28% alpha) and the middle stop of the headline gradient.
-- **Signal Sky Pale** (`signal-sky-pale`): hover color for project and experience titles, and the light stops of the headline gradient.
-- **Signal Sky Deep** (`signal-sky-deep`): the contact form's submit button only.
+- **Carbon Violet** (carbon): the carbon impression. Typed values (dates, stack lines, handles, metrics, years), the filled email row that is the page's primary action, the case-study opener, the copy and close controls, the focus ring, and the faint wash behind hovered and pressed controls (7-8% hover, 15% pressed).
+- **Carbon Tint** (carbon-tint): secondary text and dividers on a carbon fill only (the email address inside the primary row, the rule beside its copy button).
 
 ### Secondary
-- **Indigo Trail** (`indigo-trail`): the tail of the headline gradient, the middle of the scroll-progress bar, and (as `#6366f1` at 26% alpha) one aurora blob. Never a standalone UI color.
-
-### Tertiary (status signals, fixed meanings)
-- **Live Emerald** (`live-emerald`): availability ("Available for Hire" pill and pulsing dot), copied/sent confirmations, the case-study "solution" label, and the end of the scroll-progress bar.
-- **Alert Rose** (`alert-rose`): the case-study "challenge" label only.
-- **Archive Violet** (`archive-violet`): the education marker in Experience only.
-- **Project accents**: each project carries its own `accentColor` in content data. It may tint that project's halo, image glow, category dot and index badge, and nothing outside its own card or modal.
+- **Form Green** (ink): the printed form. Field labels, section-index links, 1.5px rules around every cell, square list markers, external links, the scrollbar thumb.
+- **Faded Form Green** (ink-soft): secondary printed text such as locations, company names, ledes on coloured copies, the availability line and the footer.
+- **Field Hairline** (hairline): the thin divider between rows inside one ruled field. Decorative only.
 
 ### Neutral
-- **Console Black** (`console-black`): page background, theme color, scrollbar track, and the fade that hero art dissolves into.
-- **Console Floor** (`console-floor`): the footer, one step below the page.
-- **Panel Graphite** (`panel-graphite`): the solid base of glass panels (used at 65% alpha with blur).
-- **Readout White** (`readout-white`): primary text and the primary button fill. Body copy steps down in white alpha: 90% for emphasis, 70% for taglines, 60% for subtitles, 50% for descriptions, 40% for meta and dimmed headline lines, 20–30% for separators.
-- **Dimmed Readout** (`dimmed-readout`): the muted-text token.
-- **Hairline** (`hairline`) and **Hairline Lit** (`hairline-lit`): default borders and their hover state. Section dividers use an even lighter 6% white.
+- **Office Desk** (desk): the page background and browser theme colour; the navigation index and footer are printed directly on it.
+- **Top Copy White** (ply-white): the top sheet and the default sheet (work, skills, contact, the case-study sheet for Düzey items), and the fill of non-primary contact cells.
+- **Canary Copy** (ply-canary): the second copy; own products, their case-study sheet, the selection highlight.
+- **Pink Copy** (ply-pink): the third copy; experience and education.
+- **Typewriter Black** (type): display, headings and body text.
 
 ### Named Rules
-**The One Signal Rule.** Signal Sky is the only accent an interface element may use for emphasis, hover or focus. A new hue enters only as a status signal with a single fixed meaning, recorded here.
+**The Two Inks Rule.** Form-green prints what the form says (labels, rules, links); carbon violet is what was filled in or what you can do. A label is never violet; a typed value is never green.
 
-**The Own-Card Rule.** A project's accent color never leaves its own card or case-study modal.
+**The Copy Names Its Contents Rule.** White, canary and pink are the whole paper stock. A sheet's colour tells the reader what kind of entry it holds; a new section takes an existing copy, never a fourth paper colour.
 
-**The White-Alpha Rule.** Neutral text and borders are white at an alpha step, not new grays. Pick the nearest existing step (90/70/60/50/40) before inventing one.
+**The Single Fill Rule.** Exactly one solid carbon fill per channel list: the email row. Every other control is ink on paper.
 
 ## Typography
 
-**Display Font:** Geist (with -apple-system, SF Pro Display, Segoe UI, Helvetica Neue)
-**Body Font:** Geist (same stack)
-**Label/Mono Font:** Geist Mono (with ui-monospace, SF Mono, Menlo, Monaco)
+**Display Font:** Archivo, variable with the width axis (fallback Arial Narrow, system-ui)
+**Body Font:** Archivo (same family)
+**Label/Mono Font:** Courier Prime (fallback Courier New) for typed data only
 
-**Character:** A neutral, engineered grotesk pushed to tight negative tracking at large sizes, paired with its own mono for anything that reads as data. Both load with `latin-ext` so Turkish glyphs (ğ, ş, ı, İ) render natively.
+**Character:** One grotesque stretched across its width axis does all the printed work: widened (112-125%) for the name, headings and form title, condensed (75%) for caps labels. Courier Prime is the typewriter that filled the form in.
 
 ### Hierarchy
-- **Display** (700, 3rem → 5.5rem across breakpoints, line-height 1.02, -0.04em): the hero headline only. Its second line drops to 2.25rem → 4.25rem and takes the accent gradient.
-- **Headline** (700, 1.875rem → 3.75rem, line-height 1.05, -0.028em): section `h2`s, always two lines, second line at 40% white. Contact uses a 3.75rem variant with the gradient on line two.
-- **Title** (700, 1.875rem → 2.6rem, line-height 1.08, -0.03em): project titles, balanced wrapping. Smaller titles (1.25–1.5rem) for experience roles and modal headers.
-- **Body** (400, 0.875rem → 1.125rem, line-height 1.625): subtitles and descriptions at 50–70% white. Hero subtitle capped at 48rem; split-layout section subtitles at 28rem.
-- **Label** (Geist Mono, 0.75rem, uppercase, 0.1em tracking): section badge readouts, form labels, modal sub-headings.
-- **Readout** (Geist Mono, 11px): chips, years, the live clock, footer meta, scroll hint. Uses `tabular-nums` where numbers change.
+- **Display** (800, clamp(42px, 4.8vw, 70px), line-height 1, width 112): the name, once, in the header band.
+- **Headline** (800, clamp(28px, 3.2vw, 40px), line-height 1.02, width 112): sheet headings (Experience, Skills, Contact). The canary sheet's heading is a step smaller (clamp(24px, 3vw, 30px)); the case-study title is clamp(26px, 4.2vw, 36px).
+- **Title** (700, 21px, tight): line-item titles; 20px for experience entries; 16px inside the four-column product grid.
+- **Body** (400, 15-16.5px, line-height 1.45-1.55): ledes at 16.5px, entries at 15.5px, line-item taglines at 15px; prose capped at 60-70ch.
+- **Form title** (800, 13px, 0.16em tracking, width 125, uppercase): the form's printed title in the header strip; narrows to 100% width and 0.1em tracking below 900px.
+- **Label** (700, 12px, 0.06em, width 75, uppercase, form-green): every field label, item number and copy mark. A 500-weight faded variant marks secondary label text.
+- **Action** (700, 13px, 0.05em, width 75, uppercase, carbon): the case-study opener, over a 1.5px carbon underline.
+- **Typed** (Courier Prime 400, 14.5px, line-height 1.35, tabular figures, carbon): filled-in values; 13-13.5px in tight cells.
 
 ### Named Rules
-**The Readout Rule.** If it's data (a year, index number, tech name, time, location, status), it's set in Geist Mono. If it's a sentence, it's Geist Sans.
+**The Typed-Is-Data Rule.** Courier Prime sets only what a clerk would type into a field: dates, years, stack lists, handles, addresses, grades, metrics. Prose and plain-language prompts stay in Archivo even inside a field.
 
-**The Two-Line Headline Rule.** Section headlines are two short lines: the claim in white, its qualifier at 40% white. Gradient text is reserved for one line in the hero and one in Contact.
-
-**The Clipped Descender Rule.** Every line that reveals from an `overflow-hidden` mask carries matching bottom padding and negative margin (`0.12–0.16em`) so Turkish cedillas and descenders are never cut.
+**The Twelve Pixel Floor Rule.** No label is set below 12px, however condensed.
 
 ## Layout
 
-A single scrolling page of full-width sections, each centered in a 1280px container. Section side gutters step 24px → 48px → 80px at the `md` and `lg` breakpoints; vertical section padding is 96px on mobile and 144px from `md` up. Sections after the hero are separated by a 1px top border at 6% white. Anchored sections clear the floating navbar with a small scroll margin.
+A single centred form set (max 1340px) on the desk with a 24px gutter (12px below 900px). Sheets stack vertically 46px apart; the top sheet carries the lower copies' offset edges under it. Inside a sheet, content is ruled cells, not floating cards: grids draw their outer frame with the cells' own right and bottom rules so no line doubles.
 
-The main structural grid is 12 columns from `lg` (1024px): projects alternate a 7-column image with a 5-column narrative, swapping sides on every other row; Contact splits 7/5 copy-to-form. Section headers sit in a split layout on desktop (heading left, subtitle bottom-right) and stack on mobile. Skills tiles run 1 → 2 → 3 columns. Below `lg` everything collapses to one column with the image first.
+The first viewport is the header band: a three-cell ruled row at 1200px and up (identity | typed fields | contact), two cells with contact spanning beneath at 900-1199px, and a single column below 900px reordered to identity, contact, then fields. The Düzey line items sit side by side from 900px. Own products run four across from 1100px, two from 600px. Experience rows are period | entry | stack at 1280px, period | entry below with stack beneath, and stacked on phones. Sheet padding is 22px 28px 30px on desktop and 14px 12px 20px below 900px.
 
-The hero fills the viewport (`100dvh`) in three bands: a top meta bar (name, title, location, live clock), the headline block vertically centered, and a bottom bar of tech chips with a scroll hint. The navbar is a floating pill centered over the page, not a full-width bar.
+Screenshots sit in fixed-ratio ruled frames whose ratio is the average of the group's landscape images, so neighbouring cells line up; portrait phone screens are centred whole in that frame on the sheet's own paper. Hit areas are at least 44px tall (40px for fine pointers inside the contact cell).
 
 ## Elevation & Depth
 
-Depth is layered glass over a lit void. The page is flat Console Black; ambient light (aurora blobs blurred 110px, a sky glow at the top of the viewport, per-project accent halos blurred 3xl) sits behind content. Surfaces above it are translucent Panel Graphite with backdrop blur and saturation, finished with a 1px gradient rim that is brighter at the top (the specular border). Shadows are dark, long and soft, used to lift glass off the glow behind it. A fixed film-grain noise layer at 3.5% opacity sits over everything.
+Depth is paper on a desk, nothing else: each sheet casts one soft drop shadow, the lower copies are flat coloured sheets offset 5px and 10px down-right under the top sheet, and an opened case study is a sheet lifted off the set with a closer, stronger paper shadow while the set dims under a desk-ink tint (no blur).
 
 ### Shadow Vocabulary
-- **Glass panel** (`0 16px 36px -10px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04)`): About and Contact panels, mobile menu.
-- **Glass pill** (`0 8px 24px -6px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)`): scrolled navbar, floating category pills on images.
-- **Project frame** (`0 20px 50px rgba(0,0,0,0.6)`): project screenshots; the frame also rises 6px on hover.
-- **Portrait card** (`0 30px 60px -15px rgba(0,0,0,0.8)`): the About portrait card, the deepest lift on the page.
-- **Primary glow** (`0 12px 30px rgba(255,255,255,0.15)`): the white primary button's soft halo.
-- **Signal glow** (`0 0 10px rgba(56,189,248,0.9)`): the dot on a hovered skill tile.
+- **Sheet on desk** (`box-shadow: 0 18px 30px -20px rgb(30 40 30 / 0.4)`): every sheet at rest.
+- **Lifted sheet** (`box-shadow: 0 2px 3px rgb(20 32 26 / 0.18), 0 30px 50px -22px rgb(20 32 26 / 0.55)`): the open case study.
+- **Lower copies** (flat canary and pink sheets offset 5px and 10px): only under the top sheet.
 
 ### Named Rules
-**The Lit-Void Rule.** Color light lives behind surfaces, never on them. Glows are blurred fields under glass; panels themselves stay neutral.
-
-**The Specular Rim Rule.** A glass panel gets the 1px top-bright rim. A flat chip or input does not.
+**The Paper Shadow Rule.** A shadow only ever describes paper resting on or lifted off the desk: neutral green-black, soft, below the sheet. No glows, no coloured shadows, no shadows on controls.
 
 ## Shapes
 
-Two shape families. Interactive and small things are full pills (9999px): buttons, chips, the navbar, the language toggle, status lights, the nav active indicator. Containers use generous soft corners: 24px for panels, project frames and the portrait card; 16px for skill tiles and modal sub-cards; 12px for inputs, the submit button and contact link tiles; 6px for project index badges. Accent halos bleed out with 48px corners before blurring. Avatar monograms are circles (navbar) or 16px squircles (portrait card). Lines are 1px hairlines; the only thick line is the 2px scroll-progress bar.
+Square everything (0px): sheets, cells, buttons, frames, the dialog, the checkbox marks. Boundaries are printed 1.5px form-green rules; inside a ruled field, rows divide on a 1px hairline. The perforation is a 2px dashed green line running bleed-to-bleed across the foot of the top sheet. List bullets are small ink squares. The language switch is a pair of printed checkboxes (a 14px ink square, filled with an 8px carbon square when ticked).
+
+**The Ruled Not Rounded Rule.** If a thing has an edge, the edge is a 1.5px ink rule or a paper edge. Never a radius, never a pill, and a hairline is never the only boundary of a control.
 
 ## Components
 
 ### Buttons
-Confident white pills that turn to signal on hover, with a magnetic lean toward the pointer.
-- **Shape:** full pill (9999px); contact form submit is the exception at 12px.
-- **Primary:** Readout White fill, Console Black text, 14px × 28px, medium weight, soft white glow. Hover fills Signal Sky over 300ms. Press scales to 0.97.
-- **Glass (secondary):** 5% white fill, 12% white hairline, 90% white text; hover lifts to 10% fill.
-- **Text (tertiary):** no fill, 60% white text rising to white on hover, trailing icon.
-- **Submit:** Signal Sky Deep fill, Console Black semibold text, full width, 12px corners; hover to Signal Sky.
-- **Magnetic behavior:** wrapped buttons follow the pointer at 35% of its offset on a spring (stiffness 350, damping 22, mass 0.5) and snap back on leave.
-- **Copy confirmation:** the label swaps to a check and "Copied!" in Live Emerald for ~2.5s.
+- **Shape:** square (0px), at least 44px tall.
+- **Primary (email):** a full-width carbon-filled row in the channel list, bold 15.5-16.5px label in top-copy white, the address typed in carbon tint beside it; hover underlines the label.
+- **Case-study opener:** condensed caps in carbon over a 1.5px carbon underline, padded into a 44px hit area; hover lays an 8% carbon wash, pressed a 15% wash.
+- **Utility (copy, close):** condensed caps label in carbon with a 14-16px line icon; same wash states.
+- **Focus:** 2px carbon outline, 2px offset, with a 2px top-copy white gap ring, on every control and on every paper.
 
-### Chips
-- **Tech chip:** 3% white fill, 6–7% white hairline, Geist Mono 11–12px at 50–60% white, full pill. Overflow collapses into a "+N more" chip without a border.
-- **Status chip:** Live Emerald text on 8% emerald fill with a 20% emerald border and a pulsing 6px dot.
-- **Tagline chip:** subtle glass with specular rim and a Signal Sky icon (hero only).
+### Links
+- **External:** 15px medium form-green, underlined (1.5px, 0.2em offset), trailed by a 15px arrow-up-right line icon; opens in a new tab and says so to screen readers.
+- **Section index:** 13px condensed caps on the desk; underline on hover.
 
 ### Cards / Containers
-- **Corner Style:** 24px for glass panels and project frames, 16px for tiles.
-- **Background:** glass (Panel Graphite at 65% with 24px blur, 190% saturation) or subtle glass (3% white with 16px blur).
-- **Shadow Strategy:** see Elevation; glass panel shadow plus specular rim.
-- **Border:** 1px white at 6–12%.
-- **Internal Padding:** 32–40px for panels, 20–24px for tiles.
+- **Sheets:** square, white, canary or pink paper, 22px 28px 30px padding, sheet-on-desk shadow, a copy mark ("Kopya 2", "Kopya 3") printed small in the bottom-right corner of the lower copies.
+- **Line items and product cells:** not cards; ruled cells in a grid. Order is field row (item number, year), framed screenshot, title, one line, typed stack, actions pushed to the cell foot.
 
 ### Inputs / Fields
-- **Style:** 3% white fill, 8% white hairline, 12px corners, 12px × 16px padding, white 14px text, placeholder at 20% white. Labels above in the mono Label style at 60% white.
-- **Focus:** border shifts to Signal Sky at 60% and fill lifts to 6% white.
-- **Error / Disabled:** no error state is designed yet; the submit button dims to 50% while sending.
+There are no text inputs. **Form fields** are label-value pairs: a printed label on the left (or above on phones) and a typed carbon value, rows divided by hairlines inside a 1.5px ruled frame.
 
 ### Navigation
-- **Style:** a floating centered pill. At the top of the page it is 40% black with medium blur and a hairline; after 40px of scroll it becomes the glass pill with a deeper shadow.
-- **Contents:** KD monogram circle + name, section links (12px, 70% white), a TR/EN segmented toggle (Geist Mono 11px; the active side is a white pill with black bold text), the emerald availability chip (from `lg`), and GitHub/LinkedIn icon buttons.
-- **Active state:** a shared 10% white pill with a 14% hairline glides between links on a spring (stiffness 380, damping 32) as sections cross the viewport middle.
-- **Mobile:** links collapse behind a menu button into a glass drawer (24px corners) that drops in on a spring, with large 18px links and trailing arrows.
+A slim, non-sticky section index printed on the desk above the set, with the availability status at the right on desktop; on phones it scrolls horizontally without a scrollbar. A skip link appears as a ruled white chip on focus. The language switch lives in the header band as printed checkboxes, current language ticked.
 
-### Section Header (signature)
-A mono badge readout (`0N // Title`) in Signal Sky with its icon and a 40px fading hairline, then the two-line headline revealing line by line from clipped masks (0.85s, staggered 90ms), then the subtitle fading up. Split layout on desktop, stacked on mobile. Every section after the hero opens with one.
+### Channel List (signature)
+A ruled frame titled by a form label: the carbon email row first, then WhatsApp, LinkedIn and GitHub as white rows on ink rules, each a full-row link with its name in bold sans and its handle typed. In the header band the same list runs as a 2x2 grid on phones, four cells at 640-1199px and a stacked column at 1200px and up. Copying the email reports exactly what happened; on failure the address is shown selectable.
 
-### Project Showcase Row (signature)
-A 16:10 screenshot frame in subtle glass with a specular rim, a floating glass category pill top-left, a project-accent halo bleeding out behind it, and a white "case study" pill that rises in on hover. Beside it: mono meta line (accent-tinted index badge, year, Signal Sky role), Title, tagline at 70%, description at 50%, up to five tech chips, then live/source/case-study buttons. Rows alternate sides and are separated by 6% hairlines. Clicking the frame or title opens the case-study modal.
-
-### Ambient Hero Field (signature)
-Three blurred aurora blobs (sky, indigo, emerald) drifting on 22–32s alternating loops, the 64px engineering grid masked to a central ellipse, a canvas particle layer, and a bottom fade to Console Black. It sits behind the hero only.
+### Case-Study Sheet (signature)
+A native modal dialog styled as one copy lifted out of the set: 880px wide square sheet in the item's own paper (white for Düzey, canary for own products), a sticky ruled header strip with the item number and close control, the headline-sized title, a typed category and year, the framed screenshot, then ruled label | content rows. It lifts 10px into place in 240ms on an exponential ease-out from 92% opacity while the set behind dims; reduced motion shows it in place. Full-screen and unruled at the edge below 600px.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use Signal Sky for every interactive emphasis: hover, focus, active indicators, badge readouts.
-- **Do** set years, indices, tech names, times, locations and labels in Geist Mono; sentences in Geist Sans.
-- **Do** open every new section with the Section Header: `0N // Title` badge, two-line headline (white, then 40% white), optional subtitle.
-- **Do** keep sections inside the 1280px container with 24/48/80px gutters and 96/144px vertical padding.
-- **Do** use the expo-out curve `cubic-bezier(0.16, 1, 0.3, 1)` at 0.6–0.9s for reveals, and keep the global reduced-motion override intact.
-- **Do** add matching padding and negative margin to any masked text reveal so Turkish descenders and cedillas aren't clipped.
-- **Do** keep every visible string available in both Turkish and English.
+- **Do** put every new kind of content on one of the three existing copies (white, canary, pink) and let its colour carry the meaning.
+- **Do** frame every cell, screenshot and field group with a 1.5px form-green rule, and divide rows inside a field with the hairline.
+- **Do** set dates, years, stacks, handles and metrics in Courier Prime carbon, and keep prose in Archivo.
+- **Do** keep each state one committed mark: an underline, or a 7-8% carbon wash on hover and 15% when pressed, and the carbon focus ring with its paper gap.
+- **Do** give every entry its real date and every screenshot a fixed-ratio ruled frame, with text beside it, never on it.
+- **Do** keep motion to the case-study lift (240ms, exponential ease-out, opacity never starting at 0) and short colour changes (90ms or instant).
 
 ### Don't:
-- **Don't** introduce a new accent hue; a new color must be a status signal with one fixed meaning, recorded in Colors.
-- **Don't** let a project's accent color tint anything outside that project's card or modal.
-- **Don't** put color fills on glass panels; light belongs behind surfaces as blurred glow.
-- **Don't** use gradient text beyond the hero's second line and the Contact headline's second line.
-- **Don't** add a light theme or light sections; the console is dark-only.
-- **Don't** use square corners on buttons or chips; actions are pills.
-- **Don't** invent new gray values; step down white alpha instead.
+- **Don't** fake the form's history: no rubber stamps, coffee stains, creases or invented serial numbers. Item numbers and copy marks count real things.
+- **Don't** add glows, gradients, blur, or coloured shadows; depth is paper only.
+- **Don't** round a corner or draw a pill.
+- **Don't** add a dark theme; the set is paper under daylight.
+- **Don't** set prose, headings or labels in Courier Prime, or bring in a second display face.
+- **Don't** animate hover with movement, scale or glow, or fade anything in from zero opacity.
+- **Don't** add a second solid carbon fill beside the email row.

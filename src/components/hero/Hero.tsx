@@ -1,218 +1,102 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ArrowDown, Copy, Check, ExternalLink, Sparkles, MapPin, Globe } from "lucide-react";
-import AmbientCanvas from "./AmbientCanvas";
-import MagneticButton from "../ui/MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
-import { personalInfo } from "@/data/portfolioData";
+import { pick } from "@/lib/i18n";
+import { experienceData, personalInfo } from "@/data/portfolioData";
+import LanguageLink from "@/components/ui/LanguageLink";
+import HeroContact from "./HeroContact";
 
+/** A printed checkbox: an ink square, filled with a carbon mark when ticked. */
+function CheckMark({ on }: { on: boolean }) {
+  return (
+    <span aria-hidden="true" className="inline-grid size-3.5 place-items-center border-[1.5px] border-ink">
+      {on && <span className="size-2 bg-carbon" />}
+    </span>
+  );
+}
+
+/**
+ * The header band of the top copy: identity, typed fields and contact in one
+ * ruled row. Projects places it at the top of the #work ply.
+ */
 export default function Hero() {
-  const [copied, setCopied] = useState(false);
-  const [time, setTime] = useState<string>("");
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { language, t } = useLanguage();
+  const [now, before] = experienceData;
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(
-        now.toLocaleTimeString("en-GB", {
-          timeZone: "Europe/Istanbul",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
+  const entry = (e: (typeof experienceData)[number]) => `${pick(e.company, language)} · ${e.role[language]} · ${e.period[language]}`;
+
+  const fields = [
+    { label: t.form.now, value: entry(now) },
+    { label: t.form.stack, value: t.hero.stack },
+    { label: t.form.before, value: entry(before), desktopOnly: true },
+  ];
+
+  // Fixed order TR, EN on both pages; only the other language is a link.
+  const marks = (["tr", "en"] as const).map((code) => {
+    const label = code === language ? t.lang.code : t.lang.switchToCode;
+    if (code === language) {
+      return (
+        <span key={code} aria-current="true" className="form-label inline-flex items-center gap-1.5">
+          <CheckMark on />
+          {label}{" "}
+          <span className="sr-only">{t.lang.name}</span>
+        </span>
       );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2400);
-  };
+    }
+    return (
+      <LanguageLink
+        key={code}
+        className="form-label relative inline-flex items-center gap-1.5 hover:underline after:absolute after:-inset-x-2 after:-inset-y-3.5 after:content-['']"
+      >
+        <CheckMark on={false} />
+        {label}{" "}
+        <span className="sr-only">{t.lang.switchTo}</span>
+      </LanguageLink>
+    );
+  });
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-between px-6 md:px-12 lg:px-20 pt-28 md:pt-36 pb-12 overflow-hidden select-none">
-      {/* Aurora colour fields + engineering grid */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="aurora-blob aurora-a" />
-        <div className="aurora-blob aurora-b" />
-        <div className="aurora-blob aurora-c" />
-        <div className="absolute inset-0 bg-grid" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[#08080a]" />
-      </div>
-
-      {/* Interactive Background Particle & Gradient Canvas */}
-      <AmbientCanvas />
-
-      {/* Top Meta Bar */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 text-xs tracking-wider uppercase text-white/50">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex items-center gap-2"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-white/90 font-semibold">{personalInfo.name}</span>
-          <span className="text-white/30">•</span>
-          <span>{personalInfo.title[language]}</span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex items-center gap-3 font-mono text-[11px] text-white/60"
-        >
-          <span className="flex items-center gap-1.5">
-            <MapPin size={12} className="text-sky-400" />
-            <span>{t.hero.location}</span>
-          </span>
-          <span className="text-white/20">|</span>
-          <span className="flex items-center gap-1.5">
-            <Globe size={12} className="text-emerald-400" />
-            <span>{time ? `${time} TRT` : "00:00:00"}</span>
-          </span>
-        </motion.div>
-      </div>
-
-      {/* Centerpiece Hero Statement with Optical Typography */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-12 md:py-16">
-        <div className="flex flex-col gap-5 md:gap-7">
-          {/* Subtle Tagline Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass-subtle specular-border w-fit text-xs text-white/70"
-          >
-            <Sparkles size={13} className="text-sky-400" />
-            <span>{t.hero.tag}</span>
-          </motion.div>
-
-          {/* Staggered Giant Headline (pb/-mb keeps cedillas and descenders out of the reveal clip) */}
-          <h1 className="font-bold tracking-[-0.04em] leading-[1.02]">
-            <span className="block overflow-hidden pb-[0.16em] -mb-[0.16em]">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white"
-              >
-                {t.hero.headline1}
-              </motion.span>
-            </span>
-
-            <span className="block overflow-hidden pb-[0.16em] -mb-[0.16em] mt-3 md:mt-4">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-                className="block w-fit max-w-full text-4xl sm:text-5xl md:text-6xl xl:text-[4.25rem] text-balance text-gradient-accent pb-[0.12em] -mb-[0.12em]"
-              >
-                {t.hero.headline2}
-              </motion.span>
-            </span>
-          </h1>
-
-          {/* Subtitle & Philosophy from CV */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl text-base md:text-lg text-white/60 font-normal leading-relaxed mt-1"
-          >
-            {t.hero.subtitle}
-          </motion.p>
-
-          {/* Interactive CTAs with Magnetic Physics */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.75 }}
-            className="flex flex-wrap items-center gap-4 pt-4"
-          >
-            {/* Primary Action */}
-            <MagneticButton as="a" href="#projects" data-cursor="pointer">
-              <div className="group flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-medium text-sm hover:bg-sky-400 hover:text-black transition-colors duration-300 shadow-[0_12px_30px_rgba(255,255,255,0.15)] active:scale-[0.97]">
-                <span>{t.hero.exploreBtn}</span>
-                <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
-              </div>
-            </MagneticButton>
-
-            {/* Copy Email Button */}
-            <MagneticButton onClick={handleCopyEmail} data-cursor="pointer">
-              <div className="flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.12] text-white/90 text-sm font-medium transition-all duration-300 active:scale-[0.97]">
-                {copied ? (
-                  <>
-                    <Check size={16} className="text-emerald-400" />
-                    <span className="text-emerald-400">{t.hero.copied}</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={15} className="text-white/60" />
-                    <span>{t.hero.copyEmail}</span>
-                  </>
-                )}
-              </div>
-            </MagneticButton>
-
-            {/* Direct Contact Button */}
-            <MagneticButton as="a" href="#contact" data-cursor="pointer">
-              <div className="flex items-center gap-2 px-5 py-3.5 rounded-full text-white/60 hover:text-white text-sm transition-colors active:scale-[0.97]">
-                <span>{t.hero.contactBtn}</span>
-                <ExternalLink size={14} />
-              </div>
-            </MagneticButton>
-          </motion.div>
+    <header
+      className="form-rule grid bg-ply-white min-[900px]:grid-cols-[1.2fr_1fr] min-[1200px]:grid-cols-[1.25fr_1fr_300px]"
+    >
+      {/* Identity */}
+      <div className="pb-4">
+        {/* Ruled form header strip: the form's title and the language boxes share one row. */}
+        <div className="mb-2.5 flex items-center justify-between gap-4 border-b-[1.5px] border-ink px-3.5 py-2 min-[900px]:px-[18px]">
+          <p className="text-[13px] leading-[1.35] font-extrabold tracking-[0.1em] text-ink uppercase [font-stretch:100%] min-[900px]:tracking-[0.16em] min-[900px]:[font-stretch:125%]">
+            {t.form.title}
+          </p>
+          <div className="flex shrink-0 gap-3 pt-px">
+            {marks}
+          </div>
         </div>
+        <h1 className="px-3.5 pt-0.5 min-[900px]:px-[18px] text-[clamp(42px,4.8vw,70px)] leading-[1] font-extrabold tracking-[-0.025em] text-type [font-stretch:112%]">
+          {personalInfo.name}
+        </h1>
+        <p className="mt-2 px-3.5 text-[18px] leading-snug font-medium text-type min-[900px]:px-[18px] min-[900px]:text-[19px]">
+          {personalInfo.title[language]} · {t.hero.location}
+        </p>
       </div>
 
-      {/* Bottom Status & Scroll Indicator */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex items-end justify-between text-xs text-white/40">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-wrap items-center gap-2 font-mono text-[11px]"
-        >
-          {[".NET Core", "C#", "Java Spring Boot", "Angular", "PostgreSQL", "SQL Server"].map((tech, i) => (
-            <span
-              key={tech}
-              className={`px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] text-white/50 ${
-                i > 2 ? "hidden md:inline-block" : ""
+      {/* Typed fields */}
+      <div className="border-t-[1.5px] border-ink px-3.5 pt-1.5 pb-2 max-[899px]:order-3 min-[900px]:border-t-0 min-[900px]:border-l-[1.5px] min-[900px]:px-[18px] min-[900px]:pt-1.5 min-[900px]:pb-2">
+        <dl className="grid grid-cols-[max-content_1fr] gap-x-4">
+          {fields.map((f) => (
+            <div
+              key={f.label}
+              className={`col-span-2 grid grid-cols-subgrid border-hairline py-1 not-first:border-t ${
+                f.desktopOnly ? "max-[899px]:hidden" : ""
               }`}
             >
-              {tech}
-            </span>
+              <dt className="form-label pt-0.5">{f.label}</dt>
+              <dd className="typed min-w-0 leading-[1.3] break-words">{f.value}</dd>
+            </div>
           ))}
-        </motion.div>
-
-        <motion.a
-          href="#projects"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="flex items-center gap-2 text-white/50 hover:text-white transition-colors shrink-0 whitespace-nowrap"
-          data-cursor="pointer"
-        >
-          <span className="text-[11px] uppercase tracking-wider font-mono">{t.hero.scrollHint}</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          >
-            <ArrowDown size={14} />
-          </motion.div>
-        </motion.a>
+        </dl>
       </div>
-    </section>
+
+      {/* Contact */}
+      <HeroContact className="border-t-[1.5px] border-ink max-[899px]:order-2 min-[900px]:col-span-2 min-[1200px]:col-span-1 min-[1200px]:border-t-0 min-[1200px]:border-l-[1.5px]" />
+    </header>
   );
 }

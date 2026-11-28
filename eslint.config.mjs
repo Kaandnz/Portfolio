@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored design-skill scripts (minified third-party code), not site code:
+    ".claude/**",
+    ".gemini/**",
+    ".github/skills/**",
   ]),
 ]);
 
