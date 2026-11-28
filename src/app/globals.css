@@ -1,65 +1,64 @@
 @import "tailwindcss";
 
-/*
- * "Teslim Edilen İşler" — the portfolio as a carbonless delivery-note set.
- * Each half of the work is printed on its own coloured copy (ply); form labels
- * and rules are in the green form ink; filled-in values are carbon violet.
- * Light only: a form is paper on a desk under office daylight.
- */
-
 @theme {
-  /* Paper: the desk and the plies of the form set */
-  --color-desk: #c9cdc6;
-  --color-ply-white: #fbfbf8;
-  --color-ply-canary: #f4e58a;
-  --color-ply-pink: #f2c3cf;
+  /* Ink-on-press grounds and warm newsprint paper stock */
+  --color-raven: #0a0a0a;
+  --color-press: #141414;
+  --color-press-deep: #0f0f0f;
+  --color-stock: #f2ead8;
+  --color-stock-soft: #e6dcc4;
 
-  /* Inks */
-  --color-ink: #16624f; /* form print: labels, rules, printed headings */
-  --color-ink-soft: #335a4f; /* secondary printed text, >=4.8:1 on every ply and the desk */
-  --color-carbon: #2a2878; /* carbon impression: filled-in values, primary action */
-  --color-carbon-tint: #e3e2ff; /* secondary text on a carbon fill (9.9:1) */
-  --color-type: #151515; /* body and display text */
+  /* Process yellow, graphic vermilion, and ink tones calibrated for contrast */
+  --color-yellow: #f2c94c;
+  --color-yellow-hot: #ffd84d;
+  --color-vermilion: #f04c3a;
+  --color-vermilion-fill: #c92a1a;
+  --color-vermilion-ink: #b52012;
+  --color-ink: #111111;
+  --color-ink-muted: #46423a;
+  --color-paper-muted: #c2b9a5;
 
-  /* Rules */
-  --color-hairline: rgb(22 98 79 / 0.42); /* inner field dividers (decorative, never the only boundary of a control) */
+  /* Broadside structural rules */
+  --color-rule-dark: rgb(242 234 216 / 0.24);
+  --color-rule-light: rgb(17 17 17 / 0.24);
 
-  /* Type */
-  --font-sans: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
-  --font-typed: var(--font-courier), "Courier New", monospace;
+  /* Typography */
+  --font-display: var(--font-antonio), system-ui, sans-serif;
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
-  /* Form geometry */
-  --rule: 1.5px; /* printed form rule */
+  /* Layout geometry */
+  --container: 1380px;
   --gutter: 24px;
   --gutter-mobile: 12px;
-  --container: 1340px;
 
-  /* Motion: near-static. One authored moment (the case-study lift). */
+  /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-lift: 240ms;
-  --duration-press: 90ms;
+  --duration-register: 220ms;
+  --duration-snap: 110ms;
 }
 
 @layer base {
   html {
-    background-color: var(--color-desk);
-    color: var(--color-type);
+    background-color: var(--color-raven);
+    color: var(--color-stock);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scrollbar-color: var(--color-ink) var(--color-desk);
+    scrollbar-color: var(--color-yellow) var(--color-raven);
   }
 
   body {
     min-height: 100vh;
-    background-color: var(--color-desk);
+    background-color: var(--color-raven);
+    color: var(--color-stock);
     overflow-x: clip;
   }
 
   ::selection {
-    background-color: var(--color-ply-canary);
-    color: var(--color-carbon);
+    background-color: var(--color-yellow);
+    color: var(--color-ink);
   }
 
   a {
@@ -67,16 +66,25 @@
     text-decoration-thickness: 1.5px;
   }
 
-  /* Anchor targets keep a little paper above them */
   [id] {
     scroll-margin-top: 16px;
   }
 
-  /* Keyboard focus: a carbon ring with a paper gap, visible on every ply and on carbon fills */
   :focus-visible {
-    outline: 2px solid var(--color-carbon);
+    outline: 2px solid var(--color-yellow);
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--color-ply-white);
+    box-shadow: 0 0 0 2px var(--color-raven);
+  }
+
+  .sheet-stock {
+    color-scheme: light;
+    scrollbar-color: var(--color-ink) var(--color-stock-soft);
+  }
+
+  .sheet-stock :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-yellow);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -102,112 +110,85 @@
 }
 
 @layer components {
-  /* Page frame */
-  .form-set {
+  .broadside-frame {
     max-width: var(--container);
     margin-inline: auto;
-    padding: 22px var(--gutter) 80px;
+    padding-inline: var(--gutter);
   }
 
-  /* A ply is one sheet of the set. Content is always visible without JS. */
-  .ply {
-    position: relative;
-    padding: 22px 28px 30px;
-    background-color: var(--color-ply-white);
-    box-shadow: 0 18px 30px -20px rgb(30 40 30 / 0.4);
-  }
-  .ply-canary {
-    background-color: var(--color-ply-canary);
-  }
-  .ply-pink {
-    background-color: var(--color-ply-pink);
-  }
-  .ply + .ply,
-  .ply-stack ~ .ply {
-    margin-top: 46px;
-  }
-
-  /* Copy designation printed in a sheet's bottom-right corner (decorative, aria-hidden) */
-  .ply-mark {
-    position: absolute;
-    right: 28px;
-    bottom: 8px;
-    pointer-events: none;
-  }
-
-  /* The top sheet sits on the lower copies: their edges show under it */
-  .ply-stack {
-    position: relative;
-    isolation: isolate;
-  }
-  .ply-stack::before,
-  .ply-stack::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-  }
-  .ply-stack::before {
-    inset: 5px -5px -5px 5px;
-    background-color: var(--color-ply-canary);
-  }
-  .ply-stack::after {
-    inset: 10px -10px -10px 10px;
-    background-color: var(--color-ply-pink);
-    z-index: -2;
-  }
-
-  /* Printed form label: condensed caps in form ink. Never below 12px. */
-  .form-label {
-    font-family: var(--font-sans);
-    font-stretch: 75%;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.3;
-    letter-spacing: 0.06em;
+  .display-bill {
+    font-family: var(--font-display);
     text-transform: uppercase;
-    color: var(--color-ink);
-  }
-  .form-label-secondary {
-    font-weight: 500;
-    color: var(--color-ink-soft);
   }
 
-  /* Filled-in value: the carbon impression. Data only (dates, stack, handles). */
-  .typed {
-    font-family: var(--font-typed);
-    font-size: 14.5px;
-    line-height: 1.35;
-    color: var(--color-carbon);
+  .data-mono {
+    font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
   }
 
-  /* Printed rules */
-  .form-rule {
-    border: var(--rule) solid var(--color-ink);
-  }
-  .form-divider {
-    border-color: var(--color-hairline);
+  /* Subtle halftone registration dots kept off prose and screenshot boxes */
+  .halftone-band {
+    background-image: radial-gradient(rgb(242 201 76 / 0.2) 1.25px, transparent 1.25px);
+    background-size: 8px 8px;
   }
 
-  /* Perforation between the top sheet and the next copy */
-  .tear {
-    border-top: 2px dashed rgb(22 98 79 / 0.5);
-    margin: 30px -28px 0;
+  /* Tilted stack tags echoing broadside callout slugs */
+  .ballyhoo-tag {
+    display: inline-block;
+    background-color: var(--color-stock);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    padding: 4px 10px;
+    border: 1.5px solid var(--color-ink);
+    transition:
+      background-color var(--duration-snap) ease,
+      border-color var(--duration-snap) ease;
+  }
+
+  @media (min-width: 900px) {
+    .ballyhoo-tag-odd {
+      transform: rotate(-1.2deg);
+    }
+    .ballyhoo-tag-even {
+      transform: rotate(1deg);
+    }
+  }
+
+  .ballyhoo-tag:hover {
+    background-color: var(--color-yellow);
+  }
+
+  /* Two-ink press registration hover for primary yellow actions */
+  .btn-register {
+    transition:
+      background-color var(--duration-snap) ease,
+      color var(--duration-snap) ease,
+      border-color var(--duration-snap) ease;
+  }
+
+  .btn-register:hover {
+    background-color: var(--color-yellow-hot);
+  }
+
+  .btn-register:active {
+    background-color: var(--color-stock);
+    color: var(--color-ink);
+    border-color: var(--color-vermilion-fill);
   }
 
   @media (max-width: 899px) {
-    .form-set {
-      padding: 12px var(--gutter-mobile) 60px;
+    .broadside-frame {
+      padding-inline: var(--gutter-mobile);
     }
-    .ply {
-      padding: 14px 12px 20px;
-    }
-    .tear {
-      margin: 24px -12px 0;
-    }
-    .ply-mark {
-      right: 12px;
-      bottom: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ballyhoo-tag-odd,
+    .ballyhoo-tag-even {
+      transform: none;
     }
   }
 }
