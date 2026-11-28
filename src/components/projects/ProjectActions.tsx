@@ -1,11 +1,11 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { cn } from "@/lib/utils";
 
-export type ActionSurface = "dark" | "stock";
+export type ActionSurface = "dark" | "elevated";
 
 /** Opens the project case study dialog. */
 export function CaseStudyButton({
@@ -27,30 +27,34 @@ export function CaseStudyButton({
       aria-describedby={describedBy}
       onClick={(event) => onOpen(event.currentTarget)}
       className={cn(
-        "inline-flex min-h-11 cursor-pointer items-center px-3.5 text-[12.5px] font-bold tracking-[0.06em] uppercase transition-colors duration-(--duration-snap)",
-        surface === "dark"
-          ? "border-2 border-yellow bg-press-deep text-yellow hover:bg-yellow hover:text-ink"
-          : "border-2 border-ink bg-ink text-yellow hover:border-vermilion-fill hover:bg-vermilion-fill hover:text-white",
+        "group inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-lg border px-3.5 text-[13px] font-medium transition-colors duration-(--duration-snap)",
+        surface === "elevated"
+          ? "border-line-strong bg-surface-elevated text-ink hover:border-white/30 hover:bg-white/10"
+          : "border-line bg-surface-elevated/70 text-ink hover:border-line-strong hover:text-white",
         className,
       )}
     >
-      {t.projects.caseStudy}
+      <span>{t.projects.caseStudy}</span>
+      <ArrowRight
+        size={13}
+        strokeWidth={2}
+        aria-hidden="true"
+        className="text-ink-muted transition-transform duration-(--duration-snap) group-hover:translate-x-0.5 group-hover:text-ink"
+      />
     </button>
   );
 }
 
-/** External link to a live product or GitHub repo. */
+/** Quiet external link to a deployed site or GitHub repository. */
 export function ExternalLink({
   href,
   children,
   lang,
-  surface = "dark",
   className,
 }: {
   href: string;
   children: ReactNode;
   lang?: string;
-  surface?: ActionSurface;
   className?: string;
 }) {
   const { t } = useLanguage();
@@ -60,15 +64,12 @@ export function ExternalLink({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex min-h-11 items-center gap-1 px-1.5 text-[14.5px] font-bold underline underline-offset-[0.2em] transition-colors duration-(--duration-snap)",
-        surface === "dark"
-          ? "text-stock decoration-yellow hover:text-yellow"
-          : "text-ink decoration-vermilion-ink hover:text-vermilion-ink",
+        "inline-flex min-h-10 items-center gap-1 px-1 text-[13.5px] font-medium text-ink-secondary transition-colors duration-(--duration-snap) hover:text-ink",
         className,
       )}
     >
       <span lang={lang}>{children}</span>
-      <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" className="shrink-0" />
+      <ArrowUpRight size={14} strokeWidth={1.8} aria-hidden="true" className="shrink-0 text-ink-muted" />
       <span className="sr-only"> {t.a11y.newTab}</span>
     </a>
   );

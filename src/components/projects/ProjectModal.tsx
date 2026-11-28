@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type MouseEvent, type ReactNode, type RefObject } from "react";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { type ProjectItem } from "@/data/portfolioData";
 import { projectImages } from "@/data/projectImages";
 import { useLanguage } from "@/context/LanguageContext";
@@ -17,22 +17,10 @@ const portraitFrame = frameRatio(Object.values(projectImages));
 
 const field = (label: string) => label.replace(/\s*:\s*$/, "");
 
-function Row({ label, dark, children }: { label: string; dark: boolean; children: ReactNode }) {
+function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <section
-      className={cn(
-        "grid gap-x-6 gap-y-1.5 border-b py-4 last:border-b-0 min-[600px]:grid-cols-[155px_minmax(0,1fr)]",
-        dark ? "border-rule-dark" : "border-rule-light",
-      )}
-    >
-      <h3
-        className={cn(
-          "pt-[3px] text-[12px] font-extrabold tracking-[0.08em] uppercase",
-          dark ? "text-yellow" : "text-vermilion-ink",
-        )}
-      >
-        {label}
-      </h3>
+    <section className="grid gap-x-6 gap-y-2 border-b border-line py-4 last:border-b-0 min-[640px]:grid-cols-[165px_minmax(0,1fr)]">
+      <h3 className="pt-0.5 text-[12px] font-medium tracking-[0.02em] text-ink-muted">{label}</h3>
       <div className="min-w-0">{children}</div>
     </section>
   );
@@ -40,12 +28,16 @@ function Row({ label, dark, children }: { label: string; dark: boolean; children
 
 export default function ProjectModal({
   project,
-  kind,
+  index,
+  total,
+  onStep,
   onClose,
   returnFocusTo,
 }: {
   project: ProjectItem | null;
-  kind: "work" | "own";
+  index: number;
+  total: number;
+  onStep: (delta: number) => void;
   onClose: () => void;
   returnFocusTo: RefObject<HTMLElement | null>;
 }) {
@@ -55,12 +47,20 @@ export default function ProjectModal({
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
-    if (project && !dialog.open) {
-      dialog.showModal();
-      dialog.scrollTop = 0;
-    }
+    if (project && !dialog.open) dialog.showModal();
+    if (project && dialog.open) dialog.scrollTop = 0;
     if (!project && dialog.open) dialog.close();
   }, [project]);
+
+  useEffect(() => {
+    if (!project) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") onStep(-1);
+      if (e.key === "ArrowRight") onStep(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [project, onStep]);
 
   const handleClose = () => {
     onClose();
@@ -73,14 +73,16 @@ export default function ProjectModal({
     if (event.target !== dialog) return;
     const box = dialog.getBoundingClientRect();
     const inside =
-      event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
+      event.clientX >= box.left &&
+      event.clientX <= box.right &&
+      event.clientY >= box.top &&
+      event.clientY <= box.bottom;
     if (!inside) dialog.close();
   };
 
-  const dark = kind === "work";
-  const surface = dark ? "bg-press text-stock border-2 border-yellow" : "sheet-stock bg-stock text-ink border-2 border-ink";
   const image = project ? projectImages[project.id] : undefined;
   const features = project?.caseStudy.keyFeatures[language] ?? [];
+  const trackLabel = project?.id.startsWith("duzey-") ? "Düzey" : t.projects.ownTitle;
 
   return (
     <dialog
@@ -88,48 +90,59 @@ export default function ProjectModal({
       aria-labelledby={TITLE_ID}
       onClose={handleClose}
       onClick={handleClick}
-      className={cn(styles.sheet, surface)}
+      className={cn(styles.sheet, "border border-line-strong bg-surface text-ink")}
     >
       {project && (
         <>
-          <div
-            className={cn(
-              "sticky top-0 z-10 flex items-center justify-end border-b-2 px-5 py-1 max-[599px]:px-3",
-              dark ? "border-yellow bg-press" : "border-ink bg-stock",
-            )}
-          >
+          <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-line bg-surface/90 px-4 py-2.5 backdrop-blur-md sm:px-6">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => onStep(-1)}
+                className="inline-flex min-h-9 cursor-pointer items-center gap-1 rounded-lg border border-line bg-surface-elevated/80 px-2.5 text-[12px] font-medium text-ink-secondary transition-colors hover:border-line-strong hover:text-ink"
+              >
+                <ChevronLeft size={14} strokeWidth={2} aria-hidden="true" />
+                <span className="hidden sm:inline">{t.projects.prevProject}</span>
+              </button>
+
+              <span className="data-mono px-1 text-[12px] text-ink-muted">
+                {String(index + 1).padStart(2, "0")} / {total}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => onStep(1)}
+                className="inline-flex min-h-9 cursor-pointer items-center gap-1 rounded-lg border border-line bg-surface-elevated/80 px-2.5 text-[12px] font-medium text-ink-secondary transition-colors hover:border-line-strong hover:text-ink"
+              >
+                <span className="hidden sm:inline">{t.projects.nextProject}</span>
+                <ChevronRight size={14} strokeWidth={2} aria-hidden="true" />
+              </button>
+            </div>
+
             <button
               type="button"
               onClick={() => ref.current?.close()}
-              className={cn(
-                "-mr-2 inline-flex min-h-11 cursor-pointer items-center gap-1.5 px-3 text-[12.5px] font-bold tracking-[0.06em] uppercase transition-colors duration-(--duration-snap)",
-                dark
-                  ? "text-yellow hover:bg-yellow hover:text-ink"
-                  : "bg-ink text-yellow hover:bg-vermilion-fill hover:text-white",
-              )}
+              className="inline-flex min-h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-line bg-surface-elevated/80 px-3 text-[12.5px] font-medium text-ink-secondary transition-colors hover:border-line-strong hover:text-ink"
             >
-              <X size={16} strokeWidth={2.2} aria-hidden="true" />
-              {t.a11y.close}
+              <X size={15} strokeWidth={2} aria-hidden="true" />
+              <span>{t.a11y.close}</span>
             </button>
           </div>
 
-          <div className="px-5 pt-5 pb-7 max-[599px]:px-3">
+          <div className="px-5 pt-6 pb-8 sm:px-7">
             <h2
               id={TITLE_ID}
-              className={cn(
-                "display-bill text-[clamp(28px,4vw,42px)] leading-[1.06] font-bold tracking-[-0.01em] text-balance",
-                dark ? "text-yellow" : "text-ink",
-              )}
+              className="text-[clamp(24px,3.2vw,34px)] leading-[1.16] font-semibold tracking-[-0.03em] text-balance text-ink"
             >
               {pick(project.title, language)}
             </h2>
-            <p className={cn("data-mono mt-2 text-[13.5px] font-medium", dark ? "text-paper-muted" : "text-vermilion-ink")}>
-              {dark ? "Düzey" : t.projects.ownTitle} · {project.category[language]} · {project.year}
+            <p className="data-mono mt-2 text-[12.5px] text-accent">
+              {trackLabel} · {project.category[language]} · {project.year}
             </p>
 
             {image && (
               <ProjectShot
-                className={cn("mt-5", dark ? "border-stock" : "border-ink bg-press")}
+                className="mt-5 border-line-strong"
                 image={image}
                 alt={image.alt[language]}
                 ratio={image.shape === "portrait" ? portraitFrame : image.width / image.height}
@@ -138,45 +151,43 @@ export default function ProjectModal({
               />
             )}
 
-            <div className={cn("mt-6 border-y-2", dark ? "border-yellow" : "border-ink")}>
-              <Row label={t.projects.theVision} dark={dark}>
-                <p className="max-w-[65ch] text-[15.5px] leading-[1.55]">{project.caseStudy.overview[language]}</p>
+            <div className="mt-6 border-t border-line">
+              <Row label={t.projects.theVision}>
+                <p className="max-w-[65ch] text-[15px] leading-[1.6] text-ink">{project.caseStudy.overview[language]}</p>
               </Row>
-              <Row label={t.projects.theChallenge} dark={dark}>
-                <p className="max-w-[65ch] text-[15.5px] leading-[1.55]">{project.caseStudy.challenge[language]}</p>
+
+              <Row label={t.projects.theChallenge}>
+                <p className="max-w-[65ch] text-[15px] leading-[1.6] text-ink-secondary">
+                  {project.caseStudy.challenge[language]}
+                </p>
               </Row>
-              <Row label={t.projects.theSolution} dark={dark}>
-                <p className="max-w-[65ch] text-[15.5px] leading-[1.55]">{project.caseStudy.solution[language]}</p>
+
+              <Row label={t.projects.theSolution}>
+                <p className="max-w-[65ch] text-[15px] leading-[1.6] text-ink-secondary">
+                  {project.caseStudy.solution[language]}
+                </p>
               </Row>
+
               {features.length > 0 && (
-                <Row label={t.projects.keyHighlights} dark={dark}>
-                  <ul
-                    className={cn(
-                      "max-w-[65ch] list-[square] space-y-1.5 pl-5 text-[15.5px] leading-[1.5]",
-                      dark ? "marker:text-yellow" : "marker:text-vermilion-ink",
-                    )}
-                  >
+                <Row label={t.projects.keyHighlights}>
+                  <ul className="max-w-[65ch] list-disc space-y-1.5 pl-4 text-[14.5px] leading-[1.58] text-ink-secondary marker:text-ink-muted">
                     {features.map((feature) => (
                       <li key={feature}>{feature}</li>
                     ))}
                   </ul>
                 </Row>
               )}
+
               {project.caseStudy.metrics.length > 0 && (
-                <Row label={t.projects.verifiedMetrics} dark={dark}>
-                  <dl className="max-w-[65ch]">
+                <Row label={t.projects.verifiedMetrics}>
+                  <dl className="grid max-w-[65ch] gap-3 sm:grid-cols-2">
                     {project.caseStudy.metrics.map((metric) => (
                       <div
                         key={metric.label.en}
-                        className={cn(
-                          "flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5 border-b py-1.5 first:pt-0 last:border-b-0 last:pb-0",
-                          dark ? "border-rule-dark" : "border-rule-light",
-                        )}
+                        className="rounded-lg border border-line bg-surface-elevated/60 px-3.5 py-2.5"
                       >
-                        <dt className={cn("text-[12.5px] font-bold uppercase", dark ? "text-paper-muted" : "text-ink-muted")}>
-                          {metric.label[language]}
-                        </dt>
-                        <dd className={cn("data-mono text-[13.5px] font-bold", dark ? "text-yellow" : "text-ink")}>
+                        <dt className="text-[11.5px] text-ink-muted">{metric.label[language]}</dt>
+                        <dd className="data-mono mt-0.5 text-[13px] font-medium text-ink">
                           {pick(metric.value, language)}
                         </dd>
                       </div>
@@ -184,21 +195,23 @@ export default function ProjectModal({
                   </dl>
                 </Row>
               )}
-              <Row label={field(t.projects.techStack)} dark={dark}>
-                <p className={cn("data-mono max-w-[65ch] text-[13.5px]", dark ? "text-stock" : "text-ink")}>
+
+              <Row label={field(t.projects.techStack)}>
+                <p className="data-mono max-w-[65ch] text-[13px] leading-[1.6] text-ink-secondary">
                   {project.technologies.join(" · ")}
                 </p>
               </Row>
+
               {(project.liveUrl || project.githubUrl) && (
-                <Row label={field(t.projects.externalDestinations)} dark={dark}>
-                  <div className="-my-2 flex flex-wrap items-center gap-x-6">
+                <Row label={field(t.projects.externalDestinations)}>
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                     {project.liveUrl && (
-                      <ExternalLink surface={dark ? "dark" : "stock"} href={project.liveUrl}>
+                      <ExternalLink href={project.liveUrl}>
                         {project.liveLabel?.[language] ?? t.projects.launchSite}
                       </ExternalLink>
                     )}
                     {project.githubUrl && (
-                      <ExternalLink surface={dark ? "dark" : "stock"} href={project.githubUrl} lang="en">
+                      <ExternalLink href={project.githubUrl} lang="en">
                         {t.projects.githubRepo}
                       </ExternalLink>
                     )}

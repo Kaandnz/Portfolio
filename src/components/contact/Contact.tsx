@@ -51,100 +51,99 @@ export default function Contact() {
   ];
 
   return (
-    <section
-      id="contact"
-      className="mt-10 border-2 border-yellow bg-press p-4 min-[900px]:p-7"
-      aria-labelledby="contact-title"
-    >
-      <div className="grid gap-x-10 gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:items-center">
-        <div>
-          <h2
-            id="contact-title"
-            className="display-bill text-[clamp(36px,4.2vw,54px)] leading-[1.08] font-bold tracking-[-0.01em] text-balance text-yellow"
-          >
-            {t.contact.heading1} <span className="text-stock sm:block">{t.contact.heading2}</span>
-          </h2>
-          <p className="mt-3 max-w-[56ch] text-[16px] leading-[1.55] text-paper-muted">{t.contact.subtitle}</p>
-        </div>
-
-        <div>
-          <div className="border-2 border-stock bg-raven">
-            <p
-              id="contact-channels"
-              className="border-b-2 border-stock/35 px-4 pt-2.5 pb-2 text-[12px] font-extrabold tracking-[0.08em] text-paper-muted uppercase"
+    <section id="contact" className="page-shell pt-8 pb-16 min-[900px]:pt-12" aria-labelledby="contact-title">
+      <div className="surface-card rounded-2xl p-6 min-[900px]:p-10">
+        <div className="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center">
+          <div>
+            <h2
+              id="contact-title"
+              className="text-[clamp(28px,3.6vw,42px)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
             >
-              {t.contact.channelsTitle}
-            </p>
-            <ul aria-labelledby="contact-channels">
-              <li className="btn-register flex bg-yellow text-ink">
-                <a
-                  href={mailtoHref}
-                  className="group flex min-h-14 min-w-0 flex-1 flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-3"
-                >
-                  <span className="inline-flex items-center gap-2 text-[16.5px] font-extrabold group-hover:underline">
-                    <Mail size={17} strokeWidth={2.2} aria-hidden="true" />
-                    {t.contact.emailMe}
-                  </span>
-                  <span className="data-mono min-w-0 text-[13.5px] font-bold break-all text-ink/90">
-                    {personalInfo.email}
-                  </span>
-                </a>
-                <button
-                  type="button"
-                  onClick={copy}
-                  aria-label={copyState === "copied" ? undefined : t.contact.copyEmailLabel}
-                  className="inline-flex min-h-14 min-w-[6.75rem] shrink-0 cursor-pointer items-center justify-center gap-1.5 border-l-2 border-ink px-4 text-[12.5px] font-bold tracking-[0.06em] uppercase transition-colors duration-(--duration-snap) hover:bg-ink hover:text-yellow"
-                >
-                  {copyState === "copied" ? (
-                    <Check aria-hidden="true" size={14} strokeWidth={2.2} />
-                  ) : (
-                    <Copy aria-hidden="true" size={14} strokeWidth={2.2} />
-                  )}
-                  {copyState === "copied" ? t.contact.copied : t.contact.copyEmail}
-                </button>
-              </li>
-
-              {secondary.map((channel) => (
-                <li key={channel.key} className="border-t border-rule-dark bg-press">
-                  <a
-                    href={channel.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex min-h-12 flex-wrap items-center justify-between gap-x-4 gap-y-0.5 px-4 py-2.5 transition-colors duration-(--duration-snap) hover:bg-press-deep hover:text-yellow"
-                  >
-                    <span lang="en" className="inline-flex items-center gap-1.5 text-[16px] font-bold">
-                      {channel.label}
-                      <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" className="text-yellow" />
-                    </span>
-                    <span
-                      className={
-                        channel.monoValue
-                          ? "data-mono min-w-0 text-[13.5px] break-all text-paper-muted"
-                          : "text-[15px] font-semibold text-yellow"
-                      }
-                    >
-                      {channel.value}
-                    </span>
-                    <span className="sr-only">{t.a11y.newTab}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+              <span className="block text-ink">{t.contact.heading1}</span>
+              <span className="block text-ink-secondary">{t.contact.heading2}</span>
+            </h2>
+            <p className="mt-3 max-w-[50ch] text-[15.5px] leading-[1.6] text-ink-secondary">{t.contact.subtitle}</p>
           </div>
 
-          <p role="status" className="mt-3 min-h-[1.55em] text-[15px] leading-[1.55]">
-            {copyState === "copied" && <span className="font-semibold text-yellow">{t.contact.copiedStatus}</span>}
-            {copyState === "failed" && (
-              <>
-                {t.contact.copyFailed}{" "}
-                <span className="data-mono text-yellow select-all">{personalInfo.email}</span>
-              </>
-            )}
-          </p>
+          <div>
+            <div className="overflow-hidden rounded-xl border border-line bg-canvas/70">
+              <p
+                id="contact-channels"
+                className="border-b border-line px-4 py-2.5 text-[12px] font-medium text-ink-muted"
+              >
+                {t.contact.channelsTitle}
+              </p>
+
+              <ul aria-labelledby="contact-channels">
+                <li className="flex flex-wrap items-stretch bg-ink text-canvas">
+                  <a
+                    href={mailtoHref}
+                    className="group flex min-h-13 min-w-0 flex-1 flex-wrap items-center justify-between gap-x-4 gap-y-0.5 px-4 py-2.5 transition-colors hover:bg-white/90"
+                  >
+                    <span className="inline-flex items-center gap-2 text-[14.5px] font-semibold">
+                      <Mail size={16} strokeWidth={2} aria-hidden="true" />
+                      {t.contact.emailMe}
+                    </span>
+                    <span className="data-mono min-w-0 text-[12.5px] font-medium break-all text-canvas/80">
+                      {personalInfo.email}
+                    </span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={copy}
+                    aria-label={copyState === "copied" ? undefined : t.contact.copyEmailLabel}
+                    className="inline-flex min-h-13 shrink-0 cursor-pointer items-center justify-center gap-1.5 border-l border-canvas/15 bg-black/5 px-4 text-[12.5px] font-medium text-canvas transition-colors hover:bg-black/10"
+                  >
+                    {copyState === "copied" ? (
+                      <Check aria-hidden="true" size={14} strokeWidth={2.2} />
+                    ) : (
+                      <Copy aria-hidden="true" size={14} strokeWidth={2} />
+                    )}
+                    <span>{copyState === "copied" ? t.contact.copied : t.contact.copyEmail}</span>
+                  </button>
+                </li>
+
+                {secondary.map((channel) => (
+                  <li key={channel.key} className="border-t border-line">
+                    <a
+                      href={channel.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex min-h-12 flex-wrap items-center justify-between gap-x-4 gap-y-0.5 px-4 py-2.5 transition-colors duration-(--duration-snap) hover:bg-white/[0.03]"
+                    >
+                      <span lang="en" className="inline-flex items-center gap-1.5 text-[14px] font-medium text-ink">
+                        {channel.label}
+                        <ArrowUpRight size={13} strokeWidth={1.8} aria-hidden="true" className="text-ink-muted" />
+                      </span>
+                      <span
+                        className={
+                          channel.monoValue
+                            ? "data-mono min-w-0 text-[12.5px] break-all text-ink-secondary"
+                            : "text-[13.5px] font-medium text-accent"
+                        }
+                      >
+                        {channel.value}
+                      </span>
+                      <span className="sr-only">{t.a11y.newTab}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <p role="status" className="mt-3 min-h-[1.5em] text-[13.5px] leading-[1.5]">
+              {copyState === "copied" && <span className="text-emerald">{t.contact.copiedStatus}</span>}
+              {copyState === "failed" && (
+                <>
+                  {t.contact.copyFailed}{" "}
+                  <span className="data-mono text-ink select-all">{personalInfo.email}</span>
+                </>
+              )}
+            </p>
+          </div>
         </div>
       </div>
-
-      <div aria-hidden="true" className="halftone-band mt-5 h-4 border-y border-rule-dark" />
     </section>
   );
 }

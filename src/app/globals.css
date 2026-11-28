@@ -1,90 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ink-on-press grounds and warm newsprint paper stock */
-  --color-raven: #0a0a0a;
-  --color-press: #141414;
-  --color-press-deep: #0f0f0f;
-  --color-stock: #f2ead8;
-  --color-stock-soft: #e6dcc4;
+  /* Precision obsidian surfaces */
+  --color-canvas: #08090a;
+  --color-surface: #0f1012;
+  --color-surface-elevated: #15171c;
+  --color-stage: #111216;
 
-  /* Process yellow, graphic vermilion, and ink tones calibrated for contrast */
-  --color-yellow: #f2c94c;
-  --color-yellow-hot: #ffd84d;
-  --color-vermilion: #f04c3a;
-  --color-vermilion-fill: #c92a1a;
-  --color-vermilion-ink: #b52012;
-  --color-ink: #111111;
-  --color-ink-muted: #46423a;
-  --color-paper-muted: #c2b9a5;
+  /* Ink hierarchy tuned for dark surface legibility */
+  --color-ink: #f4f5f7;
+  --color-ink-secondary: #a1a6b0;
+  --color-ink-muted: #7c828d;
 
-  /* Broadside structural rules */
-  --color-rule-dark: rgb(242 234 216 / 0.24);
-  --color-rule-light: rgb(17 17 17 / 0.24);
+  /* Restrained accent & availability signal */
+  --color-accent: #7e8ce0;
+  --color-emerald: #34d399;
+
+  /* Hairline dividers */
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.16);
 
   /* Typography */
-  --font-display: var(--font-antonio), system-ui, sans-serif;
-  --font-sans: var(--font-bricolage), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   /* Layout geometry */
-  --container: 1380px;
-  --gutter: 24px;
-  --gutter-mobile: 12px;
+  --container: 1120px;
 
   /* Motion */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-register: 220ms;
-  --duration-snap: 110ms;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-snap: 160ms;
+  --duration-dialog: 240ms;
 }
 
 @layer base {
   html {
-    background-color: var(--color-raven);
-    color: var(--color-stock);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scrollbar-color: var(--color-yellow) var(--color-raven);
+    scrollbar-color: rgb(255 255 255 / 0.18) var(--color-canvas);
   }
 
   body {
     min-height: 100vh;
-    background-color: var(--color-raven);
-    color: var(--color-stock);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     overflow-x: clip;
   }
 
   ::selection {
-    background-color: var(--color-yellow);
-    color: var(--color-ink);
-  }
-
-  a {
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1.5px;
+    background-color: var(--color-accent);
+    color: #08090a;
   }
 
   [id] {
-    scroll-margin-top: 16px;
+    scroll-margin-top: 76px;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-yellow);
+    outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--color-raven);
-  }
-
-  .sheet-stock {
-    color-scheme: light;
-    scrollbar-color: var(--color-ink) var(--color-stock-soft);
-  }
-
-  .sheet-stock :focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--color-yellow);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -101,24 +79,20 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-      animation: none !important;
-    }
   }
 }
 
 @layer components {
-  .broadside-frame {
+  .page-shell {
     max-width: var(--container);
     margin-inline: auto;
-    padding-inline: var(--gutter);
+    padding-inline: 24px;
   }
 
-  .display-bill {
-    font-family: var(--font-display);
-    text-transform: uppercase;
+  @media (max-width: 639px) {
+    .page-shell {
+      padding-inline: 16px;
+    }
   }
 
   .data-mono {
@@ -126,70 +100,23 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Subtle halftone registration dots kept off prose and screenshot boxes */
-  .halftone-band {
-    background-image: radial-gradient(rgb(242 201 76 / 0.2) 1.25px, transparent 1.25px);
-    background-size: 8px 8px;
+  .hero-glow {
+    background-image: radial-gradient(70% 55% at 50% 0%, rgb(126 140 224 / 0.14) 0%, transparent 100%);
   }
 
-  /* Tilted stack tags echoing broadside callout slugs */
-  .ballyhoo-tag {
-    display: inline-block;
-    background-color: var(--color-stock);
-    color: var(--color-ink);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.3;
-    padding: 4px 10px;
-    border: 1.5px solid var(--color-ink);
+  .surface-card {
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.032) 0%, rgb(255 255 255 / 0.008) 100%), var(--color-surface);
+    border: 1px solid var(--color-line);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.06),
+      0 1px 2px rgb(0 0 0 / 0.45);
     transition:
-      background-color var(--duration-snap) ease,
-      border-color var(--duration-snap) ease;
+      border-color var(--duration-snap) var(--ease-expo),
+      background-color var(--duration-snap) var(--ease-expo);
   }
 
-  @media (min-width: 900px) {
-    .ballyhoo-tag-odd {
-      transform: rotate(-1.2deg);
-    }
-    .ballyhoo-tag-even {
-      transform: rotate(1deg);
-    }
-  }
-
-  .ballyhoo-tag:hover {
-    background-color: var(--color-yellow);
-  }
-
-  /* Two-ink press registration hover for primary yellow actions */
-  .btn-register {
-    transition:
-      background-color var(--duration-snap) ease,
-      color var(--duration-snap) ease,
-      border-color var(--duration-snap) ease;
-  }
-
-  .btn-register:hover {
-    background-color: var(--color-yellow-hot);
-  }
-
-  .btn-register:active {
-    background-color: var(--color-stock);
-    color: var(--color-ink);
-    border-color: var(--color-vermilion-fill);
-  }
-
-  @media (max-width: 899px) {
-    .broadside-frame {
-      padding-inline: var(--gutter-mobile);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ballyhoo-tag-odd,
-    .ballyhoo-tag-even {
-      transform: none;
-    }
+  .surface-card-interactive:hover {
+    border-color: var(--color-line-strong);
   }
 }
 
