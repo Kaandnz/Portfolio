@@ -1,7 +1,5 @@
 "use client";
 
-// The top ply (#work: the header band passed in as `lead`, then the Düzey line
-// items) and the canary ply (#own: own products). One case-study dialog serves both.
 import { useRef, useState, type ReactNode } from "react";
 import { projectsData, type ProjectItem } from "@/data/portfolioData";
 import { projectImages } from "@/data/projectImages";
@@ -22,68 +20,70 @@ export default function Projects({ lead }: { lead: ReactNode }) {
   const [open, setOpen] = useState<ProjectItem | null>(null);
   const opener = useRef<HTMLElement | null>(null);
 
-  const openCase = (project: ProjectItem) => (button: HTMLButtonElement) => {
+  const openCase = (project: ProjectItem, button: HTMLButtonElement) => {
     opener.current = button;
     setOpen(project);
   };
 
   return (
     <>
-      <div className="ply-stack">
-        <section id="work" className="ply" aria-labelledby="work-title">
-          {lead}
+      {lead}
 
-          <div className="mt-4 border-[1.5px] border-ink">
-            <h2 id="work-title" className="form-label border-b-[1.5px] border-ink px-3.5 py-2 text-[13px]">
-              {t.projects.workTitle}
-            </h2>
-            <div className="grid min-[900px]:grid-cols-2">
-              {work.map((p, i) => (
-                <LineItem
-                  key={p.id}
-                  project={p}
-                  number={String(i + 1).padStart(2, "0")}
-                  ratio={workRatio}
-                  loading={i === 0 ? "lcp" : i === 1 ? "eager" : "lazy"}
-                  onOpen={openCase(p)}
-                  className={
-                    i > 0
-                      ? "border-t-[1.5px] border-ink min-[900px]:border-t-0 min-[900px]:border-l-[1.5px]"
-                      : undefined
-                  }
-                />
-              ))}
-            </div>
+      <section id="work" className="mt-3 min-[900px]:mt-4" aria-labelledby="work-title">
+        <h2 id="work-title" className="sr-only">
+          {t.projects.workTitle}
+        </h2>
+
+        <div className="grid items-stretch gap-3 min-[960px]:grid-cols-[1fr_auto_1fr] min-[960px]:gap-3.5">
+          <LineItem
+            project={work[0]}
+            accent="yellow"
+            ratio={workRatio}
+            loading="lcp"
+            onOpen={(btn) => openCase(work[0], btn)}
+          />
+
+          <div aria-hidden="true" className="flex items-center justify-center py-0.5 min-[960px]:px-1">
+            <span className="display-bill inline-block border-2 border-stock bg-vermilion-fill px-3 py-2 text-[26px] leading-none font-bold text-yellow min-[960px]:-rotate-3">
+              {t.hero.doubleBillPlus}
+            </span>
           </div>
 
-          <div className="tear" aria-hidden="true" />
-        </section>
-      </div>
+          <LineItem
+            project={work[1]}
+            accent="vermilion"
+            ratio={workRatio}
+            loading="eager"
+            onOpen={(btn) => openCase(work[1], btn)}
+          />
+        </div>
+      </section>
 
-      <section id="own" className="ply ply-canary" aria-labelledby="own-title">
-        <h2
-          id="own-title"
-          className="text-[clamp(24px,3vw,30px)] leading-[1.1] font-extrabold tracking-[-0.015em] text-balance [font-stretch:112%]"
-        >
-          {t.projects.ownTitle}
-        </h2>
-        <p className="mt-1.5 max-w-[70ch] text-[15px] leading-[1.45] text-ink-soft">{t.projects.subtitle}</p>
+      <section
+        id="own"
+        className="sheet-stock mt-5 border-2 border-stock bg-stock p-4 text-ink min-[900px]:p-6"
+        aria-labelledby="own-title"
+      >
+        <div className="flex flex-col gap-2 border-b-2 border-ink pb-4 min-[900px]:flex-row min-[900px]:items-end min-[900px]:justify-between">
+          <h2
+            id="own-title"
+            className="display-bill text-[clamp(34px,4vw,48px)] leading-[0.95] font-bold tracking-[-0.01em] text-vermilion-ink"
+          >
+            {t.projects.ownTitle}
+          </h2>
+          <p className="max-w-[58ch] text-[15px] leading-[1.45] text-ink-muted">{t.projects.subtitle}</p>
+        </div>
 
-        <div className="mt-4 grid border-t-[1.5px] border-l-[1.5px] border-ink min-[600px]:grid-cols-2 min-[1100px]:grid-cols-4">
+        <div className="mt-5 grid border-t-2 border-l-2 border-ink min-[600px]:grid-cols-2 min-[1100px]:grid-cols-4">
           {own.map((p) => (
-            <ProductCell key={p.id} project={p} ratio={ownRatio} onOpen={openCase(p)} />
+            <ProductCell key={p.id} project={p} ratio={ownRatio} onOpen={(btn) => openCase(p, btn)} />
           ))}
         </div>
-        {/* Copy designation printed in the sheet's corner, like a carbon set's ply mark. */}
-        <span aria-hidden="true" className="ply-mark form-label">
-          {t.form.copy} 2
-        </span>
       </section>
 
       <ProjectModal
         project={open}
         kind={open && isWork(open) ? "work" : "own"}
-        number={open ? (isWork(open) ? work.indexOf(open) : own.indexOf(open)) + 1 : 0}
         onClose={() => setOpen(null)}
         returnFocusTo={opener}
       />

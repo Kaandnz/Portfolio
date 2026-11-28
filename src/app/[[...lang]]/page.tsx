@@ -6,18 +6,11 @@ import Skills from "@/components/skills/Skills";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
 
-/*
- * Section order (the form set, top to bottom):
- *   top ply  #work  : Hero header band + Düzey line items (Projects renders the ply and places Hero in it)
- *   canary   #own   : own products (Projects)
- *   pink     #experience : experience & education (About folded in)
- *   then     #skills, #contact, footer
- */
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main" className="form-set">
+      <main id="main" className="broadside-frame pt-2.5 pb-14 min-[900px]:pt-4 min-[900px]:pb-16">
         <Projects lead={<Hero />} />
         <Experience />
         <Skills />

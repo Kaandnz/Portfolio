@@ -45,6 +45,9 @@ export const translations = {
       copied: "Kopyalandı!",
       contactBtn: "İletişime Geç",
       location: "İstanbul, Türkiye",
+      doubleBillLeft: "Kurumsal Sistemler",
+      doubleBillPlus: "Artı",
+      doubleBillRight: "Kendi Ürünlerim",
     },
     about: {
       heading1: "Düzey'de kurumsal işler,",
@@ -161,6 +164,9 @@ export const translations = {
       copied: "Copied!",
       contactBtn: "Get In Touch",
       location: "Istanbul, Turkey",
+      doubleBillLeft: "Enterprise Systems",
+      doubleBillPlus: "Plus",
+      doubleBillRight: "Own Products",
     },
     about: {
       heading1: "Enterprise work at Düzey,",
