@@ -51,3 +51,9 @@ CLAUDE.md
 .cursor/
 .windsurf/
 .gemini/
+
+# local design tooling (impeccable skill, previews, captures)
+/.impeccable/
+/.github/skills/
+/.github/agents/
+/.github/hooks/
