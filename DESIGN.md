@@ -1,325 +1,299 @@
 ---
 name: Kağan Deniz Portfolio
-description: A bilingual single-page portfolio set as a double-feature broadside: raven-black and press-charcoal grounds accented with process yellow and graphic vermilion, interrupted by warm newsprint cream inserts.
+description: A Precision Dark bilingual single-page portfolio set on stepped obsidian surfaces with crisp alabaster type, restrained periwinkle indigo metadata, emerald availability cues, and hairline glass framing.
 colors:
-  yellow: "#f2c94c"
-  yellow-hot: "#ffd84d"
-  vermilion: "#f04c3a"
-  vermilion-fill: "#c92a1a"
-  vermilion-ink: "#b52012"
-  raven: "#0a0a0a"
-  press: "#141414"
-  press-deep: "#0f0f0f"
-  stock: "#f2ead8"
-  stock-soft: "#e6dcc4"
-  ink: "#111111"
-  ink-muted: "#46423a"
-  paper-muted: "#c2b9a5"
-  white: "#ffffff"
-  rule-dark: "rgb(242 234 216 / 0.24)"
-  rule-light: "rgb(17 17 17 / 0.24)"
-  halftone-dot: "rgb(242 201 76 / 0.2)"
+  accent: "#7e8ce0"
+  emerald: "#34d399"
+  hero-glow: "rgb(126 140 224 / 0.14)"
+  canvas: "#08090a"
+  surface: "#0f1012"
+  surface-elevated: "#15171c"
+  stage: "#111216"
+  ink: "#f4f5f7"
+  ink-secondary: "#a1a6b0"
+  ink-muted: "#7c828d"
+  line: "rgb(255 255 255 / 0.08)"
+  line-strong: "rgb(255 255 255 / 0.16)"
+  modal-scrim: "rgb(6 7 9 / 0.78)"
 typography:
   display:
-    fontFamily: "Antonio, system-ui, sans-serif"
-    fontSize: "clamp(42px, 6.2vw, 86px)"
-    fontWeight: 700
-    lineHeight: 0.88
-    letterSpacing: "-0.015em"
-  display-bill:
-    fontFamily: "Antonio, system-ui, sans-serif"
-    fontSize: "clamp(24px, 2.8vw, 38px)"
-    fontWeight: 700
-    lineHeight: 0.98
-    letterSpacing: "0.01em"
-  headline:
-    fontFamily: "Antonio, system-ui, sans-serif"
-    fontSize: "clamp(34px, 4vw, 48px)"
-    fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: "-0.01em"
-  headline-contact:
-    fontFamily: "Antonio, system-ui, sans-serif"
-    fontSize: "clamp(36px, 4.2vw, 54px)"
-    fontWeight: 700
-    lineHeight: 1.08
-    letterSpacing: "-0.01em"
-  headline-modal:
-    fontFamily: "Antonio, system-ui, sans-serif"
-    fontSize: "clamp(28px, 4vw, 42px)"
-    fontWeight: 700
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(34px, 4.8vw, 58px)"
+    fontWeight: 600
     lineHeight: 1.06
-    letterSpacing: "-0.01em"
+    letterSpacing: "-0.035em"
+  headline-contact:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(28px, 3.6vw, 42px)"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(26px, 3.4vw, 38px)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.03em"
+  headline-modal:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(24px, 3.2vw, 34px)"
+    fontWeight: 600
+    lineHeight: 1.16
+    letterSpacing: "-0.03em"
+  title-feature:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(22px, 2.4vw, 28px)"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-0.025em"
   title:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "22px"
-    fontWeight: 800
-    lineHeight: 1.15
-    letterSpacing: "-0.01em"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "19px"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "15.5px"
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.6
   label:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "12px"
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: "0.06em"
-  mono:
-    fontFamily: "JetBrains Mono, ui-monospace, monospace"
-    fontSize: "13.5px"
-    fontWeight: 700
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 500
     lineHeight: 1.35
+    letterSpacing: "0em"
+  mono:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "12.5px"
+    fontWeight: 500
+    lineHeight: 1.6
     fontFeature: "'tnum' 1"
 rounded:
-  none: "0px"
+  sm: "6px"
+  md: "8px"
+  lg: "12px"
+  card: "14px"
+  xl: "16px"
+  full: "9999px"
 spacing:
-  gutter-mobile: "12px"
+  gutter-mobile: "16px"
   gutter: "24px"
+  card-sm: "16px"
   card: "20px"
-  section: "28px"
-  section-gap: "40px"
-  container: "1380px"
+  card-lg: "24px"
+  card-xl: "40px"
+  section-pt: "56px"
+  section-pt-lg: "80px"
+  container: "1120px"
 components:
-  navbar-cta:
-    backgroundColor: "{colors.vermilion-fill}"
-    textColor: "{colors.white}"
+  pill-primary:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.full}"
+    padding: "0 14px"
+    height: "36px"
+  pill-email:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
+    height: "44px"
+  pill-secondary:
+    backgroundColor: "{colors.surface-elevated}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
+    height: "44px"
+  button-case-elevated:
+    backgroundColor: "{colors.surface-elevated}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.md}"
     padding: "0 14px"
     height: "40px"
-  navbar-cta-hover:
-    backgroundColor: "{colors.yellow}"
+  tab-active:
+    backgroundColor: "{colors.surface-elevated}"
     textColor: "{colors.ink}"
-  cta-email:
-    backgroundColor: "{colors.yellow}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "12px 16px"
-    height: "56px"
-  cta-email-hover:
-    backgroundColor: "{colors.yellow-hot}"
-  cta-email-active:
-    backgroundColor: "{colors.stock}"
-    textColor: "{colors.ink}"
-  channel-secondary:
-    backgroundColor: "{colors.press}"
-    textColor: "{colors.stock}"
-    rounded: "{rounded.none}"
-    padding: "10px 16px"
-    height: "48px"
-  channel-secondary-hover:
-    backgroundColor: "{colors.press-deep}"
-    textColor: "{colors.yellow}"
-  button-case-dark:
-    backgroundColor: "{colors.press-deep}"
-    textColor: "{colors.yellow}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0 14px"
-    height: "44px"
-  button-case-dark-hover:
-    backgroundColor: "{colors.yellow}"
+    rounded: "{rounded.full}"
+    padding: "6px 14px"
+  surface-card:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-  button-case-stock:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.yellow}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0 10px"
-    height: "44px"
-  button-case-stock-hover:
-    backgroundColor: "{colors.vermilion-fill}"
-    textColor: "{colors.white}"
-  ballyhoo-tag:
-    backgroundColor: "{colors.stock}"
+    rounded: "{rounded.card}"
+    padding: "20px"
+  stage-frame:
+    backgroundColor: "{colors.stage}"
+    rounded: "{rounded.lg}"
+    padding: "12px"
+  modal-sheet:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-    typography: "{typography.mono}"
-    rounded: "{rounded.none}"
-    padding: "4px 10px"
-  ballyhoo-tag-hover:
-    backgroundColor: "{colors.yellow}"
-  billboard-dark:
-    backgroundColor: "{colors.press}"
-    textColor: "{colors.stock}"
-    rounded: "{rounded.none}"
-    padding: "20px 24px"
-  sheet-cream:
-    backgroundColor: "{colors.stock}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "24px"
-  modal-dark:
-    backgroundColor: "{colors.press}"
-    textColor: "{colors.stock}"
-    rounded: "{rounded.none}"
-    width: "880px"
-  modal-stock:
-    backgroundColor: "{colors.stock}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    width: "880px"
+    rounded: "{rounded.xl}"
+    width: "860px"
 ---
 
 # Design System: Kağan Deniz Portfolio
 
 ## Overview
 
-**Creative North Star: "The Double-Feature Broadside"**
+**Creative North Star: "The Precision Dark Studio"**
 
-The page is built like a classic print double-feature handbill: heavy raven black and press charcoal grounds hold the main identity billboard, the two enterprise flagship systems, the work ledger, and the closing contact block, while warm newsprint cream sheets cut across the page for independent products and grouped technical skills. Process yellow headlines, graphic vermilion dividers, tilted callout tags, and bold two-pixel rules establish immediate visual hierarchy from the very first viewport.
+Built around dark-mode developer craft inspired by Apple, Linear, and Stripe, the portfolio rests on a deep obsidian canvas (`#08090a`) layered with closely stepped charcoal surfaces (`#0f1012`, `#111216`, `#15171c`) and crisp `1px` translucent hairlines. An understated studio glow (`rgb(126 140 224 / 0.14)`) illuminates the hero positioning statement and interactive showcase stage at the top of the page, while subtle vertical text gradients, high-contrast alabaster conversion pills, and a single periwinkle indigo metadata accent keep visual weight on real shipped software.
 
-Density stays purposeful and scannable for engineering leads and recruiters: tight ruled grids, zero decorative filler, real software screenshots framed unretouched with zero overlay copy, and instant direct-contact controls at both the top billboard and the bottom channel block. Motion is CSS-only and disciplined—crisp 110ms ink inversions on controls and a 220ms two-ink print-registration settle when opening any case-study dialog.
+Density is calm, structured, and immediately scannable for engineering leads and recruiters: tight editorial line lengths (`50ch–68ch`), tabular `IBM Plex Mono` dates and technology lines, typographic skill matrices free of pill-tag noise, unretouched application screenshots framed in dark hardware stages, and direct contact routes at both the hero fold and closing band. Interactive transitions pair `160ms` CSS snaps and a `240ms` exponential dialog settle with spring-driven segmented tab indicators (`motion/react`), honoring `prefers-reduced-motion: reduce` globally.
 
-The system rejects soft dark-mode developer templates—no blurred glass cards, ambient neon glows, gradient headlines, rounded pill buttons, or contact forms without a delivery backend. The candidate's name leads in condensed display type, both halves of the portfolio stand side by side at the fold, and every interaction resolves in hard ink contrast.
+The system rejects heavy neon glows, saturated multi-accent badges, overlaid labels on product screenshots, and client-only contact forms without delivery backing. Both enterprise systems and independent multi-platform products receive full technical context and native `<dialog>` case studies across Turkish (`/`) and English (`/en/`).
 
 **Key Characteristics:**
-- Dark raven and charcoal press grounds alternate deliberately with warm newsprint cream paper bands (`#own` and `#skills`).
-- Process yellow (`#f2c94c`) and surface-calibrated vermilion (`#f04c3a`, `#c92a1a`, `#b52012`) carry billing hierarchy and dual-track structure.
-- Strict zero-radius square geometry (`0px`) framed by 2px structural borders and 1px interior hairlines.
-- Three distinct typographic voices: Antonio condensed display caps, Bricolage Grotesque UI copy, and JetBrains Mono exclusively for tabular data.
-- CSS-only motion: 110ms color snaps and one authored 220ms dialog print-registration settle, fully bypassed under reduced motion.
+- Deep obsidian ground (`#08090a`) stepped cleanly through charcoal surface (`#0f1012`), hardware stage (`#111216`), and elevated slate (`#15171c`).
+- Restrained dual-signal palette: periwinkle indigo (`#7e8ce0`) for technical metadata and focus rings, plus emerald (`#34d399`) exclusively for live availability and copy feedback.
+- Translucent `1px` hairline framing (`rgb(255 255 255 / 0.08)` and `0.16`) paired with soft top specular edge highlights (`rgb(255 255 255 / 0.06)`).
+- Bilingual `Inter` UI/display typography paired with tabular `IBM Plex Mono` (`latin` and `latin-ext` subsets) in natural sentence case.
+- Concentric graduated radii (`6px` to `16px` plus `9999px` action/tab pills) and crisp unretouched software framing.
 
 ## Colors
 
-A high-contrast press palette built on dark ink grounds, warm cream stock, process yellow, and three surface-calibrated vermilion tones.
+A disciplined low-glare obsidian palette anchored by stepped dark neutrals, crisp alabaster conversion surfaces, periwinkle indigo metadata, and a narrow emerald signal.
 
 ### Primary
-- **Process Yellow** (`#f2c94c`): Primary display ink and conversion fill. Sets the hero `<h1>`, navbar wordmark and bottom border, active language indicator, first Düzey flagship border, section headings (`#experience`, `#contact`), primary email action blocks, dark case-study button borders/text, light case-study button text, focus outlines on dark surfaces, `::selection` highlight, and dark-mode modal labels/metrics.
-- **Hot Yellow** (`#ffd84d`): Hover press state for primary process-yellow conversion blocks (`.btn-register:hover`) and the navbar wordmark on hover.
+- **Periwinkle Indigo** (`#7e8ce0`): Primary technical accent. Colors enterprise row labels (`Düzey · Year`), Experience periods and Education tags, Skills group titles, `ProjectModal` subtitle metadata, the Contact WhatsApp action prompt, `Hero` showcase case-study hover text, `::selection` highlight (`#08090a` text), and global `2px` `:focus-visible` outlines.
+- **Studio Radial Tint** (`rgb(126 140 224 / 0.14)`): Soft elliptical overhead gradient (`radial-gradient(70% 55% at 50% 0%, ...)`) behind the Hero headline and showcase switcher, fading transparently into the obsidian canvas.
 
 ### Secondary
-- **Graphic Vermilion** (`#f04c3a`): Bright vermilion ink calibrated for dark press grounds (`#0a0a0a`, `#141414`). Used for the hero double-bill track line, the hero vertical column rule, the second Düzey flagship 2px border, employer/university names in Experience, the clipboard-failure border, and the footer top rule and back-to-top underline.
-- **Vermilion Solid Fill** (`#c92a1a`): High-saturation graphic fill paired strictly with pure white (`#ffffff`) ink for the navbar Contact button, the tilted `Artı`/`Plus` divider crest between the two Düzey cards, the hover fill of light-surface case-study and modal close buttons, and the `.btn-register:active` border.
-- **Vermilion Stock Ink** (`#b52012`): Deepened vermilion calibrated for AAA/AA contrast on warm cream stock (`#f2ead8`). Used for the `#own` section headline, product-cell mono metadata, `#skills` category labels, light-surface external link underlines/hover states, and light-modal metadata/row labels/list markers.
+- **Availability Emerald** (`#34d399`): Affirmative status signal used exclusively for the `6px` status indicator dot in the Hero availability badge and the clipboard-copied confirmation message in Contact.
 
 ### Neutral
-- **Raven Black** (`#0a0a0a`): Root document canvas (`html`, `body`, `<meta name="theme-color">`), contact channel outer frame background, dark scrollbar track, and the inner 2px gap ring inside dark-surface `:focus-visible` outlines.
-- **Press Charcoal** (`#141414`): Elevated dark panel background used for the hero billboard, Düzey `LineItem` cards, the Experience ledger, the Contact block, secondary contact channel rows, dark `<dialog>` case studies, and portrait screenshot mats inside cream product cells.
-- **Deep Press** (`#0f0f0f`): Recessed dark well used for the hero secondary social grid tiles, clipboard error alert box, Experience 3-column summary bar, dark `CaseStudyButton` resting fill, `ProjectShot` frame mat, and secondary Contact row hover fills.
-- **Newsprint Stock** (`#f2ead8`): Warm cream paper used as default body ink on dark grounds, as the full-width surface background for `#own`, `#skills`, and own-product `<dialog>` modals, for resting `.ballyhoo-tag` fills, for `.btn-register:active` press inversion, and for major dark-ground structural borders (`Hero`, `#own`, `#skills`, `Artı/Plus` crest, `ProjectShot` frames, and Contact channel box; also used at 35%–40% opacity in Experience/Contact grid dividers and 95% opacity for Experience body paragraphs).
-- **Soft Stock** (`#e6dcc4`): Warm newsprint scrollbar track inside `.sheet-stock` light sections and cream modals.
-- **Press Ink** (`#111111`): Dense charcoal-black ink on cream stock and process-yellow surfaces. Sets headings, body copy, collapsed grid rules (`#own`, `#skills`), `.ballyhoo-tag` text and 1.5px borders, light-modal text/borders, primary email CTA text (plus `90%` opacity on the email address), skip-link text/border, light `CaseStudyButton` resting fill, and `.sheet-stock :focus-visible` outlines.
-- **Muted Ink** (`#46423a`): Secondary prose and label ink on `#f2ead8` cream stock (`#own` and `#skills` subtitles, light-modal metric labels).
-- **Muted Paper** (`#c2b9a5`): Secondary warm-grey ink on dark press surfaces (navbar location and inactive language code, `/` separator at 60% opacity, hero Düzey role subline, Düzey card taglines, Experience prose/locations/bullet items/labels, Contact subtitle/channel header/handles, dark-modal metadata/metric labels, and footer secondary text).
-- **Pure White** (`#ffffff`): Crisp white text used exclusively inside solid `#c92a1a` (`vermilion-fill`) controls (`Navbar` Contact CTA and hovered cream-surface `CaseStudyButton` / close buttons).
-- **Dark Rule Hairline** (`rgb(242 234 216 / 0.24)`): Translucent cream hairline dividing interior rows on dark surfaces (`LineItem` action footers, hero secondary social borders, Experience aside bottom divider, Contact channel row dividers and halftone border, dark-modal row and metric rules).
-- **Light Rule Hairline** (`rgb(17 17 17 / 0.24)`): Translucent ink hairline dividing interior rows inside cream-stock `<dialog>` case studies.
-- **Halftone Dot Tint** (`rgb(242 201 76 / 0.2)`): 20% process-yellow radial dot ink used solely inside Contact's `.halftone-band` accent strip.
+- **Obsidian Canvas** (`#08090a`): Root document background (`html`, `body`, viewport `themeColor`), scrollbar track, sticky `Navbar` ground (`82%` opacity with `backdrop-blur-xl`), Contact channel wrapper (`70%` opacity), and text ink inside high-contrast `#f4f5f7` primary action pills.
+- **Charcoal Surface** (`#0f1012`): Primary card ground used by `.surface-card` (topped with a `3.2%` to `0.8%` vertical white sheen), Hero status pill (`85%` opacity), Hero and Own-Product tab tracks (`90%` / `100%`), Hero copy-error alert pill, and `ProjectModal` `<dialog>` sheets (`90%` opacity on the sticky top bar).
+- **Hardware Stage** (`#111216`): Recessed screenshot stage inside the Hero showcase frame and every `ProjectShot` media frame (portrait mobile captures add a radial mat from `#191b22` to `#0c0d10`).
+- **Elevated Slate** (`#15171c`): Interactive elevation step used for active `layoutId` tab pills, `CaseStudyButton` surfaces (`70%` / `100%`), Hero secondary explore pill (`90%`), ProjectModal header buttons (`80%`) and metric wells (`60%`), and the keyboard skip-to-content pill.
+- **Crisp Alabaster** (`#f4f5f7`): Primary display and body ink, active tab labels, metric figures, and solid background fill for primary conversion controls (`Navbar` Contact pill, `HeroContact` segmented email pill, `Contact` email row). Hero and Contact lead headlines use `.text-gradient` (`#ffffff` to `#b4b9c4`) over the top line.
+- **Cool Silver** (`#a1a6b0`): Secondary ink for section subtitles, nav links, hero second headline line, card descriptions, timeline bullets, Skills technology lists, modal narrative prose, footer summary, and external links at rest.
+- **Muted Graphite** (`#7c828d`): Tertiary ink for metric `<dt>` labels, card categories, inactive tabs, inline stack lists, locations, footer stack credit, list markers, and directional link icons.
+- **Subtle Hairline** (`rgb(255 255 255 / 0.08)`): Default `1px` border dividing sections, cards, `ProjectShot` stages, metric strips, modal rows, tab tracks, and the outer ring shadow around open dialogs.
+- **Strong Hairline** (`rgb(255 255 255 / 0.16)`): Emphasized `1px` border on hovered `.surface-card-interactive` cards, active tab indicators, primary segmented email pills, modal `<dialog>` sheets, modal `ProjectShot` frames, and the skip-to-content link.
+- **Dialog Scrim** (`rgb(6 7 9 / 0.78)`): High-opacity backdrop veil (`backdrop-filter: blur(8px)`) dimming the page behind open `ProjectModal` sheets.
 
 ### Named Rules
-**The Surface-Calibrated Vermilion Rule.** Never place bright vermilion (`#f04c3a`) on cream stock or deep vermilion (`#b52012`) on dark press. Use `#f04c3a` on `#0a0a0a`/`#141414`, `#b52012` on `#f2ead8`, and `#c92a1a` solely for solid fills paired with `#ffffff` ink.
+**The Stepped Obsidian Rule.** Depth comes from subtle luminance steps between canvas (`#08090a`), surface (`#0f1012`), hardware stage (`#111216`), and elevated slate (`#15171c`) bounded by `1px` hairlines—never washed mid-grey panels or saturated card fills.
 
-**The Alternating Ink-and-Stock Rule.** Sections never drift into washed mid-grey cards. Every container commits either to dark press (`#141414` / `#0f0f0f` with `#f2ead8` and `#c2b9a5` ink) or to warm cream stock (`#f2ead8` with `#111111` and `#46423a` ink).
-
-**The Single-Register Yellow Action Rule.** Solid process yellow (`#f2c94c`) with `#111111` ink marks the primary email CTA and keyboard skip link; secondary channels stay dark (`#141414` / `#0f0f0f`) until hovered or focused.
+**The Sparing Signal Rule.** Reserve Periwinkle Indigo (`#7e8ce0`) strictly for technical metadata, selection, and focus outlines, and reserve Availability Emerald (`#34d399`) for live availability and copy confirmation; never turn accent colors into decorative multi-tag clutter.
 
 ## Typography
 
-**Display Font:** `Antonio` (`system-ui, sans-serif` fallback, `latin` and `latin-ext` subsets)
-**Body Font:** `Bricolage Grotesque` (`system-ui, sans-serif` fallback, `latin` and `latin-ext` subsets)
-**Label/Mono Font:** `JetBrains Mono` (`ui-monospace, monospace` fallback, `latin` and `latin-ext` subsets, tabular numerals enabled via `.data-mono`)
+**Display & Body Font:** `Inter` (`system-ui, sans-serif` fallback, `latin` and `latin-ext` subsets)
+**Mono / Metadata Font:** `IBM Plex Mono` (`400` and `500` weights, `ui-monospace, monospace` fallback, `latin` and `latin-ext` subsets, tabular numerals via `.data-mono`)
 
-**Character:** Condensed uppercase Antonio acts like woodblock poster type for names, double-bill headings, and section titles. Bricolage Grotesque carries card headings, editorial prose, and structural labels with strong legibility across Turkish and English, while JetBrains Mono locks technical stacks, dates, GPA, and contact handles into crisp tabular alignment.
+**Character:** Natural sentence-case `Inter` delivers crisp negative-tracked display authority (`-0.035em`) and effortless bilingual reading across Turkish and English diacritics (`ğ, ş, ı, İ, ö, ü, ç`). Tabular `IBM Plex Mono` anchors project years, metric values, counts, tech lists, and handles into steady technical grids.
 
 ### Hierarchy
-- **Display** (`Antonio` 700, `clamp(42px, 6.2vw, 86px)`, line-height `0.88`, `-0.015em` tracking, uppercase): The candidate name `<h1>` once at the top of the hero billboard.
-- **Display Double-Bill** (`Antonio` 700, `18.5px` on small screens, `24px` at `>= 480px`, scaling via `clamp(24px, 2.8vw, 38px)` at `>= 900px`, line-height `1.02` -> `0.98`, `0.01em` tracking, uppercase): Dual-track subhead pairing enterprise systems and own products (with `0.72em` `+` separator). The tilted `Artı`/`Plus` divider crest sits at `26px` (`line-height: 1`, `700`).
-- **Headline** (`Antonio` 700, `clamp(34px, 4vw, 48px)`, line-height `0.95`, `-0.01em` tracking, uppercase): Primary section titles for `#own`, `#experience`, and `#skills`. Contact steps up to `clamp(36px, 4.2vw, 54px)` (`line-height: 1.08`), and the case-study `<dialog>` title scales at `clamp(28px, 4vw, 42px)` (`line-height: 1.06`).
-- **Title** (`Bricolage Grotesque` 800, `20px`–`24px`, line-height `1.15`, `-0.01em` tracking): Featured Düzey `LineItem` titles scale `20px` -> `22px` (`>= 900px`) -> `24px` (`>= 1200px`). Experience roles and the Education degree sit at `21px` (`800`, tight leading), while `#own` `ProductCell` titles sit at `17.5px` (`800`, snug). The `Navbar` wordmark uses `Antonio` `20px` (`21px` at `>= 900px`, `0.04em` tracking, `line-height: 1`).
-- **Body** (`Bricolage Grotesque` 400–800, `14px`–`16.5px`, line-height `1.35`–`1.55`, prose capped at `56ch`–`68ch`): Contact primary email label at `16.5px` (`800`); section descriptions, Contact secondary channel names, Experience companies/schools (`700`), and desktop hero role (`700`) at `16px`; Experience descriptions, Education details, and modal case-study prose (`overview`, `challenge`, `solution`) at `15.5px`; `#own` intro, Skills group items (`500`), Experience achievement bullets, Contact status/WhatsApp prompt (`600`), desktop hero email label (`800`), and Antonio footer billing (`15px`, `0.06em` tracking) at `15px`; mobile hero email label (`800`), desktop hero metadata, desktop `LineItem` taglines, and default `ExternalLink` (`700`) at `14.5px`; mobile `LineItem` taglines and Experience locations at `14px`.
-- **Label & Utility Controls** (`Bricolage Grotesque` 700–800, `12px`–`13px`, uppercase, `0.04em`–`0.08em` tracking): `12px` for mobile nav links, mobile Contact CTA, hero copy button, `ProductCell` `CaseStudyButton` override, Experience stat/stack/GPA labels, Contact channels header, and modal row labels (`800`, `0.08em`); `12.5px` for desktop nav links, desktop Contact CTA, default `CaseStudyButton`, modal close and metric `<dt>` labels, Experience Education header (`800`), and Skills category labels (`800`); `13px` for skip-to-content link, desktop secondary Hero social tiles (`12.5px` mobile), footer `Built with` line, and footer `Back to top` anchor (`0.08em`).
-- **Mono Data** (`JetBrains Mono` 500–700, `12px`–`16px`, tabular figures): `12px` for `.ballyhoo-tag` badges (`700`, `1.3` line-height), navbar location, mobile hero email address, mobile `LineItem` stack line (`500`), and `ProductCell` stack/year line (`700`); `12.5px` for navbar `TR`/`EN` switcher, desktop hero email address, and desktop `LineItem` stack line (`500`); `13px` for Experience stack lists (`1.5` line-height) and hero clipboard error address; `13.5px` for Experience periods, Contact email address and social handles, `ProductCell` link size override (sans `ExternalLink`), modal subtitle (`500`), modal metric values (`700`), and modal tech stack; `15px` for Education GPA; `16px` for Experience summary stat `<dd>` values.
+- **Display** (`Inter` 600, `clamp(34px, 4.8vw, 58px)`, line-height `1.06`, `-0.035em` tracking): Two-line Hero `<h1>` positioning statement (`.text-gradient` on line 1, Cool Silver on line 2).
+- **Contact Headline** (`Inter` 600, `clamp(28px, 3.6vw, 42px)`, line-height `1.1`, `-0.03em` tracking): Two-line closing invitation in Contact.
+- **Section Headline** (`Inter` 600, `clamp(26px, 3.4vw, 38px)`, line-height `1.12`, `-0.03em` tracking): Primary headings for `#work`, `#own`, `#experience`, and `#skills`.
+- **Modal Headline** (`Inter` 600, `clamp(24px, 3.2vw, 34px)`, line-height `1.16`, `-0.03em` tracking): Case-study project title inside `ProjectModal`.
+- **Feature Title** (`Inter` 600, `clamp(22px, 2.4vw, 28px)`, line-height `1.2`, `-0.025em` tracking): Alternating Düzey `EnterpriseFeature` titles.
+- **Card & Entry Title** (`Inter` 600, `17.5px`–`21px`, line-height `1.3`–`1.375`, `-0.015em` to `-0.02em` tracking): Featured `ProductCell` titles scale `19px` -> `21px` (`>= 640px`), standard `ProductCell` titles sit at `17.5px`, Experience and Education `<h3>` headings sit at `19px`, and the `Navbar` wordmark sits at `15px` (`-0.02em`).
+- **Body** (`Inter` 400–500, `13.5px`–`16.5px`, line-height `1.55`–`1.65`, line length capped at `50ch`–`68ch`): Hero subtitle (`15.5px` / `16.5px` at `>= 900px`); section descriptions (`15.5px`); `EnterpriseFeature` summaries, Experience/Education copy, and `ProjectModal` narrative rows (`15px`); Experience company/school sublines (`500`), bullets, Skills lists, and modal key highlights (`14.5px`); `ProductCell` 2-line taglines (`14px`); and Footer identity line (`13.5px`).
+- **UI & Micro Labels** (`Inter` 500–600, `11px`–`14.5px`): Contact primary email label (`14.5px` 600) and channel titles (`14px`); desktop nav links and `ExternalLink` (`13.5px`); primary/explore pills, filter tabs, `CaseStudyButton`, Hero secondary links, and Footer back-to-top (`13px`); Hero status pill, stage tabs, Navbar location, mobile nav links, Hero copy button, Contact copy button, `ProductCell` `CaseStudyButton`, and modal close (`12.5px`); `ProductCell` category, Experience stat `<dt>`, Contact channels header, and modal `<Row>` headings (`12px`, `0.02em` tracking); modal metric `<dt>` (`11.5px`); and `EnterpriseFeature` inline metric `<dt>` (`11px`).
+- **Mono Data** (`IBM Plex Mono` 400–500, `11.5px`–`20px`, `tabular-nums`): Experience summary stat `<dd>` (`20px`, `font-semibold`, `-0.02em`); modal metric `<dd>` and full tech stack plus Education GPA (`13px`); `EnterpriseFeature` metric `<dd>`, Experience periods and Education heading, Contact email address and social display URLs, and modal subtitle (`12.5px`); Navbar `TR`/`EN`, Hero stage bar title, Hero pill email, `EnterpriseFeature` company/year and stack summary, `ProductCell` year and stack summary, modal counter (`01 / 10`), Experience stack list, and Skills group `<dt>` (`12px`); and `Projects` filter count badge (`11.5px`).
 
 ### Named Rules
-**The Three-Voice Division Rule.** Antonio sets display names, double-bill headings, and section titles in uppercase; Bricolage Grotesque sets prose, card titles, and UI labels; JetBrains Mono with tabular numerals sets only technical stacks, dates, handles, GPA, and metrics.
+**The Sentence-Case Precision Rule.** Headings, navigation links, buttons, and metadata labels stay in crisp sentence/title case with tight negative tracking (`-0.015em` to `-0.035em`) rather than heavy all-caps.
 
-**The Twelve-Pixel Floor Rule.** No label, nav item, ballyhoo tag, or mono caption drops below `12px` at any viewport width.
+**The Tabular Metadata Rule.** All years, counts, durations, GPAs, metric values, and inline technology strings apply `.data-mono` (`IBM Plex Mono`, `tabular-nums`) so rows and switching tabs maintain steady horizontal alignment.
 
 ## Layout
 
-All page bands align inside `.broadside-frame` (`max-width: 1380px`, centered via `margin-inline: auto`) with `24px` inline gutters at `900px` and up, tightening to `12px` gutters below `900px`. `<main>` uses `10px` top / `56px` bottom padding on mobile and `16px` top / `64px` bottom padding on desktop. Vertical spacing locks into clear structural intervals: `12px` (`16px` desktop) from Hero to `#work`, `20px` from `#work` to `#own`, and `40px` between `#own`, `#experience`, `#skills`, and `#contact`, closing with `48px` footer bottom padding.
+All sections share `.page-shell` (`max-width: 1120px`, centered via `margin-inline: auto`), using `16px` horizontal gutters on mobile and `24px` gutters from `640px` upward. Section anchors set `scroll-margin-top: 76px` to clear the sticky `56px` (`h-14`) top bar. Vertical pacing opens cleanly with `Hero` (`pt-8 pb-6`, stepping to `pt-10 pb-10` at `>= 900px`), followed by hairline-separated sections (`pt-14`, `min-[900px]:pt-20`) for `#work`, `#own`, `#experience`, and `#skills`, closing with `#contact` (`pt-8 pb-16`, `min-[900px]:pt-12`) and `Footer` (`py-8`).
 
-Responsive breakpoints govern real layout shifts across mobile and desktop:
-- **`480px`**: Hero double-bill subtitle steps from `18.5px` to `24px`.
-- **`599px` / `600px`**: `ProjectModal` shifts from a `100%` full-screen unbordered mobile sheet (`<= 599px`) to a centered `min(880px, calc(100% - 48px))` sheet (`>= 600px`) with a `155px` left label column (`grid-cols-[155px_minmax(0,1fr)]`), while `#own` shifts from 1 to 2 columns.
-- **`639px` / `640px`**: `.ballyhoo-tag` tightens to `2px 8px` padding below `640px`; at `>= 640px`, navbar location appears, Experience stat bar splits into 3 columns, Skills switches to `[10rem_1fr]` label/value rows, Contact heading splits to two lines, and Footer switches to horizontal alignment.
-- **`768px`**: Experience `LedgerRow` splits into `[minmax(176px,14rem)_minmax(0,1fr)]` with the period/location column spanning vertically.
-- **`899px` / `900px`**: Container gutter increases from `12px` to `24px`, `.ballyhoo-tag` activates alternating `-1.2deg` / `1deg` tilt, Navbar collapses onto a single horizontal row, and card/section paddings and heading sizes step up.
-- **`960px`**: Hero splits into `[1.32fr_0.68fr]` across a 2px vertical vermilion divider, and `#work` aligns both Düzey flagships beside the tilted `Artı`/`Plus` crest (`grid-cols-[1fr_auto_1fr]`).
-- **`1024px`**: `#skills` shifts to a 2-column matrix and `#contact` aligns its headline beside the `34rem` max channel block (`lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)]`).
-- **`1100px`**: `#own` expands from 2 columns to 4 columns (`min-[1100px]:grid-cols-4`).
-- **`1200px`**: Düzey `LineItem` titles step from `22px` to `24px`.
-- **`1280px`**: Experience `LedgerRow` opens into its full 3-column ledger (`xl:grid-cols-[14.5rem_minmax(0,1fr)_minmax(15rem,19rem)]`).
+Responsive breakpoints govern multi-column adaptation cleanly:
+- **`599px` / `600px`**: `ProjectModal` shifts from a full-bleed `100%` unrounded mobile sheet (`<= 599px`) to a centered `min(860px, calc(100% - 32px))` floating sheet (`max-height: calc(100dvh - 40px)`).
+- **`640px` (`sm`)**: `.page-shell` gutter widens from `16px` to `24px`; Navbar location appears; Hero/Projects tablists lock into `rounded-full`; Hero showcase stage padding widens (`p-2` -> `p-3`) and window traffic dots appear; `ProductCell` standard grid opens to 2 columns (`sm:grid-cols-2`); `Experience` 4-item stat bar expands from 2x2 to 4 columns (`sm:grid-cols-4`); `ProjectModal` rows split into `[165px_minmax(0,1fr)]` and metrics grid to 2 columns; `Footer` shifts to horizontal alignment.
+- **`768px` (`md`)**: `Projects` featured own-product cards split into 2 columns (`md:grid-cols-2`), and `Experience` `TimelineRow` splits into `[220px_minmax(0,1fr)]`.
+- **`860px`**: `#own` aligns its section header beside the filter tablist (`min-[860px]:flex-row min-[860px]:items-end`).
+- **`900px`**: Navbar collapses its secondary mobile link shelf onto the primary horizontal row; Hero, Work, Own, Experience, Skills, and Contact step up vertical padding, Hero subtitle (`15.5px` -> `16.5px`), and Contact card padding (`p-6` -> `p-10`).
+- **`1024px` (`lg`)**: `EnterpriseFeature` splits into a 12-column alternating showcase (`lg:col-span-5` text / `lg:col-span-7` media, reversing on odd items); `ProductCell` standard row expands to 3 columns (`lg:grid-cols-3`); `Skills` becomes a 2-column hairline matrix; `Contact` aligns its headline beside the `30rem` max channel table (`lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]`).
 
-Screenshots inside `ProjectShot` normalize across each group using `frameRatio` (averaging landscape `width / height`, falling back to `16 / 10`). Landscape captures use `object-cover object-top` to keep application headers intact; portrait mobile captures center cleanly with `object-contain` on `#0f0f0f` (`#141414` on cream cells) without overlays or badges. Primary interactive touch targets meet at least `44px` (`min-h-11`), with `48px` (`min-h-12`) on Contact secondary rows and desktop Hero email bar, and `56px` (`min-h-14`) on Contact's primary email bar (`36px` `min-h-9` on slim top-bar navigation links).
+`ProjectShot` normalizes ratios per project group using `frameRatio` (averaging landscape widths/heights with a `16 / 10` fallback), fixes the Hero stage at `16 / 9` (`max-h-[460px]`), and renders modal images at intrinsic landscape aspect ratios. Landscape captures use `object-cover object-top`; portrait mobile captures center cleanly (`object-contain`) inside a dark radial mat. Touch targets maintain `52px` (`min-h-13`) on Contact's primary email row, `48px` (`min-h-12`) on Contact secondary channels, `44px` (`min-h-11`) on Hero primary/explore pills, `40px` (`min-h-10`) on `CaseStudyButton`, `ExternalLink`, skip link, and Footer trigger, and `36px` (`min-h-9`) on compact header controls and secondary Hero links.
 
 ## Elevation & Depth
 
-On the main page, depth is purely planar and chromatic—achieved by stepping between `#0a0a0a` ground, `#141414` press panels, `#0f0f0f` recessed control wells, and `#f2ead8` warm cream sheets bounded by 2px borders rather than drop shadows.
+This system uses a **hybrid tonal-layering and specular-edge** depth model. Surfaces differentiate primarily through stepped obsidian fills (`#08090a` -> `#0f1012` -> `#111216` -> `#15171c`) and `1px` hairline borders, reinforced by subtle top catch-lights on cards, blurred translucency on sticky bars, and deep shadow + blur separation reserved for open native `<dialog>` layers.
 
 ### Shadow Vocabulary
-- **Case-Study Modal Lift** (`box-shadow: 0 26px 52px -18px rgb(0 0 0 / 0.72)`): The single drop shadow in the system, separating an open native `<dialog>` sheet from the underlying broadside.
-- **Modal Scrim** (`background-color: rgb(10 10 10 / 0.8)`): High-opacity raven-black `::backdrop` overlay without backdrop blur, animating in from `rgb(10 10 10 / 0)` over `220ms` (`cubic-bezier(0.16, 1, 0.3, 1)`).
-- **Focus Registration Ring** (`outline: 2px solid #f2c94c; outline-offset: 2px; box-shadow: 0 0 0 2px #0a0a0a` on dark; `outline: 2px solid #111111; outline-offset: 2px; box-shadow: 0 0 0 2px #f2c94c` inside `.sheet-stock`): Zero-blur two-ring keyboard focus indicator guaranteeing crisp visibility across dark and cream grounds.
+- **Surface Card Specular** (`box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.45)`): Top inner catch-light and subtle contact anchor applied to `.surface-card` containers alongside a `3.2%` to `0.8%` vertical sheen gradient.
+- **Primary Pill Lift** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)`): Tailwind `shadow-sm` separating the bright `#f4f5f7` email pill in `HeroContact` from the radial hero glow.
+- **Portrait Device Lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)`): Tailwind `shadow-lg` under portrait mobile app captures inside `ProjectShot`.
+- **Modal Sheet Elevation** (`box-shadow: 0 32px 90px -16px rgb(0 0 0 / 0.85), 0 0 0 1px rgb(255 255 255 / 0.08)`): Deep floating dialog shadow plus a crisp outer hairline ring on `ProjectModal`.
+- **Modal Backdrop Scrim** (`background-color: rgb(6 7 9 / 0.78); backdrop-filter: blur(8px)`): Blurred obsidian veil dimming the page behind open `<dialog>` sheets.
+- **Keyboard Focus Ring** (`outline: 2px solid #7e8ce0; outline-offset: 2px`): High-visibility indigo outline applied globally via `:focus-visible`.
 
 ### Named Rules
-**The Flat-Press Depth Rule.** Sections, cards, buttons, and callout tags remain completely flat at rest and on hover; `rgb(0 0 0 / 0.72)` elevation and `rgb(10 10 10 / 0.8)` scrim dimming are reserved exclusively for open modal `<dialog>` layers.
+**The Specular Edge Rule.** Cards signal depth through a `1px` top inner rim (`rgb(255 255 255 / 0.06)`) and border brightening (`0.08` -> `0.16` on hover) rather than heavy drop shadows or scale lifts.
+
+**The Motion-Calibrated Entrance Rule.** State color/border snaps complete in `160ms` (`--duration-snap`, `cubic-bezier(0.16, 1, 0.3, 1)`), active tab indicators glide via damped spring physics (`bounce: 0.16`, `0.34s`–`0.36s`), and dialogs enter over `240ms` (`--duration-dialog`, `translateY(10px) scale(0.985)` + `opacity: 0` to rest), collapsing cleanly under `prefers-reduced-motion: reduce` and `MotionConfig reducedMotion="user"`.
 
 ## Shapes
 
-Every element—billboards, cards, buttons, screenshot frames, stacked tags, list bullets (`list-[square]`), and modal sheets—enforces a strict `0px` corner radius (`rounded: none`). Boundaries rely on `2px` solid structural borders (`border-2`) for section sheets, media frames, buttons, and outer channel containers; `1.5px` solid `#111111` ink borders on `.ballyhoo-tag` badges; and `1px` translucent hairlines (`rgb(242 234 216 / 0.24)` on dark, `rgb(17 17 17 / 0.24)` on cream) for interior row separators and secondary social tiles.
+The geometry uses graduated, concentric corner radii bounded consistently by `1px` translucent borders (`border-line` and `border-line-strong`) and clean horizontal/vertical hairline rules:
+- **Full Pills (`9999px`):** Navbar Contact CTA, keyboard skip link, Hero availability badge, Hero/Own-Product desktop tab tracks and `layoutId` active pills, and Hero primary/explore pills.
+- **Container Frames (`16px`):** Hero showcase outer card, `EnterpriseFeature` screenshot wrapper, `Contact` outer card, desktop `ProjectModal` `<dialog>` (`0px` full-screen below `600px`), and narrow-screen wrapping tab tracks.
+- **Product Cards (`14px`):** `ProductCell` containers across the independent products grid.
+- **Media Stages & Tables (`12px`):** `ProjectShot` containers, `Experience` 4-column stat bar, `Contact` channel table, and `EnterpriseFeature` nested screenshots.
+- **Compact Buttons & Metric Wells (`8px`):** `CaseStudyButton`, `ProjectModal` prev/next/close controls, modal metric wells, Hero stage inner shot, and Hero copy-failure alert.
+- **Inset Portrait Media (`6px`):** Phone screenshot frames centered inside `ProjectShot`.
 
-In `#own` and `#skills`, grids use collapsed-border geometry (`border-t-2 border-l-2` on the grid wrapper paired with `border-r-2 border-b-2` on every cell) so adjacent lines remain uniformly `2px` without doubling. Graphic broadside character comes from three restrained devices kept strictly off reading prose and screenshots: alternating `.ballyhoo-tag` tilts (`-1.2deg` odd, `1deg` even above `900px`, cleared to `none` under reduced motion), the `-3deg` tilted `Artı`/`Plus` divider crest (`>= 960px`), and Contact's bottom `.halftone-band` (`16px` tall radial dot strip of `rgb(242 201 76 / 0.2)` dots at `1.25px` radius on an `8px x 8px` grid).
-
-**The Sharp-Edge Broadside Rule.** Never apply `border-radius` above `0px` or soft pills anywhere in the interface; keep halftone dot textures and subtle angle tilts strictly off prose blocks and software screenshots.
+### Named Rules
+**The Nested Radius Concentricity Rule.** When nesting a media stage inside a card or showcase frame (`16px` outer card -> `8px` or `12px` inner `ProjectShot` with `8px–12px` padding), keep radii stepped downward proportionally so corner curvature stays concentric.
 
 ## Components
 
 ### Buttons
-- **Shape:** Sharp `0px` corners across all controls, `110ms` `ease` color transitions (`--duration-snap`), minimum `44px` hit height (`48px`–`56px` on primary email rows).
-- **Primary Email Split CTA (`.btn-register`):** Full-width `2px` `#f2c94c` yellow fill with `#111111` ink, containing a `mailto:` link (`Mail` 15px/17px icon + bold label + `break-all` mono email at `90%` ink) beside a `border-l-2 border-ink` copy button (`Copy` / `Check` 14px icon). Hovers to `#ffd84d`; copy button inverts to `#111111` fill with `#f2c94c` text; `:active` snaps to `#f2ead8` fill with `#c92a1a` border.
-- **Navbar Contact CTA:** Solid `#c92a1a` vermilion fill with `#ffffff` `12px`/`12.5px` uppercase text (`min-h-9` / `min-h-10` on desktop), inverting to `#f2c94c` fill with `#111111` ink on hover.
-- **Case-Study Openers (`CaseStudyButton`):** Surface-aware (`"dark"` vs `"stock"`). On dark cards: `2px` `#f2c94c` border, `#0f0f0f` fill, `#f2c94c` text, inverting to `#f2c94c` fill with `#111111` ink on hover. On cream cards: `2px` `#111111` border, `#111111` fill, `#f2c94c` text, shifting to `#c92a1a` fill/border with `#ffffff` text on hover.
-- **Modal Close Button:** Sticky top-bar trigger with `16px` `X` stroke icon (`min-h-11`): `#f2c94c` text inverting to `#f2c94c`/`#111111` on dark modals; `#111111` fill / `#f2c94c` text shifting to `#c92a1a` / `#ffffff` on cream modals.
+- **Shape:** Graduated between `9999px` pills for primary navigation/hero actions and `8px` (`rounded-lg`) compact rectangles for case-study and modal controls; `160ms` (`--duration-snap`) color/border transitions.
+- **Primary Email Segmented Pill (`HeroContact` & `Contact`):** High-contrast `#f4f5f7` background with `#08090a` ink, splitting a `mailto:` link (`Mail` icon + semibold label + tabular mono email separated by `border-canvas/15`) from a `Copy`/`Check` clipboard button (`bg-black/5` hovering to `bg-black/10`; mail side hovers to `white/90`). Full pill (`rounded-full`, `min-h-11`) in Hero; flush top row (`min-h-13`) inside Contact's channel table.
+- **Navbar Contact Pill:** Compact `min-h-9` `#f4f5f7` pill with `#08090a` `13px` medium text (`hover:opacity-90`).
+- **Secondary Explore Pill (`HeroContact`):** `min-h-11` `#15171c` (`90%`) pill with `border-line`, `#f4f5f7` text, and `ArrowDown` icon, shifting to `border-line-strong` and solid `#15171c` on hover.
+- **Case-Study Trigger (`CaseStudyButton`):** `8px` radius, `min-h-10`, `13px` medium text with trailing `ArrowRight` (`translate-x-0.5` on hover). `"elevated"` uses `border-line-strong bg-surface-elevated` (hovering `white/10`); `"dark"` uses `border-line bg-surface-elevated/70` (hovering `border-line-strong text-white`).
+- **External Link (`ExternalLink`):** Text-only `min-h-10` inline action (`13.5px` / `13px` medium `#a1a6b0` hovering to `#f4f5f7`) paired with a `14px` `ArrowUpRight` icon.
 
-### Tags & Links
-- **Ballyhoo Stack Tags (`.ballyhoo-tag`):** Cream `#f2ead8` background, `#111111` `12px` bold JetBrains Mono text, `1.5px solid #111111` border, `4px 10px` padding (`2px 8px` below `640px`), tilted `-1.2deg` / `1deg` above `900px`, shifting to `#f2c94c` on hover.
-- **External Links (`ExternalLink`):** Bold `14.5px` (`13.5px` inside `#own` `ProductCell`) underlined link (`1.5px` thickness, `0.2em` offset) with a `15px` `ArrowUpRight` icon (`min-h-11`): `#f2ead8` text with `#f2c94c` underline hovering to `#f2c94c` on dark; `#111111` text with `#b52012` underline hovering to `#b52012` on cream.
+### Tabs & Status Pills
+- **Availability Status Pill (`Hero`):** `rounded-full`, `border-line`, `bg-surface/85`, `12.5px` Cool Silver text led by a `6px` `#34d399` emerald dot.
+- **Showcase & Filter Tablists (`Hero`, `Projects`):** `border-line bg-surface` tracks (`rounded-2xl sm:rounded-full`, `p-1`) where the selected tab mounts a shared `motion.span` (`layoutId`, `rounded-full border-line-strong bg-surface-elevated`) beneath crisp `#f4f5f7` text (`#7c828d` inactive, `#a1a6b0` hover). `Projects` pairs each filter label with an `11.5px` mono item count.
 
 ### Cards / Containers
-- **Hero Billboard (`Hero`):** `2px` `#f2ead8` outer border on `#141414`, splitting identity/double-bill/ballyhoo tags (`1.32fr`) from role metadata + `HeroContact` (`0.68fr`) across a `2px` `#f04c3a` divider.
-- **Düzey Feature Cards (`LineItem`):** `2px` border (`#f2c94c` on first flagship, `#f04c3a` on second) on `#141414` (`12px` / `20px` padding), holding framed `ProjectShot`, bold title (`20px`–`24px`), tagline, mono stack summary, and `1px` top-bordered (`rule-dark`) footer actions.
-- **Own-Product Cells (`ProductCell`):** Collapsed-grid cream cells (`#f2ead8`, `14px` padding, `2px` `#111111` rules) holding `ProjectShot` (`border-ink bg-press`), `17.5px` bold title, `#b52012` mono stack/year line, `CaseStudyButton`, and optional live/GitHub links.
-- **Experience Stat Bar & Ledger (`Experience`):** `#141414` outer frame (`border-stock/40`), 3-column `#0f0f0f` summary bar (`dl`), and ordered ledger rows (`ol` with `border-stock/35` 2px grid lines) separating period/location, role/company/achievements, and stack/GPA.
-- **Skills Matrix (`Skills`):** Cream `#f2ead8` sheet (`border-2 border-stock`) with a collapsed-border 2-column `dl` grid (`border-ink`), `#b52012` `12.5px` uppercase group names, and `#111111` `15px` medium tech lists.
+- **Hero Showcase Stage (`Hero`):** `16px` `.surface-card` window with a `bg-surface-elevated/55` title bar (three subtle `white/15` dots, `12px` mono project title/year, and direct case-study button) above a `#111216` stage (`p-2 sm:p-3`) running `AnimatePresence` transitions across `16/9` `ProjectShot` captures.
+- **Enterprise Feature Row (`EnterpriseFeature`):** Alternating `lg:grid-cols-12` split (`border-t border-line py-10 lg:py-14`) pairing Düzey architecture narrative (`#7e8ce0` mono label, headline, description, 3-col hairline `<dl>` metrics strip, 5-item mono stack, and actions) with a `16px` `.surface-card` media stage.
+- **Own-Product Card (`ProductCell`):** `14px` `.surface-card surface-card-interactive` vertical flex card (`p-4 sm:p-5`) with edge-to-edge `ProjectShot`, category/year row, `17.5px` or `19px`/`21px` title, 2-line clamped tagline, 3-item truncated mono stack, and `border-t border-line` footer actions.
+- **Experience Stat Bar & Ledger (`Experience`):** `12px` `.surface-card` 4-column `<dl>` summary bar above an ordered `<ol>` list of `220px` aside + detail rows (`border-t border-line py-8`) covering work history and Education (`GNO` / `GPA`).
+- **Skills Matrix (`Skills`):** Open `border-t border-line lg:grid-cols-2` `<dl>` grid divided strictly by `1px` hairlines (`border-b`, `lg:border-l`), pairing `12px` `#7e8ce0` mono category titles with `14.5px` middle-dot-separated skill lists—no badge clutter.
 
 ### Inputs / Fields
-There are no form inputs. All structured records (`Contact` channel block, `Experience` stat bar and ledger rows, `Skills` matrix, and `ProjectModal` detail table) use semantic definition lists (`<dl>`) or ruled key-value rows with uppercase structural labels and direct clickable links (`mailto:`, `wa.me`, GitHub, LinkedIn) plus accessible clipboard copy feedback (`role="status"`).
+There are no form inputs. Structured contact, career, skill, and case-study information renders through semantic definition lists (`<dl>`) and bordered channel lists (`<ul>`) with direct clickable links (`mailto:`, `wa.me`, LinkedIn, GitHub) and accessible live clipboard status (`role="status"`).
 
 ### Navigation
-- **Navbar:** Slim non-sticky header inside `.broadside-frame` underlined by `border-b-2 border-yellow`. Holds a focus-only skip link (`#f2c94c` fill, `2px solid #111111` border), Antonio `20px`/`21px` yellow wordmark + mono location, horizontal-scroll-safe uppercase nav links (`[scrollbar-width:none]`), inline mono `TR / EN` `LanguageLink` switcher (active language in `#f2c94c`, inactive `#c2b9a5` hovering to `#f2ead8`), and the solid vermilion Contact CTA.
-- **Footer:** Framed with `border-t-2 border-vermilion`, pairing Antonio `15px` billing and `13px` stack credit on `#c2b9a5` with an uppercase `#f2c94c` back-to-top link underlined in `2px` `#f04c3a`.
+- **Sticky Translucent Navbar (`Navbar`):** `sticky top-0 z-40 border-b border-line bg-canvas/82 backdrop-blur-xl` containing a `56px` (`h-14`) primary bar (focus-only skip link, `15px` semibold candidate name + subtle location, centered `13.5px` links above `900px`, mono `TR / EN` `LanguageLink` switcher, and white Contact pill) plus a horizontally scrollable `12.5px` link strip below `900px`.
+- **Footer (`Footer`):** Minimal `border-t border-line py-8` closing strip aligning candidate attribution (`13.5px`) and stack credit (`12.5px`) beside an inline `Back to top` anchor (`13px` with `ArrowUp`).
 
 ### Case-Study Dialog (Signature)
-A native modal `<dialog>` (`ProjectModal`) constrained to `min(880px, calc(100% - 48px))` (`100%` full-bleed below `600px`) with `overscroll-behavior: contain` and `html:has(.sheet[open])` scroll locking. Automatically switches between dark press (`#141414` fill, `2px` `#f2c94c` border) for Düzey systems and cream stock (`#f2ead8` fill, `2px` `#111111` border, `.sheet-stock`) for independent products. Opens via CSS-only `register-settle` (`220ms` `cubic-bezier(0.16, 1, 0.3, 1)` from `translate(3px, 6px)` and `0.92` opacity) while dimming the backdrop to `rgb(10 10 10 / 0.8)` (`0.01ms` instant under `prefers-reduced-motion: reduce`), and returns focus cleanly to its opener button on close.
+A native `<dialog>` (`ProjectModal`) styled as an `860px` max floating `16px`-radius `.sheet` on `#0f1012` (`100%` full-bleed `0px` radius below `600px`) with `overscroll-behavior: contain` and `html:has(.sheet[open])` scroll locking. Opens via a `240ms` `--ease-expo` entrance (`translateY(10px) scale(0.985)` + `opacity: 0`) over a `rgb(6 7 9 / 0.78)` blurred backdrop. Features a sticky `bg-surface/90 backdrop-blur-md` top bar with previous/next keyboard (`ArrowLeft`/`ArrowRight`) & button stepping (`01 / 10` mono counter) and close control, clean `ProjectShot`, 2-column hairline `<Row>` specification blocks, `surface-elevated/60` 2-column metric wells, and deterministic focus restoration to the opener button.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep every dark section on `#0a0a0a` / `#141414` / `#0f0f0f` and every light sheet (`#own`, `#skills`, own-product modals) on `#f2ead8` cream stock with `#111111` and `#b52012` ink.
-- **Do** preserve surface-calibrated vermilion pairing: `#f04c3a` on dark grounds, `#b52012` on cream stock, and `#c92a1a` exclusively for solid fills with `#ffffff` text.
-- **Do** enforce `0px` border-radius everywhere and separate grids using `2px` solid outer/grid rules and `1px` translucent interior hairlines (`rgb(242 234 216 / 0.24)` or `rgb(17 17 17 / 0.24)`).
-- **Do** keep real software screenshots crisp and unretouched inside `border-2` `ProjectShot` frames (`frameRatio`-normalized, `object-cover object-top` for landscape, `object-contain` on dark mats for portrait).
-- **Do** restrict fonts strictly to Antonio (display caps), Bricolage Grotesque (UI prose/labels), and JetBrains Mono (tabular technical metadata), keeping all text `>= 12px`.
-- **Do** keep interactive feedback CSS-only using `110ms` ink snaps and the `220ms` (`cubic-bezier(0.16, 1, 0.3, 1)`) dialog registration settle, honoring `prefers-reduced-motion: reduce`.
+- **Do** step surfaces exclusively across `#08090a` (canvas), `#0f1012` (surface), `#111216` (stage), and `#15171c` (elevated) framed by `1px` `rgb(255 255 255 / 0.08)` and `0.16` hairlines.
+- **Do** preserve the top `1px` specular sheen (`inset 0 1px 0 rgb(255 255 255 / 0.06)`) and subtle vertical surface gradient on `.surface-card` containers.
+- **Do** pair `Inter` (sentence-case headings and `50ch–68ch` prose) with `.data-mono` (`IBM Plex Mono`, `tabular-nums`) for all years, counts, metrics, stacks, and URLs.
+- **Do** keep `ProjectShot` captures unretouched inside `#111216` stages (`object-cover object-top` for landscape, `object-contain` on radial dark mat for portrait) with zero overlay badges or text.
+- **Do** restrict `#7e8ce0` to technical metadata, selection, and focus outlines, and `#34d399` strictly to availability and copy confirmation.
+- **Do** honor `prefers-reduced-motion: reduce` across both CSS transitions/keyframes (`globals.css`, `ProjectModal.module.css`) and `MotionConfig reducedMotion="user"`.
 
 ### Don't:
-- **Don't** introduce `border-radius`, rounded pills, blurred glassmorphism, gradient backgrounds, or ambient/hover box-shadows on cards or buttons.
-- **Don't** place text, tags, gradient scrims, or status badges over `ProjectShot` images.
-- **Don't** place bright `#f04c3a` text on `#f2ead8` cream stock or dark `#b52012` text on `#141414` charcoal.
-- **Don't** reuse the `.halftone-band` dot texture behind readable prose, navigation links, or screenshot boxes.
-- **Don't** ship fake contact forms or unverified claims; keep contact channels direct, functional, and synchronized across Turkish (`/`) and English (`/en/`).
-- **Don't** fade modals or sections from `0` opacity or animate controls with scale/bounce transforms.
+- **Don't** introduce heavy neon glow halos, bright saturated card backgrounds, or gray pill-tag grids inside `#skills` or project descriptions.
+- **Don't** place text overlays, corner ribbons, or gradient scrims across application screenshots in `ProjectShot`.
+- **Don't** mix sharp `0px` corners onto desktop cards/buttons or use oversized arbitrary radii that break concentric inner-stage nesting (`16px` -> `12px`/`8px`).
+- **Don't** add client-only contact forms without a working delivery backend, or ship copy changes in only one language (`/` vs `/en/`).
+- **Don't** animate layout properties like width/height or ignore `scroll-margin-top: 76px` under the sticky `56px` navbar.

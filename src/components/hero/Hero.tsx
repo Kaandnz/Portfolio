@@ -1,73 +1,140 @@
 "use client";
 
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { experienceData, projectsData, type ProjectItem } from "@/data/portfolioData";
+import { projectImages } from "@/data/projectImages";
 import { pick } from "@/lib/i18n";
-import { experienceData, personalInfo } from "@/data/portfolioData";
+import ProjectShot from "@/components/projects/ProjectShot";
 import HeroContact from "./HeroContact";
 
-const stackTags = [
-  ".NET Core / C#",
-  "Java Spring Boot",
-  "Angular · React",
-  "PostgreSQL · SQL Server",
-  "SAP & Panorama",
-];
+const showcaseIds = ["duzey-route-opt", "duzey-sfa-b2b", "dailyrota", "squadvoice"] as const;
+
+const tabShortLabel: Record<(typeof showcaseIds)[number], { tr: string; en: string }> = {
+  "duzey-route-opt": { tr: "Filo & Rota · Düzey", en: "Fleet & Route · Düzey" },
+  "duzey-sfa-b2b": { tr: "B2B & E-Ticaret · Düzey", en: "B2B & E-Commerce · Düzey" },
+  dailyrota: { tr: "Rota · DailyTracker", en: "Rota · DailyTracker" },
+  squadvoice: { tr: "SquadVoice", en: "SquadVoice" },
+};
 
 /**
- * Top billboard: dual-track billing and core stack tags on the left, current
- * Düzey role and direct contact actions on the right.
+ * Hero band with Linear-inspired studio radial light, clear positioning statement,
+ * direct recruiter contact pill, and an interactive product showcase stage.
  */
-export default function Hero() {
+export default function Hero({
+  onOpenProject,
+}: {
+  onOpenProject: (project: ProjectItem, trigger: HTMLButtonElement) => void;
+}) {
   const { language, t } = useLanguage();
+  const [activeId, setActiveId] = useState<(typeof showcaseIds)[number]>("duzey-route-opt");
   const [now] = experienceData;
 
+  const activeProject = projectsData.find((p) => p.id === activeId) ?? projectsData[1];
+  const activeImage = projectImages[activeProject.id];
+  const activeTitle = pick(activeProject.title, language);
+
   return (
-    <section
-      aria-labelledby="hero-name"
-      className="grid border-2 border-stock bg-press min-[960px]:grid-cols-[1.32fr_0.68fr]"
-    >
-      <div className="p-3 min-[900px]:px-6 min-[900px]:py-5">
-        <h1
-          id="hero-name"
-          className="display-bill text-[clamp(42px,6.2vw,86px)] leading-[0.88] font-bold tracking-[-0.015em] text-yellow"
-        >
-          {personalInfo.name}
-        </h1>
+    <section aria-labelledby="hero-heading" className="hero-glow relative pt-8 pb-6 min-[900px]:pt-10 min-[900px]:pb-10">
+      <div className="page-shell">
+        <div className="mx-auto max-w-[780px] text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/85 px-3.5 py-1 text-[12.5px] font-medium text-ink-secondary">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald" />
+            <span>
+              {pick(now.company, language)} · {t.hero.location} · {t.nav.available}
+            </span>
+          </div>
 
-        <p className="display-bill mt-1 text-[18.5px] leading-[1.02] font-bold tracking-[0.01em] text-vermilion min-[480px]:text-[24px] min-[900px]:mt-2 min-[900px]:text-[clamp(24px,2.8vw,38px)] min-[900px]:leading-[0.98]">
-          {t.hero.doubleBillLeft}
-          <span aria-hidden="true" className="mx-1.5 text-[0.72em] text-stock min-[900px]:mx-2">
-            +
-          </span>
-          <span className="sr-only"> + </span>
-          {t.hero.doubleBillRight}
-        </p>
+          <h1
+            id="hero-heading"
+            className="mt-4 text-[clamp(34px,4.8vw,58px)] leading-[1.06] font-semibold tracking-[-0.035em] text-balance"
+          >
+            <span className="block text-ink">{t.hero.titleLine1}</span>
+            <span className="block text-ink-secondary">{t.hero.titleLine2}</span>
+          </h1>
 
-        <ul aria-label={t.form.stack} className="mt-2.5 flex flex-wrap gap-1.5 min-[900px]:mt-4 min-[900px]:gap-2">
-          {stackTags.map((tag, index) => (
-            <li
-              key={tag}
-              className={`ballyhoo-tag max-[639px]:px-2 max-[639px]:py-0.5 ${
-                index % 2 === 0 ? "ballyhoo-tag-odd" : "ballyhoo-tag-even"
-              }`}
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex flex-col justify-between gap-2.5 border-t-2 border-vermilion bg-press p-3 min-[960px]:gap-4 min-[960px]:border-t-0 min-[960px]:border-l-2 min-[960px]:px-5 min-[960px]:py-5">
-        <div>
-          <p className="text-[14.5px] leading-snug font-bold text-stock min-[900px]:text-[16px]">
-            {personalInfo.title[language]} · {t.hero.location}
+          <p className="mx-auto mt-3.5 max-w-[62ch] text-[15.5px] leading-[1.58] text-ink-secondary min-[900px]:text-[16.5px]">
+            {t.hero.subtitle}
           </p>
-          <p className="mt-0.5 text-[13.5px] leading-[1.4] text-paper-muted min-[900px]:mt-1 min-[900px]:text-[14.5px]">
-            {pick(now.company, language)} ({now.period[language]}) · {t.nav.available}
-          </p>
+
+          <HeroContact />
         </div>
 
-        <HeroContact />
+        {/* Interactive showcase switcher */}
+        <div className="mx-auto mt-7 max-w-[900px]">
+          <div
+            role="tablist"
+            aria-label={t.projects.heading1}
+            className="mx-auto mb-3 flex w-fit max-w-full flex-wrap items-center justify-center gap-1 rounded-2xl border border-line bg-surface/90 p-1 sm:rounded-full"
+          >
+            {showcaseIds.map((id) => {
+              const selected = id === activeId;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  onClick={() => setActiveId(id)}
+                  className={`relative cursor-pointer rounded-full px-3.5 py-1.5 text-[12.5px] font-medium transition-colors duration-(--duration-snap) ${
+                    selected ? "text-ink" : "text-ink-muted hover:text-ink-secondary"
+                  }`}
+                >
+                  {selected && (
+                    <motion.span
+                      layoutId="hero-stage-tab"
+                      transition={{ type: "spring", bounce: 0.16, duration: 0.36 }}
+                      className="absolute inset-0 rounded-full border border-line-strong bg-surface-elevated"
+                    />
+                  )}
+                  <span className="relative z-10">{tabShortLabel[id][language]}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="surface-card overflow-hidden rounded-2xl">
+            <div className="flex items-center justify-between gap-3 border-b border-line bg-surface-elevated/55 px-4 py-2.5">
+              <p className="data-mono min-w-0 truncate text-[12px] text-ink-secondary">
+                {activeTitle} · {activeProject.year}
+              </p>
+
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={(e) => onOpenProject(activeProject, e.currentTarget)}
+                className="inline-flex shrink-0 cursor-pointer items-center gap-1 text-[12.5px] font-medium text-ink transition-colors hover:text-accent"
+              >
+                <span>{t.projects.caseStudy}</span>
+                <ArrowUpRight size={13} strokeWidth={2} aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="overflow-hidden bg-stage p-2 sm:p-3">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={activeProject.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {activeImage && (
+                    <ProjectShot
+                      image={activeImage}
+                      alt={activeImage.alt[language]}
+                      ratio={16 / 9}
+                      loading="lcp"
+                      className="max-h-[460px] w-full rounded-lg border border-line/80"
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

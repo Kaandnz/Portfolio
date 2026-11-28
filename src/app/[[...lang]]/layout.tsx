@@ -1,26 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Antonio, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "../globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import MotionProvider from "@/components/ui/MotionProvider";
 import { languageFromSegments, languagePaths, languageRedirectScript } from "@/lib/i18n";
 
 // latin-ext carries the Turkish glyphs (ğ, ş, ı, İ, ö, ü, ç)
-const antonio = Antonio({
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-antonio",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500"],
   subsets: ["latin", "latin-ext"],
-  variable: "--font-bricolage",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-jetbrains",
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -74,7 +70,7 @@ export async function generateMetadata({ params }: LayoutParams): Promise<Metada
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#08090a",
   colorScheme: "dark",
 };
 
@@ -83,13 +79,15 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
   if (!lang) notFound();
 
   return (
-    <html lang={lang} className={`${antonio.variable} ${bricolage.variable} ${jetbrainsMono.variable}`}>
+    <html lang={lang} className={`${inter.variable} ${ibmPlexMono.variable}`}>
       <body>
         {lang === "tr" && (
           // Before first paint: send saved-English or non-Turkish first-time visitors to /en/.
           <script dangerouslySetInnerHTML={{ __html: languageRedirectScript }} />
         )}
-        <LanguageProvider language={lang}>{children}</LanguageProvider>
+        <LanguageProvider language={lang}>
+          <MotionProvider>{children}</MotionProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

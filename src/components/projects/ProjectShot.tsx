@@ -10,8 +10,9 @@ export function frameRatio(images: (ProjectImage | undefined)[]): number {
 }
 
 /**
- * Unretouched UI screenshot inside a clean frame. Landscape shots fill the
- * frame anchored to the top; portrait phone screens sit centered whole.
+ * Unretouched UI screenshot inside a clean dark hardware stage.
+ * Landscape interfaces fill edge-to-edge top-anchored; portrait phone screens
+ * sit centered cleanly without distortion or cropping.
  */
 export default function ProjectShot({
   image,
@@ -31,7 +32,11 @@ export default function ProjectShot({
   const portrait = image.shape === "portrait";
   return (
     <div
-      className={cn("overflow-hidden border-2 border-stock bg-press-deep", className)}
+      className={cn(
+        "overflow-hidden rounded-xl border border-line bg-stage",
+        portrait && "flex items-center justify-center bg-radial from-[#191b22] to-[#0c0d10] p-3",
+        className,
+      )}
       style={{ aspectRatio: ratio }}
     >
       {/* Static export with unoptimized images: a plain img with intrinsic size. */}
@@ -44,7 +49,10 @@ export default function ProjectShot({
         loading={loading === "lazy" ? "lazy" : "eager"}
         fetchPriority={loading === "lcp" ? "high" : "auto"}
         decoding={decoding}
-        className={cn("block h-full w-full", portrait ? "object-contain" : "object-cover object-top")}
+        className={cn(
+          "block h-full w-full",
+          portrait ? "w-auto max-w-full rounded-md object-contain shadow-lg" : "object-cover object-top",
+        )}
       />
     </div>
   );

@@ -4,6 +4,10 @@ import { useLanguage } from "@/context/LanguageContext";
 import { skillsGrouped } from "@/data/portfolioData";
 import { pick } from "@/lib/i18n";
 
+/**
+ * Clean 2-column technical specification matrix: crisp typographic grouping
+ * without gray pill clutter so engineering leads can scan capabilities quickly.
+ */
 export default function Skills() {
   const { language, t } = useLanguage();
   const groups = Object.entries(skillsGrouped);
@@ -11,28 +15,28 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="sheet-stock mt-10 border-2 border-stock bg-stock p-4 text-ink min-[900px]:p-7"
+      className="page-shell pt-14 pb-12 min-[900px]:pt-20"
       aria-labelledby="skills-title"
     >
-      <h2
-        id="skills-title"
-        className="display-bill text-[clamp(34px,4vw,48px)] leading-[0.95] font-bold tracking-[-0.01em] text-balance text-ink"
-      >
-        {t.skills.heading1} {t.skills.heading2}
-      </h2>
-      <p className="mt-3 max-w-[65ch] text-[16px] leading-[1.55] text-ink-muted">{t.skills.subtitle}</p>
+      <div className="max-w-[66ch]">
+        <h2
+          id="skills-title"
+          className="text-[clamp(26px,3.4vw,38px)] leading-[1.12] font-semibold tracking-[-0.03em] text-ink"
+        >
+          {t.skills.heading1} {t.skills.heading2}
+        </h2>
+        <p className="mt-2.5 text-[15.5px] leading-[1.6] text-ink-secondary">{t.skills.subtitle}</p>
+      </div>
 
-      <dl className="mt-6 grid border-t-2 border-l-2 border-ink lg:grid-cols-2">
-        {groups.map(([key, group]) => (
+      <dl className="mt-8 grid border-t border-line lg:grid-cols-2">
+        {groups.map(([key, group], idx) => (
           <div
             key={key}
-            className="grid gap-x-4 gap-y-1.5 border-r-2 border-b-2 border-ink bg-stock px-4 py-3.5 sm:grid-cols-[10rem_1fr]"
+            className={`border-b border-line py-5 ${idx % 2 === 0 ? "lg:pr-8" : "lg:border-l lg:pl-8"}`}
           >
-            <dt className="text-[12.5px] font-extrabold tracking-[0.06em] text-vermilion-ink uppercase sm:pt-0.5">
-              {group.title[language]}
-            </dt>
-            <dd className="min-w-0 text-[15px] leading-[1.5] font-medium break-words text-ink">
-              {group.skills.map((skill) => pick(skill, language)).join("\u00a0· ")}
+            <dt className="data-mono text-[12px] font-medium text-accent">{group.title[language]}</dt>
+            <dd className="mt-2 text-[14.5px] leading-[1.65] text-ink-secondary">
+              {group.skills.map((skill) => pick(skill, language)).join(" · ")}
             </dd>
           </div>
         ))}

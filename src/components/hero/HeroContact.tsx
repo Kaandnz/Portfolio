@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, Copy, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { personalInfo } from "@/data/portfolioData";
 import { copyToClipboard, type CopyState } from "@/lib/clipboard";
 import { mailtoHref, whatsappHref } from "@/lib/contact";
 
 /**
- * Direct contact controls in the top billboard: primary email action with copy
- * button and selectable failure fallback, followed by WhatsApp, LinkedIn, GitHub.
+ * Primary email + copy segmented pill, explore anchor, and subtle secondary
+ * direct channels cleanly grouped for fast recruiter scanning.
  */
 export default function HeroContact() {
   const { t } = useLanguage();
@@ -32,58 +32,65 @@ export default function HeroContact() {
   ];
 
   return (
-    <div className="flex flex-col gap-2 min-[900px]:gap-2.5">
-      <div className="btn-register flex items-stretch border-2 border-yellow bg-yellow text-ink">
-        <a
-          href={mailtoHref}
-          className="group flex min-h-11 min-w-0 flex-1 flex-wrap items-center justify-between gap-x-2.5 gap-y-0.5 px-3 py-1.5 min-[900px]:min-h-12 min-[900px]:px-3.5 min-[900px]:py-2"
-        >
-          <span className="inline-flex items-center gap-1.5 text-[14.5px] font-extrabold group-hover:underline min-[900px]:gap-2 min-[900px]:text-[15px]">
-            <Mail size={15} strokeWidth={2.2} aria-hidden="true" />
-            {t.contact.emailMe}
-          </span>
-          <span className="data-mono min-w-0 text-[12px] font-bold break-all text-ink/90 min-[900px]:text-[12.5px]">
-            {personalInfo.email}
-          </span>
-        </a>
+    <div className="mt-5 flex flex-col items-center gap-3.5">
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="inline-flex items-stretch overflow-hidden rounded-full border border-line-strong bg-ink text-canvas shadow-sm">
+          <a
+            href={mailtoHref}
+            className="inline-flex min-h-11 items-center gap-2 px-4 text-[13.5px] font-medium transition-colors duration-(--duration-snap) hover:bg-white/90 sm:px-5"
+          >
+            <Mail size={15} strokeWidth={2} aria-hidden="true" />
+            <span>{t.contact.emailMe}</span>
+            <span className="data-mono hidden border-l border-canvas/15 pl-2.5 text-[12px] text-canvas/75 sm:inline">
+              {personalInfo.email}
+            </span>
+          </a>
 
-        <button
-          type="button"
-          onClick={onCopy}
-          aria-label={copy === "copied" ? t.contact.copied : t.contact.copyEmailLabel}
-          className="inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-1.5 border-l-2 border-ink px-3 text-[12px] font-bold tracking-[0.06em] uppercase transition-colors duration-(--duration-snap) hover:bg-ink hover:text-yellow min-[900px]:min-h-12"
+          <button
+            type="button"
+            onClick={onCopy}
+            aria-label={copy === "copied" ? t.contact.copied : t.contact.copyEmailLabel}
+            className="inline-flex min-h-11 cursor-pointer items-center gap-1.5 border-l border-canvas/15 bg-black/5 px-3.5 text-[12.5px] font-medium text-canvas transition-colors duration-(--duration-snap) hover:bg-black/10"
+          >
+            {copy === "copied" ? (
+              <Check aria-hidden="true" size={14} strokeWidth={2.2} />
+            ) : (
+              <Copy aria-hidden="true" size={14} strokeWidth={2} />
+            )}
+            <span className="sr-only sm:not-sr-only">{copy === "copied" ? t.contact.copied : t.contact.copyEmail}</span>
+          </button>
+        </div>
+
+        <a
+          href="#work"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-surface-elevated/90 px-5 text-[13.5px] font-medium text-ink transition-colors duration-(--duration-snap) hover:border-line-strong hover:bg-surface-elevated"
         >
-          {copy === "copied" ? (
-            <Check aria-hidden="true" size={14} strokeWidth={2.2} />
-          ) : (
-            <Copy aria-hidden="true" size={14} strokeWidth={2.2} />
-          )}
-          <span className="sr-only sm:not-sr-only">{copy === "copied" ? t.contact.copied : t.contact.copyEmail}</span>
-        </button>
+          <span>{t.hero.exploreWork}</span>
+          <ArrowDown size={14} strokeWidth={2} aria-hidden="true" className="text-ink-secondary" />
+        </a>
       </div>
 
-      <ul className="grid grid-cols-3 gap-1.5 min-[900px]:gap-2">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-ink-secondary">
         {secondary.map((c) => (
-          <li key={c.key} className="flex">
-            <a
-              href={c.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-10 flex-1 items-center justify-center gap-1 border border-rule-dark bg-press-deep px-2 text-[12.5px] font-bold text-stock transition-colors duration-(--duration-snap) hover:border-yellow hover:text-yellow min-[900px]:min-h-11 min-[900px]:text-[13px]"
-            >
-              <span lang="en">{c.label}</span>
-              <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" className="shrink-0 text-yellow" />
-              <span className="sr-only"> {t.a11y.newTab}</span>
-            </a>
-          </li>
+          <a
+            key={c.key}
+            href={c.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-9 items-center gap-1 transition-colors duration-(--duration-snap) hover:text-ink"
+          >
+            <span lang="en">{c.label}</span>
+            <ArrowUpRight size={13} strokeWidth={1.8} aria-hidden="true" className="text-ink-muted" />
+            <span className="sr-only"> {t.a11y.newTab}</span>
+          </a>
         ))}
-      </ul>
+      </div>
 
       <p
         role="status"
         className={
           copy === "failed"
-            ? "border border-vermilion bg-press-deep px-3 py-2 text-[13.5px] leading-snug text-stock"
+            ? "rounded-lg border border-line-strong bg-surface px-3.5 py-2 text-[13px] text-ink"
             : "sr-only"
         }
       >
@@ -91,7 +98,7 @@ export default function HeroContact() {
         {copy === "failed" && (
           <>
             {t.contact.copyFailed}{" "}
-            <span className="data-mono text-[13px] text-yellow break-all select-all">{personalInfo.email}</span>
+            <span className="data-mono text-ink select-all">{personalInfo.email}</span>
           </>
         )}
       </p>
