@@ -1,114 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowUp } from "lucide-react";
-import MagneticButton from "../ui/MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
 import { personalInfo } from "@/data/portfolioData";
 
+/* Plain lines on the desk below the form set. The year is fixed at build time. */
 export default function Footer() {
-  const [time, setTime] = useState<string>("");
-  const { language } = useLanguage();
-  const t = translations[language];
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(
-        now.toLocaleTimeString("en-GB", {
-          timeZone: "Europe/Istanbul",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
-      );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="relative pt-12 px-6 md:px-12 lg:px-20 border-t border-white/[0.08] bg-[#070709] text-xs text-white/50 overflow-hidden">
-      {/* Hairline accent on the top edge */}
-      <div aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 max-w-3xl bg-gradient-to-r from-transparent via-sky-400/50 to-transparent" />
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          {/* Brand & Local Time */}
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-sm font-semibold text-white">
-              <span>{personalInfo.name}</span>
-              <span className="text-white/30">•</span>
-              <span className="text-xs font-normal text-white/60">{personalInfo.title[language]}</span>
-            </div>
-            <div className="font-mono text-[11px] text-white/40 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>Istanbul, TR // {time || "12:00:00"} TRT (GMT+3)</span>
-            </div>
-          </div>
-
-          {/* Social Profiles */}
-          <div className="flex items-center gap-4">
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              data-cursor="external"
-            >
-              GitHub
-            </a>
-            <span className="text-white/20">/</span>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              data-cursor="external"
-            >
-              LinkedIn
-            </a>
-            <span className="text-white/20">/</span>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="hover:text-white transition-colors"
-              data-cursor="pointer"
-            >
-              Email
-            </a>
-          </div>
-
-          {/* Back to Top Button */}
-          <MagneticButton onClick={scrollToTop} data-cursor="pointer">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full apple-glass-subtle hover:apple-glass text-white/70 hover:text-white transition-colors active:scale-[0.97]">
-              <span>{t.footer.backToTop}</span>
-              <ArrowUp size={13} />
-            </div>
-          </MagneticButton>
+    <footer className="form-set pt-0 pb-10 sm:pb-12">
+      <div className="flex flex-col gap-x-8 gap-y-3 border-t-[1.5px] border-ink pt-3 text-[13px] leading-[1.5] text-ink-soft sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
+          <p>
+            <span className="font-semibold text-ink">{personalInfo.name}</span> · {t.footer.role}
+          </p>
+          <p>
+            © {year} · {t.footer.rights}
+          </p>
+          <p>{t.footer.builtWith}</p>
         </div>
-
-        {/* Legal & Tech Credit */}
-        <div className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-3 text-white/40 font-mono text-[11px]">
-          <div>
-            © {new Date().getFullYear()} {personalInfo.name}. {t.footer.rights}
-          </div>
-          <div>
-            {t.footer.builtWith}
-          </div>
-        </div>
-      </div>
-
-      {/* Oversized wordmark dissolving into the page edge */}
-      <div
-        aria-hidden
-        className="max-w-7xl mx-auto mt-6 -mb-[0.16em] select-none pointer-events-none text-center font-bold tracking-[-0.05em] leading-none whitespace-nowrap text-[13.5vw] xl:text-[12.5rem] wordmark-fade"
-      >
-        {personalInfo.name}
+        <a
+          href="#main"
+          className="-my-2.5 inline-flex min-h-11 shrink-0 items-center self-start font-semibold text-ink underline decoration-[1.5px] underline-offset-[0.2em] hover:decoration-[2.5px]"
+        >
+          {t.footer.backToTop}
+        </a>
       </div>
     </footer>
   );

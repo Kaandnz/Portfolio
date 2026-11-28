@@ -1,0 +1,71 @@
+/*
+ * The case study: one copy lifted out of the form set. Native <dialog>
+ * (showModal) gives the top layer, inert page, focus containment and Esc.
+ * Fallback values match the @theme tokens in globals.css.
+ */
+
+.sheet {
+  margin: auto;
+  padding: 0;
+  width: min(880px, calc(100% - 48px));
+  max-width: none;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: var(--rule, 1.5px) solid var(--color-ink, #16624f);
+  border-radius: 0;
+  color: var(--color-type, #151515);
+  /* Resting paper shadow: a close contact edge plus a soft offset drop. */
+  box-shadow:
+    0 2px 3px rgb(20 32 26 / 0.18),
+    0 30px 50px -22px rgb(20 32 26 / 0.55);
+}
+
+/* The set underneath dims under a desk-ink tint. No blur. */
+.sheet::backdrop {
+  background-color: rgb(17 38 31 / 0.52);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Lift and settle: starts 10px low on a small shadow, never transparent. */
+  .sheet[open] {
+    animation: lift var(--duration-lift, 240ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+  }
+  .sheet[open]::backdrop {
+    animation: dim 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes lift {
+  from {
+    transform: translateY(10px);
+    opacity: 0.92;
+    box-shadow:
+      0 1px 2px rgb(20 32 26 / 0.2),
+      0 8px 12px -8px rgb(20 32 26 / 0.35);
+  }
+}
+
+@keyframes dim {
+  from {
+    background-color: rgb(17 38 31 / 0);
+  }
+}
+
+/* Full-screen sheet on phones. */
+@media (max-width: 599px) {
+  .sheet {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-width: 0;
+  }
+}
+
+/* While a case study is open the page behind it does not scroll. The gutter
+   stays reserved, so the set does not shift sideways; the page keeps its
+   scroll offset because nothing is repositioned. */
+:global(html):has(.sheet[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}

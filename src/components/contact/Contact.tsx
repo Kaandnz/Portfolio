@@ -1,213 +1,131 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Copy, Check, Send, Sparkles } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "../ui/Icons";
-import MagneticButton from "../ui/MagneticButton";
-import confetti from "canvas-confetti";
-import { personalInfo } from "@/data/portfolioData";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
+import { personalInfo } from "@/data/portfolioData";
+import { copyToClipboard, displayUrl, type CopyState } from "@/lib/clipboard";
+import { mailtoHref, whatsappHref } from "@/lib/contact";
 
+/*
+ * Direct channels only: every row is a working link. Email is the primary
+ * action; the copy button reports exactly what happened (never a fake success).
+ */
 export default function Contact() {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
+  const [copyState, setCopyState] = useState<CopyState>("idle");
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [copied, setCopied] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    confetti({
-      particleCount: 40,
-      spread: 60,
-      origin: { y: 0.8 },
-      colors: ["#38bdf8", "#818cf8", "#34d399", "#ffffff"],
-    });
-    setTimeout(() => setCopied(false), 2600);
+  const copy = async () => {
+    if (timer.current) clearTimeout(timer.current);
+    const ok = await copyToClipboard(personalInfo.email);
+    setCopyState(ok ? "copied" : "failed");
+    if (ok) timer.current = setTimeout(() => setCopyState("idle"), 2600);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setFormSubmitted(true);
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.7 },
-      });
-    }, 600);
-  };
+  const secondary = [
+    {
+      key: "whatsapp",
+      href: whatsappHref(t.contact.whatsappGreeting),
+      label: t.contact.whatsappLabel,
+      value: t.contact.whatsappValue,
+      // The value is a plain-language prompt, not data, so it is set in the sans.
+      typedValue: false,
+    },
+    {
+      key: "linkedin",
+      href: personalInfo.linkedin,
+      label: t.contact.linkedinLabel,
+      value: displayUrl(personalInfo.linkedin),
+      typedValue: true,
+    },
+    {
+      key: "github",
+      href: personalInfo.github,
+      label: t.contact.githubLabel,
+      value: displayUrl(personalInfo.github),
+      typedValue: true,
+    },
+  ];
 
   return (
-    <section id="contact" className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 border-t border-white/[0.06] overflow-hidden">
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute -bottom-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-sky-500/10 blur-[150px]" />
+    <section id="contact" className="ply" aria-labelledby="contact-title">
+      <div className="grid gap-x-10 gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:items-start">
+        <div>
+          <h2
+            id="contact-title"
+            className="text-[clamp(28px,3.2vw,40px)] leading-[1.02] font-extrabold tracking-[-0.02em] text-balance [font-stretch:112%]"
+          >
+            {t.contact.heading1} <span className="sm:block">{t.contact.heading2}</span>
+          </h2>
+          <p className="mt-3 max-w-[60ch] text-[16.5px] leading-[1.55]">{t.contact.subtitle}</p>
+        </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column: Massive Editorial Call to Action */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-8">
-            <div className="space-y-5">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-sky-400 font-mono">
-                <Sparkles size={14} />
-                <span>{t.contact.badge}</span>
-              </div>
-
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.035em] text-white leading-[1.02] text-balance">
-                {t.contact.heading1} <br />
-                <span className="text-gradient-accent">{t.contact.heading2}</span>
-              </h2>
-
-              <p className="max-w-xl text-base md:text-lg text-white/60 leading-relaxed pt-2">
-                {t.contact.subtitle}
-              </p>
-            </div>
-
-            {/* Email Action Bar */}
-            <div className="space-y-6 pt-4">
-              <div className="flex flex-wrap items-center gap-4">
-                {/* Magnetic Copy Email Button */}
-                <MagneticButton onClick={handleCopyEmail} data-cursor="pointer">
-                  <div className="flex items-center gap-3 px-7 py-4 rounded-full bg-white text-black font-semibold text-sm hover:bg-sky-400 transition-colors duration-300 shadow-[0_15px_35px_rgba(255,255,255,0.15)] active:scale-[0.97]">
-                    {copied ? (
-                      <>
-                        <Check size={16} className="text-black" />
-                        <span>{personalInfo.email} ({t.hero.copied})</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={16} className="text-black" />
-                        <span>{personalInfo.email}</span>
-                      </>
-                    )}
-                  </div>
-                </MagneticButton>
-              </div>
-
-              {/* Social Channels */}
-              <div className="flex items-center gap-4 pt-2">
-                <span className="text-xs uppercase tracking-wider text-white/40 font-mono">
-                  {language === "tr" ? "Profiller:" : "Profiles:"}
-                </span>
+        <div>
+          <div className="border-[1.5px] border-ink">
+            <p id="contact-channels" className="form-label border-b-[1.5px] border-ink px-4 pt-2.5 pb-2">
+              {t.contact.channelsTitle}
+            </p>
+            <ul aria-labelledby="contact-channels">
+              <li className="flex bg-carbon text-ply-white">
                 <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] text-white/70 hover:text-white text-xs font-mono transition-colors"
-                  data-cursor="pointer"
+                  href={mailtoHref}
+                  className="group flex min-h-14 min-w-0 flex-1 flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-3"
                 >
-                  <GithubIcon size={14} />
-                  <span>GitHub</span>
+                  <span className="text-[16.5px] font-bold group-hover:underline">{t.contact.emailMe}</span>
+                  <span className="typed min-w-0 break-all text-carbon-tint">{personalInfo.email}</span>
                 </a>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] text-white/70 hover:text-white text-xs font-mono transition-colors"
-                  data-cursor="pointer"
+                <button
+                  type="button"
+                  onClick={copy}
+                  aria-label={copyState === "copied" ? undefined : t.contact.copyEmailLabel}
+                  className="min-h-14 min-w-[6.5rem] shrink-0 cursor-pointer border-l-[1.5px] border-carbon-tint px-4 text-[13px] font-bold tracking-[0.06em] uppercase [font-stretch:75%] hover:underline"
                 >
-                  <LinkedinIcon size={14} />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Apple-Glass Interactive Contact Form */}
-          <div className="lg:col-span-5">
-            <div className="p-8 md:p-10 rounded-3xl apple-glass specular-border border border-white/[0.08] relative">
-              {formSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 text-center space-y-4"
-                >
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-                    <Check size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">
-                    {t.contact.successTitle}
-                  </h3>
-                  <p className="text-sm text-white/60 max-w-xs mx-auto leading-relaxed">
-                    {t.contact.successDesc}
-                  </p>
-                  <button
-                    onClick={() => {
-                      setFormSubmitted(false);
-                      setFormData({ name: "", email: "", message: "" });
-                    }}
-                    className="text-xs text-sky-400 hover:underline pt-2 inline-block font-mono"
+                  {copyState === "copied" ? t.contact.copied : t.contact.copyEmail}
+                </button>
+              </li>
+              {secondary.map((channel) => (
+                <li key={channel.key} className="border-t-[1.5px] border-ink">
+                  <a
+                    href={channel.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-12 flex-wrap items-center justify-between gap-x-4 gap-y-0.5 px-4 py-2.5 transition-colors duration-(--duration-press) hover:bg-carbon/[0.07]"
                   >
-                    ← {t.contact.sendAnother}
-                  </button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-white/60 font-mono mb-2">
-                      {t.contact.nameLabel}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder={language === "tr" ? "Adınız Soyadınız" : "Jane Doe"}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-white/60 font-mono mb-2">
-                      {t.contact.emailLabel}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder={language === "tr" ? "ornek@sirket.com" : "jane@company.com"}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-white/60 font-mono mb-2">
-                      {t.contact.messageLabel}
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder={language === "tr" ? "Projeniz, teklifiniz veya mesajınız..." : "Tell me about your project or opportunity..."}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] focus:border-sky-400/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all placeholder:text-white/20 resize-none"
-                    />
-                  </div>
-
-                  <MagneticButton type="submit" disabled={loading} data-cursor="pointer" className="w-full">
-                    <div className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-black font-semibold text-sm transition-colors duration-200 active:scale-[0.98] cursor-pointer">
-                      {loading ? (
-                        <span>{t.contact.sendingBtn}</span>
-                      ) : (
-                        <>
-                          <span>{t.contact.sendBtn}</span>
-                          <Send size={15} />
-                        </>
-                      )}
-                    </div>
-                  </MagneticButton>
-                </form>
-              )}
-            </div>
+                    <span
+                      lang="en"
+                      className={channel.key === "github" ? "text-[16px] font-semibold" : "text-[16px] font-bold"}
+                    >
+                      {channel.label}
+                    </span>
+                    <span
+                      className={
+                        channel.typedValue ? "typed min-w-0 break-all" : "text-[15px] font-medium text-carbon"
+                      }
+                    >
+                      {channel.value}
+                    </span>
+                    <span className="sr-only">{t.a11y.newTab}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <p role="status" className="mt-3 min-h-[1.55em] text-[15px] leading-[1.55]">
+            {copyState === "copied" && <span className="text-ink">{t.contact.copiedStatus}</span>}
+            {copyState === "failed" && (
+              <>
+                {t.contact.copyFailed} <span className="typed select-all">{personalInfo.email}</span>
+              </>
+            )}
+          </p>
         </div>
       </div>
     </section>

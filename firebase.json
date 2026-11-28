@@ -4,13 +4,9 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/*.webp.json"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "trailingSlash": true
   }
 }

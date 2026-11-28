@@ -1,251 +1,52 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "../ui/Icons";
-import MagneticButton from "../ui/MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
-import { personalInfo } from "@/data/portfolioData";
 
-const SECTION_IDS = ["about", "projects", "skills", "experience", "contact"];
-
+/**
+ * Skip link plus a slim section index printed on the desk above the form set.
+ * Not sticky; the language switch lives in the Hero band.
+ */
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, setLanguage } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
 
-  // Same order as the sections on the page, so the active pill travels left to right
-  const navLinks = [
-    { name: t.nav.about, href: "#about" },
-    { name: t.nav.work, href: "#projects" },
-    { name: t.nav.skills, href: "#skills" },
-    { name: t.nav.experience, href: "#experience" },
-    { name: t.nav.contact, href: "#contact" },
+  const links = [
+    { href: "#work", label: t.nav.work },
+    { href: "#own", label: t.nav.own },
+    { href: "#experience", label: t.nav.experience },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#contact", label: t.nav.contact },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Highlight the section currently crossing the middle of the viewport
-  useEffect(() => {
-    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null
-    );
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          } else {
-            setActiveSection((current) => (current === entry.target.id ? null : current));
-          }
-        }
-      },
-      { rootMargin: "-50% 0px -50% 0px" }
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-center p-4 md:p-6 pointer-events-none">
-        <motion.nav
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-6 px-4 md:px-6 py-2.5 rounded-full transition-all duration-300 ${
-            scrolled
-              ? "apple-glass-pill shadow-[0_12px_32px_rgba(0,0,0,0.75)] border-white/[0.12]"
-              : "bg-black/40 backdrop-blur-md border border-white/[0.08]"
-          }`}
-        >
-          {/* Logo / Monogram */}
-          <a
-            href="#"
-            className="flex items-center gap-2 group"
-            data-cursor="pointer"
-          >
-            <div className="w-7 h-7 rounded-full bg-white/[0.08] border border-white/20 flex items-center justify-center text-xs font-semibold text-white group-hover:border-sky-400/60 group-hover:bg-sky-400/10 transition-colors">
-              KD
-            </div>
-            <span className="text-xs md:text-sm font-medium tracking-tight text-white/90 group-hover:text-white transition-colors whitespace-nowrap">
-              {personalInfo.name}
-            </span>
-          </a>
+    <header className="relative mx-auto max-w-(--container) px-(--gutter-mobile) min-[900px]:px-(--gutter)">
+      <a
+        href="#main"
+        className="sr-only-focusable form-label absolute top-2 left-2 z-50 inline-flex min-h-11 items-center bg-ply-white px-3 text-[13px] text-carbon underline form-rule"
+      >
+        {t.a11y.skipToContent}
+      </a>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 text-xs font-medium text-white/70">
-            {navLinks.map((link) => {
-              const isActive = link.href === `#${activeSection}`;
-              return (
+      <div className="flex flex-nowrap items-center justify-between gap-x-6">
+        <nav aria-label={t.a11y.sections} className="min-w-0 max-w-full">
+          <ul className="-mx-1.5 flex flex-nowrap overflow-x-auto whitespace-nowrap [scrollbar-width:none] min-[900px]:-mx-2.5 min-[900px]:overflow-visible">
+            {links.map((l) => (
+              <li key={l.href}>
                 <a
-                  key={link.href}
-                  href={link.href}
-                  aria-current={isActive ? "true" : undefined}
-                  className={`relative px-3 py-1.5 rounded-full transition-colors ${
-                    isActive ? "text-white" : "hover:text-white hover:bg-white/[0.06]"
-                  }`}
-                  data-cursor="pointer"
+                  href={l.href}
+                  className="form-label inline-flex min-h-11 items-center px-1.5 text-[13px] hover:underline min-[900px]:min-h-9 min-[900px]:px-2.5"
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="navActivePill"
-                      className="absolute inset-0 rounded-full bg-white/[0.1] border border-white/[0.14]"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.name}</span>
+                  {l.label}
                 </a>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Right Section: Language Switcher & Availability & Socials */}
-          <div className="flex items-center gap-2 md:gap-3">
-            {/* Apple-style Language Toggle [TR | EN] */}
-            <div className="flex items-center p-0.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[11px] font-mono">
-              <button
-                onClick={() => setLanguage("tr")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
-                  language === "tr"
-                    ? "bg-white text-black font-bold shadow-sm"
-                    : "text-white/60 hover:text-white"
-                }`}
-                aria-label="Türkçe"
-              >
-                TR
-              </button>
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
-                  language === "en"
-                    ? "bg-white text-black font-bold shadow-sm"
-                    : "text-white/60 hover:text-white"
-                }`}
-                aria-label="English"
-              >
-                EN
-              </button>
-            </div>
-
-            {/* Availability Status Indicator */}
-            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-[11px] text-emerald-400 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{t.nav.available}</span>
-            </div>
-
-            {/* Social Icons */}
-            <div className="hidden md:flex items-center gap-1 text-white/60 pl-1 border-l border-white/[0.08]">
-              <MagneticButton
-                as="a"
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-full hover:text-white hover:bg-white/[0.08] transition-colors"
-                data-cursor="external"
-              >
-                <GithubIcon size={15} />
-              </MagneticButton>
-              <MagneticButton
-                as="a"
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-full hover:text-white hover:bg-white/[0.08] transition-colors"
-                data-cursor="external"
-              >
-                <LinkedinIcon size={15} />
-              </MagneticButton>
-            </div>
-
-            {/* Mobile Menu Trigger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
-              aria-label={language === "tr" ? "Menüyü Aç/Kapat" : "Toggle Menu"}
-            >
-              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
-        </motion.nav>
-      </header>
-
-      {/* Apple-style Interruptible Spring Drawer for Mobile */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.98 }}
-            transition={{
-              type: "spring",
-              damping: 28,
-              stiffness: 340,
-            }}
-            className="fixed inset-x-4 top-20 z-40 md:hidden apple-glass rounded-2xl p-6 shadow-2xl border border-white/[0.12]"
-          >
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
-                <span className="text-xs font-medium text-white/40 uppercase tracking-widest">
-                  {language === "tr" ? "MENÜ" : "NAVIGATION"}
-                </span>
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  {t.nav.available}
-                </div>
-              </div>
-
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2 text-lg font-medium text-white/90 hover:text-white transition-colors"
-                >
-                  <span>{link.name}</span>
-                  <ArrowUpRight size={16} className="text-white/40" />
-                </a>
-              ))}
-
-              <div className="pt-4 mt-2 border-t border-white/[0.08] flex items-center justify-between">
-                <span className="text-xs text-white/40">
-                  {language === "tr" ? "Sosyal Bağlantılar" : "Social Links"}
-                </span>
-                <div className="flex items-center gap-3">
-                  <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white text-xs flex items-center gap-1"
-                  >
-                    <GithubIcon size={14} />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={personalInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white text-xs flex items-center gap-1"
-                  >
-                    <LinkedinIcon size={14} />
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        <p className="hidden items-baseline gap-2 min-[900px]:flex">
+          <span className="form-label">{t.form.status}</span>
+          <span className="text-[14px] font-medium text-ink-soft">{t.nav.available}</span>
+        </p>
+      </div>
+    </header>
   );
 }
